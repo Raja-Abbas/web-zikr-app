@@ -15,7 +15,9 @@ export default function Home() {
   const [customDouaText, setCustomDouaText] = useState('');
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
+  const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
   const [chatInput, setChatInput] = useState('');
+  const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -124,13 +126,29 @@ export default function Home() {
   const handleSuggestedAction = (action: string) => {
     console.log('Selected action:', action);
     // Handle the suggested action
-    if (action === 'Authentic dua' || action === 'Custom dua for my situation') {
+    if (action === 'Authentic dua') {
+      // Navigate to Authentic Dua Selection screen
+      setShowChatbot(false);
+      setShowAuthenticDuaSelection(true);
+    } else if (action === 'Custom dua for my situation') {
       // Navigate to personalization screen
       handleChatbotContinue();
     } else if (action === 'Spiritual reminder') {
       // Could navigate to reminders or handle differently
       handleChatbotContinue();
     }
+  };
+
+  const handleBackFromAuthenticDua = () => {
+    // Navigate back to chatbot screen
+    setShowAuthenticDuaSelection(false);
+    setShowChatbot(true);
+  };
+
+  const handleDuaCategorySelect = (category: string) => {
+    setSelectedDuaCategory(category);
+    console.log('Selected dua category:', category);
+    // Here you would typically navigate to the specific dua content
   };
 
   const handleResetToAuth = () => {
@@ -140,11 +158,13 @@ export default function Home() {
     setShowWelcomeScreen(false);
     setShowEmailForm(false);
     setShowChatbot(false);
+    setShowAuthenticDuaSelection(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
     setActiveTab('Home');
     setChatInput('');
+    setSelectedDuaCategory('To protect kids');
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
@@ -745,6 +765,87 @@ export default function Home() {
             className="mt-8 bg-teal-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             Continue to Personalization →
+          </button>
+        </>
+      ) : showAuthenticDuaSelection ? (
+        /* Screen 14: Authentic Dua Selection */
+        <>
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromAuthenticDua}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Right: Current Mode Indicator */}
+            <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
+              <span className="text-white text-sm">≈</span>
+              <span className="text-white text-sm font-medium">Authentic dua</span>
+            </div>
+          </div>
+
+          {/* Chat Message (Bot's Response) */}
+          <div className="w-full max-w-4xl mx-auto mb-8 px-6">
+            <div className="flex items-start space-x-3 mb-6">
+              {/* Zikr bot logo/icon */}
+              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                <span className="text-white text-xs font-bold">Z</span>
+              </div>
+
+              {/* Chat Bubble */}
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                <p className="text-white text-base leading-relaxed">
+                  That&apos;s great! I can help you with duas from Hisnul Muslim and from the Holy Qur&apos;an. Please choose below with dua you would like to read.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Dua Option Pills (Selection Choices) */}
+          <div className="w-full max-w-4xl mx-auto px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center">
+              {[
+                'Anxiety',
+                'Sadness',
+                'To protect kids',
+                'When entering home',
+                'For forgiveness',
+                'For guidance',
+                'When entering Toilet',
+                'Morning and evening duas',
+                'For sickness',
+                'When waking up at night',
+                'Another one'
+              ].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleDuaCategorySelect(category)}
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                    selectedDuaCategory === category
+                      ? 'bg-slate-800 text-white'
+                      : 'bg-cream text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromAuthenticDua}
+            className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Chatbot
           </button>
         </>
       ) : (
