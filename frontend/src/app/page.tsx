@@ -17,8 +17,10 @@ export default function Home() {
   const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
   const [showDuaContent, setShowDuaContent] = useState(false);
+  const [showDiscussMenu, setShowDiscussMenu] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
   const [isPlaying, setIsPlaying] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -160,7 +162,25 @@ export default function Home() {
 
   const handleDuaAction = (action: string) => {
     console.log('Dua action:', action);
+    if (action === 'Discuss') {
+      setShowDiscussMenu(true);
+    }
     // Handle different actions like save, share, etc.
+  };
+
+  const handleMenuItemSelect = (item: string) => {
+    setSelectedMenuItem(item);
+    console.log('Selected menu item:', item);
+    // Handle navigation to different sections
+    if (item === 'My.Zikr+') {
+      console.log('Navigate to premium subscription');
+    }
+    // Close menu after selection (optional)
+    // setShowDiscussMenu(false);
+  };
+
+  const handleCloseDiscussMenu = () => {
+    setShowDiscussMenu(false);
   };
 
   const handleResetToAuth = () => {
@@ -172,12 +192,14 @@ export default function Home() {
     setShowChatbot(false);
     setShowAuthenticDuaSelection(false);
     setShowDuaContent(false);
+    setShowDiscussMenu(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
     setActiveTab('Home');
     setChatInput('');
     setSelectedDuaCategory('To protect kids');
+    setSelectedMenuItem('Interior design');
     setIsPlaying(false);
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
@@ -233,6 +255,17 @@ export default function Home() {
     }
     // Add more duas as needed
   };
+
+  // Menu items data
+  const menuItems = [
+    { id: 'discuss', icon: '💬', text: 'Discuss' },
+    { id: 'duas', icon: '🤲', text: 'Duas' },
+    { id: 'reminders', icon: '⏰', text: 'Reminders' },
+    { id: 'notes', icon: '📝', text: 'My notes' },
+    { id: 'wall', icon: '🕌', text: 'The wall of duas' },
+    { id: 'profile', icon: '👤', text: 'My profile' },
+    { id: 'interior', icon: '🏠', text: 'Interior design' },
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
@@ -1207,6 +1240,88 @@ export default function Home() {
         </div>
           )}
         </>
+      )}
+
+      {/* Screen 16: Discuss Section / Side Menu Overlay */}
+      {showDiscussMenu && (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Background overlay with dimmed effect */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-30"
+            onClick={handleCloseDiscussMenu}
+          />
+
+          {/* Green leaf icon in upper-left corner */}
+          <div className="absolute top-8 left-8 z-60">
+            <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+          </div>
+
+          {/* Menu Container */}
+          <div className="relative w-80 h-full">
+            <div className="bg-cream rounded-r-2xl shadow-2xl h-full p-6 overflow-y-auto">
+              {/* Menu Items */}
+              <div className="space-y-2 mb-8">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleMenuItemSelect(item.text)}
+                    className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-colors text-left ${
+                      selectedMenuItem === item.text
+                        ? 'bg-teal-800 text-white'
+                        : 'text-gray-900 hover:bg-gray-100'
+                    }`}
+                  >
+                    <span className={`text-xl ${
+                      selectedMenuItem === item.text ? 'text-white' : 'text-gray-700'
+                    }`}>
+                      {item.icon}
+                    </span>
+                    <span className={`font-medium ${
+                      selectedMenuItem === item.text ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {item.text}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Premium Feature Callout */}
+              <div className="border-t border-gray-200 pt-6">
+                <button
+                  onClick={() => handleMenuItemSelect('My.Zikr+')}
+                  className="w-full flex items-center space-x-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors text-left"
+                >
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xl text-gray-400">💎</span>
+                    <span className="text-xl text-gray-400">🔒</span>
+                  </div>
+                  <span className="font-medium text-gray-900">My.Zikr+</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Ghosted background content (visible but dimmed) */}
+          <div className="flex-1 relative">
+            {/* Ghosted "Continue" Button */}
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+              <button className="bg-gray-600 text-gray-300 px-6 py-2 rounded-lg text-sm opacity-30 cursor-not-allowed">
+                Continue
+              </button>
+            </div>
+
+            {/* Footer elements from underlying screen */}
+            <div className="absolute bottom-4 right-4 flex items-center space-x-2 opacity-50">
+              <span className="text-white text-sm">📄</span>
+              <span className="text-white text-sm">19</span>
+            </div>
+
+            {/* Thin blue line at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 opacity-30" />
+          </div>
+        </div>
       )}
     </div>
   );
