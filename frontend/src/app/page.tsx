@@ -117,7 +117,7 @@ export default function Home() {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Today's Prayer Times
+            Today&apos;s Prayer Times
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer, index) => (
@@ -143,7 +143,7 @@ export default function Home() {
               <span className="text-xl font-bold">My.Zkir</span>
             </div>
             <p className="text-gray-400 mb-4">
-              "And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose."
+              &ldquo;And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose.&rdquo;
             </p>
             <p className="text-gray-500 text-sm">
               Quran 65:3 | Built with ❤️ for the Muslim Ummah
