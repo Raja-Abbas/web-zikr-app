@@ -16,8 +16,10 @@ export default function Home() {
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
+  const [showDuaContent, setShowDuaContent] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
+  const [isPlaying, setIsPlaying] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -147,8 +149,18 @@ export default function Home() {
 
   const handleDuaCategorySelect = (category: string) => {
     setSelectedDuaCategory(category);
+    setShowDuaContent(true);
     console.log('Selected dua category:', category);
-    // Here you would typically navigate to the specific dua content
+  };
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+    console.log('Audio playback:', !isPlaying ? 'playing' : 'paused');
+  };
+
+  const handleDuaAction = (action: string) => {
+    console.log('Dua action:', action);
+    // Handle different actions like save, share, etc.
   };
 
   const handleResetToAuth = () => {
@@ -159,12 +171,14 @@ export default function Home() {
     setShowEmailForm(false);
     setShowChatbot(false);
     setShowAuthenticDuaSelection(false);
+    setShowDuaContent(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
     setActiveTab('Home');
     setChatInput('');
     setSelectedDuaCategory('To protect kids');
+    setIsPlaying(false);
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
@@ -196,6 +210,29 @@ export default function Home() {
       text: 'For something else'
     }
   ];
+
+  // Dua content data
+  const duaContent = {
+    'To protect kids': {
+      arabic: 'أُعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ',
+      transliteration: 'U\'eedhukumaa bi-kalimaati l-laahi t-taammaati min kulli shaytaanin wa haammatin wa min kulli \'aynin laammatin',
+      translation: 'I seek protection for you from the perfect words of Allah against every devil and poisonous creature, and against every evil eye.',
+      source: '[1] al-Bukhari N°6312, voir Fath al-Bari 11/113, et Muslim (N°2711, 4/2083).'
+    },
+    'Anxiety': {
+      arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ',
+      transliteration: 'Allaahumma innee a\'oodhu bika minal-hammi wal-hazan',
+      translation: 'O Allah, I seek refuge in You from anxiety and grief.',
+      source: '[1] al-Bukhari N°6369, Muslim N°2706.'
+    },
+    'For forgiveness': {
+      arabic: 'رَبِّ اغْفِرْ لِي ذَنْبِي وَخَطَئِي وَجَهْلِي',
+      transliteration: 'Rabbi ghfir lee dhanbee wa khata\'ee wa jahlee',
+      translation: 'My Lord, forgive my sins, my mistakes, and my ignorance.',
+      source: '[1] al-Bukhari N°6398, Muslim N°2719.'
+    }
+    // Add more duas as needed
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
@@ -810,7 +847,7 @@ export default function Home() {
           </div>
 
           {/* Dua Option Pills (Selection Choices) */}
-          <div className="w-full max-w-4xl mx-auto px-6">
+          <div className="w-full max-w-4xl mx-auto px-6 mb-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center">
               {[
                 'Anxiety',
@@ -839,6 +876,115 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Dua Display Card (Content Area) */}
+          {showDuaContent && duaContent[selectedDuaCategory as keyof typeof duaContent] && (
+            <div className="w-full max-w-4xl mx-auto px-6 mb-8">
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                {/* Title/Context */}
+                <div className="text-center mb-6">
+                  <p className="text-gray-500 text-sm mb-4">{selectedDuaCategory}</p>
+                </div>
+
+                {/* Arabic Text */}
+                <div className="text-center mb-6">
+                  <p className="text-gray-900 text-2xl md:text-3xl font-arabic leading-relaxed mb-6">
+                    {duaContent[selectedDuaCategory as keyof typeof duaContent].arabic}
+                  </p>
+                </div>
+
+                {/* Transliteration */}
+                <div className="text-center mb-6">
+                  <p className="text-gray-700 text-lg italic leading-relaxed">
+                    {duaContent[selectedDuaCategory as keyof typeof duaContent].transliteration}
+                  </p>
+                </div>
+
+                {/* English Translation */}
+                <div className="text-center mb-6">
+                  <p className="text-gray-800 text-base leading-relaxed">
+                    {duaContent[selectedDuaCategory as keyof typeof duaContent].translation}
+                  </p>
+                </div>
+
+                {/* Source Reference */}
+                <div className="text-center mb-8">
+                  <p className="text-gray-500 text-sm">
+                    {duaContent[selectedDuaCategory as keyof typeof duaContent].source}
+                  </p>
+                </div>
+
+                {/* Media Controls */}
+                <div className="flex justify-center items-center space-x-6 mb-8">
+                  <button className="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6,5.75L10.25,10H7V16H13.5L15.5,18H7A2,2 0 0,1 5,16V10H1.75L6,5.75M18,18.25L13.75,14H17V8H10.5L8.5,6H17A2,2 0 0,1 19,8V14H22.25L18,18.25Z"/>
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={handlePlayPause}
+                    className="bg-teal-600 text-white p-4 rounded-full hover:bg-teal-700 transition-colors"
+                  >
+                    {isPlaying ? (
+                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+                      </svg>
+                    )}
+                  </button>
+
+                  <button className="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18,5.75L22.25,10H19V16H12.5L10.5,18H19A2,2 0 0,0 21,16V10H24.25L20,5.75M6,18.25L1.75,14H5V8H11.5L13.5,6H5A2,2 0 0,0 3,8V14H0.75L5,18.25Z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="space-y-4">
+                  {/* Row 1 */}
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {['Save it', 'Share it', 'Pounder it', 'Another one'].map((action) => (
+                      <button
+                        key={action}
+                        onClick={() => handleDuaAction(action)}
+                        className="bg-slate-800 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-700 transition-colors"
+                      >
+                        {action}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="flex flex-wrap justify-center gap-3">
+                    <button
+                      onClick={() => handleDuaAction('The whole collection')}
+                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors"
+                    >
+                      The whole collection
+                    </button>
+                    <button
+                      onClick={() => handleDuaAction('Main menu')}
+                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors"
+                    >
+                      Main menu
+                    </button>
+                    <button
+                      onClick={() => handleDuaAction('Discuss')}
+                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors flex items-center space-x-2"
+                    >
+                      <span>≈</span>
+                      <span>Discuss</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Debug Back Button */}
           <button
