@@ -127,7 +127,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-900 via-slate-900 to-indigo-950 flex flex-col items-center justify-center px-6 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
       {showPersonalizationScreen ? (
         /* Screen 5: Welcome and Personalization Survey */
         <>
@@ -135,23 +135,23 @@ export default function Home() {
           <div className="text-center mb-12">
             {/* Arabic Calligraphy Logo */}
             <div className="mb-4">
-              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+              <div className="text-6xl md:text-7xl text-white font-arabic mb-2">
                 ذِكْر
               </div>
             </div>
 
             {/* App Name */}
-            <h1 className="text-2xl md:text-3xl text-cream font-light mb-8">
+            <h1 className="text-2xl md:text-3xl text-white font-light mb-8">
               My.Zikr
             </h1>
 
             {/* Welcome Message */}
-            <h2 className="text-4xl md:text-5xl text-cream font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl text-white font-bold mb-6">
               Welcome {userName || 'Adnan'}!
             </h2>
 
             {/* Instructional Text */}
-            <p className="text-cream text-base md:text-lg max-w-md mx-auto leading-relaxed">
+            <p className="text-white text-base md:text-lg max-w-md mx-auto leading-relaxed">
               Please tell us what you are here for so we can customize your navigation. You can select up to 3.
             </p>
           </div>
@@ -162,34 +162,39 @@ export default function Home() {
               <button
                 key={interest.id}
                 onClick={() => handleInterestToggle(interest.id)}
-                className={`w-full py-4 px-6 rounded-lg flex items-center space-x-4 transition-all duration-300 ${
+                className={`w-full py-4 px-6 rounded-xl flex items-center space-x-4 transition-all duration-300 ${
                   selectedInterests.includes(interest.id)
                     ? 'bg-teal-600 ring-2 ring-cream'
-                    : 'bg-slate-700 hover:bg-slate-600'
+                    : 'bg-slate-800 hover:bg-slate-700'
                 }`}
+                style={{
+                  backgroundColor: selectedInterests.includes(interest.id) ? '#0d9488' : '#1A3A3F'
+                }}
               >
-                <span className="text-2xl">{interest.icon}</span>
-                <span className="text-cream text-left flex-1">{interest.text}</span>
+                <span className="text-xl text-white">{interest.icon}</span>
+                <span className="text-white text-left flex-1 font-medium">{interest.text}</span>
                 {selectedInterests.includes(interest.id) && (
-                  <span className="text-cream">✓</span>
+                  <span className="text-white">✓</span>
                 )}
               </button>
             ))}
           </div>
 
-          {/* Selection Counter */}
-          <p className="text-cream text-sm mb-6 opacity-75">
-            {selectedInterests.length}/3 selected
-          </p>
+          {/* Selection Counter - Only show when selections are made */}
+          {selectedInterests.length > 0 && (
+            <p className="text-cream text-sm mb-6 opacity-75">
+              {selectedInterests.length}/3 selected
+            </p>
+          )}
 
           {/* Continue Button */}
           <button
             onClick={handlePersonalizationContinue}
             disabled={selectedInterests.length === 0}
-            className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 ${
+            className={`px-12 py-4 rounded-xl font-medium text-lg transition-all duration-300 ${
               selectedInterests.length > 0
-                ? 'bg-cream text-gray-900 hover:bg-gray-100 hover:shadow-md'
-                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                ? 'bg-cream text-gray-900 hover:bg-gray-100 hover:shadow-lg'
+                : 'bg-cream text-gray-900 opacity-50 cursor-not-allowed'
             }`}
           >
             Continue
