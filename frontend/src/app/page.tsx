@@ -13,6 +13,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedDouaCategory, setSelectedDouaCategory] = useState('Authentic douas');
   const [customDouaText, setCustomDouaText] = useState('');
+  const [showWallOfDuas, setShowWallOfDuas] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -97,6 +98,11 @@ export default function Home() {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
+    setShowWallOfDuas(false); // Reset wall of duas when switching tabs
+  };
+
+  const handleWallOfDuasClick = () => {
+    setShowWallOfDuas(true);
   };
 
   const handleResetToAuth = () => {
@@ -161,8 +167,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="flex-1 px-6 pb-20">
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 pb-24">
             {/* Greeting */}
             <h1 className="text-3xl text-white font-bold mb-8 text-center">
               Salam Aleykoum {userName || 'Adnan'}!
@@ -252,9 +259,10 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </div>
 
-          {/* Bottom Navigation Bar */}
-          <div className="bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700">
+          {/* Bottom Navigation Bar - Fixed Position */}
+          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
             <div className="flex justify-around py-3">
               {['Home', 'Duas', 'Reminder', 'Profile'].map((tab) => (
                 <button
@@ -284,96 +292,185 @@ export default function Home() {
             Reset to Auth
           </button>
         </div>
-      ) : activeTab === 'Douas' && showHomeScreen ? (
+      ) : activeTab === 'Douas' && showHomeScreen && !showWallOfDuas ? (
         /* Screen 8: Douas Tab */
-        <div className="flex-1 flex flex-col">
-          {/* Main Content */}
-          <div className="flex-1 px-6 py-6 pb-20">
-            {/* Header/Title */}
-            <div className="mb-8">
-              <h1 className="text-4xl text-white font-bold mb-3">Douas</h1>
-              <p className="text-white text-base leading-relaxed">
-                Douas to connect to Allah and to find comfort with heartfelt words
-              </p>
-            </div>
-
-            {/* Doua Categories (Pills/Tabs) */}
-            <div className="mb-8">
-              <div className="flex space-x-3 overflow-x-auto pb-2">
-                {['Authentic douas', 'All', 'For kids', 'For Haj'].map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedDouaCategory(category)}
-                    className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
-                      selectedDouaCategory === category
-                        ? 'bg-cream text-gray-900'
-                        : 'bg-slate-800 text-white hover:bg-slate-700'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
+        <div className="flex-1 flex flex-col min-h-screen">
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-6 pb-24">
+              {/* Header/Title */}
+              <div className="mb-8">
+                <h1 className="text-4xl text-white font-bold mb-3">Douas</h1>
+                <p className="text-white text-base leading-relaxed">
+                  Douas to connect to Allah and to find comfort with heartfelt words
+                </p>
               </div>
-            </div>
 
-            {/* Custom douas Section */}
-            <div className="mb-8">
-              <h2 className="text-white text-xl font-semibold mb-2">Custom douas</h2>
-              <p className="text-white text-sm mb-4 leading-relaxed">
-                What do you have in mind, let&apos;s us help you explain it to Allah
-              </p>
-
-              {/* Text Input Area */}
-              <textarea
-                value={customDouaText}
-                onChange={(e) => setCustomDouaText(e.target.value)}
-                placeholder="Write down you feeling like I need help to get a job..."
-                className="w-full h-24 bg-slate-800 text-white placeholder-purple-300 rounded-lg p-4 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-              />
-            </div>
-
-            {/* Most popular Douas asked Section */}
-            <div className="mb-8">
-              <h2 className="text-white text-xl font-semibold mb-4">Most popular Douas asked</h2>
-
-              {/* Suggestion Pills */}
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  'I have an exam',
-                  'I want to marry',
-                  'I want a baby',
-                  'I need money for rent'
-                ].map((suggestion) => (
-                  <button
-                    key={suggestion}
-                    className="bg-slate-800 text-white px-4 py-3 rounded-lg text-sm hover:bg-slate-700 transition-colors text-left"
-                  >
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Discover the wall of douas Section */}
-            <div className="mb-8">
-              <h2 className="text-white text-xl font-semibold mb-2">Discover the wall of douas</h2>
-              <p className="text-white text-sm mb-4 leading-relaxed">
-                Find out douas that people made and support them by saying &apos;Amine&apos;.
-              </p>
-
-              {/* Navigation Button */}
-              <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
-                <div className="flex items-center space-x-3">
-                  <span className="text-white text-xl">🤲</span>
-                  <span className="text-white font-medium">The wall of Duas</span>
+              {/* Doua Categories (Pills/Tabs) */}
+              <div className="mb-8">
+                <div className="flex space-x-3 overflow-x-auto pb-2">
+                  {['Authentic douas', 'All', 'For kids', 'For Haj'].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedDouaCategory(category)}
+                      className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
+                        selectedDouaCategory === category
+                          ? 'bg-cream text-gray-900'
+                          : 'bg-slate-800 text-white hover:bg-slate-700'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
                 </div>
-                <span className="text-white">→</span>
-              </button>
+              </div>
+
+              {/* Custom douas Section */}
+              <div className="mb-8">
+                <h2 className="text-white text-xl font-semibold mb-2">Custom douas</h2>
+                <p className="text-white text-sm mb-4 leading-relaxed">
+                  What do you have in mind, let&apos;s us help you explain it to Allah
+                </p>
+
+                {/* Text Input Area */}
+                <textarea
+                  value={customDouaText}
+                  onChange={(e) => setCustomDouaText(e.target.value)}
+                  placeholder="Write down you feeling like I need help to get a job..."
+                  className="w-full h-24 bg-slate-800 text-white placeholder-purple-300 rounded-lg p-4 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
+                />
+              </div>
+
+              {/* Most popular Douas asked Section */}
+              <div className="mb-8">
+                <h2 className="text-white text-xl font-semibold mb-4">Most popular Douas asked</h2>
+
+                {/* Suggestion Pills */}
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    'I have an exam',
+                    'I want to marry',
+                    'I want a baby',
+                    'I need money for rent'
+                  ].map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      className="bg-slate-800 text-white px-4 py-3 rounded-lg text-sm hover:bg-slate-700 transition-colors text-left"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Discover the wall of douas Section */}
+              <div className="mb-8">
+                <h2 className="text-white text-xl font-semibold mb-2">Discover the wall of douas</h2>
+                <p className="text-white text-sm mb-4 leading-relaxed">
+                  Find out douas that people made and support them by saying &apos;Amine&apos;.
+                </p>
+
+                {/* Navigation Button */}
+                <button
+                  onClick={handleWallOfDuasClick}
+                  className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <span className="text-white text-xl">🤲</span>
+                    <span className="text-white font-medium">The wall of Duas</span>
+                  </div>
+                  <span className="text-white">→</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Bottom Navigation Bar */}
-          <div className="bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700">
+          {/* Bottom Navigation Bar - Fixed Position */}
+          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
+            <div className="flex justify-around py-3">
+              {['Home', 'Douas', 'Reminder', 'Profile'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => handleTabChange(tab)}
+                  className={`flex flex-col items-center space-y-1 px-4 py-2 ${
+                    activeTab === tab ? 'text-white' : 'text-gray-400'
+                  }`}
+                >
+                  <span className="text-xl">
+                    {tab === 'Home' && '🏠'}
+                    {tab === 'Douas' && '🤲'}
+                    {tab === 'Reminder' && '⏰'}
+                    {tab === 'Profile' && '👤'}
+                  </span>
+                  <span className="text-xs font-medium">{tab}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
+        /* Wall of Duas Screen */
+        <div className="flex-1 flex flex-col min-h-screen">
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-6 pb-24">
+              {/* Header with Back Button */}
+              <div className="flex items-center mb-8">
+                <button
+                  onClick={() => setShowWallOfDuas(false)}
+                  className="text-white text-2xl mr-4 hover:text-gray-300"
+                >
+                  ←
+                </button>
+                <div>
+                  <h1 className="text-4xl text-white font-bold mb-2">The Wall of Duas</h1>
+                  <p className="text-white text-base">
+                    Community duas where you can support others by saying &apos;Amine&apos;
+                  </p>
+                </div>
+              </div>
+
+              {/* Sample Community Duas */}
+              <div className="space-y-4">
+                {[
+                  {
+                    user: "Sarah M.",
+                    dua: "Please pray for my mother's health recovery. She's been in the hospital for weeks.",
+                    amines: 127,
+                    time: "2 hours ago"
+                  },
+                  {
+                    user: "Ahmed K.",
+                    dua: "I have an important job interview tomorrow. Please make dua that Allah guides me.",
+                    amines: 89,
+                    time: "5 hours ago"
+                  },
+                  {
+                    user: "Fatima A.",
+                    dua: "My family is going through financial difficulties. Please pray for Allah's help.",
+                    amines: 203,
+                    time: "1 day ago"
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="bg-slate-800 rounded-xl p-4">
+                    <div className="flex justify-between items-start mb-3">
+                      <span className="text-white font-medium">{item.user}</span>
+                      <span className="text-gray-400 text-sm">{item.time}</span>
+                    </div>
+                    <p className="text-white mb-4 leading-relaxed">{item.dua}</p>
+                    <div className="flex items-center justify-between">
+                      <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                        Say Amine 🤲
+                      </button>
+                      <span className="text-gray-400 text-sm">{item.amines} Amines</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Navigation Bar - Fixed Position */}
+          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
             <div className="flex justify-around py-3">
               {['Home', 'Douas', 'Reminder', 'Profile'].map((tab) => (
                 <button
