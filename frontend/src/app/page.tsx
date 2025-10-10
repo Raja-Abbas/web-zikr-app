@@ -18,10 +18,13 @@ export default function Home() {
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
   const [showDuaContent, setShowDuaContent] = useState(false);
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
+  const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [customDuaRequest, setCustomDuaRequest] = useState('');
+  const [showGeneratedDua, setShowGeneratedDua] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -135,8 +138,9 @@ export default function Home() {
       setShowChatbot(false);
       setShowAuthenticDuaSelection(true);
     } else if (action === 'Custom dua for my situation') {
-      // Navigate to personalization screen
-      handleChatbotContinue();
+      // Navigate to Custom Dua Generation screen
+      setShowChatbot(false);
+      setShowCustomDuaGeneration(true);
     } else if (action === 'Spiritual reminder') {
       // Could navigate to reminders or handle differently
       handleChatbotContinue();
@@ -183,6 +187,33 @@ export default function Home() {
     setShowDiscussMenu(false);
   };
 
+  const handleBackFromCustomDua = () => {
+    // Navigate back to chatbot screen
+    setShowCustomDuaGeneration(false);
+    setShowGeneratedDua(false);
+    setCustomDuaRequest('');
+    setShowChatbot(true);
+  };
+
+  const handleCustomDuaSubmit = () => {
+    if (customDuaRequest.trim()) {
+      console.log('Custom dua request:', customDuaRequest);
+      setShowGeneratedDua(true);
+      // Here you would typically send the request to your AI backend
+    }
+  };
+
+  const handleCustomDuaAction = (action: string) => {
+    console.log('Custom dua action:', action);
+    if (action === 'Another one') {
+      setShowGeneratedDua(false);
+      setCustomDuaRequest('');
+    } else if (action === 'Main menu') {
+      handleBackFromCustomDua();
+    }
+    // Handle other actions like save, share, etc.
+  };
+
   const handleResetToAuth = () => {
     // Reset to initial authentication state
     setShowHomeScreen(false);
@@ -193,6 +224,7 @@ export default function Home() {
     setShowAuthenticDuaSelection(false);
     setShowDuaContent(false);
     setShowDiscussMenu(false);
+    setShowCustomDuaGeneration(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
@@ -201,6 +233,8 @@ export default function Home() {
     setSelectedDuaCategory('To protect kids');
     setSelectedMenuItem('Interior design');
     setIsPlaying(false);
+    setCustomDuaRequest('');
+    setShowGeneratedDua(false);
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
@@ -1022,6 +1056,164 @@ export default function Home() {
           {/* Debug Back Button */}
           <button
             onClick={handleBackFromAuthenticDua}
+            className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Chatbot
+          </button>
+        </>
+      ) : showCustomDuaGeneration ? (
+        /* Screen 17: Custom Dua Generation */
+        <>
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromCustomDua}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Right: Current Mode Indicator */}
+            <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
+              <span className="text-white text-sm">≈</span>
+              <span className="text-white text-sm font-medium">Custom dua for my situation</span>
+            </div>
+          </div>
+
+          {/* Conversation Flow */}
+          <div className="w-full max-w-4xl mx-auto px-6 mb-8 space-y-6">
+            {/* Bot Message 1 (Prompt) */}
+            <div className="flex items-start space-x-3">
+              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                <span className="text-white text-xs font-bold">Z</span>
+              </div>
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                <p className="text-white text-base leading-relaxed">
+                  Please write down what is going on so that i can help you explain it to Allah. Always have trust in Him and never forget He is the best of planners.
+                </p>
+              </div>
+            </div>
+
+            {/* User Message 1 (Request) - Only show if request is submitted */}
+            {showGeneratedDua && (
+              <div className="flex justify-end">
+                <div className="bg-slate-800 rounded-2xl rounded-tr-sm p-6 max-w-2xl">
+                  <p className="text-white text-base leading-relaxed">
+                    {customDuaRequest}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Bot Message 2 (Generated Dua - Introductory Text) - Only show if dua is generated */}
+            {showGeneratedDua && (
+              <div className="flex items-start space-x-3">
+                <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                  <span className="text-white text-xs font-bold">Z</span>
+                </div>
+                <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                  <p className="text-white text-base leading-relaxed">
+                    Please find below your custom dua. I hope it reflects what your heart feels:
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Bot Message 3 (Generated Dua - Content) - Only show if dua is generated */}
+            {showGeneratedDua && (
+              <div className="flex items-start space-x-3">
+                <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                  <span className="text-white text-xs font-bold">Z</span>
+                </div>
+                <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-3xl">
+                  <div className="text-white text-base leading-relaxed space-y-4">
+                    <p>
+                      Ya Allah, In this moment of uncertainty and longing, I come before You with a heart full of hope and trust in Your divine wisdom.
+                    </p>
+                    <p>
+                      You are Ar-Razzaq, the Provider, and I know that all sustenance flows from Your generous hands. I seek Your guidance in finding meaningful work that will not only provide for my needs but also allow me to serve Your creation with dignity and purpose.
+                    </p>
+                    <p>
+                      Grant me strength during this time of searching, patience when doors seem closed, and wisdom to recognize the opportunities You place before me. Help me to prepare myself with the skills and knowledge needed, and open the hearts of those who might offer me employment.
+                    </p>
+                    <p>
+                      Ya Allah, surround me with supportive people who will encourage me in this journey, and protect me from despair and anxiety. Remind me that Your timing is perfect, and that what is meant for me will never pass me by.
+                    </p>
+                    <p>
+                      Make this period of waiting a time of growth and reflection, and when You bless me with work, help me to be grateful and to use this opportunity to draw closer to You.
+                    </p>
+                    <p className="font-medium">
+                      Ya Allah, You know what lies within hearts — please accept this supplication. Ameen.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Bot Message 4 (Closing Advice) - Only show if dua is generated */}
+            {showGeneratedDua && (
+              <div className="flex items-start space-x-3">
+                <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                  <span className="text-white text-xs font-bold">Z</span>
+                </div>
+                <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                  <p className="text-white text-base leading-relaxed">
+                    Always do your part and leave the rest to Allah. Do your best and keep tawwākul
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Input Area or Action Buttons */}
+          {!showGeneratedDua ? (
+            /* Text Input Area (Before Dua Generation) */
+            <div className="w-full max-w-4xl mx-auto px-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={customDuaRequest}
+                  onChange={(e) => setCustomDuaRequest(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleCustomDuaSubmit()}
+                  placeholder="Write down what you need like I need help to ..."
+                  className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+                />
+                <button
+                  onClick={handleCustomDuaSubmit}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-teal-300 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ) : (
+            /* Action Buttons (After Dua Generation) */
+            <div className="w-full max-w-4xl mx-auto px-6">
+              <div className="flex flex-wrap justify-center gap-3">
+                {['Save it', 'Share it', 'Another one', 'Main menu'].map((action) => (
+                  <button
+                    key={action}
+                    onClick={() => handleCustomDuaAction(action)}
+                    className="bg-teal-700 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-teal-600 transition-colors"
+                  >
+                    {action}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromCustomDua}
             className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Chatbot
