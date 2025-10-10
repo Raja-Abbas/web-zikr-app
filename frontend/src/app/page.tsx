@@ -10,6 +10,10 @@ export default function Home() {
     email: '',
     password: ''
   });
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: ''
+  });
 
   const handleEmailAuth = () => {
     setShowEmailForm(true);
@@ -32,9 +36,21 @@ export default function Home() {
     });
   };
 
+  const handleLoginInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const handleSignUp = () => {
     // TODO: Implement sign up logic
     console.log('Sign up with:', formData);
+  };
+
+  const handleLogin = () => {
+    // TODO: Implement login logic
+    console.log('Login with:', loginData);
   };
 
   const handleBackToOptions = () => {
@@ -64,97 +80,154 @@ export default function Home() {
 
         {/* Main Title */}
         <h2 className="text-4xl md:text-5xl text-cream font-bold mb-4">
-          {isLogin ? 'Log In' : 'Register'}
+          {showEmailForm ? (isLogin ? 'Login' : 'Register') : (isLogin ? 'Log In' : 'Register')}
         </h2>
 
-        {/* Subtitle/Toggle Link */}
-        <p className="text-cream text-base md:text-lg">
-          {isLogin ? "Don't have an account? " : "Already Registered? "}
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="underline hover:text-gray-300 transition-colors font-medium"
-          >
-            {isLogin ? 'Register here' : 'Log in here'}
-          </button>
-        </p>
+        {/* Subtitle for Login Form or Toggle Link */}
+        {showEmailForm && isLogin ? (
+          <p className="text-cream text-base md:text-lg mb-4">
+            Sign in to continue.
+          </p>
+        ) : !showEmailForm ? (
+          <p className="text-cream text-base md:text-lg">
+            {isLogin ? "Don't have an account? " : "Already Registered? "}
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="underline hover:text-gray-300 transition-colors font-medium"
+            >
+              {isLogin ? 'Register here' : 'Log in here'}
+            </button>
+          </p>
+        ) : null}
       </div>
 
       {/* Conditional Content: Show Email Form or Auth Options */}
       {showEmailForm ? (
-        /* Screen 2: Email Registration Form */
-        <div className="w-full max-w-sm space-y-6">
-          {/* Name Field */}
-          <div>
-            <label className="block text-cream text-sm font-medium mb-2">
-              NAME
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder="Jiara Martins"
-              className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
+        isLogin ? (
+          /* Screen 3: Email Login Form */
+          <div className="w-full max-w-sm space-y-6">
+            {/* Email Field */}
+            <div>
+              <label className="block text-cream text-sm font-medium mb-2">
+                EMAIL
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={loginData.email}
+                onChange={handleLoginInputChange}
+                placeholder="hello@reallygreatsite.com"
+                className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <label className="block text-cream text-sm font-medium mb-2">
+                PASSWORD
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginInputChange}
+                placeholder="******"
+                className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Login Button */}
+            <button
+              onClick={handleLogin}
+              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:text-gray-900 transition-all duration-300 text-base md:text-lg font-medium"
+            >
+              Login
+            </button>
+
+            {/* Back Button */}
+            <button
+              onClick={handleBackToOptions}
+              className="w-full text-cream text-sm underline hover:text-gray-300 transition-colors"
+            >
+              Back to options
+            </button>
           </div>
+        ) : (
+          /* Screen 2: Email Registration Form */
+          <div className="w-full max-w-sm space-y-6">
+            {/* Name Field */}
+            <div>
+              <label className="block text-cream text-sm font-medium mb-2">
+                NAME
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Jiara Martins"
+                className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
 
-          {/* Email Field */}
-          <div>
-            <label className="block text-cream text-sm font-medium mb-2">
-              EMAIL
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="hello@reallygreatsite.com"
-              className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
+            {/* Email Field */}
+            <div>
+              <label className="block text-cream text-sm font-medium mb-2">
+                EMAIL
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="hello@reallygreatsite.com"
+                className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <label className="block text-cream text-sm font-medium mb-2">
+                PASSWORD
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="******"
+                className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Terms and Conditions */}
+            <div className="text-center">
+              <p className="text-cream text-sm">
+                By clicking below, you agree{' '}
+                <button className="text-blue-400 underline hover:text-blue-300 transition-colors">
+                  terms and conditions
+                </button>
+                {' '}of My zikr.
+              </p>
+            </div>
+
+            {/* Sign Up Button */}
+            <button
+              onClick={handleSignUp}
+              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:text-gray-900 transition-all duration-300 text-base md:text-lg font-medium"
+            >
+              Sign up
+            </button>
+
+            {/* Back Button */}
+            <button
+              onClick={handleBackToOptions}
+              className="w-full text-cream text-sm underline hover:text-gray-300 transition-colors"
+            >
+              Back to options
+            </button>
           </div>
-
-          {/* Password Field */}
-          <div>
-            <label className="block text-cream text-sm font-medium mb-2">
-              PASSWORD
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              placeholder="******"
-              className="w-full py-3 px-4 bg-slate-600 text-cream placeholder-gray-300 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
-
-          {/* Terms and Conditions */}
-          <div className="text-center">
-            <p className="text-cream text-sm">
-              By clicking below, you agree{' '}
-              <button className="text-blue-400 underline hover:text-blue-300 transition-colors">
-                terms and conditions
-              </button>
-              {' '}of My zikr.
-            </p>
-          </div>
-
-          {/* Sign Up Button */}
-          <button
-            onClick={handleSignUp}
-            className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:text-gray-900 transition-all duration-300 text-base md:text-lg font-medium"
-          >
-            Sign up
-          </button>
-
-          {/* Back Button */}
-          <button
-            onClick={handleBackToOptions}
-            className="w-full text-cream text-sm underline hover:text-gray-300 transition-colors"
-          >
-            Back to options
-          </button>
-        </div>
+        )
       ) : (
         /* Screen 1: Authentication Options */
         <div className="w-full max-w-sm space-y-4">
