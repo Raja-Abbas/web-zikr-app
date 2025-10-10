@@ -83,9 +83,9 @@ export default function Home() {
             Your comprehensive Islamic companion for daily prayers, Quran reading, and spiritual guidance
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+            <a href="/auth" className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center">
               Start Your Journey
-            </button>
+            </a>
             <button className="border border-green-600 text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
               Learn More
             </button>
