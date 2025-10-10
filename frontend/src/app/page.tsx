@@ -6,6 +6,9 @@ export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
+  const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,14 +50,16 @@ export default function Home() {
   const handleSignUp = () => {
     // TODO: Implement sign up logic
     console.log('Sign up with:', formData);
-    // Redirect to welcome screen after successful registration
+    // Store user name and redirect to welcome screen after successful registration
+    setUserName(formData.name);
     setShowWelcomeScreen(true);
   };
 
   const handleLogin = () => {
     // TODO: Implement login logic
     console.log('Login with:', loginData);
-    // Redirect to welcome screen after successful login
+    // For login, use a default name or stored name
+    setUserName('Adnan'); // Default name for login users
     setShowWelcomeScreen(true);
   };
 
@@ -63,19 +68,134 @@ export default function Home() {
   };
 
   const handleContinue = () => {
-    // TODO: Navigate to main app dashboard
-    console.log('Continue to main app');
+    // Navigate from welcome screen to personalization screen
+    setShowWelcomeScreen(false);
+    setShowPersonalizationScreen(true);
+  };
+
+  const handleInterestToggle = (interest: string) => {
+    setSelectedInterests(prev => {
+      if (prev.includes(interest)) {
+        return prev.filter(item => item !== interest);
+      } else if (prev.length < 3) {
+        return [...prev, interest];
+      }
+      return prev; // Don't add if already 3 selected
+    });
+  };
+
+  const handlePersonalizationContinue = () => {
+    // TODO: Save user preferences and navigate to main app
+    console.log('User preferences:', selectedInterests);
     // For now, reset to initial state
+    setShowPersonalizationScreen(false);
     setShowWelcomeScreen(false);
     setShowEmailForm(false);
     setIsLogin(false);
+    setUserName('');
+    setSelectedInterests([]);
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
 
+  const interests = [
+    {
+      id: 'douas',
+      icon: '📖',
+      text: 'To learn how to make douas'
+    },
+    {
+      id: 'community',
+      icon: '🤲',
+      text: 'To join the douas community'
+    },
+    {
+      id: 'curiosity',
+      icon: '🔍',
+      text: 'By curiosity'
+    },
+    {
+      id: 'reminders',
+      icon: '📅',
+      text: 'To find islamic reminders'
+    },
+    {
+      id: 'other',
+      icon: '🌍',
+      text: 'For something else'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-900 via-slate-900 to-indigo-950 flex flex-col items-center justify-center px-6 py-8">
-      {showWelcomeScreen ? (
+      {showPersonalizationScreen ? (
+        /* Screen 5: Welcome and Personalization Survey */
+        <>
+          {/* Logo and Header Section */}
+          <div className="text-center mb-12">
+            {/* Arabic Calligraphy Logo */}
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+                ذِكْر
+              </div>
+            </div>
+
+            {/* App Name */}
+            <h1 className="text-2xl md:text-3xl text-cream font-light mb-8">
+              My.Zikr
+            </h1>
+
+            {/* Welcome Message */}
+            <h2 className="text-4xl md:text-5xl text-cream font-bold mb-6">
+              Welcome {userName || 'Adnan'}!
+            </h2>
+
+            {/* Instructional Text */}
+            <p className="text-cream text-base md:text-lg max-w-md mx-auto leading-relaxed">
+              Please tell us what you are here for so we can customize your navigation. You can select up to 3.
+            </p>
+          </div>
+
+          {/* Interest Selection Buttons */}
+          <div className="w-full max-w-md space-y-4 mb-8">
+            {interests.map((interest) => (
+              <button
+                key={interest.id}
+                onClick={() => handleInterestToggle(interest.id)}
+                className={`w-full py-4 px-6 rounded-lg flex items-center space-x-4 transition-all duration-300 ${
+                  selectedInterests.includes(interest.id)
+                    ? 'bg-teal-600 ring-2 ring-cream'
+                    : 'bg-slate-700 hover:bg-slate-600'
+                }`}
+              >
+                <span className="text-2xl">{interest.icon}</span>
+                <span className="text-cream text-left flex-1">{interest.text}</span>
+                {selectedInterests.includes(interest.id) && (
+                  <span className="text-cream">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Selection Counter */}
+          <p className="text-cream text-sm mb-6 opacity-75">
+            {selectedInterests.length}/3 selected
+          </p>
+
+          {/* Continue Button */}
+          <button
+            onClick={handlePersonalizationContinue}
+            disabled={selectedInterests.length === 0}
+            className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 ${
+              selectedInterests.length > 0
+                ? 'bg-cream text-gray-900 hover:bg-gray-100 hover:shadow-md'
+                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+            }`}
+          >
+            Continue
+          </button>
+        </>
+      ) : showWelcomeScreen ? (
         /* Screen 4: Confirmation and Welcome Screen */
         <>
           {/* Green Leaf Icon in upper-left corner */}
