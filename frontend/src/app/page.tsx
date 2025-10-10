@@ -7,8 +7,10 @@ export default function Home() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
+  const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [userName, setUserName] = useState('');
   const [selectedInterests, setSelectedInterests] = useState<string[]>(['douas', 'community']);
+  const [activeTab, setActiveTab] = useState('Home');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -85,15 +87,26 @@ export default function Home() {
   };
 
   const handlePersonalizationContinue = () => {
-    // TODO: Save user preferences and navigate to main app
+    // Save user preferences and navigate to main app home screen
     console.log('User preferences:', selectedInterests);
-    // For now, reset to initial state
+    setShowPersonalizationScreen(false);
+    setShowHomeScreen(true);
+  };
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+  };
+
+  const handleResetToAuth = () => {
+    // Reset to initial authentication state
+    setShowHomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowWelcomeScreen(false);
     setShowEmailForm(false);
     setIsLogin(false);
     setUserName('');
-    setSelectedInterests([]);
+    setSelectedInterests(['douas', 'community']);
+    setActiveTab('Home');
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
@@ -127,8 +140,149 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
-      {showPersonalizationScreen ? (
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col">
+      {showHomeScreen ? (
+        /* Screen 7: Home Screen */
+        <div className="flex-1 flex flex-col">
+          {/* Top Bar/Header */}
+          <div className="flex items-center justify-between px-6 py-6">
+            {/* Logo/App Name */}
+            <div className="flex-1 text-center">
+              <div className="text-4xl text-white font-arabic mb-1">ذِكْر</div>
+              <div className="text-lg text-white font-light">My.Zikr</div>
+            </div>
+
+            {/* Notifications/Reminder */}
+            <div className="flex items-center space-x-2">
+              <span className="text-white text-xl">🔔</span>
+              <span className="text-white text-sm">Morning duas</span>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 px-6 pb-20">
+            {/* Greeting */}
+            <h1 className="text-3xl text-white font-bold mb-8 text-center">
+              Salam Aleykoum {userName || 'Adnan'}!
+            </h1>
+
+            {/* Dua of the day Section */}
+            <div className="mb-8">
+              <h2 className="text-white text-xl font-semibold mb-4">Dua of the day</h2>
+
+              {/* Dua Card */}
+              <div className="bg-cream rounded-2xl p-6 mb-6">
+                {/* Arabic Calligraphy */}
+                <div className="text-center mb-4">
+                  <div className="text-2xl text-gray-900 font-arabic leading-relaxed">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                  </div>
+                </div>
+
+                {/* Transliteration */}
+                <div className="text-center mb-2">
+                  <p className="text-gray-900 font-medium">
+                    Allahuma innaka affuwun tuħibbun afwa fafu anni
+                  </p>
+                </div>
+
+                {/* Translation */}
+                <div className="text-center mb-4">
+                  <p className="text-gray-700 text-sm">
+                    Yā Allāh, You are the forgiver, you love to forgive, so forgive me
+                  </p>
+                </div>
+
+                {/* Action Icons */}
+                <div className="flex justify-center space-x-6">
+                  <button className="text-gray-900 text-xl hover:text-gray-700 transition-colors">
+                    🔊
+                  </button>
+                  <button className="text-gray-900 text-xl hover:text-gray-700 transition-colors">
+                    ❤️
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Recommendation Sections */}
+            <div className="space-y-6">
+              {/* Section 1: Customize your recommendations */}
+              <div>
+                <h3 className="text-white text-lg font-semibold mb-3">Customize your recommendations</h3>
+                <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-white text-xl">😊</span>
+                    <span className="text-white font-medium">How do you feel today?</span>
+                  </div>
+                  <span className="text-white">→</span>
+                </button>
+              </div>
+
+              {/* Section 2: Recommendations for you */}
+              <div>
+                <h3 className="text-white text-lg font-semibold mb-3">Recommendations for you</h3>
+                <div className="space-y-3">
+                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-white text-xl">🤲</span>
+                      <span className="text-white font-medium">Dua for anxiety</span>
+                    </div>
+                    <span className="text-white">→</span>
+                  </button>
+
+                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-white text-xl">🙏</span>
+                      <span className="text-white font-medium">Dua for gratitude</span>
+                    </div>
+                    <span className="text-white">→</span>
+                  </button>
+
+                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-white text-xl">🕌</span>
+                      <span className="text-white font-medium">The wall of Duas</span>
+                    </div>
+                    <span className="text-white">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Navigation Bar */}
+          <div className="bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700">
+            <div className="flex justify-around py-3">
+              {['Home', 'Duas', 'Reminder', 'Profile'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => handleTabChange(tab)}
+                  className={`flex flex-col items-center space-y-1 px-4 py-2 ${
+                    activeTab === tab ? 'text-white' : 'text-gray-400'
+                  }`}
+                >
+                  <span className="text-xl">
+                    {tab === 'Home' && '🏠'}
+                    {tab === 'Duas' && '🤲'}
+                    {tab === 'Reminder' && '⏰'}
+                    {tab === 'Profile' && '👤'}
+                  </span>
+                  <span className="text-xs font-medium">{tab}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Debug Reset Button */}
+          <button
+            onClick={handleResetToAuth}
+            className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-xs opacity-50 hover:opacity-100"
+          >
+            Reset to Auth
+          </button>
+        </div>
+      ) : showPersonalizationScreen ? (
         /* Screen 5: Welcome and Personalization Survey */
         <>
           {/* Logo and Header Section */}
