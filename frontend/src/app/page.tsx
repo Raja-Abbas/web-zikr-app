@@ -8,7 +8,7 @@ export default function Home() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
   const [userName, setUserName] = useState('');
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>(['douas', 'community']);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -152,7 +152,7 @@ export default function Home() {
 
             {/* Instructional Text */}
             <p className="text-white text-base md:text-lg max-w-md mx-auto leading-relaxed">
-              Please tell us what you are here for so we can customize your navigation. You can select up to 3.
+              What brings you to My.Zikr? Choose up to 3 so we can customize your navigation.
             </p>
           </div>
 
@@ -164,25 +164,37 @@ export default function Home() {
                 onClick={() => handleInterestToggle(interest.id)}
                 className={`w-full py-4 px-6 rounded-xl flex items-center space-x-4 transition-all duration-300 ${
                   selectedInterests.includes(interest.id)
-                    ? 'bg-teal-600 ring-2 ring-cream'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                    ? 'hover:bg-gray-100'
+                    : 'hover:bg-slate-700'
                 }`}
                 style={{
-                  backgroundColor: selectedInterests.includes(interest.id) ? '#0d9488' : '#1A3A3F'
+                  backgroundColor: selectedInterests.includes(interest.id) ? '#F7F7E8' : '#1A3A3F'
                 }}
               >
-                <span className="text-xl text-white">{interest.icon}</span>
-                <span className="text-white text-left flex-1 font-medium">{interest.text}</span>
+                <span
+                  className={`text-xl ${
+                    selectedInterests.includes(interest.id) ? 'text-gray-900' : 'text-white'
+                  }`}
+                >
+                  {interest.icon}
+                </span>
+                <span
+                  className={`text-left flex-1 font-medium ${
+                    selectedInterests.includes(interest.id) ? 'text-gray-900' : 'text-white'
+                  }`}
+                >
+                  {interest.text}
+                </span>
                 {selectedInterests.includes(interest.id) && (
-                  <span className="text-white">✓</span>
+                  <span className="text-gray-900 font-bold">✓</span>
                 )}
               </button>
             ))}
           </div>
 
-          {/* Selection Counter - Only show when selections are made */}
+          {/* Selection Counter - Show when selections are made */}
           {selectedInterests.length > 0 && (
-            <p className="text-cream text-sm mb-6 opacity-75">
+            <p className="text-white text-sm mb-6 font-medium">
               {selectedInterests.length}/3 selected
             </p>
           )}
