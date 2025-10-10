@@ -14,6 +14,8 @@ export default function Home() {
   const [selectedDouaCategory, setSelectedDouaCategory] = useState('Authentic douas');
   const [customDouaText, setCustomDouaText] = useState('');
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [chatInput, setChatInput] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,9 +75,9 @@ export default function Home() {
   };
 
   const handleContinue = () => {
-    // Navigate from welcome screen to personalization screen
+    // Navigate from welcome screen to chatbot screen
     setShowWelcomeScreen(false);
-    setShowPersonalizationScreen(true);
+    setShowChatbot(true);
   };
 
   const handleInterestToggle = (interest: string) => {
@@ -105,16 +107,44 @@ export default function Home() {
     setShowWallOfDuas(true);
   };
 
+  const handleChatbotContinue = () => {
+    // Navigate from chatbot to personalization screen
+    setShowChatbot(false);
+    setShowPersonalizationScreen(true);
+  };
+
+  const handleChatSubmit = () => {
+    if (chatInput.trim()) {
+      console.log('Chat message:', chatInput);
+      // Here you would typically send the message to your AI backend
+      setChatInput('');
+    }
+  };
+
+  const handleSuggestedAction = (action: string) => {
+    console.log('Selected action:', action);
+    // Handle the suggested action
+    if (action === 'Authentic dua' || action === 'Custom dua for my situation') {
+      // Navigate to personalization screen
+      handleChatbotContinue();
+    } else if (action === 'Spiritual reminder') {
+      // Could navigate to reminders or handle differently
+      handleChatbotContinue();
+    }
+  };
+
   const handleResetToAuth = () => {
     // Reset to initial authentication state
     setShowHomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowWelcomeScreen(false);
     setShowEmailForm(false);
+    setShowChatbot(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
     setActiveTab('Home');
+    setChatInput('');
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
   };
@@ -618,6 +648,103 @@ export default function Home() {
             className="bg-cream text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300"
           >
             Continue
+          </button>
+        </>
+      ) : showChatbot ? (
+        /* Chatbot Initial Greeting Screen */
+        <>
+          {/* Green Leaf Icon in upper-left corner */}
+          <div className="absolute top-8 left-8">
+            <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+          </div>
+
+          {/* Logo and Header Section */}
+          <div className="text-center mb-8">
+            {/* Arabic Calligraphy Logo */}
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-white font-arabic mb-2">
+                ذِكْر
+              </div>
+            </div>
+
+            {/* App Name */}
+            <h1 className="text-2xl md:text-3xl text-white font-light mb-8">
+              My.Zikr
+            </h1>
+          </div>
+
+          {/* Chat Message (Bot's Greeting) */}
+          <div className="w-full max-w-2xl mx-auto mb-8">
+            {/* Chat Bubble */}
+            <div className="flex justify-start mb-6">
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-lg">
+                <p className="text-white text-lg font-medium mb-3">
+                  Salam aleykoum dear
+                </p>
+                <p className="text-white text-base leading-relaxed">
+                  I am Zikr → your spiritual companion, here to support your spiritual journey with duas and reminders. Please tell me how i can be helpful to you today. Select a section below or tell me directly what you may need and i will do my best to assist you In Sha Allah.
+                </p>
+              </div>
+            </div>
+
+            {/* Action Pills (Suggested Topics) */}
+            <div className="flex flex-wrap gap-3 justify-center mb-8">
+              <button
+                onClick={() => handleSuggestedAction('Authentic dua')}
+                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-lg">🤲</span>
+                <span className="text-sm font-medium">Authentic dua</span>
+              </button>
+
+              <button
+                onClick={() => handleSuggestedAction('Custom dua for my situation')}
+                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-lg">✍️</span>
+                <span className="text-sm font-medium">Custom dua for my situation</span>
+              </button>
+
+              <button
+                onClick={() => handleSuggestedAction('Spiritual reminder')}
+                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-lg">📿</span>
+                <span className="text-sm font-medium">Spiritual reminder</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Text Input Area (User Prompt) */}
+          <div className="w-full max-w-2xl mx-auto">
+            <div className="relative">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleChatSubmit()}
+                placeholder="Write down what you need like I need help to ..."
+                className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+              <button
+                onClick={handleChatSubmit}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-teal-300 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Debug Continue Button */}
+          <button
+            onClick={handleChatbotContinue}
+            className="mt-8 bg-teal-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            Continue to Personalization →
           </button>
         </>
       ) : (
