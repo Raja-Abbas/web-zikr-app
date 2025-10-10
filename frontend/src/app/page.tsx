@@ -5,6 +5,7 @@ import { useState } from 'react';
 export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,63 +47,122 @@ export default function Home() {
   const handleSignUp = () => {
     // TODO: Implement sign up logic
     console.log('Sign up with:', formData);
+    // Redirect to welcome screen after successful registration
+    setShowWelcomeScreen(true);
   };
 
   const handleLogin = () => {
     // TODO: Implement login logic
     console.log('Login with:', loginData);
+    // Redirect to welcome screen after successful login
+    setShowWelcomeScreen(true);
   };
 
   const handleBackToOptions = () => {
     setShowEmailForm(false);
   };
 
+  const handleContinue = () => {
+    // TODO: Navigate to main app dashboard
+    console.log('Continue to main app');
+    // For now, reset to initial state
+    setShowWelcomeScreen(false);
+    setShowEmailForm(false);
+    setIsLogin(false);
+    setFormData({ name: '', email: '', password: '' });
+    setLoginData({ email: '', password: '' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-900 via-slate-900 to-indigo-950 flex flex-col items-center justify-center px-6 py-8">
-      {/* Logo and Header Section */}
-      <div className="text-center mb-12">
-        {/* Arabic Calligraphy Logo */}
-        <div className="mb-4">
-          <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
-            ذِكْر
+      {showWelcomeScreen ? (
+        /* Screen 4: Confirmation and Welcome Screen */
+        <>
+          {/* Green Leaf Icon in upper-left corner */}
+          <div className="absolute top-8 left-8">
+            <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
           </div>
-        </div>
 
-        {/* App Name */}
-        <h1 className="text-2xl md:text-3xl text-cream font-light mb-6">
-          My.Zikr
-        </h1>
+          {/* Logo and Header Section */}
+          <div className="text-center mb-12">
+            {/* Arabic Calligraphy Logo */}
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+                ذِكْر
+              </div>
+            </div>
 
-        {/* Greeting */}
-        <p className="text-cream text-lg md:text-xl mb-8 font-light">
-          Salam Alaykoum and welcome!
-        </p>
+            {/* App Name */}
+            <h1 className="text-2xl md:text-3xl text-cream font-light mb-6">
+              My.Zikr
+            </h1>
+          </div>
 
-        {/* Main Title */}
-        <h2 className="text-4xl md:text-5xl text-cream font-bold mb-4">
-          {showEmailForm ? (isLogin ? 'Login' : 'Register') : (isLogin ? 'Log In' : 'Register')}
-        </h2>
+          {/* Message Card */}
+          <div className="w-full max-w-md mx-auto mb-8">
+            <div className="bg-cream rounded-2xl p-8 shadow-lg">
+              <p className="text-gray-900 text-center text-lg leading-relaxed">
+                Thank you for your confirmation and for being here. Let&apos;s start discussing.
+              </p>
+            </div>
+          </div>
 
-        {/* Subtitle for Login Form or Toggle Link */}
-        {showEmailForm && isLogin ? (
-          <p className="text-cream text-base md:text-lg mb-4">
-            Sign in to continue.
-          </p>
-        ) : !showEmailForm ? (
-          <p className="text-cream text-base md:text-lg">
-            {isLogin ? "Don't have an account? " : "Already Registered? "}
-            <button
-              onClick={() => setIsLogin(!isLogin)}
-              className="underline hover:text-gray-300 transition-colors font-medium"
-            >
-              {isLogin ? 'Register here' : 'Log in here'}
-            </button>
-          </p>
-        ) : null}
-      </div>
+          {/* Continue Button */}
+          <button
+            onClick={handleContinue}
+            className="bg-cream text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300"
+          >
+            Continue
+          </button>
+        </>
+      ) : (
+        <>
+          {/* Logo and Header Section */}
+          <div className="text-center mb-12">
+            {/* Arabic Calligraphy Logo */}
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+                ذِكْر
+              </div>
+            </div>
 
-      {/* Conditional Content: Show Email Form or Auth Options */}
-      {showEmailForm ? (
+            {/* App Name */}
+            <h1 className="text-2xl md:text-3xl text-cream font-light mb-6">
+              My.Zikr
+            </h1>
+
+            {/* Greeting */}
+            <p className="text-cream text-lg md:text-xl mb-8 font-light">
+              Salam Alaykoum and welcome!
+            </p>
+
+            {/* Main Title */}
+            <h2 className="text-4xl md:text-5xl text-cream font-bold mb-4">
+              {showEmailForm ? (isLogin ? 'Login' : 'Register') : (isLogin ? 'Log In' : 'Register')}
+            </h2>
+
+            {/* Subtitle for Login Form or Toggle Link */}
+            {showEmailForm && isLogin ? (
+              <p className="text-cream text-base md:text-lg mb-4">
+                Sign in to continue.
+              </p>
+            ) : !showEmailForm ? (
+              <p className="text-cream text-base md:text-lg">
+                {isLogin ? "Don't have an account? " : "Already Registered? "}
+                <button
+                  onClick={() => setIsLogin(!isLogin)}
+                  className="underline hover:text-gray-300 transition-colors font-medium"
+                >
+                  {isLogin ? 'Register here' : 'Log in here'}
+                </button>
+              </p>
+            ) : null}
+          </div>
+
+          {/* Conditional Content: Show Email Form or Auth Options */}
+          {showEmailForm ? (
         isLogin ? (
           /* Screen 3: Email Login Form */
           <div className="w-full max-w-sm space-y-6">
@@ -268,6 +328,8 @@ export default function Home() {
             <span>{isLogin ? 'Sign in with Apple' : 'Sign up with Apple'}</span>
           </button>
         </div>
+          )}
+        </>
       )}
     </div>
   );
