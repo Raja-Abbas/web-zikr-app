@@ -299,7 +299,7 @@ export default function Home() {
           <div className="flex-1 overflow-y-auto">
             <div className="px-6 py-6 pb-24">
               {/* Header/Title */}
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <h1 className="text-4xl text-white font-bold mb-3">Douas</h1>
                 <p className="text-white text-base leading-relaxed">
                   Douas to connect to Allah and to find comfort with heartfelt words
@@ -308,7 +308,7 @@ export default function Home() {
 
               {/* Doua Categories (Pills/Tabs) */}
               <div className="mb-8">
-                <div className="flex space-x-3 overflow-x-auto pb-2">
+                <div className="flex space-x-3 overflow-x-auto pb-2 justify-center">
                   {['Authentic douas', 'All', 'For kids', 'For Haj'].map((category) => (
                     <button
                       key={category}
@@ -326,7 +326,7 @@ export default function Home() {
               </div>
 
               {/* Custom douas Section */}
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <h2 className="text-white text-xl font-semibold mb-2">Custom douas</h2>
                 <p className="text-white text-sm mb-4 leading-relaxed">
                   What do you have in mind, let&apos;s us help you explain it to Allah
@@ -342,7 +342,7 @@ export default function Home() {
               </div>
 
               {/* Most popular Douas asked Section */}
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <h2 className="text-white text-xl font-semibold mb-4">Most popular Douas asked</h2>
 
                 {/* Suggestion Pills */}
@@ -355,7 +355,7 @@ export default function Home() {
                   ].map((suggestion) => (
                     <button
                       key={suggestion}
-                      className="bg-slate-800 text-white px-4 py-3 rounded-lg text-sm hover:bg-slate-700 transition-colors text-left"
+                      className="bg-slate-800 text-white px-4 py-3 rounded-lg text-sm hover:bg-slate-700 transition-colors text-center"
                     >
                       {suggestion}
                     </button>
@@ -364,7 +364,7 @@ export default function Home() {
               </div>
 
               {/* Discover the wall of douas Section */}
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <h2 className="text-white text-xl font-semibold mb-2">Discover the wall of douas</h2>
                 <p className="text-white text-sm mb-4 leading-relaxed">
                   Find out douas that people made and support them by saying &apos;Amine&apos;.
@@ -414,18 +414,20 @@ export default function Home() {
           <div className="flex-1 overflow-y-auto">
             <div className="px-6 py-6 pb-24">
               {/* Header with Back Button */}
-              <div className="flex items-center mb-8">
-                <button
-                  onClick={() => setShowWallOfDuas(false)}
-                  className="text-white text-2xl mr-4 hover:text-gray-300"
-                >
-                  ←
-                </button>
-                <div>
-                  <h1 className="text-4xl text-white font-bold mb-2">The Wall of Duas</h1>
-                  <p className="text-white text-base">
-                    Community duas where you can support others by saying &apos;Amine&apos;
-                  </p>
+              <div className="mb-8">
+                <div className="flex items-center justify-center relative">
+                  <button
+                    onClick={() => setShowWallOfDuas(false)}
+                    className="absolute left-0 text-white text-2xl hover:text-gray-300"
+                  >
+                    ←
+                  </button>
+                  <div className="text-center">
+                    <h1 className="text-4xl text-white font-bold mb-2">The Wall of Duas</h1>
+                    <p className="text-white text-base">
+                      Community duas where you can support others by saying &apos;Amine&apos;
+                    </p>
+                  </div>
                 </div>
               </div>
 
