@@ -22,15 +22,34 @@ export default function Home() {
   const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
   const [showAuthenticDuasGrid, setShowAuthenticDuasGrid] = useState(false);
   const [showChatbotDiscussionHub, setShowChatbotDiscussionHub] = useState(false);
+  const [showDuaContentViewer, setShowDuaContentViewer] = useState(false);
+  const [showInteriorDesignSettings, setShowInteriorDesignSettings] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
+  const [selectedGridCategory, setSelectedGridCategory] = useState('Protection');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
   const [selectedReminderCategory, setSelectedReminderCategory] = useState('Wudu steps');
   const [showReminderContent, setShowReminderContent] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [customDuaRequest, setCustomDuaRequest] = useState('');
   const [showGeneratedDua, setShowGeneratedDua] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [userSettings, setUserSettings] = useState({
+    name: 'Adnan Fida',
+    language: 'English',
+    gender: 'Man',
+    reminderTime: '07:00',
+    duaOfTheDay: true,
+    kindNotifications: true,
+    wallNotifications: true,
+    amineNotifications: true,
+    updates: true,
+    newsletter: true,
+    textSize: 50,
+    sounds: true,
+    cloudSave: true
+  });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -189,6 +208,9 @@ export default function Home() {
       setShowDiscussMenu(false);
       setActiveTab('Douas');
       setShowWallOfDuas(true);
+    } else if (item === 'Interior design') {
+      setShowDiscussMenu(false);
+      setShowInteriorDesignSettings(true);
     }
     // Close menu after selection (optional)
     // setShowDiscussMenu(false);
@@ -257,7 +279,9 @@ export default function Home() {
 
   const handleDuaCategoryGridSelect = (category: string) => {
     console.log('Selected dua category from grid:', category);
-    // Here you would navigate to the specific category's duas list
+    setSelectedGridCategory(category);
+    setShowAuthenticDuasGrid(false);
+    setShowDuaContentViewer(true);
   };
 
   const handleWallOfDuasFromGrid = () => {
@@ -328,6 +352,8 @@ export default function Home() {
     setShowSpiritualReminder(false);
     setShowAuthenticDuasGrid(false);
     setShowChatbotDiscussionHub(false);
+    setShowDuaContentViewer(false);
+    setShowInteriorDesignSettings(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
@@ -335,14 +361,45 @@ export default function Home() {
     setChatInput('');
     setDiscussionInput('');
     setSelectedDuaCategory('To protect kids');
+    setSelectedGridCategory('Protection');
     setSelectedMenuItem('Interior design');
     setSelectedReminderCategory('Wudu steps');
     setShowReminderContent(false);
     setIsPlaying(false);
     setCustomDuaRequest('');
     setShowGeneratedDua(false);
+    setAudioProgress(0);
     setFormData({ name: '', email: '', password: '' });
     setLoginData({ email: '', password: '' });
+  };
+
+  const handleBackFromDuaContentViewer = () => {
+    setShowDuaContentViewer(false);
+    setShowAuthenticDuasGrid(true);
+  };
+
+  const handleBackFromInteriorDesignSettings = () => {
+    setShowInteriorDesignSettings(false);
+    setShowDiscussMenu(true);
+  };
+
+  const handleAudioPlay = () => {
+    setIsPlaying(!isPlaying);
+    // Here you would integrate with actual audio playback
+  };
+
+  const handleSettingToggle = (setting: string) => {
+    setUserSettings(prev => ({
+      ...prev,
+      [setting]: !prev[setting as keyof typeof prev]
+    }));
+  };
+
+  const handleSettingChange = (setting: string, value: string | number | boolean) => {
+    setUserSettings(prev => ({
+      ...prev,
+      [setting]: value
+    }));
   };
 
   const interests = [
@@ -442,6 +499,31 @@ export default function Home() {
     { id: 'adoration', icon: '🙏', name: 'Adoration', chapters: '20 chapitres' },
     { id: 'autres', icon: '📚', name: 'Autres', chapters: '11 chapitres' }
   ];
+
+  // Extended dua content data for different categories
+  const duaContentGrid = {
+    'Protection': {
+      title: 'To protect kids',
+      arabic: 'أُعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ',
+      transliteration: 'U\'eedhukumā bi-kalimāti l-lāhi t-tāmmāti min kulli shaytānin wa hāmmatin wa min kulli \'aynin lāmmatin',
+      translation: 'I seek refuge for you both in the perfect words of Allah from every devil and poisonous pest and from every evil, harmful, envious eye.',
+      source: 'Sahih al-Bukhari 3371'
+    },
+    'Matin & Soir': {
+      title: 'Morning & Evening',
+      arabic: 'أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ',
+      transliteration: 'Aṣbaḥnā wa aṣbaḥa l-mulku lillāhi wa l-ḥamdu lillāhi',
+      translation: 'We have reached the morning and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.',
+      source: 'Sahih Muslim 2723'
+    },
+    'Maison & Famille': {
+      title: 'Home & Family',
+      arabic: 'بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا',
+      transliteration: 'Bismi llāhi walajna wa bismi llāhi kharajna wa \'alā llāhi rabbinā tawakkalnā',
+      translation: 'In the name of Allah we enter and in the name of Allah we leave, and upon Allah, our Lord, we place our trust.',
+      source: 'Abu Dawud 5096'
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
@@ -1722,6 +1804,438 @@ export default function Home() {
             className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Previous Screen
+          </button>
+        </div>
+      ) : showDuaContentViewer ? (
+        /* Screen 21: Dua Content Viewer */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-8">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromDuaContentViewer}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-white text-xl font-semibold">
+              {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid]?.title || selectedGridCategory}
+            </h1>
+
+            {/* Right Icons */}
+            <div className="flex items-center space-x-3">
+              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                <span className="font-bold">Aa</span>
+              </button>
+              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+              </button>
+              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                <span>⋯</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Dua Content Display */}
+          <div className="flex-1 px-6 mb-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid] && (
+                <>
+                  {/* Arabic Text */}
+                  <div className="mb-8">
+                    <p className="text-white text-3xl md:text-4xl font-arabic leading-relaxed">
+                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].arabic}
+                    </p>
+                  </div>
+
+                  {/* Transliteration */}
+                  <div className="mb-8">
+                    <p className="text-white text-lg md:text-xl italic leading-relaxed">
+                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].transliteration}
+                    </p>
+                  </div>
+
+                  {/* English Translation */}
+                  <div className="mb-8">
+                    <p className="text-white text-base md:text-lg leading-relaxed">
+                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].translation}
+                    </p>
+                  </div>
+
+                  {/* Source Reference */}
+                  <div className="mb-12">
+                    <p className="text-gray-400 text-sm">
+                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].source}
+                    </p>
+                  </div>
+                </>
+              )}
+
+              {/* Audio Controls */}
+              <div className="flex items-center justify-center space-x-6 mb-12">
+                <button className="relative text-white text-2xl hover:text-gray-300 transition-colors">
+                  <span className="absolute -top-1 -right-1 text-xs">🔒</span>
+                  <span>⏮</span>
+                </button>
+
+                <button
+                  onClick={handleAudioPlay}
+                  className="relative w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white text-2xl hover:bg-opacity-30 transition-colors"
+                >
+                  {isPlaying ? '⏸' : '▶'}
+                  <div className="absolute inset-0 rounded-full border-4 border-teal-500" style={{
+                    background: `conic-gradient(#14b8a6 ${audioProgress * 3.6}deg, transparent 0deg)`
+                  }}></div>
+                </button>
+
+                <button className="text-white text-2xl hover:text-gray-300 transition-colors">
+                  <span>⏭</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Button (Bottom) */}
+          <div className="px-6 pb-8">
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowChatbotDiscussionHub(true)}
+                className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-sm">≈</span>
+                <span className="text-sm font-medium">Discuss</span>
+                <span className="text-sm">→</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromDuaContentViewer}
+            className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Grid
+          </button>
+        </div>
+      ) : showInteriorDesignSettings ? (
+        /* Screen 22 & 23: My Interior Design - Settings */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-6">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromInteriorDesignSettings}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Title */}
+            <div className="flex items-center space-x-2">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+              </svg>
+              <span className="text-white text-lg font-semibold">My interior design</span>
+            </div>
+
+            {/* Right: Close icon (for Screen 23) */}
+            <button className="text-white text-xl hover:text-gray-300 transition-colors">
+              <span>×</span>
+            </button>
+          </div>
+
+          {/* Instructional Text */}
+          <div className="px-6 mb-8">
+            <p className="text-white text-sm text-center">
+              Customize your space so that you navigate according to what you love.
+            </p>
+            <p className="text-white text-sm text-center mt-2 opacity-75">
+              Chaque âme est unique ≈ Personnalise ton expérience
+            </p>
+          </div>
+
+          {/* Settings Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto px-6 pb-24">
+            <div className="space-y-6 max-w-2xl mx-auto">
+
+              {/* Card 1: Name and Language */}
+              <div className="bg-cream rounded-2xl p-6">
+                <div className="space-y-6">
+                  {/* Name Section */}
+                  <div>
+                    <h3 className="text-gray-900 text-lg font-semibold mb-3">
+                      How should you be called?
+                    </h3>
+                    <input
+                      type="text"
+                      value={userSettings.name}
+                      onChange={(e) => handleSettingChange('name', e.target.value)}
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+
+                  {/* Language Section */}
+                  <div>
+                    <h3 className="text-gray-900 text-lg font-semibold mb-3">
+                      What is your preferred language?
+                    </h3>
+                    <div className="flex space-x-3">
+                      <button
+                        onClick={() => handleSettingChange('language', 'English')}
+                        className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
+                          userSettings.language === 'English'
+                            ? 'bg-green-800 text-white'
+                            : 'bg-white border border-gray-300 text-gray-900 hover:bg-gray-50'
+                        }`}
+                      >
+                        English
+                      </button>
+                      <button
+                        onClick={() => handleSettingChange('language', 'French')}
+                        className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
+                          userSettings.language === 'French'
+                            ? 'bg-green-800 text-white'
+                            : 'bg-white border border-gray-300 text-gray-900 hover:bg-gray-50'
+                        }`}
+                      >
+                        French
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Notifications */}
+              <div className="bg-cream rounded-2xl p-6">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">
+                  How do you preferred to be notified?
+                </h3>
+
+                {/* For duas section */}
+                <div className="mb-6">
+                  <h4 className="text-gray-900 text-base font-medium mb-3">For duas:</h4>
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    <button className="bg-green-800 text-white px-4 py-2 rounded-full text-sm">
+                      Morning Duas
+                    </button>
+                    <button className="bg-white border border-gray-300 text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-50">
+                      Evening Duas
+                    </button>
+                  </div>
+                  <label className="flex items-center space-x-3">
+                    <input
+                      type="checkbox"
+                      checked={userSettings.duaOfTheDay}
+                      onChange={() => handleSettingToggle('duaOfTheDay')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-gray-900 text-sm">Dua of the day according to my mood</span>
+                  </label>
+                </div>
+
+                {/* Toggles section */}
+                <div className="space-y-4">
+                  {[
+                    { key: 'wallNotifications', label: 'For the wall of duas' },
+                    { key: 'amineNotifications', label: 'When someone says Amine' },
+                    { key: 'updates', label: 'To receive updates' },
+                    { key: 'newsletter', label: 'To receive heart newsletter' }
+                  ].map((item) => (
+                    <div key={item.key} className="flex items-center justify-between">
+                      <span className="text-gray-900 text-sm">{item.label}</span>
+                      <button
+                        onClick={() => handleSettingToggle(item.key)}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                          userSettings[item.key as keyof typeof userSettings]
+                            ? 'bg-green-600'
+                            : 'bg-gray-300'
+                        }`}
+                      >
+                        <span
+                          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                            userSettings[item.key as keyof typeof userSettings]
+                              ? 'translate-x-6'
+                              : 'translate-x-1'
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Screen 23 Content - Spiritual Profile */}
+              <div className="bg-cream rounded-2xl p-6">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">
+                  Profil spirituel
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">{userSettings.name}</span>
+                    <span className="text-gray-600 text-sm">{userSettings.gender} →</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Langue</span>
+                    <span className="text-gray-600 text-sm">{userSettings.language} →</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Reminders & Notifications */}
+              <div className="bg-cream rounded-2xl p-6">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">
+                  Rappels & notifications
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Time to receive your reminder</span>
+                    <span className="text-gray-600 text-sm">{userSettings.reminderTime} →</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Doua du jour</span>
+                    <button
+                      onClick={() => handleSettingToggle('duaOfTheDay')}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                        userSettings.duaOfTheDay ? 'bg-green-600' : 'bg-gray-300'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          userSettings.duaOfTheDay ? 'translate-x-6' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Notifications bienveillantes</span>
+                    <button
+                      onClick={() => handleSettingToggle('kindNotifications')}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                        userSettings.kindNotifications ? 'bg-green-600' : 'bg-gray-300'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          userSettings.kindNotifications ? 'translate-x-6' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Display Preferences */}
+              <div className="bg-cream rounded-2xl p-6">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">
+                  Préférences d&apos;affichage
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Size of text</span>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={userSettings.textSize}
+                        onChange={(e) => handleSettingChange('textSize', parseInt(e.target.value))}
+                        className="w-20 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <span className="text-gray-600 text-sm">→</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Activate sounds</span>
+                    <button
+                      onClick={() => handleSettingToggle('sounds')}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                        userSettings.sounds ? 'bg-green-600' : 'bg-gray-300'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          userSettings.sounds ? 'translate-x-6' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Connection & Confidentiality */}
+              <div className="bg-cream rounded-2xl p-6">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">
+                  Connexion & confidentialité
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-900 text-sm">Save your notes on the cloud</span>
+                    <button
+                      onClick={() => handleSettingToggle('cloudSave')}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                        userSettings.cloudSave ? 'bg-green-600' : 'bg-gray-300'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          userSettings.cloudSave ? 'translate-x-6' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                  <button className="w-full bg-red-600 text-white py-3 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors">
+                    Delete my data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Button (Bottom) */}
+          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm p-6">
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowChatbotDiscussionHub(true)}
+                className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-sm">≈</span>
+                <span className="text-sm font-medium">Discuss</span>
+                <span className="text-sm">→</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromInteriorDesignSettings}
+            className="fixed top-20 left-4 bg-gray-600 text-white px-4 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity z-50"
+          >
+            ← Back to Menu
           </button>
         </div>
       ) : (
