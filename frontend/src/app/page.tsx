@@ -185,6 +185,10 @@ export default function Home() {
     // Handle navigation to different sections
     if (item === 'My.Zikr+') {
       console.log('Navigate to premium subscription');
+    } else if (item === 'The wall of duas') {
+      setShowDiscussMenu(false);
+      setActiveTab('Douas');
+      setShowWallOfDuas(true);
     }
     // Close menu after selection (optional)
     // setShowDiscussMenu(false);
@@ -258,7 +262,9 @@ export default function Home() {
 
   const handleWallOfDuasFromGrid = () => {
     console.log('Navigate to Wall of Duas from grid');
-    setShowChatbotDiscussionHub(true);
+    setShowAuthenticDuasGrid(false);
+    setActiveTab('Douas');
+    setShowWallOfDuas(true);
   };
 
   const handleBackFromDiscussionHub = () => {
@@ -297,6 +303,11 @@ export default function Home() {
       case 'See the whole reminders collection':
         setShowSpiritualReminder(true);
         setShowChatbotDiscussionHub(false);
+        break;
+      case 'See the wall of duas':
+        setShowChatbotDiscussionHub(false);
+        setActiveTab('Douas');
+        setShowWallOfDuas(true);
         break;
       default:
         break;
@@ -1652,10 +1663,10 @@ export default function Home() {
               {/* Row 2 (2 pills) */}
               <div className="grid grid-cols-2 gap-4">
                 <button
-                  onClick={() => handleQuickAction('Check my notes')}
+                  onClick={() => handleQuickAction('See the wall of duas')}
                   className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
                 >
-                  Check my notes
+                  See the wall of duas
                 </button>
                 <button
                   onClick={() => handleQuickAction('See the whole duas collection')}
