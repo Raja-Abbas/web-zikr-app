@@ -20,6 +20,7 @@ export default function Home() {
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
   const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
   const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
+  const [showAuthenticDuasGrid, setShowAuthenticDuasGrid] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
@@ -137,9 +138,9 @@ export default function Home() {
     console.log('Selected action:', action);
     // Handle the suggested action
     if (action === 'Authentic dua') {
-      // Navigate to Authentic Dua Selection screen
+      // Navigate to Authentic Duas Category Grid screen
       setShowChatbot(false);
-      setShowAuthenticDuaSelection(true);
+      setShowAuthenticDuasGrid(true);
     } else if (action === 'Custom dua for my situation') {
       // Navigate to Custom Dua Generation screen
       setShowChatbot(false);
@@ -242,6 +243,22 @@ export default function Home() {
     // Handle other actions
   };
 
+  const handleBackFromAuthenticDuasGrid = () => {
+    // Navigate back to chatbot screen
+    setShowAuthenticDuasGrid(false);
+    setShowChatbot(true);
+  };
+
+  const handleDuaCategoryGridSelect = (category: string) => {
+    console.log('Selected dua category from grid:', category);
+    // Here you would navigate to the specific category's duas list
+  };
+
+  const handleWallOfDuasFromGrid = () => {
+    console.log('Navigate to Wall of Duas from grid');
+    setShowDiscussMenu(true);
+  };
+
   const handleResetToAuth = () => {
     // Reset to initial authentication state
     setShowHomeScreen(false);
@@ -254,6 +271,7 @@ export default function Home() {
     setShowDiscussMenu(false);
     setShowCustomDuaGeneration(false);
     setShowSpiritualReminder(false);
+    setShowAuthenticDuasGrid(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
@@ -351,6 +369,22 @@ export default function Home() {
     }
     // Add more reminders as needed
   };
+
+  // Authentic Duas Categories (French as in screenshot)
+  const duaCategories = [
+    { id: 'tout', icon: '🤲', name: 'Tout', chapters: '132 chapitres' },
+    { id: 'matin-soir', icon: '🌅', name: 'Matin & Soir', chapters: '15 chapitres' },
+    { id: 'maison-famille', icon: '🏠', name: 'Maison & Famille', chapters: '12 chapitres' },
+    { id: 'nourriture', icon: '🍽️', name: 'Nourriture', chapters: '8 chapitres' },
+    { id: 'voyage', icon: '✈️', name: 'Voyage', chapters: '6 chapitres' },
+    { id: 'mosquee', icon: '🕌', name: 'Mosquée', chapters: '10 chapitres' },
+    { id: 'nature', icon: '🌿', name: 'Nature', chapters: '7 chapitres' },
+    { id: 'sante', icon: '💊', name: 'Santé', chapters: '14 chapitres' },
+    { id: 'protection', icon: '🛡️', name: 'Protection', chapters: '18 chapitres' },
+    { id: 'emotions', icon: '💭', name: 'Émotions', chapters: '11 chapitres' },
+    { id: 'adoration', icon: '🙏', name: 'Adoration', chapters: '20 chapitres' },
+    { id: 'autres', icon: '📚', name: 'Autres', chapters: '11 chapitres' }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
@@ -517,7 +551,12 @@ export default function Home() {
                   {['Authentic douas', 'All', 'For kids', 'For Haj'].map((category) => (
                     <button
                       key={category}
-                      onClick={() => setSelectedDouaCategory(category)}
+                      onClick={() => {
+                        setSelectedDouaCategory(category);
+                        if (category === 'Authentic douas') {
+                          setShowAuthenticDuasGrid(true);
+                        }
+                      }}
                       className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
                         selectedDouaCategory === category
                           ? 'bg-cream text-gray-900'
@@ -1404,6 +1443,105 @@ export default function Home() {
             ← Back to Chatbot
           </button>
         </>
+      ) : showAuthenticDuasGrid ? (
+        /* Screen 19: Authentic Duas Category Grid */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-6">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromAuthenticDuasGrid}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Center Title */}
+            <h1 className="text-white text-xl font-semibold">Authentic douas</h1>
+
+            {/* Right: Search icon */}
+            <button className="text-white text-xl hover:text-gray-300 transition-colors">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Subtitle */}
+          <div className="flex items-center justify-between w-full px-6 mb-8">
+            <p className="text-white text-sm text-center flex-1">
+              Douas to connect to Allah and to find comfort with heartfelt words
+            </p>
+            <button className="text-white text-lg hover:text-gray-300 transition-colors ml-4">
+              <span>≈</span>
+            </button>
+          </div>
+
+          {/* Category Grid (Main Content) */}
+          <div className="flex-1 px-6 mb-8">
+            <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {duaCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => handleDuaCategoryGridSelect(category.name)}
+                  className="flex flex-col items-center space-y-3 p-4 hover:bg-white hover:bg-opacity-10 rounded-xl transition-colors"
+                >
+                  {/* Circular Icon */}
+                  <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <span className="text-2xl text-white">{category.icon}</span>
+                  </div>
+
+                  {/* Category Name */}
+                  <span className="text-white text-sm font-medium text-center">
+                    {category.name}
+                  </span>
+
+                  {/* Chapter Count */}
+                  <span className="text-white text-xs opacity-75 text-center">
+                    {category.chapters}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* "Discover the wall of douas" Section (Footer) */}
+          <div className="px-6 pb-8">
+            <div className="text-center mb-6">
+              <h3 className="text-white text-lg font-semibold mb-2">
+                Discover the wall of douas
+              </h3>
+              <p className="text-white text-sm opacity-90">
+                Find out douas that people made and support them by saying &apos;Amine&apos;.
+              </p>
+            </div>
+
+            {/* Navigation Button */}
+            <div className="flex justify-center">
+              <button
+                onClick={handleWallOfDuasFromGrid}
+                className="bg-slate-800 text-white px-6 py-3 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
+              >
+                <span className="text-sm">≈</span>
+                <span className="text-sm font-medium">Discuss</span>
+                <span className="text-sm">→</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromAuthenticDuasGrid}
+            className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Chatbot
+          </button>
+        </div>
       ) : (
         <>
           {/* Logo and Header Section */}
