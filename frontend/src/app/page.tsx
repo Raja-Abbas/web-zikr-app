@@ -19,9 +19,12 @@ export default function Home() {
   const [showDuaContent, setShowDuaContent] = useState(false);
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
   const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
+  const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
+  const [selectedReminderCategory, setSelectedReminderCategory] = useState('Wudu steps');
+  const [showReminderContent, setShowReminderContent] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [customDuaRequest, setCustomDuaRequest] = useState('');
   const [showGeneratedDua, setShowGeneratedDua] = useState(false);
@@ -142,8 +145,9 @@ export default function Home() {
       setShowChatbot(false);
       setShowCustomDuaGeneration(true);
     } else if (action === 'Spiritual reminder') {
-      // Could navigate to reminders or handle differently
-      handleChatbotContinue();
+      // Navigate to Spiritual Reminder screen
+      setShowChatbot(false);
+      setShowSpiritualReminder(true);
     }
   };
 
@@ -214,6 +218,30 @@ export default function Home() {
     // Handle other actions like save, share, etc.
   };
 
+  const handleBackFromSpiritualReminder = () => {
+    // Navigate back to chatbot screen
+    setShowSpiritualReminder(false);
+    setShowReminderContent(false);
+    setSelectedReminderCategory('Wudu steps');
+    setShowChatbot(true);
+  };
+
+  const handleReminderCategorySelect = (category: string) => {
+    setSelectedReminderCategory(category);
+    setShowReminderContent(true);
+    console.log('Selected reminder category:', category);
+  };
+
+  const handleReminderAction = (action: string) => {
+    console.log('Reminder action:', action);
+    if (action === 'Another reminder') {
+      setShowReminderContent(false);
+    } else if (action === 'Discuss') {
+      setShowDiscussMenu(true);
+    }
+    // Handle other actions
+  };
+
   const handleResetToAuth = () => {
     // Reset to initial authentication state
     setShowHomeScreen(false);
@@ -225,6 +253,7 @@ export default function Home() {
     setShowDuaContent(false);
     setShowDiscussMenu(false);
     setShowCustomDuaGeneration(false);
+    setShowSpiritualReminder(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
@@ -232,6 +261,8 @@ export default function Home() {
     setChatInput('');
     setSelectedDuaCategory('To protect kids');
     setSelectedMenuItem('Interior design');
+    setSelectedReminderCategory('Wudu steps');
+    setShowReminderContent(false);
     setIsPlaying(false);
     setCustomDuaRequest('');
     setShowGeneratedDua(false);
@@ -300,6 +331,26 @@ export default function Home() {
     { id: 'profile', icon: '👤', text: 'My profile' },
     { id: 'interior', icon: '🏠', text: 'Interior design' },
   ];
+
+  // Reminder content data
+  const reminderContent = {
+    'Wudu steps': {
+      title: 'Wudu steps',
+      description: 'Purity is the gateway to prayer. Here\'s a simple guide to help you perform Wudu step-by-step with presence and mindfulness. May Allah accept your prayer. Prophet Muhammad ﷺ said: "Purity is half of faith." (Sahih Muslim 223)',
+      downloadLink: 'Download wudu step pdf'
+    },
+    'Ghusl steps': {
+      title: 'Ghusl steps',
+      description: 'Complete purification guide for major ritual cleansing. Follow these steps with intention and mindfulness.',
+      downloadLink: 'Download ghusl step pdf'
+    },
+    'Prayer steps': {
+      title: 'Prayer steps',
+      description: 'Step-by-step guide to performing Salah with proper movements and recitations.',
+      downloadLink: 'Download prayer step pdf'
+    }
+    // Add more reminders as needed
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
@@ -1214,6 +1265,140 @@ export default function Home() {
           {/* Debug Back Button */}
           <button
             onClick={handleBackFromCustomDua}
+            className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Chatbot
+          </button>
+        </>
+      ) : showSpiritualReminder ? (
+        /* Screen 18: Spiritual Reminder - Wudu Steps */
+        <>
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromSpiritualReminder}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Right: Current Mode Indicator */}
+            <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
+              <span className="text-white text-sm">≈</span>
+              <span className="text-white text-sm font-medium">Spiritual reminder</span>
+            </div>
+          </div>
+
+          {/* Chat Message (Bot's Response) */}
+          <div className="w-full max-w-4xl mx-auto mb-8 px-6">
+            <div className="flex items-start space-x-3 mb-6">
+              {/* Zikr bot logo/icon */}
+              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                <span className="text-white text-xs font-bold">Z</span>
+              </div>
+
+              {/* Chat Bubble */}
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                <p className="text-white text-base leading-relaxed">
+                  That&apos;s great! Please find below the Reminders I can help you with. May Allah ease your journey and help you memorise them. Amine
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Reminder Option Pills (Selection Choices) */}
+          <div className="w-full max-w-4xl mx-auto px-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center">
+              {[
+                'Wudu steps',
+                'Ghusl steps',
+                'Prayer steps',
+                '99 names of Allah',
+                'Istikhara steps',
+                'Tachahhoud',
+                'Dhikr & Tasbih',
+                'Another one',
+                '40 Rabbana',
+                'Something else'
+              ].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleReminderCategorySelect(category)}
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                    selectedReminderCategory === category
+                      ? 'bg-slate-800 text-white'
+                      : 'bg-cream text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Content Display Card (New Content Area) */}
+          {showReminderContent && reminderContent[selectedReminderCategory as keyof typeof reminderContent] && (
+            <div className="w-full max-w-4xl mx-auto px-6 mb-8">
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                {/* Title/Context */}
+                <div className="flex items-center space-x-2 mb-6">
+                  <h3 className="text-slate-800 text-xl font-semibold">
+                    {reminderContent[selectedReminderCategory as keyof typeof reminderContent].title}
+                  </h3>
+                  <span className="text-slate-800">→</span>
+                </div>
+
+                {/* Instructional Text */}
+                <div className="mb-6">
+                  <p className="text-gray-800 text-base leading-relaxed">
+                    {reminderContent[selectedReminderCategory as keyof typeof reminderContent].description}
+                  </p>
+                </div>
+
+                {/* Download Link */}
+                <div className="mb-8">
+                  <a
+                    href="#"
+                    className="text-blue-800 text-base font-medium hover:text-blue-600 transition-colors underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log('Download PDF:', selectedReminderCategory);
+                    }}
+                  >
+                    {reminderContent[selectedReminderCategory as keyof typeof reminderContent].downloadLink}
+                  </a>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap justify-center gap-4">
+                  <button
+                    onClick={() => handleReminderAction('Another reminder')}
+                    className="bg-cream border border-gray-400 text-gray-900 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                  >
+                    Another reminder
+                  </button>
+
+                  <button
+                    onClick={() => handleReminderAction('Discuss')}
+                    className="bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-slate-700 transition-colors flex items-center space-x-2"
+                  >
+                    <span>≈</span>
+                    <span>Discuss</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromSpiritualReminder}
             className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Chatbot
