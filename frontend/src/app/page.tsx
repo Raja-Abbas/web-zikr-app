@@ -193,6 +193,8 @@ export default function Home() {
   const handleDuaAction = (action: string) => {
     console.log('Dua action:', action);
     if (action === 'Discuss') {
+      setShowHomeScreen(false);
+      setShowDuaContent(false);
       setShowChatbotDiscussionHub(true);
     }
     // Handle different actions like save, share, etc.
@@ -266,6 +268,8 @@ export default function Home() {
     if (action === 'Another reminder') {
       setShowReminderContent(false);
     } else if (action === 'Discuss') {
+      setShowSpiritualReminder(false);
+      setShowHomeScreen(false);
       setShowChatbotDiscussionHub(true);
     }
     // Handle other actions
@@ -295,8 +299,8 @@ export default function Home() {
     // Navigate back to previous screen (could be from various sources)
     setShowChatbotDiscussionHub(false);
     setDiscussionInput('');
-    // Return to chatbot or previous screen
-    setShowChatbot(true);
+    // Return to home screen by default
+    setShowHomeScreen(true);
   };
 
   const handleDiscussionSubmit = () => {
@@ -1918,7 +1922,11 @@ export default function Home() {
           <div className="px-6 pb-8">
             <div className="flex justify-center">
               <button
-                onClick={() => setShowChatbotDiscussionHub(true)}
+                onClick={() => {
+                  setShowDuaContentViewer(false);
+                  setShowHomeScreen(false);
+                  setShowChatbotDiscussionHub(true);
+                }}
                 className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
               >
                 <span className="text-sm">≈</span>
@@ -2220,7 +2228,11 @@ export default function Home() {
           <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm p-6">
             <div className="flex justify-center">
               <button
-                onClick={() => setShowChatbotDiscussionHub(true)}
+                onClick={() => {
+                  setShowInteriorDesignSettings(false);
+                  setShowHomeScreen(false);
+                  setShowChatbotDiscussionHub(true);
+                }}
                 className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
               >
                 <span className="text-sm">≈</span>
