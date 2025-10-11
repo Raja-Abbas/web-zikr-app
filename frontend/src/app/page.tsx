@@ -21,7 +21,9 @@ export default function Home() {
   const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
   const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
   const [showAuthenticDuasGrid, setShowAuthenticDuasGrid] = useState(false);
+  const [showChatbotDiscussionHub, setShowChatbotDiscussionHub] = useState(false);
   const [chatInput, setChatInput] = useState('');
+  const [discussionInput, setDiscussionInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
   const [selectedReminderCategory, setSelectedReminderCategory] = useState('Wudu steps');
@@ -172,7 +174,7 @@ export default function Home() {
   const handleDuaAction = (action: string) => {
     console.log('Dua action:', action);
     if (action === 'Discuss') {
-      setShowDiscussMenu(true);
+      setShowChatbotDiscussionHub(true);
     }
     // Handle different actions like save, share, etc.
   };
@@ -238,7 +240,7 @@ export default function Home() {
     if (action === 'Another reminder') {
       setShowReminderContent(false);
     } else if (action === 'Discuss') {
-      setShowDiscussMenu(true);
+      setShowChatbotDiscussionHub(true);
     }
     // Handle other actions
   };
@@ -256,7 +258,49 @@ export default function Home() {
 
   const handleWallOfDuasFromGrid = () => {
     console.log('Navigate to Wall of Duas from grid');
-    setShowDiscussMenu(true);
+    setShowChatbotDiscussionHub(true);
+  };
+
+  const handleBackFromDiscussionHub = () => {
+    // Navigate back to previous screen (could be from various sources)
+    setShowChatbotDiscussionHub(false);
+    setDiscussionInput('');
+    // Return to chatbot or previous screen
+    setShowChatbot(true);
+  };
+
+  const handleDiscussionSubmit = () => {
+    if (discussionInput.trim()) {
+      console.log('Discussion message:', discussionInput);
+      // Here you would typically send the message to your AI backend
+      setDiscussionInput('');
+    }
+  };
+
+  const handleQuickAction = (action: string) => {
+    console.log('Quick action:', action);
+    // Handle different quick actions
+    switch (action) {
+      case 'See my saved duas':
+        console.log('Navigate to saved duas');
+        break;
+      case 'Talk to support':
+        console.log('Navigate to support');
+        break;
+      case 'Check my notes':
+        console.log('Navigate to notes');
+        break;
+      case 'See the whole duas collection':
+        setShowAuthenticDuasGrid(true);
+        setShowChatbotDiscussionHub(false);
+        break;
+      case 'See the whole reminders collection':
+        setShowSpiritualReminder(true);
+        setShowChatbotDiscussionHub(false);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleResetToAuth = () => {
@@ -272,11 +316,13 @@ export default function Home() {
     setShowCustomDuaGeneration(false);
     setShowSpiritualReminder(false);
     setShowAuthenticDuasGrid(false);
+    setShowChatbotDiscussionHub(false);
     setIsLogin(false);
     setUserName('');
     setSelectedInterests(['douas', 'community']);
     setActiveTab('Home');
     setChatInput('');
+    setDiscussionInput('');
     setSelectedDuaCategory('To protect kids');
     setSelectedMenuItem('Interior design');
     setSelectedReminderCategory('Wudu steps');
@@ -1540,6 +1586,131 @@ export default function Home() {
             className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Chatbot
+          </button>
+        </div>
+      ) : showChatbotDiscussionHub ? (
+        /* Screen 20: Chatbot Discussion Hub */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header/Top Bar */}
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-8">
+            {/* Left: Back arrow and green leaf icon */}
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handleBackFromDiscussionHub}
+                className="text-white text-2xl hover:text-gray-300 transition-colors"
+              >
+                ←
+              </button>
+              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </div>
+
+            {/* Center Title Pill */}
+            <div className="bg-slate-800 rounded-full px-4 py-2 flex items-center space-x-2">
+              <span className="text-white text-sm">≈</span>
+              <span className="text-white text-sm font-medium">Discuss</span>
+            </div>
+
+            {/* Right: Empty space for balance */}
+            <div className="w-6"></div>
+          </div>
+
+          {/* Chat Message (Bot's Response) */}
+          <div className="w-full max-w-4xl mx-auto mb-8 px-6">
+            <div className="flex items-start space-x-3">
+              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+                <span className="text-white text-xs font-bold">Z</span>
+              </div>
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+                <p className="text-white text-base leading-relaxed">
+                  I am always here dear, how can i help you now? Please select a topic below or tell me what you need.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Pills (Quick Links) */}
+          <div className="w-full max-w-4xl mx-auto px-6 mb-8">
+            <div className="space-y-4">
+              {/* Row 1 (2 pills) */}
+              <div className="grid grid-cols-2 gap-4">
+                <button
+                  onClick={() => handleQuickAction('See my saved duas')}
+                  className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                >
+                  See my saved duas
+                </button>
+                <button
+                  onClick={() => handleQuickAction('Talk to support')}
+                  className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                >
+                  Talk to support
+                </button>
+              </div>
+
+              {/* Row 2 (2 pills) */}
+              <div className="grid grid-cols-2 gap-4">
+                <button
+                  onClick={() => handleQuickAction('Check my notes')}
+                  className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                >
+                  Check my notes
+                </button>
+                <button
+                  onClick={() => handleQuickAction('See the whole duas collection')}
+                  className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                >
+                  See the whole duas collection
+                </button>
+              </div>
+
+              {/* Row 3 (1 pill) */}
+              <div className="flex justify-center">
+                <button
+                  onClick={() => handleQuickAction('See the whole reminders collection')}
+                  className="bg-cream text-gray-900 px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center max-w-xs w-full"
+                >
+                  See the whole reminders collection
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Text Input Area (User Prompt) */}
+          <div className="w-full max-w-4xl mx-auto px-6 pb-8 mt-auto">
+            <div className="relative">
+              <textarea
+                value={discussionInput}
+                onChange={(e) => setDiscussionInput(e.target.value)}
+                placeholder="Write down what you need like I need help to ..."
+                className="w-full h-32 bg-slate-800 text-white placeholder-purple-300 rounded-2xl p-6 pr-16 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleDiscussionSubmit();
+                  }
+                }}
+              />
+
+              {/* Send Icon */}
+              <button
+                onClick={handleDiscussionSubmit}
+                className="absolute bottom-4 right-4 text-white text-2xl hover:text-teal-300 transition-colors"
+              >
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Debug Back Button */}
+          <button
+            onClick={handleBackFromDiscussionHub}
+            className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Previous Screen
           </button>
         </div>
       ) : (
