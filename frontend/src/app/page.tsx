@@ -24,6 +24,7 @@ export default function Home() {
   const [showChatbotDiscussionHub, setShowChatbotDiscussionHub] = useState(false);
   const [showDuaContentViewer, setShowDuaContentViewer] = useState(false);
   const [showInteriorDesignSettings, setShowInteriorDesignSettings] = useState(false);
+  const [showLeavesMenu, setShowLeavesMenu] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
@@ -132,13 +133,49 @@ export default function Home() {
     setShowHomeScreen(true);
   };
 
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    setShowWallOfDuas(false); // Reset wall of duas when switching tabs
-  };
+
 
   const handleWallOfDuasClick = () => {
     setShowWallOfDuas(true);
+  };
+
+  const handleLeavesMenuToggle = () => {
+    setShowLeavesMenu(!showLeavesMenu);
+  };
+
+  const handleLeavesMenuItemSelect = (item: string) => {
+    console.log('Selected leaves menu item:', item);
+    setShowLeavesMenu(false);
+
+    // Handle navigation based on selected item
+    switch (item) {
+      case 'Home':
+        setActiveTab('Home');
+        setShowWallOfDuas(false);
+        break;
+      case 'Douas':
+        setActiveTab('Douas');
+        setShowWallOfDuas(false);
+        break;
+      case 'Reminder':
+        setActiveTab('Reminder');
+        setShowWallOfDuas(false);
+        break;
+      case 'Profile':
+        setActiveTab('Profile');
+        setShowWallOfDuas(false);
+        break;
+      case 'Settings':
+        setShowInteriorDesignSettings(true);
+        setShowWallOfDuas(false);
+        break;
+      case 'Wall of Duas':
+        setActiveTab('Douas');
+        setShowWallOfDuas(true);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleChatbotContinue = () => {
@@ -643,28 +680,27 @@ export default function Home() {
           </div>
           </div>
 
-          {/* Bottom Navigation Bar - Fixed Position */}
-          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
-            <div className="flex justify-around py-3">
-              {['Home', 'Duas', 'Reminder', 'Profile'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleTabChange(tab)}
-                  className={`flex flex-col items-center space-y-1 px-4 py-2 ${
-                    activeTab === tab ? 'text-white' : 'text-gray-400'
-                  }`}
-                >
-                  <span className="text-xl">
-                    {tab === 'Home' && '🏠'}
-                    {tab === 'Duas' && '🤲'}
-                    {tab === 'Reminder' && '⏰'}
-                    {tab === 'Profile' && '👤'}
-                  </span>
-                  <span className="text-xs font-medium">{tab}</span>
-                </button>
-              ))}
+
+
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
             </div>
-          </div>
+          </button>
 
           {/* Debug Reset Button */}
           <button
@@ -772,28 +808,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Navigation Bar - Fixed Position */}
-          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
-            <div className="flex justify-around py-3">
-              {['Home', 'Douas', 'Reminder', 'Profile'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleTabChange(tab)}
-                  className={`flex flex-col items-center space-y-1 px-4 py-2 ${
-                    activeTab === tab ? 'text-white' : 'text-gray-400'
-                  }`}
-                >
-                  <span className="text-xl">
-                    {tab === 'Home' && '🏠'}
-                    {tab === 'Douas' && '🤲'}
-                    {tab === 'Reminder' && '⏰'}
-                    {tab === 'Profile' && '👤'}
-                  </span>
-                  <span className="text-xs font-medium">{tab}</span>
-                </button>
-              ))}
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
             </div>
-          </div>
+          </button>
         </div>
       ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
         /* Wall of Duas Screen */
@@ -858,28 +891,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Navigation Bar - Fixed Position */}
-          <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm border-t border-slate-700 z-50">
-            <div className="flex justify-around py-3">
-              {['Home', 'Douas', 'Reminder', 'Profile'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleTabChange(tab)}
-                  className={`flex flex-col items-center space-y-1 px-4 py-2 ${
-                    activeTab === tab ? 'text-white' : 'text-gray-400'
-                  }`}
-                >
-                  <span className="text-xl">
-                    {tab === 'Home' && '🏠'}
-                    {tab === 'Douas' && '🤲'}
-                    {tab === 'Reminder' && '⏰'}
-                    {tab === 'Profile' && '👤'}
-                  </span>
-                  <span className="text-xs font-medium">{tab}</span>
-                </button>
-              ))}
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
             </div>
-          </div>
+          </button>
         </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Welcome and Personalization Survey */
@@ -2543,6 +2573,76 @@ export default function Home() {
 
             {/* Thin blue line at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 opacity-30" />
+          </div>
+        </div>
+      )}
+
+      {/* Animated Leaves Menu Overlay */}
+      {showLeavesMenu && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
+            onClick={handleLeavesMenuToggle}
+          />
+
+          {/* Menu Container */}
+          <div className="relative bg-gradient-to-br from-emerald-50 to-green-100 rounded-3xl shadow-2xl p-8 mx-6 max-w-sm w-full transform transition-all duration-500 scale-100 opacity-100">
+            {/* Floating leaves decoration */}
+            <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🍃</div>
+            <div className="absolute -bottom-2 -left-2 text-xl animate-pulse">🍃</div>
+            <div className="absolute top-4 left-4 text-lg animate-bounce delay-300">🍃</div>
+
+            {/* Close button */}
+            <button
+              onClick={handleLeavesMenuToggle}
+              className="absolute top-4 right-4 w-8 h-8 bg-white bg-opacity-70 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-200"
+            >
+              <span className="text-gray-600 text-lg">×</span>
+            </button>
+
+            {/* Menu Title */}
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">Navigation</h2>
+              <div className="flex justify-center space-x-1">
+                <span className="text-lg">🍃</span>
+                <span className="text-lg">🍃</span>
+                <span className="text-lg">🍃</span>
+              </div>
+            </div>
+
+            {/* Menu Items */}
+            <div className="space-y-3">
+              {[
+                { name: 'Home', icon: '🏠', color: 'from-blue-400 to-blue-600' },
+                { name: 'Douas', icon: '🤲', color: 'from-purple-400 to-purple-600' },
+                { name: 'Reminder', icon: '⏰', color: 'from-orange-400 to-orange-600' },
+                { name: 'Profile', icon: '👤', color: 'from-pink-400 to-pink-600' },
+                { name: 'Wall of Duas', icon: '🕌', color: 'from-emerald-400 to-emerald-600' },
+                { name: 'Settings', icon: '⚙️', color: 'from-gray-400 to-gray-600' }
+              ].map((item, index) => (
+                <button
+                  key={item.name}
+                  onClick={() => handleLeavesMenuItemSelect(item.name)}
+                  className={`w-full bg-gradient-to-r ${item.color} text-white py-4 px-6 rounded-2xl flex items-center space-x-4 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-lg font-semibold">{item.name}</span>
+                  <div className="flex-1" />
+                  <span className="text-xl opacity-70">→</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Bottom decoration */}
+            <div className="mt-6 text-center">
+              <div className="flex justify-center space-x-2 opacity-50">
+                <span className="text-sm">🍃</span>
+                <span className="text-xs">My.Zikr</span>
+                <span className="text-sm">🍃</span>
+              </div>
+            </div>
           </div>
         </div>
       )}
