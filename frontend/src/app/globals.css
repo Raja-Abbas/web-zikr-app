@@ -44,3 +44,15 @@ body {
 .bg-cream {
   background-color: #F7F7E8;
 }
+
+.fill-cream {
+  fill: #F5F5DC;
+}
+
+.fill-white {
+  fill: #ffffff;
+}
+
+.fill-gray-900 {
+  fill: #111827;
+}
