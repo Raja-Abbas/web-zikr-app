@@ -109,9 +109,9 @@ export default function Home() {
   };
 
   const handleContinue = () => {
-    // Navigate from welcome screen to chatbot screen
+    // Navigate from welcome screen to personalization screen
     setShowWelcomeScreen(false);
-    setShowChatbot(true);
+    setShowPersonalizationScreen(true);
   };
 
   const handleInterestToggle = (interest: string) => {
