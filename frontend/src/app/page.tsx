@@ -2332,7 +2332,7 @@ export default function Home() {
             {/* Login Button */}
             <button
               onClick={handleLogin}
-              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:text-gray-900 transition-all duration-300 text-base md:text-lg font-medium"
+              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:!text-gray-900 hover:!font-bold transition-all duration-300 text-base md:text-lg font-medium"
             >
               Login
             </button>
@@ -2340,7 +2340,7 @@ export default function Home() {
             {/* Back Button */}
             <button
               onClick={handleBackToOptions}
-              className="w-full text-cream text-sm underline hover:text-gray-300 transition-colors"
+              className="w-full text-cream text-sm underline hover:!text-white hover:!font-semibold transition-colors"
             >
               Back to options
             </button>
@@ -2407,7 +2407,7 @@ export default function Home() {
             {/* Sign Up Button */}
             <button
               onClick={handleSignUp}
-              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:text-gray-900 transition-all duration-300 text-base md:text-lg font-medium"
+              className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:!text-gray-900 hover:!font-bold transition-all duration-300 text-base md:text-lg font-medium"
             >
               Sign up
             </button>
@@ -2415,7 +2415,7 @@ export default function Home() {
             {/* Back Button */}
             <button
               onClick={handleBackToOptions}
-              className="w-full text-cream text-sm underline hover:text-gray-300 transition-colors"
+              className="w-full text-cream text-sm underline hover:!text-white hover:!font-semibold transition-colors"
             >
               Back to options
             </button>
