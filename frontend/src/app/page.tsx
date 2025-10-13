@@ -51,6 +51,11 @@ export default function Home() {
     sounds: true,
     cloudSave: true
   });
+
+  // Navigation state manager
+  const [currentScreen, setCurrentScreen] = useState('auth');
+  const [navigationHistory, setNavigationHistory] = useState<string[]>(['auth']);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,8 +66,136 @@ export default function Home() {
     password: ''
   });
 
+  // Centralized navigation function
+  const navigateToScreen = (screenName: string, options: Record<string, string | boolean | number> = {}) => {
+    console.log('Navigating to:', screenName, options);
+
+    // Reset all screen states
+    setShowEmailForm(false);
+    setShowWelcomeScreen(false);
+    setShowPersonalizationScreen(false);
+    setShowHomeScreen(false);
+    setShowChatbot(false);
+    setShowAuthenticDuaSelection(false);
+    setShowDuaContent(false);
+    setShowDiscussMenu(false);
+    setShowCustomDuaGeneration(false);
+    setShowSpiritualReminder(false);
+    setShowAuthenticDuasGrid(false);
+    setShowChatbotDiscussionHub(false);
+    setShowDuaContentViewer(false);
+    setShowInteriorDesignSettings(false);
+    setShowWallOfDuas(false);
+    setShowReminderContent(false);
+    setShowGeneratedDua(false);
+    setShowLeavesMenu(false);
+
+    // Update navigation history
+    setNavigationHistory(prev => [...prev, screenName]);
+    setCurrentScreen(screenName);
+
+    // Set the appropriate screen state
+    switch (screenName) {
+      case 'auth':
+        // Default state - all screens are false
+        break;
+      case 'welcome':
+        setShowWelcomeScreen(true);
+        break;
+      case 'personalization':
+        setShowPersonalizationScreen(true);
+        break;
+      case 'home':
+        setShowHomeScreen(true);
+        setActiveTab('Home');
+        break;
+      case 'douas':
+        setShowHomeScreen(true);
+        setActiveTab('Douas');
+        break;
+      case 'reminder':
+        setShowHomeScreen(true);
+        setActiveTab('Reminder');
+        break;
+      case 'profile':
+        setShowHomeScreen(true);
+        setActiveTab('Profile');
+        break;
+      case 'wall-of-duas':
+        setShowHomeScreen(true);
+        setActiveTab('Douas');
+        setShowWallOfDuas(true);
+        break;
+      case 'chatbot':
+        setShowChatbot(true);
+        break;
+      case 'authentic-dua-selection':
+        setShowAuthenticDuaSelection(true);
+        break;
+      case 'custom-dua-generation':
+        setShowCustomDuaGeneration(true);
+        break;
+      case 'spiritual-reminder':
+        setShowSpiritualReminder(true);
+        if (options.category && typeof options.category === 'string') {
+          setSelectedReminderCategory(options.category);
+        }
+        break;
+      case 'authentic-duas-grid':
+        setShowAuthenticDuasGrid(true);
+        break;
+      case 'chatbot-discussion-hub':
+        setShowChatbotDiscussionHub(true);
+        break;
+      case 'dua-content-viewer':
+        setShowDuaContentViewer(true);
+        if (options.category && typeof options.category === 'string') {
+          setSelectedGridCategory(options.category);
+        }
+        break;
+      case 'interior-design-settings':
+        setShowInteriorDesignSettings(true);
+        break;
+      case 'email-form':
+        setShowEmailForm(true);
+        break;
+      default:
+        console.warn('Unknown screen:', screenName);
+        // Fallback to auth screen
+        setCurrentScreen('auth');
+        break;
+    }
+  };
+
+  // Navigation helper functions
+  const goBack = () => {
+    if (navigationHistory.length > 1) {
+      const newHistory = [...navigationHistory];
+      newHistory.pop(); // Remove current screen
+      const previousScreen = newHistory[newHistory.length - 1];
+      setNavigationHistory(newHistory);
+      navigateToScreen(previousScreen);
+    } else {
+      // Fallback to auth if no history
+      navigateToScreen('auth');
+    }
+  };
+
+  const resetToAuth = () => {
+    setNavigationHistory(['auth']);
+    navigateToScreen('auth');
+    setIsLogin(false);
+    setUserName('');
+    setSelectedInterests(['douas', 'community']);
+    setActiveTab('Home');
+    setChatInput('');
+    setDiscussionInput('');
+    setSelectedDuaCategory('To protect kids');
+    setSelectedGridCategory('Protection');
+  };
+
   const handleEmailAuth = () => {
-    setShowEmailForm(true);
+    navigateToScreen('email-form');
   };
 
   const handleGoogleAuth = () => {
@@ -94,7 +227,7 @@ export default function Home() {
     console.log('Sign up with:', formData);
     // Store user name and redirect to welcome screen after successful registration
     setUserName(formData.name);
-    setShowWelcomeScreen(true);
+    navigateToScreen('welcome');
   };
 
   const handleLogin = () => {
@@ -102,17 +235,16 @@ export default function Home() {
     console.log('Login with:', loginData);
     // For login, use a default name or stored name
     setUserName('Adnan'); // Default name for login users
-    setShowWelcomeScreen(true);
+    navigateToScreen('welcome');
   };
 
   const handleBackToOptions = () => {
-    setShowEmailForm(false);
+    navigateToScreen('auth');
   };
 
   const handleContinue = () => {
     // Navigate from welcome screen to personalization screen
-    setShowWelcomeScreen(false);
-    setShowPersonalizationScreen(true);
+    navigateToScreen('personalization');
   };
 
   const handleInterestToggle = (interest: string) => {
@@ -129,14 +261,11 @@ export default function Home() {
   const handlePersonalizationContinue = () => {
     // Save user preferences and navigate to main app home screen
     console.log('User preferences:', selectedInterests);
-    setShowPersonalizationScreen(false);
-    setShowHomeScreen(true);
+    navigateToScreen('home');
   };
 
-
-
   const handleWallOfDuasClick = () => {
-    setShowWallOfDuas(true);
+    navigateToScreen('wall-of-duas');
   };
 
   const handleLeavesMenuToggle = () => {
@@ -147,33 +276,34 @@ export default function Home() {
     console.log('Selected leaves menu item:', item);
     setShowLeavesMenu(false);
 
-    // Handle navigation based on selected item
+    // Handle navigation based on selected item using centralized navigation
     switch (item) {
       case 'Home':
-        setActiveTab('Home');
-        setShowWallOfDuas(false);
+        navigateToScreen('home');
         break;
       case 'Douas':
-        setActiveTab('Douas');
-        setShowWallOfDuas(false);
+        navigateToScreen('douas');
         break;
       case 'Reminder':
-        setActiveTab('Reminder');
-        setShowWallOfDuas(false);
+        navigateToScreen('reminder');
         break;
       case 'Profile':
-        setActiveTab('Profile');
-        setShowWallOfDuas(false);
+        navigateToScreen('profile');
         break;
       case 'Settings':
-        setShowInteriorDesignSettings(true);
-        setShowWallOfDuas(false);
+        navigateToScreen('interior-design-settings');
         break;
       case 'Wall of Duas':
-        setActiveTab('Douas');
-        setShowWallOfDuas(true);
+        navigateToScreen('wall-of-duas');
+        break;
+      case 'Chatbot':
+        navigateToScreen('chatbot');
+        break;
+      case 'Back':
+        goBack();
         break;
       default:
+        console.warn('Unknown menu item:', item);
         break;
     }
   };
@@ -380,29 +510,8 @@ export default function Home() {
   };
 
   const handleResetToAuth = () => {
-    // Reset to initial authentication state
-    setShowHomeScreen(false);
-    setShowPersonalizationScreen(false);
-    setShowWelcomeScreen(false);
-    setShowEmailForm(false);
-    setShowChatbot(false);
-    setShowAuthenticDuaSelection(false);
-    setShowDuaContent(false);
-    setShowDiscussMenu(false);
-    setShowCustomDuaGeneration(false);
-    setShowSpiritualReminder(false);
-    setShowAuthenticDuasGrid(false);
-    setShowChatbotDiscussionHub(false);
-    setShowDuaContentViewer(false);
-    setShowInteriorDesignSettings(false);
-    setIsLogin(false);
-    setUserName('');
-    setSelectedInterests(['douas', 'community']);
-    setActiveTab('Home');
-    setChatInput('');
-    setDiscussionInput('');
-    setSelectedDuaCategory('To protect kids');
-    setSelectedGridCategory('Protection');
+    // Reset to initial authentication state using centralized navigation
+    resetToAuth();
     setSelectedMenuItem('Interior design');
     setSelectedReminderCategory('Wudu steps');
     setShowReminderContent(false);
@@ -566,9 +675,65 @@ export default function Home() {
     }
   };
 
+  // Navigation validation and fallback
+  const validateNavigationState = () => {
+    const activeScreens = [
+      showHomeScreen,
+      showWelcomeScreen,
+      showPersonalizationScreen,
+      showChatbot,
+      showAuthenticDuaSelection,
+      showDuaContent,
+      showDiscussMenu,
+      showCustomDuaGeneration,
+      showSpiritualReminder,
+      showAuthenticDuasGrid,
+      showChatbotDiscussionHub,
+      showDuaContentViewer,
+      showInteriorDesignSettings,
+      showEmailForm
+    ].filter(Boolean);
+
+    // If multiple screens are active or no screens match current state, show fallback
+    if (activeScreens.length > 1) {
+      console.warn('Multiple screens active, resetting navigation');
+      resetToAuth();
+      return false;
+    }
+
+    return true;
+  };
+
+  // Fallback screen component
+  const FallbackScreen = () => (
+    <div className="flex-1 flex flex-col items-center justify-center text-center">
+      <div className="mb-8">
+        <span className="text-6xl mb-4 block">🍃</span>
+        <h2 className="text-2xl text-white font-bold mb-4">Navigation Error</h2>
+        <p className="text-gray-300 mb-6">
+          Something went wrong with navigation. Let&apos;s get you back on track.
+        </p>
+        <button
+          onClick={resetToAuth}
+          className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+        >
+          Return to Home
+        </button>
+      </div>
+
+      {/* Debug info */}
+      <div className="text-xs text-gray-500 mt-8">
+        <p>Current Screen: {currentScreen}</p>
+        <p>Navigation History: {navigationHistory.join(' → ')}</p>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
-      {showHomeScreen ? (
+      {!validateNavigationState() ? (
+        <FallbackScreen />
+      ) : showHomeScreen ? (
         /* Screen 7: Home Screen */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Top Bar/Header */}
@@ -887,6 +1052,152 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      ) : activeTab === 'Reminder' && showHomeScreen ? (
+        /* Reminder Tab Screen */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-6 pb-24">
+              {/* Header/Title */}
+              <div className="mb-8 text-center">
+                <h1 className="text-4xl text-white font-bold mb-3">Spiritual Reminders</h1>
+                <p className="text-white text-base leading-relaxed">
+                  Daily reminders to strengthen your connection with Allah
+                </p>
+              </div>
+
+              {/* Reminder Categories */}
+              <div className="space-y-4 mb-8">
+                {[
+                  { title: 'Prayer Times', icon: '🕌', description: 'Never miss your daily prayers' },
+                  { title: 'Dhikr Sessions', icon: '📿', description: 'Remember Allah throughout the day' },
+                  { title: 'Quran Reading', icon: '📖', description: 'Daily Quran recitation reminders' },
+                  { title: 'Wudu Steps', icon: '💧', description: 'Proper ablution guidance' },
+                  { title: 'Islamic Calendar', icon: '📅', description: 'Important Islamic dates and events' },
+                  { title: 'Charity Reminders', icon: '💝', description: 'Remember to give Zakat and Sadaqah' }
+                ].map((reminder, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelectedReminderCategory(reminder.title);
+                      setShowSpiritualReminder(true);
+                      setShowHomeScreen(false);
+                    }}
+                    className="w-full bg-slate-800 rounded-xl p-6 flex items-center space-x-4 hover:bg-slate-700 transition-colors text-left"
+                  >
+                    <span className="text-3xl">{reminder.icon}</span>
+                    <div className="flex-1">
+                      <h3 className="text-white text-lg font-semibold mb-1">{reminder.title}</h3>
+                      <p className="text-gray-300 text-sm">{reminder.description}</p>
+                    </div>
+                    <span className="text-white text-xl">→</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      ) : activeTab === 'Profile' && showHomeScreen ? (
+        /* Profile Tab Screen */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-6 pb-24">
+              {/* Header/Title */}
+              <div className="mb-8 text-center">
+                <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-4xl text-white">👤</span>
+                </div>
+                <h1 className="text-3xl text-white font-bold mb-2">{userName || 'Adnan'}</h1>
+                <p className="text-gray-300 text-base">
+                  Your spiritual journey with My.Zikr
+                </p>
+              </div>
+
+              {/* Profile Options */}
+              <div className="space-y-4 mb-8">
+                {[
+                  { title: 'My Saved Duas', icon: '🤲', description: 'View your bookmarked prayers' },
+                  { title: 'Prayer History', icon: '📊', description: 'Track your spiritual progress' },
+                  { title: 'Notification Settings', icon: '🔔', description: 'Customize your reminders' },
+                  { title: 'App Settings', icon: '⚙️', description: 'Personalize your experience', action: 'settings' },
+                  { title: 'Help & Support', icon: '❓', description: 'Get assistance and guidance' },
+                  { title: 'About My.Zikr', icon: 'ℹ️', description: 'Learn more about the app' }
+                ].map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (option.action === 'settings') {
+                        setShowInteriorDesignSettings(true);
+                        setShowHomeScreen(false);
+                      } else {
+                        console.log('Navigate to:', option.title);
+                      }
+                    }}
+                    className="w-full bg-slate-800 rounded-xl p-6 flex items-center space-x-4 hover:bg-slate-700 transition-colors text-left"
+                  >
+                    <span className="text-3xl">{option.icon}</span>
+                    <div className="flex-1">
+                      <h3 className="text-white text-lg font-semibold mb-1">{option.title}</h3>
+                      <p className="text-gray-300 text-sm">{option.description}</p>
+                    </div>
+                    <span className="text-white text-xl">→</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Sign Out Button */}
+              <div className="mt-8">
+                <button
+                  onClick={handleResetToAuth}
+                  className="w-full bg-red-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-700 transition-colors"
+                >
+                  Sign Out
+                </button>
               </div>
             </div>
           </div>
@@ -2619,7 +2930,9 @@ export default function Home() {
                 { name: 'Reminder', icon: '⏰', color: 'from-orange-400 to-orange-600' },
                 { name: 'Profile', icon: '👤', color: 'from-pink-400 to-pink-600' },
                 { name: 'Wall of Duas', icon: '🕌', color: 'from-emerald-400 to-emerald-600' },
-                { name: 'Settings', icon: '⚙️', color: 'from-gray-400 to-gray-600' }
+                { name: 'Chatbot', icon: '🤖', color: 'from-teal-400 to-teal-600' },
+                { name: 'Settings', icon: '⚙️', color: 'from-gray-400 to-gray-600' },
+                { name: 'Back', icon: '←', color: 'from-red-400 to-red-600' }
               ].map((item, index) => (
                 <button
                   key={item.name}
