@@ -38,7 +38,7 @@ export default function Home() {
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
   const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [userName, setUserName] = useState('');
-  const [selectedInterests, setSelectedInterests] = useState<string[]>(['douas', 'community']);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedDouaCategory, setSelectedDouaCategory] = useState('Authentic douas');
   const [customDouaText, setCustomDouaText] = useState('');
