@@ -428,21 +428,44 @@ export default function Home() {
   const handleMenuItemSelect = (item: string) => {
     setSelectedMenuItem(item);
     console.log('Selected menu item:', item);
+    setShowLeavesMenu(false); // Close leaves menu
+    setShowDiscussMenu(false); // Close side menu if open
+
     // Handle navigation to different sections using centralized navigation
-    if (item === 'Discuss') {
-      setShowDiscussMenu(false);
-      handleDiscussClick();
-    } else if (item === 'My.Zikr+') {
-      console.log('Navigate to premium subscription');
-    } else if (item === 'The wall of duas') {
-      setShowDiscussMenu(false);
-      navigateToScreen('wall-of-duas');
-    } else if (item === 'Interior design') {
-      setShowDiscussMenu(false);
-      navigateToScreen('interior-design-settings');
+    switch (item) {
+      case 'Discuss':
+        handleDiscussClick();
+        break;
+      case 'Duas':
+        navigateToScreen('douas');
+        break;
+      case 'Reminders':
+        navigateToScreen('reminder');
+        break;
+      case 'My notes':
+        console.log('Navigate to notes section');
+        // TODO: Implement notes navigation
+        break;
+      case 'The wall of duas':
+        navigateToScreen('wall-of-duas');
+        break;
+      case 'My profile':
+        navigateToScreen('profile');
+        break;
+      case 'Interior design':
+        navigateToScreen('interior-design-settings');
+        break;
+      case 'My.Zikr+':
+        console.log('Navigate to premium subscription');
+        // TODO: Implement premium navigation
+        break;
+      case 'Back':
+        goBack();
+        break;
+      default:
+        console.warn('Unknown menu item:', item);
+        break;
     }
-    // Close menu after selection (optional)
-    // setShowDiscussMenu(false);
   };
 
   const handleCloseDiscussMenu = () => {
@@ -900,11 +923,20 @@ export default function Home() {
           <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40]">
           {/* Fixed Header */}
           <div className="px-6 py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
-            {/* Header with Leaf Icon and Action Buttons */}
+            {/* Header with Back Arrow, Leaf Icon and Action Buttons */}
             <div className="mb-4">
               <div className="flex items-center justify-between">
-                {/* Left: Leaf Icon + Title */}
+                {/* Left: Back Arrow + Leaf Icon + Title */}
                 <div className="flex items-center space-x-3">
+                  <button
+                    onClick={() => {
+                      setShowWallOfDuas(false);
+                      setActiveTab('Douas');
+                    }}
+                    className="text-white text-2xl hover:text-green-400 transition-colors"
+                  >
+                    ←
+                  </button>
                   <span className="text-2xl">🍃</span>
                   <div>
                     <h1 className="text-xl text-white font-medium">The wall of douas</h1>
@@ -1314,12 +1346,23 @@ export default function Home() {
       ) : activeTab === 'Douas' && showHomeScreen && !showWallOfDuas ? (
         /* Screen 8: Douas Tab */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header with Back Arrow */}
+          <div className="flex items-center justify-between px-6 py-4 mb-4">
+            <button
+              onClick={() => setActiveTab('Home')}
+              className="text-white text-2xl hover:text-green-400 transition-colors"
+            >
+              ←
+            </button>
+            <h1 className="text-2xl text-white font-bold">Douas</h1>
+            <div className="w-8"></div> {/* Spacer for centering */}
+          </div>
+
           {/* Main Content - Scrollable */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-6 pb-24">
-              {/* Header/Title */}
+            <div className="px-6 py-2 pb-24">
+              {/* Subtitle */}
               <div className="mb-8 text-center">
-                <h1 className="text-4xl text-white font-bold mb-3">Douas</h1>
                 <p className="text-white text-base leading-relaxed">
                   Douas to connect to Allah and to find comfort with heartfelt words
                 </p>
@@ -1432,12 +1475,23 @@ export default function Home() {
       ) : activeTab === 'Reminder' && showHomeScreen ? (
         /* Reminder Tab Screen */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header with Back Arrow */}
+          <div className="flex items-center justify-between px-6 py-4 mb-4">
+            <button
+              onClick={() => setActiveTab('Home')}
+              className="text-white text-2xl hover:text-green-400 transition-colors"
+            >
+              ←
+            </button>
+            <h1 className="text-2xl text-white font-bold">Spiritual Reminders</h1>
+            <div className="w-8"></div> {/* Spacer for centering */}
+          </div>
+
           {/* Main Content - Scrollable */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-6 pb-24">
-              {/* Header/Title */}
+            <div className="px-6 py-2 pb-24">
+              {/* Subtitle */}
               <div className="mb-8 text-center">
-                <h1 className="text-4xl text-white font-bold mb-3">Spiritual Reminders</h1>
                 <p className="text-white text-base leading-relaxed">
                   Daily reminders to strengthen your connection with Allah
                 </p>
@@ -1497,15 +1551,27 @@ export default function Home() {
       ) : activeTab === 'Profile' && showHomeScreen ? (
         /* Profile Tab Screen */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+          {/* Header with Back Arrow */}
+          <div className="flex items-center justify-between px-6 py-4 mb-4">
+            <button
+              onClick={() => setActiveTab('Home')}
+              className="text-white text-2xl hover:text-green-400 transition-colors"
+            >
+              ←
+            </button>
+            <h1 className="text-2xl text-white font-bold">My Profile</h1>
+            <div className="w-8"></div> {/* Spacer for centering */}
+          </div>
+
           {/* Main Content - Scrollable */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-6 pb-24">
-              {/* Header/Title */}
+            <div className="px-6 py-2 pb-24">
+              {/* Profile Header */}
               <div className="mb-8 text-center">
                 <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl text-white">👤</span>
                 </div>
-                <h1 className="text-3xl text-white font-bold mb-2">{userName || 'Adnan'}</h1>
+                <h2 className="text-3xl text-white font-bold mb-2">{userName || 'Adnan'}</h2>
                 <p className="text-gray-300 text-base">
                   Your spiritual journey with My.Zikr
                 </p>
@@ -1755,6 +1821,17 @@ export default function Home() {
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+          {/* Back Arrow */}
+          <button
+            onClick={() => {
+              setShowPersonalizationScreen(false);
+              setShowWelcomeAdnanScreen(true);
+            }}
+            className="absolute top-8 left-8 text-white text-2xl hover:text-green-400 transition-colors"
+          >
+            ←
+          </button>
+
           {/* Logo Section */}
           <div className="text-center mb-8">
             {/* Floating Leaf Icon */}
@@ -1849,6 +1926,17 @@ export default function Home() {
       ) : showWelcomeAdnanScreen ? (
         /* Screen 3: Welcome Adnan Screen - Modern Design */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+          {/* Back Arrow */}
+          <button
+            onClick={() => {
+              setShowWelcomeAdnanScreen(false);
+              setShowWelcomeScreen(true);
+            }}
+            className="absolute top-8 left-8 text-white text-2xl hover:text-green-400 transition-colors"
+          >
+            ←
+          </button>
+
           {/* Logo Section */}
           <div className="text-center mb-20" style={{ paddingTop: '80px' }}>
             {/* Arabic Calligraphy Logo */}
@@ -1940,8 +2028,19 @@ export default function Home() {
       ) : showWelcomeScreen ? (
         /* Screen 4: Confirmation and Welcome Screen */
         <>
-          {/* Green Leaf Icon in upper-left corner */}
-          <div className="absolute top-8 left-8">
+          {/* Back Arrow */}
+          <button
+            onClick={() => {
+              setShowWelcomeScreen(false);
+              setCurrentScreen('auth');
+            }}
+            className="absolute top-8 left-8 text-white text-2xl hover:text-green-400 transition-colors z-10"
+          >
+            ←
+          </button>
+
+          {/* Green Leaf Icon in upper-right corner */}
+          <div className="absolute top-8 right-8">
             <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
@@ -3537,7 +3636,7 @@ export default function Home() {
 
             {/* Menu Title */}
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Navigation</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">My.Zikr Menu</h2>
               <div className="flex justify-center space-x-1">
                 <span className="text-lg">🍃</span>
                 <span className="text-lg">🍃</span>
@@ -3545,29 +3644,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Menu Items */}
-            <div className="space-y-3">
+            {/* Menu Items - Side Menu Style */}
+            <div className="space-y-2">
               {[
-                { name: 'Home', icon: '🏠', color: 'from-blue-400 to-blue-600' },
-                { name: 'Douas', icon: '🤲', color: 'from-purple-400 to-purple-600' },
-                { name: 'Reminder', icon: '⏰', color: 'from-orange-400 to-orange-600' },
-                { name: 'Discuss', icon: '💬', color: 'from-indigo-400 to-indigo-600' },
-                { name: 'Profile', icon: '👤', color: 'from-pink-400 to-pink-600' },
-                { name: 'Wall of Duas', icon: '🕌', color: 'from-emerald-400 to-emerald-600' },
-                { name: 'Chatbot', icon: '🤖', color: 'from-teal-400 to-teal-600' },
-                { name: 'Settings', icon: '⚙️', color: 'from-gray-400 to-gray-600' },
-                { name: 'Back', icon: '←', color: 'from-red-400 to-red-600' }
+                { id: 'discuss', icon: '💬', text: 'Discuss', color: 'from-blue-500 to-blue-600' },
+                { id: 'duas', icon: '🤲', text: 'Duas', color: 'from-purple-500 to-purple-600' },
+                { id: 'reminders', icon: '⏰', text: 'Reminders', color: 'from-orange-500 to-orange-600' },
+                { id: 'notes', icon: '📝', text: 'My notes', color: 'from-green-500 to-green-600' },
+                { id: 'wall', icon: '🕌', text: 'The wall of duas', color: 'from-emerald-500 to-emerald-600' },
+                { id: 'profile', icon: '👤', text: 'My profile', color: 'from-pink-500 to-pink-600' },
+                { id: 'interior', icon: '🏠', text: 'Interior design', color: 'from-indigo-500 to-indigo-600' },
+                { id: 'premium', icon: '⭐', text: 'My.Zikr+', color: 'from-yellow-500 to-yellow-600' },
+                { id: 'back', icon: '←', text: 'Back', color: 'from-red-500 to-red-600' }
               ].map((item, index) => (
                 <button
-                  key={item.name}
-                  onClick={() => handleLeavesMenuItemSelect(item.name)}
-                  className={`w-full bg-gradient-to-r ${item.color} text-white py-4 px-6 rounded-2xl flex items-center space-x-4 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  key={item.id}
+                  onClick={() => handleMenuItemSelect(item.text)}
+                  className={`w-full bg-gradient-to-r ${item.color} text-white py-3 px-4 rounded-xl flex items-center space-x-3 hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg`}
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="text-lg font-semibold">{item.name}</span>
+                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-base font-medium">{item.text}</span>
                   <div className="flex-1" />
-                  <span className="text-xl opacity-70">→</span>
+                  <span className="text-lg opacity-70">→</span>
                 </button>
               ))}
             </div>
