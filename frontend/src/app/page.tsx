@@ -1716,59 +1716,59 @@ export default function Home() {
               <div className="mt-6">
                 {selectedDuaCategory === 'To protect kids' && (
                   <div>
-                    {/* Category Title */}
-                    <div className="mb-6 text-center">
-                      <h2 className="text-white text-lg font-medium">To Protect Kids</h2>
-                      <p className="text-[#87CEEB] text-sm mt-1">Dua for protection of children</p>
+                    {/* Category Title - Mobile Responsive */}
+                    <div className="mb-4 sm:mb-6 text-center">
+                      <h2 className="text-white text-base sm:text-lg font-medium">To Protect Kids</h2>
+                      <p className="text-[#87CEEB] text-xs sm:text-sm mt-1">Dua for protection of children</p>
                     </div>
 
-                    {/* Dua Text Display */}
-                    <div className="bg-[#1A1A2E] rounded-lg p-6 mb-6">
-                      {/* Arabic Text */}
-                      <div className="text-right mb-4">
-                        <p className="text-white text-lg leading-relaxed font-arabic">
+                    {/* Dua Text Display - Mobile Responsive */}
+                    <div className="bg-[#1A1A2E] rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+                      {/* Arabic Text - Mobile Responsive */}
+                      <div className="text-right mb-3 sm:mb-4">
+                        <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed font-arabic">
                           أَعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ، مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
                         </p>
                       </div>
 
-                      {/* Transliteration */}
-                      <div className="mb-4">
-                        <p className="text-[#87CEEB] text-sm italic leading-relaxed">
+                      {/* Transliteration - Mobile Responsive */}
+                      <div className="mb-3 sm:mb-4">
+                        <p className="text-[#87CEEB] text-xs sm:text-sm italic leading-relaxed">
                           U&apos;īdhukumā bi-kalimāti l-lāhi t-tāmmati min kulli shayṭānin wa hāmmatin, wa min kulli ʿaynin lāmmatin.
                         </p>
                       </div>
 
-                      {/* English Translation */}
-                      <div className="mb-4">
-                        <p className="text-white text-sm leading-relaxed">
+                      {/* English Translation - Mobile Responsive */}
+                      <div className="mb-3 sm:mb-4">
+                        <p className="text-white text-xs sm:text-sm leading-relaxed">
                           I seek protection for you from the perfect words of Allah against every devil, from every harmful animal (or thing) and from every evil eye.
                         </p>
                       </div>
 
-                      {/* Reference */}
+                      {/* Reference - Mobile Responsive */}
                       <div>
-                        <p className="text-[#9CA3AF] text-xs">
+                        <p className="text-[#9CA3AF] text-xs leading-relaxed">
                           [1] al-Bukhāri N°6312, voir Fath al-Bari 11/113, et Muslim (N°2711, 4/2083).
                         </p>
                       </div>
                     </div>
 
-                    {/* Audio Controls */}
-                    <div className="flex justify-center items-center space-x-6 mb-8">
+                    {/* Audio Controls - Mobile Responsive */}
+                    <div className="flex justify-center items-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                       <button className="text-white hover:text-green-400 transition-colors">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
                         </svg>
                       </button>
 
-                      <button className="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 transition-colors">
-                        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <button className="bg-green-600 hover:bg-green-700 text-white rounded-full p-3 sm:p-4 transition-colors">
+                        <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"/>
                         </svg>
                       </button>
 
                       <button className="text-white hover:text-green-400 transition-colors">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
                         </svg>
                       </button>
@@ -1776,10 +1776,10 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* Placeholder for other categories */}
+                {/* Placeholder for other categories - Mobile Responsive */}
                 {selectedDuaCategory !== 'To protect kids' && selectedDuaCategory !== '' && (
-                  <div className="text-center py-8">
-                    <p className="text-white text-sm opacity-75">
+                  <div className="text-center py-6 sm:py-8">
+                    <p className="text-white text-xs sm:text-sm opacity-75 px-4">
                       Dua content for &quot;{selectedDuaCategory}&quot; will be available soon.
                     </p>
                   </div>
@@ -1787,20 +1787,20 @@ export default function Home() {
               </div>
             )}
 
-            {/* Instruction Text - Only show when no category is selected */}
+            {/* Instruction Text - Only show when no category is selected - Mobile Responsive */}
             {!selectedDuaCategory && (
-              <div className="text-center">
-                <p className="text-white text-sm opacity-75">
+              <div className="text-center px-4">
+                <p className="text-white text-xs sm:text-sm opacity-75">
                   Select a category above to view the corresponding dua
                 </p>
               </div>
             )}
           </div>
 
-          {/* Bottom Navigation/Action Bar - Only show when dua is displayed */}
+          {/* Bottom Navigation/Action Bar - Mobile Responsive - Only show when dua is displayed */}
           {selectedDuaCategory === 'To protect kids' && (
-            <div className="bg-[#134E4A] px-4 py-3">
-              <div className="flex flex-wrap justify-center gap-2">
+            <div className="bg-[#134E4A] px-3 sm:px-4 py-2 sm:py-3">
+              <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
                 {[
                   'Save it', 'Share it', 'Pounder it', 'Another one',
                   'The whole collection', 'Main menu'
@@ -1808,16 +1808,16 @@ export default function Home() {
                   <button
                     key={action}
                     onClick={() => handleToProtectKidsDuaAction(action)}
-                    className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors"
+                    className="bg-[#0F3D34] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors"
                   >
                     {action}
                   </button>
                 ))}
 
-                {/* Discuss button with chat icon */}
+                {/* Discuss button with chat icon - Mobile Responsive */}
                 <button
                   onClick={() => handleToProtectKidsDuaAction('Discuss')}
-                  className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors flex items-center space-x-1"
+                  className="bg-[#0F3D34] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors flex items-center space-x-1"
                 >
                   <span>Discuss</span>
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -2191,13 +2191,13 @@ export default function Home() {
       ) : showAuthenticDuaSelection ? (
         /* Screen 14: Authentic Dua Selection */
         <>
-          {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
-            {/* Left: Back arrow and green leaf icon */}
-            <div className="flex items-center space-x-4">
+          {/* Header/Top Bar - Mobile Responsive */}
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6">
+            {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <button
                 onClick={handleBackFromAuthenticDua}
-                className="text-white text-2xl hover:text-gray-300 transition-colors"
+                className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors"
               >
                 ←
               </button>
@@ -2205,38 +2205,38 @@ export default function Home() {
                 onClick={() => setShowDiscussMenu(true)}
                 className="hover:scale-110 transition-transform"
               >
-                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
               </button>
             </div>
 
-            {/* Right: Current Mode Indicator */}
-            <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
-              <span className="text-white text-sm">≈</span>
-              <span className="text-white text-sm font-medium">Authentic dua</span>
+            {/* Right: Current Mode Indicator - Mobile Responsive */}
+            <div className="bg-slate-800 border border-white rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 flex items-center space-x-1 sm:space-x-2">
+              <span className="text-white text-xs sm:text-sm">≈</span>
+              <span className="text-white text-xs sm:text-sm font-medium">Authentic dua</span>
             </div>
           </div>
 
-          {/* Chat Message (Bot's Response) */}
-          <div className="w-full max-w-4xl mx-auto mb-8 px-6">
-            <div className="flex items-start space-x-3 mb-6">
-              {/* Zikr bot logo/icon */}
-              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
+          {/* Chat Message (Bot's Response) - Mobile Responsive */}
+          <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6">
+            <div className="flex items-start space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+              {/* Zikr bot logo/icon - Mobile Responsive */}
+              <div className="bg-teal-700 rounded-full p-1.5 sm:p-2 flex-shrink-0">
                 <span className="text-white text-xs font-bold">Z</span>
               </div>
 
-              {/* Chat Bubble */}
-              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
-                <p className="text-white text-base leading-relaxed">
+              {/* Chat Bubble - Mobile Responsive */}
+              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-4 sm:p-6 max-w-xs sm:max-w-2xl">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   That&apos;s great! I can help you with duas from Hisnul Muslim and from the Holy Qur&apos;an. Please choose below with dua you would like to read.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Dua Option Pills (Selection Choices) */}
-          <div className="w-full max-w-4xl mx-auto px-6 mb-8">
+          {/* Dua Option Pills (Selection Choices) - Mobile Responsive */}
+          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center">
               {[
                 'Anxiety',
@@ -2266,105 +2266,105 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dua Display Card (Content Area) */}
+          {/* Dua Display Card (Content Area) - Mobile Responsive */}
           {showDuaContent && duaContent[selectedDuaCategory as keyof typeof duaContent] && (
-            <div className="w-full max-w-4xl mx-auto px-6 mb-8">
-              <div className="bg-cream rounded-2xl p-8 shadow-lg">
-                {/* Title/Context */}
-                <div className="text-center mb-6">
-                  <p className="text-gray-500 text-sm mb-4">{selectedDuaCategory}</p>
+            <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
+              <div className="bg-cream rounded-2xl p-4 sm:p-8 shadow-lg">
+                {/* Title/Context - Mobile Responsive */}
+                <div className="text-center mb-4 sm:mb-6">
+                  <p className="text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4">{selectedDuaCategory}</p>
                 </div>
 
-                {/* Arabic Text */}
-                <div className="text-center mb-6">
-                  <p className="text-gray-900 text-2xl md:text-3xl font-arabic leading-relaxed mb-6">
+                {/* Arabic Text - Mobile Responsive */}
+                <div className="text-center mb-4 sm:mb-6">
+                  <p className="text-gray-900 text-lg sm:text-2xl md:text-3xl font-arabic leading-relaxed mb-4 sm:mb-6">
                     {duaContent[selectedDuaCategory as keyof typeof duaContent].arabic}
                   </p>
                 </div>
 
-                {/* Transliteration */}
-                <div className="text-center mb-6">
-                  <p className="text-gray-700 text-lg italic leading-relaxed">
+                {/* Transliteration - Mobile Responsive */}
+                <div className="text-center mb-4 sm:mb-6">
+                  <p className="text-gray-700 text-sm sm:text-lg italic leading-relaxed">
                     {duaContent[selectedDuaCategory as keyof typeof duaContent].transliteration}
                   </p>
                 </div>
 
-                {/* English Translation */}
-                <div className="text-center mb-6">
-                  <p className="text-gray-800 text-base leading-relaxed">
+                {/* English Translation - Mobile Responsive */}
+                <div className="text-center mb-4 sm:mb-6">
+                  <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
                     {duaContent[selectedDuaCategory as keyof typeof duaContent].translation}
                   </p>
                 </div>
 
-                {/* Source Reference */}
-                <div className="text-center mb-8">
-                  <p className="text-gray-500 text-sm">
+                {/* Source Reference - Mobile Responsive */}
+                <div className="text-center mb-6 sm:mb-8">
+                  <p className="text-gray-500 text-xs sm:text-sm">
                     {duaContent[selectedDuaCategory as keyof typeof duaContent].source}
                   </p>
                 </div>
 
-                {/* Media Controls */}
-                <div className="flex justify-center items-center space-x-6 mb-8">
+                {/* Media Controls - Mobile Responsive */}
+                <div className="flex justify-center items-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                   <button className="text-gray-600 hover:text-gray-800 transition-colors">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6,5.75L10.25,10H7V16H13.5L15.5,18H7A2,2 0 0,1 5,16V10H1.75L6,5.75M18,18.25L13.75,14H17V8H10.5L8.5,6H17A2,2 0 0,1 19,8V14H22.25L18,18.25Z"/>
                     </svg>
                   </button>
 
                   <button
                     onClick={handlePlayPause}
-                    className="bg-teal-600 text-white p-4 rounded-full hover:bg-teal-700 transition-colors"
+                    className="bg-teal-600 text-white p-3 sm:p-4 rounded-full hover:bg-teal-700 transition-colors"
                   >
                     {isPlaying ? (
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
                       </svg>
                     ) : (
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
                       </svg>
                     )}
                   </button>
 
                   <button className="text-gray-600 hover:text-gray-800 transition-colors">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M18,5.75L22.25,10H19V16H12.5L10.5,18H19A2,2 0 0,0 21,16V10H24.25L20,5.75M6,18.25L1.75,14H5V8H11.5L13.5,6H5A2,2 0 0,0 3,8V14H0.75L5,18.25Z"/>
                     </svg>
                   </button>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-4">
-                  {/* Row 1 */}
-                  <div className="flex flex-wrap justify-center gap-3">
+                {/* Action Buttons - Mobile Responsive */}
+                <div className="space-y-3 sm:space-y-4">
+                  {/* Row 1 - Mobile Responsive */}
+                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                     {['Save it', 'Share it', 'Pounder it', 'Another one'].map((action) => (
                       <button
                         key={action}
                         onClick={() => handleDuaAction(action)}
-                        className="bg-slate-800 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-700 transition-colors"
+                        className="bg-slate-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm hover:bg-slate-700 transition-colors"
                       >
                         {action}
                       </button>
                     ))}
                   </div>
 
-                  {/* Row 2 */}
-                  <div className="flex flex-wrap justify-center gap-3">
+                  {/* Row 2 - Mobile Responsive */}
+                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                     <button
                       onClick={() => handleDuaAction('The whole collection')}
-                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors"
+                      className="bg-slate-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm hover:bg-slate-600 transition-colors"
                     >
                       The whole collection
                     </button>
                     <button
                       onClick={() => handleDuaAction('Main menu')}
-                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors"
+                      className="bg-slate-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm hover:bg-slate-600 transition-colors"
                     >
                       Main menu
                     </button>
                     <button
                       onClick={() => handleDuaAction('Discuss')}
-                      className="bg-slate-700 text-white px-4 py-2 rounded-full text-sm hover:bg-slate-600 transition-colors flex items-center space-x-2"
+                      className="bg-slate-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm hover:bg-slate-600 transition-colors flex items-center space-x-1 sm:space-x-2"
                     >
                       <span>≈</span>
                       <span>Discuss</span>
