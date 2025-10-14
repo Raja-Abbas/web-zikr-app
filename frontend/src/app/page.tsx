@@ -937,7 +937,12 @@ export default function Home() {
                   >
                     ←
                   </button>
-                  <span className="text-2xl">🍃</span>
+                  <button
+                    onClick={() => setShowDiscussMenu(true)}
+                    className="text-2xl hover:text-green-300 transition-colors"
+                  >
+                    🍃
+                  </button>
                   <div>
                     <h1 className="text-xl text-white font-medium">The wall of douas</h1>
                   </div>
@@ -1648,7 +1653,12 @@ export default function Home() {
           <div className="bg-[#134E4A] px-4 py-3 flex items-center justify-between">
             {/* Left side - Back arrow and leaf icon */}
             <div className="flex items-center space-x-3">
-              <span className="text-green-400 text-lg">🍃</span>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="text-green-400 text-lg hover:text-green-300 transition-colors"
+              >
+                🍃
+              </button>
               <button
                 onClick={handleBackFromAuthenticDuaCategories}
                 className="text-white hover:text-green-400 transition-colors"
@@ -2081,12 +2091,15 @@ export default function Home() {
       ) : showChatbot ? (
         /* Chatbot Initial Greeting Screen */
         <>
-          {/* Green Leaf Icon in upper-left corner */}
-          <div className="absolute top-8 left-8">
-            <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+          {/* Green Leaf Icon in upper-left corner - Clickable for Side Menu */}
+          <button
+            onClick={() => setShowDiscussMenu(true)}
+            className="absolute top-8 left-8 hover:scale-110 transition-transform"
+          >
+            <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
-          </div>
+          </button>
 
           {/* Logo and Header Section */}
           <div className="text-center mb-8">
@@ -2188,9 +2201,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Right: Current Mode Indicator */}
@@ -2378,9 +2396,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Right: Current Mode Indicator */}
@@ -2536,9 +2559,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Right: Current Mode Indicator */}
@@ -2670,9 +2698,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Center Title */}
@@ -2769,9 +2802,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Center Title Pill */}
@@ -2894,9 +2932,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Title */}
@@ -3024,9 +3067,14 @@ export default function Home() {
               >
                 ←
               </button>
-              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-              </svg>
+              <button
+                onClick={() => setShowDiscussMenu(true)}
+                className="hover:scale-110 transition-transform"
+              >
+                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </button>
             </div>
 
             {/* Title */}
