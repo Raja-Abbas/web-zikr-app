@@ -1,8 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useDuas } from '../hooks/useDuas';
 
 export default function Home() {
+  // Dua data and state management
+  const {
+    categories: duaCategories,
+    dailyDua,
+    selectedCategory,
+    selectedDua,
+    showDuaContent,
+    selectDuaCategory,
+    clearSelection,
+    getRecommendedDuas,
+  } = useDuas();
+
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
@@ -16,7 +29,6 @@ export default function Home() {
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
-  const [showDuaContent, setShowDuaContent] = useState(false);
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
   const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
   const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
@@ -35,6 +47,7 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [customDuaRequest, setCustomDuaRequest] = useState('');
   const [showGeneratedDua, setShowGeneratedDua] = useState(false);
+  const [showFeelingSelector, setShowFeelingSelector] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0);
   const [userSettings, setUserSettings] = useState({
     name: 'Adnan Fida',
@@ -88,7 +101,6 @@ export default function Home() {
     setShowHomeScreen(false);
     setShowChatbot(false);
     setShowAuthenticDuaSelection(false);
-    setShowDuaContent(false);
     setShowDiscussMenu(false);
     setShowCustomDuaGeneration(false);
     setShowSpiritualReminder(false);
@@ -102,6 +114,7 @@ export default function Home() {
     setShowReminderContent(false);
     setShowGeneratedDua(false);
     setShowLeavesMenu(false);
+    setShowFeelingSelector(false);
 
     // Update navigation history
     setNavigationHistory(prev => [...prev, screenName]);
@@ -363,7 +376,7 @@ export default function Home() {
 
   const handleDuaCategorySelect = (category: string) => {
     setSelectedDuaCategory(category);
-    setShowDuaContent(true);
+    // Note: showDuaContent is now managed by the useDuas hook
     console.log('Selected dua category:', category);
   };
 
@@ -376,7 +389,7 @@ export default function Home() {
     console.log('Dua action:', action);
     if (action === 'Discuss') {
       setShowHomeScreen(false);
-      setShowDuaContent(false);
+      clearSelection(); // Clear dua selection using the hook
       setShowChatbotDiscussionHub(true);
     }
     // Handle different actions like save, share, etc.
@@ -644,8 +657,8 @@ export default function Home() {
     // Add more reminders as needed
   };
 
-  // Authentic Duas Categories (French as in screenshot)
-  const duaCategories = [
+  // Authentic Duas Categories for Grid (French as in screenshot)
+  const authenticDuaCategories = [
     { id: 'tout', icon: '🤲', name: 'Tout', chapters: '132 chapitres' },
     { id: 'matin-soir', icon: '🌅', name: 'Matin & Soir', chapters: '15 chapitres' },
     { id: 'maison-famille', icon: '🏠', name: 'Maison & Famille', chapters: '12 chapitres' },
@@ -778,21 +791,28 @@ export default function Home() {
                 {/* Arabic Calligraphy */}
                 <div className="text-center mb-4">
                   <div className="text-2xl text-gray-900 font-arabic leading-relaxed">
-                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                    {dailyDua.arabic}
                   </div>
                 </div>
 
                 {/* Transliteration */}
                 <div className="text-center mb-2">
                   <p className="text-gray-900 font-medium">
-                    Allahuma innaka affuwun tuħibbun afwa fafu anni
+                    {dailyDua.transliteration}
                   </p>
                 </div>
 
                 {/* Translation */}
                 <div className="text-center mb-4">
                   <p className="text-gray-700 text-sm">
-                    Yā Allāh, You are the forgiver, you love to forgive, so forgive me
+                    {dailyDua.translation}
+                  </p>
+                </div>
+
+                {/* Source */}
+                <div className="text-center mb-4">
+                  <p className="text-gray-500 text-xs">
+                    {dailyDua.source}
                   </p>
                 </div>
 
@@ -813,36 +833,65 @@ export default function Home() {
               {/* Section 1: Customize your recommendations */}
               <div>
                 <h3 className="text-white text-lg font-semibold mb-3">Customize your recommendations</h3>
-                <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-white text-xl">😊</span>
-                    <span className="text-white font-medium">How do you feel today?</span>
-                  </div>
-                  <span className="text-white">→</span>
-                </button>
+                <div className="space-y-3">
+                  <button
+                    onClick={() => setShowFeelingSelector(!showFeelingSelector)}
+                    className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <span className="text-white text-xl">😊</span>
+                      <span className="text-white font-medium">How do you feel today?</span>
+                    </div>
+                    <span className="text-white">{showFeelingSelector ? '↓' : '→'}</span>
+                  </button>
+
+                  {/* Feeling-based Dua Categories */}
+                  {showFeelingSelector && (
+                    <div className="bg-slate-700 rounded-xl p-4 space-y-2">
+                      <div className="grid grid-cols-2 gap-2">
+                        {duaCategories.filter(cat => ['anxiety', 'sadness', 'gratitude', 'forgiveness'].includes(cat.id)).map((category) => (
+                          <button
+                            key={category.id}
+                            onClick={() => {
+                              selectDuaCategory(category.id);
+                              setShowFeelingSelector(false);
+                            }}
+                            className="bg-slate-600 hover:bg-slate-500 rounded-lg p-3 text-left transition-colors"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <span className="text-white text-sm">{category.icon}</span>
+                              <span className="text-white text-sm font-medium">{category.name}</span>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Section 2: Recommendations for you */}
               <div>
                 <h3 className="text-white text-lg font-semibold mb-3">Recommendations for you</h3>
                 <div className="space-y-3">
-                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-white text-xl">🤲</span>
-                      <span className="text-white font-medium">Dua for anxiety</span>
-                    </div>
-                    <span className="text-white">→</span>
-                  </button>
+                  {getRecommendedDuas().map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => selectDuaCategory(category.id)}
+                      className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <span className="text-white text-xl">{category.icon}</span>
+                        <span className="text-white font-medium">{category.name}</span>
+                      </div>
+                      <span className="text-white">→</span>
+                    </button>
+                  ))}
 
-                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-white text-xl">🙏</span>
-                      <span className="text-white font-medium">Dua for gratitude</span>
-                    </div>
-                    <span className="text-white">→</span>
-                  </button>
-
-                  <button className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors">
+                  <button
+                    onClick={handleWallOfDuasClick}
+                    className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+                  >
                     <div className="flex items-center space-x-3">
                       <span className="text-white text-xl">🕌</span>
                       <span className="text-white font-medium">The wall of Duas</span>
@@ -851,6 +900,67 @@ export default function Home() {
                   </button>
                 </div>
               </div>
+
+              {/* Selected Dua Content Display */}
+              {showDuaContent && selectedDua && (
+                <div className="mt-8">
+                  <div className="bg-cream rounded-2xl p-6">
+                    {/* Back Button */}
+                    <div className="flex items-center mb-4">
+                      <button
+                        onClick={clearSelection}
+                        className="text-gray-900 text-xl hover:text-gray-700 transition-colors mr-3"
+                      >
+                        ←
+                      </button>
+                      <h3 className="text-gray-900 text-lg font-semibold">
+                        {selectedCategory && duaCategories.find(cat => cat.id === selectedCategory)?.name}
+                      </h3>
+                    </div>
+
+                    {/* Arabic Text */}
+                    <div className="text-center mb-4">
+                      <p className="text-gray-900 text-2xl md:text-3xl font-arabic leading-relaxed">
+                        {selectedDua.arabic}
+                      </p>
+                    </div>
+
+                    {/* Transliteration */}
+                    <div className="text-center mb-4">
+                      <p className="text-gray-700 text-lg italic leading-relaxed">
+                        {selectedDua.transliteration}
+                      </p>
+                    </div>
+
+                    {/* Translation */}
+                    <div className="text-center mb-4">
+                      <p className="text-gray-800 text-base leading-relaxed">
+                        {selectedDua.translation}
+                      </p>
+                    </div>
+
+                    {/* Source */}
+                    <div className="text-center mb-6">
+                      <p className="text-gray-500 text-sm">
+                        {selectedDua.source}
+                      </p>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex justify-center space-x-6">
+                      <button className="text-gray-900 text-xl hover:text-gray-700 transition-colors">
+                        🔊
+                      </button>
+                      <button className="text-gray-900 text-xl hover:text-gray-700 transition-colors">
+                        ❤️
+                      </button>
+                      <button className="text-gray-900 text-xl hover:text-gray-700 transition-colors">
+                        📤
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           </div>
@@ -1979,7 +2089,7 @@ export default function Home() {
           {/* Category Grid (Main Content) */}
           <div className="flex-1 px-6 mb-8">
             <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {duaCategories.map((category) => (
+              {authenticDuaCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleDuaCategoryGridSelect(category.name)}

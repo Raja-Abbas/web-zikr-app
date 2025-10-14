@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "id": "anxiety",
+      "name": "Dua for anxiety",
+      "icon": "🤲",
+      "description": "Duas to calm anxiety and find peace"
+    },
+    {
+      "id": "gratitude",
+      "name": "Dua for gratitude",
+      "icon": "🙏",
+      "description": "Duas to express gratitude to Allah"
+    },
+    {
+      "id": "protection",
+      "name": "To protect kids",
+      "icon": "🛡️",
+      "description": "Duas for protection of children"
+    },
+    {
+      "id": "forgiveness",
+      "name": "For forgiveness",
+      "icon": "🤲",
+      "description": "Duas seeking Allah's forgiveness"
+    },
+    {
+      "id": "guidance",
+      "name": "For guidance",
+      "icon": "🧭",
+      "description": "Duas asking for divine guidance"
+    },
+    {
+      "id": "morning",
+      "name": "Morning and evening duas",
+      "icon": "🌅",
+      "description": "Daily morning and evening remembrance"
+    },
+    {
+      "id": "sickness",
+      "name": "For sickness",
+      "icon": "💊",
+      "description": "Duas for healing and recovery"
+    },
+    {
+      "id": "entering_home",
+      "name": "When entering home",
+      "icon": "🏠",
+      "description": "Duas when entering the house"
+    },
+    {
+      "id": "entering_toilet",
+      "name": "When entering Toilet",
+      "icon": "🚿",
+      "description": "Duas before entering the toilet"
+    },
+    {
+      "id": "waking_up",
+      "name": "When waking up at night",
+      "icon": "🌙",
+      "description": "Duas when waking up during the night"
+    },
+    {
+      "id": "sadness",
+      "name": "Sadness",
+      "icon": "😢",
+      "description": "Duas for times of sadness and grief"
+    }
+  ],
+  "duas": {
+    "anxiety": {
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ",
+      "transliteration": "Allāhumma innī a'ūdhu bika min al-hammi wa'l-ḥazan, wa a'ūdhu bika min al-'ajzi wa'l-kasal",
+      "translation": "O Allah, I seek refuge in You from anxiety and sorrow, weakness and laziness.",
+      "source": "Sahih al-Bukhari 6369"
+    },
+    "gratitude": {
+      "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+      "transliteration": "Al-ḥamdu lillāhi rabbi'l-'ālamīn",
+      "translation": "All praise is due to Allah, Lord of the worlds.",
+      "source": "Quran 1:2"
+    },
+    "protection": {
+      "arabic": "أُعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ",
+      "transliteration": "U'īdhukumā bi-kalimāti'llāhi't-tāmmati min kulli shayṭānin wa hāmmatin wa min kulli 'aynin lāmmatin",
+      "translation": "I seek protection for you from the perfect words of Allah against every devil and poisonous creature, and against every evil eye.",
+      "source": "Sahih al-Bukhari 3371"
+    },
+    "forgiveness": {
+      "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+      "transliteration": "Allāhumma innaka 'afuwwun tuḥibbu'l-'afwa fa'fu 'annī",
+      "translation": "O Allah, You are the Pardoner, You love to pardon, so pardon me.",
+      "source": "Sunan at-Tirmidhi 3513"
+    },
+    "guidance": {
+      "arabic": "اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ",
+      "transliteration": "Allāhumma ihdinī fīman hadayt",
+      "translation": "O Allah, guide me among those You have guided.",
+      "source": "Sunan at-Tirmidhi 464"
+    },
+    "morning": {
+      "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
+      "transliteration": "Aṣbaḥnā wa aṣbaḥa'l-mulku lillāh, wa'l-ḥamdu lillāh",
+      "translation": "We have reached the morning and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.",
+      "source": "Sahih Muslim 2723"
+    },
+    "sickness": {
+      "arabic": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي",
+      "transliteration": "Allāhumma rabba'n-nāsi adhhibi'l-ba's, ishfihi wa anta'sh-shāfī",
+      "translation": "O Allah, Lord of the people! Remove the trouble and heal him, You are the Healer.",
+      "source": "Sahih al-Bukhari 5675"
+    },
+    "entering_home": {
+      "arabic": "بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
+      "transliteration": "Bismi'llāhi walajna, wa bismi'llāhi kharajna, wa 'alā'llāhi rabbinā tawakkalnā",
+      "translation": "In the name of Allah we enter and in the name of Allah we leave, and upon Allah, our Lord, we place our trust.",
+      "source": "Sunan Abi Dawud 5096"
+    },
+    "entering_toilet": {
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+      "transliteration": "Allāhumma innī a'ūdhu bika min al-khubuthi wa'l-khabā'ith",
+      "translation": "O Allah, I take refuge with you from all evil and evil-doers.",
+      "source": "Sahih al-Bukhari 142"
+    },
+    "waking_up": {
+      "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+      "transliteration": "Lā ilāha illa'llāhu waḥdahu lā sharīka lah, lahu'l-mulku wa lahu'l-ḥamdu wa huwa 'alā kulli shay'in qadīr",
+      "translation": "There is no deity except Allah, alone without partner, to Him belongs all sovereignty and praise, and He is over all things competent.",
+      "source": "Sahih al-Bukhari 1154"
+    },
+    "sadness": {
+      "arabic": "اللَّهُمَّ إِنِّي عَبْدُكَ، ابْنُ عَبْدِكَ، ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ",
+      "transliteration": "Allāhumma innī 'abduka, ibnu 'abdika, ibnu amatika, nāṣiyatī biyadik",
+      "translation": "O Allah, I am Your servant, son of Your servant, son of Your maidservant, my forelock is in Your hand.",
+      "source": "Musnad Ahmad 3712"
+    }
+  },
+  "dailyDua": {
+    "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+    "transliteration": "Bismi'llāhi'r-raḥmāni'r-raḥīm",
+    "translation": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+    "source": "Quran 1:1"
+  }
+}
