@@ -902,7 +902,7 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
@@ -1088,22 +1088,22 @@ export default function Home() {
             <div className="mt-4 mx-6 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-60 shadow-lg"></div>
           </div>
 
-          {/* Floating Leaves Menu Button */}
+          {/* Floating Leaves Menu Button - Mobile Responsive */}
           <button
             onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
           >
             <div className="relative">
-              {/* Animated leaves */}
+              {/* Animated leaves - Mobile Responsive */}
               <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
-                <span className="text-2xl">🍃</span>
+                <span className="text-xl sm:text-2xl">🍃</span>
               </div>
-              {/* Additional floating leaves animation */}
+              {/* Additional floating leaves animation - Mobile Responsive */}
               <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
-                <span className="text-lg">🍃</span>
+                <span className="text-sm sm:text-lg">🍃</span>
               </div>
               <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
-                <span className="text-sm">🍃</span>
+                <span className="text-xs sm:text-sm">🍃</span>
               </div>
             </div>
           </button>
@@ -1320,10 +1320,10 @@ export default function Home() {
 
 
 
-          {/* Floating Leaves Menu Button */}
+          {/* Floating Leaves Menu Button - Mobile Responsive */}
           <button
             onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
           >
             <div className="relative">
               {/* Animated leaves */}
@@ -1457,10 +1457,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Leaves Menu Button */}
+          {/* Floating Leaves Menu Button - Mobile Responsive */}
           <button
             onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
           >
             <div className="relative">
               {/* Animated leaves */}
@@ -1533,10 +1533,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Leaves Menu Button */}
+          {/* Floating Leaves Menu Button - Mobile Responsive */}
           <button
             onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
           >
             <div className="relative">
               {/* Animated leaves */}
@@ -1626,10 +1626,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Leaves Menu Button */}
+          {/* Floating Leaves Menu Button - Mobile Responsive */}
           <button
             onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
           >
             <div className="relative">
               {/* Animated leaves */}
@@ -1649,13 +1649,13 @@ export default function Home() {
       ) : showAuthenticDuaCategories ? (
         /* Screen: Authentic Dua Categories Selection */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn">
-          {/* Header */}
-          <div className="bg-[#134E4A] px-4 py-3 flex items-center justify-between">
-            {/* Left side - Back arrow and leaf icon */}
-            <div className="flex items-center space-x-3">
+          {/* Header - Mobile Responsive */}
+          <div className="bg-[#134E4A] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+            {/* Left side - Back arrow and leaf icon - Mobile Responsive */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <button
                 onClick={() => setShowDiscussMenu(true)}
-                className="text-green-400 text-lg hover:text-green-300 transition-colors"
+                className="text-green-400 text-base sm:text-lg hover:text-green-300 transition-colors"
               >
                 🍃
               </button>
@@ -1663,33 +1663,33 @@ export default function Home() {
                 onClick={handleBackFromAuthenticDuaCategories}
                 className="text-white hover:text-green-400 transition-colors"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
             </div>
 
-            {/* Right side - Authentic dua label */}
-            <div className="flex items-center space-x-2">
-              <span className="text-white font-medium">Authentic dua</span>
-              <span className="text-green-400 text-sm">🤲</span>
+            {/* Right side - Authentic dua label - Mobile Responsive */}
+            <div className="flex items-center space-x-1 sm:space-x-2">
+              <span className="text-white font-medium text-sm sm:text-base">Authentic dua</span>
+              <span className="text-green-400 text-xs sm:text-sm">🤲</span>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="flex-1 px-4 py-6">
-            {/* Initial Chat Bubble */}
-            <div className="mb-6">
-              <div className="bg-[#1A5A4F] rounded-[20px] p-4 text-white max-w-md">
-                <p className="text-sm leading-relaxed">
+          {/* Content - Mobile Responsive */}
+          <div className="flex-1 px-3 sm:px-4 py-4 sm:py-6">
+            {/* Initial Chat Bubble - Mobile Responsive */}
+            <div className="mb-4 sm:mb-6">
+              <div className="bg-[#1A5A4F] rounded-[20px] p-3 sm:p-4 text-white max-w-xs sm:max-w-md">
+                <p className="text-xs sm:text-sm leading-relaxed">
                   That&apos;s great! I can help you with duas from Hisnul Muslim and from the Holy Qur&apos;an. Please choose below with dua you would like to read.
                 </p>
               </div>
             </div>
 
-            {/* Horizontal Scrollable Buttons */}
-            <div className="mb-6">
-              <div className="flex space-x-3 overflow-x-auto pb-2">
+            {/* Horizontal Scrollable Buttons - Mobile Responsive */}
+            <div className="mb-4 sm:mb-6">
+              <div className="flex space-x-2 sm:space-x-3 overflow-x-auto pb-2">
                 {[
                   'Anxiety', 'Sadness', 'To protect kids', 'When entering home',
                   'For forgiveness', 'For guidance', 'When entering Toilet',
@@ -1699,7 +1699,7 @@ export default function Home() {
                   <button
                     key={category}
                     onClick={() => handleToProtectKidsCategorySelect(category)}
-                    className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    className={`flex-shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                       selectedDuaCategory === category
                         ? 'bg-[#1E3A8A] text-white'
                         : 'bg-[#F5F0E6] text-[#0B1E3A] hover:bg-[#E5DDD3]'
@@ -2022,11 +2022,11 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Continue Button */}
+          {/* Continue Button - Mobile Responsive */}
           <button
             onClick={handleWelcomeAdnanContinue}
             disabled={selectedInterests.length === 0}
-            className={`rounded-full py-4 px-12 text-lg font-bold transition-all duration-300 transform hover:scale-105 ${
+            className={`rounded-full py-3 sm:py-4 px-8 sm:px-12 text-base sm:text-lg font-bold transition-all duration-300 transform hover:scale-105 ${
               selectedInterests.length > 0
                 ? 'bg-[#F5F0E6] text-[#0B1E3A] hover:bg-[#EDE7DB] shadow-lg'
                 : 'bg-[#F5F0E6] text-[#0B1E3A] opacity-50 cursor-not-allowed'
@@ -2080,10 +2080,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Continue Button */}
+          {/* Continue Button - Mobile Responsive */}
           <button
             onClick={handleContinue}
-            className="bg-cream text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300"
+            className="bg-cream text-gray-900 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300 text-sm sm:text-base"
           >
             Continue
           </button>
@@ -2167,7 +2167,7 @@ export default function Home() {
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleChatSubmit()}
                 placeholder="Write down what you need like I need help to ..."
-                className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base"
               />
               <button
                 onClick={handleChatSubmit}
@@ -2254,7 +2254,7 @@ export default function Home() {
                 <button
                   key={category}
                   onClick={() => handleDuaCategorySelect(category)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                  className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                     selectedDuaCategory === category
                       ? 'bg-slate-800 text-white'
                       : 'bg-cream text-gray-900 hover:bg-gray-100'
@@ -2509,7 +2509,7 @@ export default function Home() {
                   onChange={(e) => setCustomDuaRequest(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleCustomDuaSubmit()}
                   placeholder="Write down what you need like I need help to ..."
-                  className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base"
                 />
                 <button
                   onClick={handleCustomDuaSubmit}
@@ -2890,7 +2890,7 @@ export default function Home() {
                 value={discussionInput}
                 onChange={(e) => setDiscussionInput(e.target.value)}
                 placeholder="Write down what you need like I need help to ..."
-                className="w-full h-32 bg-slate-800 text-white placeholder-purple-300 rounded-2xl p-6 pr-16 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
+                className="w-full h-24 sm:h-32 bg-slate-800 text-white placeholder-purple-300 rounded-2xl p-4 sm:p-6 pr-12 sm:pr-16 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none text-sm sm:text-base"
                 onKeyPress={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -3576,7 +3576,7 @@ export default function Home() {
         </>
       )}
 
-      {/* Screen 16: Discuss Section / Side Menu Overlay */}
+      {/* Screen 16: Discuss Section / Side Menu Overlay - Mobile Responsive */}
       {showDiscussMenu && (
         <div className="fixed inset-0 z-50 flex">
           {/* Background overlay with dimmed effect */}
@@ -3585,34 +3585,34 @@ export default function Home() {
             onClick={handleCloseDiscussMenu}
           />
 
-          {/* Green leaf icon in upper-left corner */}
-          <div className="absolute top-8 left-8 z-60">
-            <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+          {/* Green leaf icon in upper-left corner - Mobile Responsive */}
+          <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-60">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
           </div>
 
-          {/* Menu Container */}
-          <div className="relative w-80 h-full">
-            <div className="bg-cream rounded-r-2xl shadow-2xl h-full p-6 overflow-y-auto">
-              {/* Menu Items */}
-              <div className="space-y-2 mb-8">
+          {/* Menu Container - Mobile Responsive */}
+          <div className="relative w-full sm:w-80 md:w-96 h-full">
+            <div className="bg-cream rounded-none sm:rounded-r-2xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
+              {/* Menu Items - Mobile Responsive */}
+              <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
                 {menuItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleMenuItemSelect(item.text)}
-                    className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-colors text-left ${
+                    className={`w-full flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl transition-colors text-left ${
                       selectedMenuItem === item.text
                         ? 'bg-teal-800 text-white'
                         : 'text-gray-900 hover:bg-gray-100'
                     }`}
                   >
-                    <span className={`text-xl ${
+                    <span className={`text-lg sm:text-xl ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-700'
                     }`}>
                       {item.icon}
                     </span>
-                    <span className={`font-medium ${
+                    <span className={`font-medium text-sm sm:text-base ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-900'
                     }`}>
                       {item.text}
@@ -3658,7 +3658,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Animated Leaves Menu Overlay */}
+      {/* Animated Leaves Menu Overlay - Mobile Responsive */}
       {showLeavesMenu && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* Backdrop */}
@@ -3667,8 +3667,8 @@ export default function Home() {
             onClick={handleLeavesMenuToggle}
           />
 
-          {/* Menu Container */}
-          <div className="relative bg-gradient-to-br from-emerald-50 to-green-100 rounded-3xl shadow-2xl p-8 mx-6 max-w-sm w-full transform transition-all duration-500 scale-100 opacity-100">
+          {/* Menu Container - Mobile Responsive */}
+          <div className="relative bg-gradient-to-br from-emerald-50 to-green-100 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 mx-4 sm:mx-6 max-w-xs sm:max-w-sm w-full transform transition-all duration-500 scale-100 opacity-100">
             {/* Floating leaves decoration */}
             <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🍃</div>
             <div className="absolute -bottom-2 -left-2 text-xl animate-pulse">🍃</div>
