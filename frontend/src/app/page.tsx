@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
@@ -56,6 +56,17 @@ export default function Home() {
   const [currentScreen, setCurrentScreen] = useState('auth');
   const [navigationHistory, setNavigationHistory] = useState<string[]>(['auth']);
 
+  // Debug Wall of Duas state
+  useEffect(() => {
+    console.log('Wall of Duas Debug:', {
+      showWallOfDuas,
+      activeTab,
+      showHomeScreen,
+      currentScreen,
+      condition: showWallOfDuas && activeTab === 'Douas' && showHomeScreen
+    });
+  }, [showWallOfDuas, activeTab, showHomeScreen, currentScreen]);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -70,7 +81,7 @@ export default function Home() {
   const navigateToScreen = (screenName: string, options: Record<string, string | boolean | number> = {}) => {
     console.log('Navigating to:', screenName, options);
 
-    // Reset all screen states
+    // Reset all screen states (except showWallOfDuas for wall-of-duas navigation)
     setShowEmailForm(false);
     setShowWelcomeScreen(false);
     setShowPersonalizationScreen(false);
@@ -85,7 +96,9 @@ export default function Home() {
     setShowChatbotDiscussionHub(false);
     setShowDuaContentViewer(false);
     setShowInteriorDesignSettings(false);
-    setShowWallOfDuas(false);
+    if (screenName !== 'wall-of-duas') {
+      setShowWallOfDuas(false);
+    }
     setShowReminderContent(false);
     setShowGeneratedDua(false);
     setShowLeavesMenu(false);
@@ -122,9 +135,11 @@ export default function Home() {
         setActiveTab('Profile');
         break;
       case 'wall-of-duas':
+        console.log('Setting Wall of Duas states...');
         setShowHomeScreen(true);
         setActiveTab('Douas');
         setShowWallOfDuas(true);
+        console.log('Wall of Duas states set - showHomeScreen: true, activeTab: Douas, showWallOfDuas: true');
         break;
       case 'chatbot':
         setShowChatbot(true);
@@ -370,16 +385,15 @@ export default function Home() {
   const handleMenuItemSelect = (item: string) => {
     setSelectedMenuItem(item);
     console.log('Selected menu item:', item);
-    // Handle navigation to different sections
+    // Handle navigation to different sections using centralized navigation
     if (item === 'My.Zikr+') {
       console.log('Navigate to premium subscription');
     } else if (item === 'The wall of duas') {
       setShowDiscussMenu(false);
-      setActiveTab('Douas');
-      setShowWallOfDuas(true);
+      navigateToScreen('wall-of-duas');
     } else if (item === 'Interior design') {
       setShowDiscussMenu(false);
-      setShowInteriorDesignSettings(true);
+      navigateToScreen('interior-design-settings');
     }
     // Close menu after selection (optional)
     // setShowDiscussMenu(false);
@@ -457,9 +471,7 @@ export default function Home() {
 
   const handleWallOfDuasFromGrid = () => {
     console.log('Navigate to Wall of Duas from grid');
-    setShowAuthenticDuasGrid(false);
-    setActiveTab('Douas');
-    setShowWallOfDuas(true);
+    navigateToScreen('wall-of-duas');
   };
 
   const handleBackFromDiscussionHub = () => {
@@ -500,9 +512,7 @@ export default function Home() {
         setShowChatbotDiscussionHub(false);
         break;
       case 'See the wall of duas':
-        setShowChatbotDiscussionHub(false);
-        setActiveTab('Douas');
-        setShowWallOfDuas(true);
+        navigateToScreen('wall-of-duas');
         break;
       default:
         break;
@@ -1002,7 +1012,7 @@ export default function Home() {
               <div className="mb-8">
                 <div className="flex items-center justify-center relative">
                   <button
-                    onClick={() => setShowWallOfDuas(false)}
+                    onClick={() => navigateToScreen('douas')}
                     className="absolute left-0 text-white text-2xl hover:text-gray-300"
                   >
                     ←
