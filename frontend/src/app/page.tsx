@@ -1556,48 +1556,82 @@ export default function Home() {
           </button>
         </>
       ) : showWelcomeAdnanScreen ? (
-        /* Screen 3: Welcome Adnan Screen */
-        <>
-          {/* Green Leaf Icon in upper-left corner */}
-          <div className="absolute top-8 left-8">
-            <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-            </svg>
-          </div>
-
-          {/* Logo and Header Section */}
-          <div className="text-center mb-12">
+        /* Screen 3: Welcome Adnan Screen - Modern Design */
+        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+          {/* Logo Section */}
+          <div className="text-center mb-20" style={{ paddingTop: '80px' }}>
             {/* Arabic Calligraphy Logo */}
             <div className="mb-4">
-              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+              <div className="text-5xl md:text-6xl text-white font-arabic mb-3">
                 ذِكْر
               </div>
             </div>
 
             {/* App Name */}
-            <h1 className="text-2xl md:text-3xl text-cream font-light mb-8">
+            <h1 className="text-xl md:text-2xl text-white font-light tracking-wider mb-12">
               My.Zikr
             </h1>
 
             {/* Welcome Message */}
-            <h2 className="text-4xl md:text-5xl text-white font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl text-white font-bold mb-6 font-sans">
               Welcome {userName || 'Adnan'}!
             </h2>
 
             {/* Instructional Text */}
-            <p className="text-white text-base md:text-lg max-w-md mx-auto leading-relaxed mb-8">
-              Thank you for joining My.Zikr. We&apos;re excited to have you on this spiritual journey.
+            <p className="text-[#E2E2E2] text-sm md:text-base max-w-sm mx-auto leading-relaxed font-normal">
+              Please tell us what you are here for so we can customize your navigation. You can select up to 3.
             </p>
+          </div>
+
+          {/* Option Buttons */}
+          <div className="w-full max-w-sm space-y-5 mb-12">
+            {[
+              { icon: '📖', text: 'To learn how to make douas', id: 'learn-douas' },
+              { icon: '🤲', text: 'To join the douas community', id: 'join-community' },
+              { icon: '🧭', text: 'By curiosity', id: 'curiosity' },
+              { icon: '🕋', text: 'To find islamic reminders', id: 'islamic-reminders' },
+              { icon: '🌙', text: 'For something else', id: 'something-else' }
+            ].map((option, index) => (
+              <button
+                key={option.id}
+                onClick={() => {
+                  if (selectedInterests.includes(option.id)) {
+                    setSelectedInterests(selectedInterests.filter(id => id !== option.id));
+                  } else if (selectedInterests.length < 3) {
+                    setSelectedInterests([...selectedInterests, option.id]);
+                  }
+                }}
+                className={`w-full rounded-full py-4 px-6 flex items-center space-x-4 text-left transition-all duration-300 transform hover:scale-105 ${
+                  selectedInterests.includes(option.id)
+                    ? 'bg-[#1A675E] border-2 border-white text-white'
+                    : 'bg-[#134E4A] text-white hover:bg-[#1A675E]'
+                }`}
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
+              >
+                <span className="text-lg">{option.icon}</span>
+                <span className="flex-1 font-medium text-sm md:text-base">{option.text}</span>
+                {selectedInterests.includes(option.id) && (
+                  <span className="text-white font-bold">✓</span>
+                )}
+              </button>
+            ))}
           </div>
 
           {/* Continue Button */}
           <button
             onClick={handleWelcomeAdnanContinue}
-            className="bg-cream text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300"
+            disabled={selectedInterests.length === 0}
+            className={`rounded-full py-4 px-12 text-lg font-bold transition-all duration-300 transform hover:scale-105 ${
+              selectedInterests.length > 0
+                ? 'bg-[#F5F0E6] text-[#0B1E3A] hover:bg-[#EDE7DB] shadow-lg'
+                : 'bg-[#F5F0E6] text-[#0B1E3A] opacity-50 cursor-not-allowed'
+            }`}
           >
             Continue
           </button>
-        </>
+        </div>
       ) : showWelcomeScreen ? (
         /* Screen 4: Confirmation and Welcome Screen */
         <>
