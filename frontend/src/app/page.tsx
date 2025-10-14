@@ -33,6 +33,7 @@ export default function Home() {
 
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [showWelcomeAdnanScreen, setShowWelcomeAdnanScreen] = useState(false);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
   const [showHomeScreen, setShowHomeScreen] = useState(false);
@@ -111,6 +112,7 @@ export default function Home() {
 
     // Reset all screen states (except showWallOfDuas for wall-of-duas navigation)
     setShowEmailForm(false);
+    setShowWelcomeAdnanScreen(false);
     setShowWelcomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowHomeScreen(false);
@@ -139,6 +141,9 @@ export default function Home() {
     switch (screenName) {
       case 'auth':
         // Default state - all screens are false
+        break;
+      case 'welcome-adnan':
+        setShowWelcomeAdnanScreen(true);
         break;
       case 'welcome':
         setShowWelcomeScreen(true);
@@ -268,9 +273,9 @@ export default function Home() {
   const handleSignUp = () => {
     // TODO: Implement sign up logic
     console.log('Sign up with:', formData);
-    // Store user name and redirect to welcome screen after successful registration
+    // Store user name and redirect to welcome adnan screen after successful registration
     setUserName(formData.name);
-    navigateToScreen('welcome');
+    navigateToScreen('welcome-adnan');
   };
 
   const handleLogin = () => {
@@ -283,6 +288,11 @@ export default function Home() {
 
   const handleBackToOptions = () => {
     navigateToScreen('auth');
+  };
+
+  const handleWelcomeAdnanContinue = () => {
+    // Navigate from welcome adnan screen to welcome screen
+    navigateToScreen('welcome');
   };
 
   const handleContinue = () => {
@@ -1462,7 +1472,7 @@ export default function Home() {
           </button>
         </div>
       ) : showPersonalizationScreen ? (
-        /* Screen 5: Welcome and Personalization Survey */
+        /* Screen 5: Personalization Survey */
         <>
           {/* Logo and Header Section */}
           <div className="text-center mb-12">
@@ -1478,9 +1488,9 @@ export default function Home() {
               My.Zikr
             </h1>
 
-            {/* Welcome Message */}
-            <h2 className="text-4xl md:text-5xl text-white font-bold mb-6">
-              Welcome {userName || 'Adnan'}!
+            {/* Greeting Message */}
+            <h2 className="text-3xl md:text-4xl text-white font-bold mb-6">
+              Salam aleykum dear, I am Zikr
             </h2>
 
             {/* Instructional Text */}
@@ -1541,6 +1551,49 @@ export default function Home() {
                 ? 'bg-cream text-gray-900 hover:bg-gray-100 hover:shadow-lg'
                 : 'bg-cream text-gray-900 opacity-50 cursor-not-allowed'
             }`}
+          >
+            Continue
+          </button>
+        </>
+      ) : showWelcomeAdnanScreen ? (
+        /* Screen 3: Welcome Adnan Screen */
+        <>
+          {/* Green Leaf Icon in upper-left corner */}
+          <div className="absolute top-8 left-8">
+            <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+          </div>
+
+          {/* Logo and Header Section */}
+          <div className="text-center mb-12">
+            {/* Arabic Calligraphy Logo */}
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+                ذِكْر
+              </div>
+            </div>
+
+            {/* App Name */}
+            <h1 className="text-2xl md:text-3xl text-cream font-light mb-8">
+              My.Zikr
+            </h1>
+
+            {/* Welcome Message */}
+            <h2 className="text-4xl md:text-5xl text-white font-bold mb-6">
+              Welcome {userName || 'Adnan'}!
+            </h2>
+
+            {/* Instructional Text */}
+            <p className="text-white text-base md:text-lg max-w-md mx-auto leading-relaxed mb-8">
+              Thank you for joining My.Zikr. We&apos;re excited to have you on this spiritual journey.
+            </p>
+          </div>
+
+          {/* Continue Button */}
+          <button
+            onClick={handleWelcomeAdnanContinue}
+            className="bg-cream text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300"
           >
             Continue
           </button>
