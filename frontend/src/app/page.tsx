@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDuas } from '../hooks/useDuas';
+import { useWallOfDuas } from '../hooks/useWallOfDuas';
 
 export default function Home() {
   // Dua data and state management
@@ -15,6 +16,19 @@ export default function Home() {
     clearSelection,
     getRecommendedDuas,
   } = useDuas();
+
+  // Wall of Duas data and state management
+  const {
+    displayDuas,
+    userLocation,
+    settings,
+    showLocationSettings,
+    showThemeSettings,
+    sayAmine,
+    toggleLocationSettings,
+    toggleThemeSettings,
+    formatAmineCount,
+  } = useWallOfDuas();
 
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
@@ -1114,66 +1128,117 @@ export default function Home() {
           </button>
         </div>
       ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
-        /* Wall of Duas Screen */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        /* Wall of Duas Screen - Sleek Dark Theme */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40]">
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-6 pb-24">
-              {/* Header with Back Button */}
-              <div className="mb-8">
-                <div className="flex items-center justify-center relative">
-                  <button
-                    onClick={() => navigateToScreen('douas')}
-                    className="absolute left-0 text-white text-2xl hover:text-gray-300"
-                  >
-                    ←
-                  </button>
-                  <div className="text-center">
-                    <h1 className="text-4xl text-white font-bold mb-2">The Wall of Duas</h1>
-                    <p className="text-white text-base">
-                      Community duas where you can support others by saying &apos;Amine&apos;
-                    </p>
+            <div className="px-6 py-6 pb-32">
+              {/* Header with Leaf Icon and Action Buttons */}
+              <div className="mb-6">
+                <div className="flex items-center justify-between">
+                  {/* Left: Leaf Icon + Title */}
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">🍃</span>
+                    <div>
+                      <h1 className="text-xl text-white font-medium">The wall of douas</h1>
+                    </div>
+                  </div>
+
+                  {/* Right: Location and Theme Buttons */}
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={toggleLocationSettings}
+                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-lg">📍</span>
+                    </button>
+                    <button
+                      onClick={toggleThemeSettings}
+                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-lg">⚙️</span>
+                    </button>
                   </div>
                 </div>
+
+                {/* Subtitle */}
+                <p className="text-white text-opacity-60 text-sm mt-2 leading-relaxed">
+                  Douas of My.zikr community close to your location. Support them by saying Amine.
+                </p>
               </div>
 
-              {/* Sample Community Duas */}
-              <div className="space-y-4">
-                {[
-                  {
-                    user: "Sarah M.",
-                    dua: "Please pray for my mother's health recovery. She's been in the hospital for weeks.",
-                    amines: 127,
-                    time: "2 hours ago"
-                  },
-                  {
-                    user: "Ahmed K.",
-                    dua: "I have an important job interview tomorrow. Please make dua that Allah guides me.",
-                    amines: 89,
-                    time: "5 hours ago"
-                  },
-                  {
-                    user: "Fatima A.",
-                    dua: "My family is going through financial difficulties. Please pray for Allah's help.",
-                    amines: 203,
-                    time: "1 day ago"
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="bg-slate-800 rounded-xl p-4">
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-white font-medium">{item.user}</span>
-                      <span className="text-gray-400 text-sm">{item.time}</span>
-                    </div>
-                    <p className="text-white mb-4 leading-relaxed">{item.dua}</p>
-                    <div className="flex items-center justify-between">
-                      <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
-                        Say Amine 🤲
+              {/* Settings Dropdowns */}
+              {showLocationSettings && (
+                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+                  <h3 className="text-white font-medium mb-2">Location Settings</h3>
+                  <p className="text-white text-opacity-70 text-sm">Currently showing duas from: {userLocation.city}</p>
+                </div>
+              )}
+
+              {showThemeSettings && (
+                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+                  <h3 className="text-white font-medium mb-2">Theme Settings</h3>
+                  <p className="text-white text-opacity-70 text-sm">Current theme: {settings.theme}</p>
+                </div>
+              )}
+
+              {/* Dua Cards */}
+              <div className="space-y-4 mb-8">
+                {displayDuas.map((dua) => (
+                  <div key={dua.id} className="bg-[#FFFDF6] rounded-2xl p-6 shadow-lg">
+                    {/* Dua Text */}
+                    <p className="text-gray-900 text-base leading-relaxed mb-4 text-justify">
+                      {dua.dua}
+                    </p>
+
+                    {/* Bottom Section */}
+                    <div className="flex items-center justify-between mb-3">
+                      {/* Amine Button */}
+                      <button
+                        onClick={() => sayAmine(dua.id)}
+                        className="bg-[#1e3a8a] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#1e40af] transition-colors"
+                      >
+                        Amine
                       </button>
-                      <span className="text-gray-400 text-sm">{item.amines} Amines</span>
+
+                      {/* Amine Count Badge */}
+                      <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {formatAmineCount(dua.amines)}
+                      </div>
                     </div>
+
+                    {/* Author */}
+                    <p className="text-gray-500 text-sm italic">
+                      {dua.author}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Call-to-Action Buttons */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c2a40] to-transparent pt-8 pb-6">
+            <div className="px-6 space-y-3">
+              {/* Write a doua */}
+              <button className="w-full bg-gradient-to-r from-[#3bb4c1] to-[#4fc3d0] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                Write a doua
+              </button>
+
+              {/* Ask for doua */}
+              <button className="w-full bg-gradient-to-r from-[#005c3f] to-[#007a5a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                Ask for doua
+              </button>
+
+              {/* Discuss */}
+              <button className="w-full bg-[#1e3a8a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3">
+                <span>💬</span>
+                <span>Discuss</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            {/* Teal Divider Line */}
+            <div className="mt-6 mx-6 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-60"></div>
           </div>
 
           {/* Floating Leaves Menu Button */}

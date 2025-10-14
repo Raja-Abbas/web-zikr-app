@@ -1,0 +1,93 @@
+{
+  "communityDuas": [
+    {
+      "id": "1",
+      "author": "Aziz",
+      "dua": "Please make dua for my mother who is recovering from surgery. May Allah grant her complete healing and strength during this difficult time.",
+      "amines": 127,
+      "timestamp": "2024-01-15T10:30:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "2", 
+      "author": "Amina",
+      "dua": "I have an important job interview tomorrow. Please pray that Allah guides me to what is best for my deen and dunya.",
+      "amines": 89,
+      "timestamp": "2024-01-15T08:15:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "3",
+      "author": "Omar",
+      "dua": "My family is going through financial hardship. Please make dua that Allah provides for us from sources we cannot imagine.",
+      "amines": 203,
+      "timestamp": "2024-01-14T22:45:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "4",
+      "author": "Fatima",
+      "dua": "Please pray for my brother who is struggling with his studies. May Allah grant him success and make his path easy.",
+      "amines": 156,
+      "timestamp": "2024-01-14T19:20:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "5",
+      "author": "Hassan",
+      "dua": "I am seeking Allah's guidance in choosing the right spouse. Please make dua that He leads me to someone who will be good for my faith.",
+      "amines": 234,
+      "timestamp": "2024-01-14T16:10:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "6",
+      "author": "Khadija",
+      "dua": "My grandmother is very ill. Please pray for her recovery and that Allah grants her peace and comfort in her final days if that is His will.",
+      "amines": 178,
+      "timestamp": "2024-01-14T14:30:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "7",
+      "author": "Yusuf",
+      "dua": "I am struggling with anxiety and depression. Please make dua that Allah grants me peace of mind and strength to overcome these challenges.",
+      "amines": 312,
+      "timestamp": "2024-01-14T12:00:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "8",
+      "author": "Aisha",
+      "dua": "Please pray for the Muslim ummah around the world, especially those facing persecution and hardship. May Allah protect and strengthen them.",
+      "amines": 445,
+      "timestamp": "2024-01-14T09:45:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "9",
+      "author": "Ibrahim",
+      "dua": "I am trying to memorize the Quran but finding it difficult. Please make dua that Allah makes it easy for me and blesses my efforts.",
+      "amines": 167,
+      "timestamp": "2024-01-13T21:15:00Z",
+      "location": "nearby"
+    },
+    {
+      "id": "10",
+      "author": "Maryam",
+      "dua": "My parents are getting older and I want to be a better daughter to them. Please pray that Allah helps me serve them with love and patience.",
+      "amines": 289,
+      "timestamp": "2024-01-13T18:30:00Z",
+      "location": "nearby"
+    }
+  ],
+  "userLocation": {
+    "city": "Your Area",
+    "country": "Local Community"
+  },
+  "settings": {
+    "showLocation": true,
+    "theme": "dark",
+    "notifications": true
+  }
+}
