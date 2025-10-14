@@ -46,6 +46,8 @@ export default function Home() {
   const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
   const [showToProtectKidsDua, setShowToProtectKidsDua] = useState(false);
+  const [showAuthenticDuaCategories, setShowAuthenticDuaCategories] = useState(false);
+  const [selectedDuaCategory, setSelectedDuaCategory] = useState('');
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
   const [showCustomDuaGeneration, setShowCustomDuaGeneration] = useState(false);
   const [showSpiritualReminder, setShowSpiritualReminder] = useState(false);
@@ -57,7 +59,6 @@ export default function Home() {
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [customMessage, setCustomMessage] = useState('');
-  const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedGridCategory, setSelectedGridCategory] = useState('Protection');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
   const [selectedReminderCategory, setSelectedReminderCategory] = useState('Wudu steps');
@@ -608,7 +609,7 @@ export default function Home() {
     switch (option) {
       case 'authentic-dua':
         setShowPersonalizationScreen(false);
-        setShowToProtectKidsDua(true);
+        setShowAuthenticDuaCategories(true);
         break;
       case 'custom-dua':
         navigateToScreen('custom-dua-generation');
@@ -633,13 +634,25 @@ export default function Home() {
 
   const handleBackFromToProtectKids = () => {
     setShowToProtectKidsDua(false);
+    setShowAuthenticDuaCategories(true);
+  };
+
+  const handleBackFromAuthenticDuaCategories = () => {
+    setShowAuthenticDuaCategories(false);
     setShowPersonalizationScreen(true);
   };
 
   const handleToProtectKidsCategorySelect = (category: string) => {
     console.log('Selected dua category:', category);
-    // For now, all categories show the same "To protect kids" dua
-    // In a real app, you would load different duas based on category
+    setSelectedDuaCategory(category);
+
+    if (category === 'To protect kids') {
+      setShowAuthenticDuaCategories(false);
+      setShowToProtectKidsDua(true);
+    } else {
+      // For other categories, you can add different dua screens later
+      console.log('Other category selected:', category);
+    }
   };
 
   const handleToProtectKidsDuaAction = (action: string) => {
@@ -1543,8 +1556,8 @@ export default function Home() {
             </div>
           </button>
         </div>
-      ) : showToProtectKidsDua ? (
-        /* Screen: To Protect Kids Dua Display */
+      ) : showAuthenticDuaCategories ? (
+        /* Screen: Authentic Dua Categories Selection */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn">
           {/* Header */}
           <div className="bg-[#134E4A] px-4 py-3 flex items-center justify-between">
@@ -1552,7 +1565,7 @@ export default function Home() {
             <div className="flex items-center space-x-3">
               <span className="text-green-400 text-lg">🍃</span>
               <button
-                onClick={handleBackFromToProtectKids}
+                onClick={handleBackFromAuthenticDuaCategories}
                 className="text-white hover:text-green-400 transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1592,7 +1605,7 @@ export default function Home() {
                     key={category}
                     onClick={() => handleToProtectKidsCategorySelect(category)}
                     className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      category === 'To protect kids'
+                      selectedDuaCategory === category
                         ? 'bg-[#1E3A8A] text-white'
                         : 'bg-[#F5F0E6] text-[#0B1E3A] hover:bg-[#E5DDD3]'
                     }`}
@@ -1601,6 +1614,47 @@ export default function Home() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Instruction Text */}
+            <div className="text-center">
+              <p className="text-white text-sm opacity-75">
+                Select a category above to view the corresponding dua
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : showToProtectKidsDua ? (
+        /* Screen: To Protect Kids Dua Display */
+        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn">
+          {/* Header */}
+          <div className="bg-[#134E4A] px-4 py-3 flex items-center justify-between">
+            {/* Left side - Back arrow and leaf icon */}
+            <div className="flex items-center space-x-3">
+              <span className="text-green-400 text-lg">🍃</span>
+              <button
+                onClick={handleBackFromToProtectKids}
+                className="text-white hover:text-green-400 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Right side - Authentic dua label */}
+            <div className="flex items-center space-x-2">
+              <span className="text-white font-medium">Authentic dua</span>
+              <span className="text-green-400 text-sm">🤲</span>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 px-4 py-6">
+            {/* Category Title */}
+            <div className="mb-6 text-center">
+              <h2 className="text-white text-lg font-medium">To Protect Kids</h2>
+              <p className="text-[#87CEEB] text-sm mt-1">Dua for protection of children</p>
             </div>
 
             {/* Dua Text Display */}
