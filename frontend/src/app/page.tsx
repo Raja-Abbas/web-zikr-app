@@ -1578,9 +1578,16 @@ export default function Home() {
             </h2>
 
             {/* Instructional Text */}
-            <p className="text-[#E2E2E2] text-sm md:text-base max-w-sm mx-auto leading-relaxed font-normal">
+            <p className="text-[#E2E2E2] text-sm md:text-base max-w-sm mx-auto leading-relaxed font-normal mb-2">
               Please tell us what you are here for so we can customize your navigation. You can select up to 3.
             </p>
+
+            {/* Selection Counter */}
+            {selectedInterests.length > 0 && (
+              <p className="text-[#F5F0E6] text-sm font-medium">
+                {selectedInterests.length}/3 selected
+              </p>
+            )}
           </div>
 
           {/* Option Buttons */}
@@ -1596,14 +1603,19 @@ export default function Home() {
                 key={option.id}
                 onClick={() => {
                   if (selectedInterests.includes(option.id)) {
+                    // Remove selection if already selected
                     setSelectedInterests(selectedInterests.filter(id => id !== option.id));
                   } else if (selectedInterests.length < 3) {
+                    // Add selection if under 3 limit
                     setSelectedInterests([...selectedInterests, option.id]);
                   }
+                  // If 3 are already selected, clicking does nothing (user must deselect first)
                 }}
                 className={`w-full rounded-full py-4 px-6 flex items-center space-x-4 text-left transition-all duration-300 transform hover:scale-105 ${
                   selectedInterests.includes(option.id)
                     ? 'bg-[#F5F0E6] border-2 border-[#F5F0E6] text-[#0B1E3A] shadow-lg'
+                    : selectedInterests.length >= 3
+                    ? 'bg-[#134E4A] text-gray-400 opacity-60 cursor-not-allowed'
                     : 'bg-[#134E4A] text-white hover:bg-[#1A675E]'
                 }`}
                 style={{
