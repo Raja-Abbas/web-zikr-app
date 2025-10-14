@@ -770,6 +770,140 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-6 py-8">
       {!validateNavigationState() ? (
         <FallbackScreen />
+      ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
+        /* Wall of Duas Screen - Sleek Dark Theme */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40]">
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-6 pb-32">
+              {/* Header with Leaf Icon and Action Buttons */}
+              <div className="mb-6">
+                <div className="flex items-center justify-between">
+                  {/* Left: Leaf Icon + Title */}
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">🍃</span>
+                    <div>
+                      <h1 className="text-xl text-white font-medium">The wall of douas</h1>
+                    </div>
+                  </div>
+
+                  {/* Right: Location and Theme Buttons */}
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={toggleLocationSettings}
+                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-lg">📍</span>
+                    </button>
+                    <button
+                      onClick={toggleThemeSettings}
+                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-lg">⚙️</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Subtitle */}
+                <p className="text-white text-opacity-60 text-sm mt-2 leading-relaxed">
+                  Douas of My.zikr community close to your location. Support them by saying Amine.
+                </p>
+              </div>
+
+              {/* Settings Dropdowns */}
+              {showLocationSettings && (
+                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+                  <h3 className="text-white font-medium mb-2">Location Settings</h3>
+                  <p className="text-white text-opacity-70 text-sm">Currently showing duas from: {userLocation.city}</p>
+                </div>
+              )}
+
+              {showThemeSettings && (
+                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+                  <h3 className="text-white font-medium mb-2">Theme Settings</h3>
+                  <p className="text-white text-opacity-70 text-sm">Current theme: {settings.theme}</p>
+                </div>
+              )}
+
+              {/* Dua Cards */}
+              <div className="space-y-4 mb-8">
+                {displayDuas.map((dua) => (
+                  <div key={dua.id} className="bg-[#FFFDF6] rounded-2xl p-6 shadow-lg">
+                    {/* Dua Text */}
+                    <p className="text-gray-900 text-base leading-relaxed mb-4 text-justify">
+                      {dua.dua}
+                    </p>
+
+                    {/* Bottom Section */}
+                    <div className="flex items-center justify-between mb-3">
+                      {/* Amine Button */}
+                      <button
+                        onClick={() => sayAmine(dua.id)}
+                        className="bg-[#1e3a8a] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#1e40af] transition-colors"
+                      >
+                        Amine
+                      </button>
+
+                      {/* Amine Count Badge */}
+                      <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {formatAmineCount(dua.amines)}
+                      </div>
+                    </div>
+
+                    {/* Author */}
+                    <p className="text-gray-500 text-sm italic">
+                      {dua.author}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Call-to-Action Buttons */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c2a40] to-transparent pt-8 pb-6">
+            <div className="px-6 space-y-3">
+              {/* Write a doua */}
+              <button className="w-full bg-gradient-to-r from-[#3bb4c1] to-[#4fc3d0] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                Write a doua
+              </button>
+
+              {/* Ask for doua */}
+              <button className="w-full bg-gradient-to-r from-[#005c3f] to-[#007a5a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                Ask for doua
+              </button>
+
+              {/* Discuss */}
+              <button className="w-full bg-[#1e3a8a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3">
+                <span>💬</span>
+                <span>Discuss</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            {/* Teal Divider Line */}
+            <div className="mt-6 mx-6 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-60"></div>
+          </div>
+
+          {/* Floating Leaves Menu Button */}
+          <button
+            onClick={handleLeavesMenuToggle}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
+          >
+            <div className="relative">
+              {/* Animated leaves */}
+              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
+                <span className="text-2xl">🍃</span>
+              </div>
+              {/* Additional floating leaves animation */}
+              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
+                <span className="text-lg">🍃</span>
+              </div>
+              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
+                <span className="text-sm">🍃</span>
+              </div>
+            </div>
+          </button>
+        </div>
       ) : showHomeScreen ? (
         /* Screen 7: Home Screen */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
@@ -1105,140 +1239,6 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Floating Leaves Menu Button */}
-          <button
-            onClick={handleLeavesMenuToggle}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
-          >
-            <div className="relative">
-              {/* Animated leaves */}
-              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
-                <span className="text-2xl">🍃</span>
-              </div>
-              {/* Additional floating leaves animation */}
-              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
-                <span className="text-lg">🍃</span>
-              </div>
-              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
-                <span className="text-sm">🍃</span>
-              </div>
-            </div>
-          </button>
-        </div>
-      ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
-        /* Wall of Duas Screen - Sleek Dark Theme */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40]">
-          <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-6 pb-32">
-              {/* Header with Leaf Icon and Action Buttons */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between">
-                  {/* Left: Leaf Icon + Title */}
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl">🍃</span>
-                    <div>
-                      <h1 className="text-xl text-white font-medium">The wall of douas</h1>
-                    </div>
-                  </div>
-
-                  {/* Right: Location and Theme Buttons */}
-                  <div className="flex items-center space-x-2">
-                    <button
-                      onClick={toggleLocationSettings}
-                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-lg">📍</span>
-                    </button>
-                    <button
-                      onClick={toggleThemeSettings}
-                      className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-lg">⚙️</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Subtitle */}
-                <p className="text-white text-opacity-60 text-sm mt-2 leading-relaxed">
-                  Douas of My.zikr community close to your location. Support them by saying Amine.
-                </p>
-              </div>
-
-              {/* Settings Dropdowns */}
-              {showLocationSettings && (
-                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
-                  <h3 className="text-white font-medium mb-2">Location Settings</h3>
-                  <p className="text-white text-opacity-70 text-sm">Currently showing duas from: {userLocation.city}</p>
-                </div>
-              )}
-
-              {showThemeSettings && (
-                <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
-                  <h3 className="text-white font-medium mb-2">Theme Settings</h3>
-                  <p className="text-white text-opacity-70 text-sm">Current theme: {settings.theme}</p>
-                </div>
-              )}
-
-              {/* Dua Cards */}
-              <div className="space-y-4 mb-8">
-                {displayDuas.map((dua) => (
-                  <div key={dua.id} className="bg-[#FFFDF6] rounded-2xl p-6 shadow-lg">
-                    {/* Dua Text */}
-                    <p className="text-gray-900 text-base leading-relaxed mb-4 text-justify">
-                      {dua.dua}
-                    </p>
-
-                    {/* Bottom Section */}
-                    <div className="flex items-center justify-between mb-3">
-                      {/* Amine Button */}
-                      <button
-                        onClick={() => sayAmine(dua.id)}
-                        className="bg-[#1e3a8a] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#1e40af] transition-colors"
-                      >
-                        Amine
-                      </button>
-
-                      {/* Amine Count Badge */}
-                      <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {formatAmineCount(dua.amines)}
-                      </div>
-                    </div>
-
-                    {/* Author */}
-                    <p className="text-gray-500 text-sm italic">
-                      {dua.author}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Call-to-Action Buttons */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c2a40] to-transparent pt-8 pb-6">
-            <div className="px-6 space-y-3">
-              {/* Write a doua */}
-              <button className="w-full bg-gradient-to-r from-[#3bb4c1] to-[#4fc3d0] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-                Write a doua
-              </button>
-
-              {/* Ask for doua */}
-              <button className="w-full bg-gradient-to-r from-[#005c3f] to-[#007a5a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-                Ask for doua
-              </button>
-
-              {/* Discuss */}
-              <button className="w-full bg-[#1e3a8a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3">
-                <span>💬</span>
-                <span>Discuss</span>
-                <span>→</span>
-              </button>
-            </div>
-
-            {/* Teal Divider Line */}
-            <div className="mt-6 mx-6 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-60"></div>
           </div>
 
           {/* Floating Leaves Menu Button */}
