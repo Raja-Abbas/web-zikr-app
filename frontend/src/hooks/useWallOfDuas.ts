@@ -18,8 +18,8 @@ export const useWallOfDuas = () => {
     return state.duas;
   };
 
-  // Get duas for display (limit to first few for mobile UI)
-  const getDisplayDuas = (limit: number = 2): CommunityDua[] => {
+  // Get duas for display (show more for better scrolling experience)
+  const getDisplayDuas = (limit: number = 8): CommunityDua[] => {
     return state.duas.slice(0, limit);
   };
 
@@ -79,17 +79,27 @@ export const useWallOfDuas = () => {
     }));
   };
 
-  // Get time ago string
+  // Get time ago string with more granular formatting
   const getTimeAgo = (timestamp: string): string => {
     const now = new Date();
     const duaTime = new Date(timestamp);
-    const diffInHours = Math.floor((now.getTime() - duaTime.getTime()) / (1000 * 60 * 60));
-    
-    if (diffInHours < 1) return 'Just now';
+    const diffInMinutes = Math.floor((now.getTime() - duaTime.getTime()) / (1000 * 60));
+
+    if (diffInMinutes < 1) return 'Just now';
+    if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+
+    const diffInHours = Math.floor(diffInMinutes / 60);
     if (diffInHours < 24) return `${diffInHours}h ago`;
+
     const diffInDays = Math.floor(diffInHours / 24);
     if (diffInDays === 1) return '1 day ago';
-    return `${diffInDays} days ago`;
+    if (diffInDays < 7) return `${diffInDays} days ago`;
+
+    const diffInWeeks = Math.floor(diffInDays / 7);
+    if (diffInWeeks === 1) return '1 week ago';
+    if (diffInWeeks < 4) return `${diffInWeeks} weeks ago`;
+
+    return 'A while ago';
   };
 
   // Format amine count
