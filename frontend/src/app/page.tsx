@@ -343,6 +343,9 @@ export default function Home() {
       case 'Reminder':
         navigateToScreen('reminder');
         break;
+      case 'Discuss':
+        handleDiscussClick();
+        break;
       case 'Profile':
         navigateToScreen('profile');
         break;
@@ -416,9 +419,8 @@ export default function Home() {
   const handleDuaAction = (action: string) => {
     console.log('Dua action:', action);
     if (action === 'Discuss') {
-      setShowHomeScreen(false);
       clearSelection(); // Clear dua selection using the hook
-      setShowChatbotDiscussionHub(true);
+      handleDiscussClick();
     }
     // Handle different actions like save, share, etc.
   };
@@ -427,7 +429,10 @@ export default function Home() {
     setSelectedMenuItem(item);
     console.log('Selected menu item:', item);
     // Handle navigation to different sections using centralized navigation
-    if (item === 'My.Zikr+') {
+    if (item === 'Discuss') {
+      setShowDiscussMenu(false);
+      handleDiscussClick();
+    } else if (item === 'My.Zikr+') {
       console.log('Navigate to premium subscription');
     } else if (item === 'The wall of duas') {
       setShowDiscussMenu(false);
@@ -490,9 +495,7 @@ export default function Home() {
     if (action === 'Another reminder') {
       setShowReminderContent(false);
     } else if (action === 'Discuss') {
-      setShowSpiritualReminder(false);
-      setShowHomeScreen(false);
-      setShowChatbotDiscussionHub(true);
+      handleDiscussClick();
     }
     // Handle other actions
   };
@@ -645,6 +648,29 @@ export default function Home() {
     // Dua content will display on the same page below the buttons
   };
 
+  // Universal discussion handler - can be called from any screen
+  const handleDiscussClick = () => {
+    console.log('Navigating to discussion section...');
+    // Clear all other screens
+    setShowHomeScreen(false);
+    setShowWelcomeScreen(false);
+    setShowPersonalizationScreen(false);
+    setShowAuthenticDuaCategories(false);
+    setShowChatbot(false);
+    setShowAuthenticDuaSelection(false);
+    setShowDiscussMenu(false);
+    setShowCustomDuaGeneration(false);
+    setShowSpiritualReminder(false);
+    setShowAuthenticDuasGrid(false);
+    setShowDuaContentViewer(false);
+    setShowInteriorDesignSettings(false);
+    setShowWallOfDuas(false);
+    setShowEmailForm(false);
+
+    // Show discussion hub
+    setShowChatbotDiscussionHub(true);
+  };
+
   const handleToProtectKidsDuaAction = (action: string) => {
     console.log('Dua action:', action);
     switch (action) {
@@ -667,7 +693,7 @@ export default function Home() {
         handleBackFromAuthenticDuaCategories();
         break;
       case 'Discuss':
-        console.log('Opening discussion...');
+        handleDiscussClick();
         break;
       default:
         console.warn('Unknown action:', action);
@@ -1011,7 +1037,10 @@ export default function Home() {
               </button>
 
               {/* Discuss */}
-              <button className="w-full bg-[#1e3a8a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 hover:scale-[1.02] active:scale-[0.98]">
+              <button
+                onClick={handleDiscussClick}
+                className="w-full bg-[#1e3a8a] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 hover:scale-[1.02] active:scale-[0.98]"
+              >
                 <span>💬</span>
                 <span>Discuss</span>
                 <span>→</span>
@@ -2610,7 +2639,7 @@ export default function Home() {
             {/* Navigation Button */}
             <div className="flex justify-center">
               <button
-                onClick={handleWallOfDuasFromGrid}
+                onClick={handleDiscussClick}
                 className="bg-slate-800 text-white px-6 py-3 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
               >
                 <span className="text-sm">≈</span>
@@ -2865,11 +2894,7 @@ export default function Home() {
           <div className="px-6 pb-8">
             <div className="flex justify-center">
               <button
-                onClick={() => {
-                  setShowDuaContentViewer(false);
-                  setShowHomeScreen(false);
-                  setShowChatbotDiscussionHub(true);
-                }}
+                onClick={handleDiscussClick}
                 className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
               >
                 <span className="text-sm">≈</span>
@@ -3171,11 +3196,7 @@ export default function Home() {
           <div className="fixed bottom-0 left-0 right-0 bg-slate-900 bg-opacity-90 backdrop-blur-sm p-6">
             <div className="flex justify-center">
               <button
-                onClick={() => {
-                  setShowInteriorDesignSettings(false);
-                  setShowHomeScreen(false);
-                  setShowChatbotDiscussionHub(true);
-                }}
+                onClick={handleDiscussClick}
                 className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
               >
                 <span className="text-sm">≈</span>
@@ -3530,6 +3551,7 @@ export default function Home() {
                 { name: 'Home', icon: '🏠', color: 'from-blue-400 to-blue-600' },
                 { name: 'Douas', icon: '🤲', color: 'from-purple-400 to-purple-600' },
                 { name: 'Reminder', icon: '⏰', color: 'from-orange-400 to-orange-600' },
+                { name: 'Discuss', icon: '💬', color: 'from-indigo-400 to-indigo-600' },
                 { name: 'Profile', icon: '👤', color: 'from-pink-400 to-pink-600' },
                 { name: 'Wall of Duas', icon: '🕌', color: 'from-emerald-400 to-emerald-600' },
                 { name: 'Chatbot', icon: '🤖', color: 'from-teal-400 to-teal-600' },
