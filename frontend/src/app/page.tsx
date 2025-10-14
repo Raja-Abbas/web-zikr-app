@@ -55,6 +55,7 @@ export default function Home() {
   const [showLeavesMenu, setShowLeavesMenu] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
+  const [customMessage, setCustomMessage] = useState('');
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('To protect kids');
   const [selectedGridCategory, setSelectedGridCategory] = useState('Protection');
   const [selectedMenuItem, setSelectedMenuItem] = useState('Interior design');
@@ -598,6 +599,34 @@ export default function Home() {
       ...prev,
       [setting]: value
     }));
+  };
+
+  const handleOptionSelect = (option: string) => {
+    console.log('Selected option:', option);
+    // Handle navigation based on selected option
+    switch (option) {
+      case 'authentic-dua':
+        navigateToScreen('authentic-dua-selection');
+        break;
+      case 'custom-dua':
+        navigateToScreen('custom-dua-generation');
+        break;
+      case 'spiritual-reminder':
+        navigateToScreen('spiritual-reminder');
+        break;
+      default:
+        console.warn('Unknown option:', option);
+        break;
+    }
+  };
+
+  const handleCustomMessageSubmit = () => {
+    if (customMessage.trim()) {
+      console.log('Custom message:', customMessage);
+      // Navigate to chat with the custom message context
+      navigateToScreen('chatbot');
+      setCustomMessage('');
+    }
   };
 
   const interests = [
@@ -1472,89 +1501,93 @@ export default function Home() {
           </button>
         </div>
       ) : showPersonalizationScreen ? (
-        /* Screen 5: Personalization Survey */
-        <>
-          {/* Logo and Header Section */}
-          <div className="text-center mb-12">
-            {/* Arabic Calligraphy Logo */}
-            <div className="mb-4">
-              <div className="text-6xl md:text-7xl text-white font-arabic mb-2">
-                ذِكْر
+        /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
+        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+          {/* Logo Section */}
+          <div className="text-center mb-8">
+            {/* Floating Leaf Icon */}
+            <div className="relative">
+              <div className="absolute -top-2 -left-8 text-green-400 text-lg animate-pulse">
+                🍃
               </div>
+
+              {/* Arabic Calligraphy Logo */}
+              <div className="mb-4">
+                <div className="text-5xl md:text-6xl text-white font-arabic mb-3">
+                  ذِكْر
+                </div>
+              </div>
+
+              {/* App Name */}
+              <h1 className="text-xl md:text-2xl text-white font-light tracking-wider mb-8">
+                My.Zikr
+              </h1>
             </div>
-
-            {/* App Name */}
-            <h1 className="text-2xl md:text-3xl text-white font-light mb-8">
-              My.Zikr
-            </h1>
-
-            {/* Greeting Message */}
-            <h2 className="text-3xl md:text-4xl text-white font-bold mb-6">
-              Salam aleykum dear, I am Zikr
-            </h2>
-
-            {/* Instructional Text */}
-            <p className="text-white text-base md:text-lg max-w-md mx-auto leading-relaxed">
-              What brings you to My.Zikr? Choose up to 3 so we can customize your navigation.
-            </p>
           </div>
 
-          {/* Interest Selection Buttons */}
-          <div className="w-full max-w-md space-y-4 mb-8">
-            {interests.map((interest) => (
+          {/* Main Chat Bubble */}
+          <div className="w-full max-w-lg mb-8">
+            <div className="bg-[#134E4A] rounded-[20px] p-6 text-white shadow-lg animate-fadeIn">
+              <p className="text-[15px] md:text-[16px] leading-relaxed font-normal">
+                <span className="font-medium">Salam aleykoum dear</span><br/><br/>
+                I am Zikr – your spiritual companion, here to support your spiritual journey with duas and reminders.<br/><br/>
+                Please tell me how I can be helpful to you today. Select a section below or tell me directly what you may need and I will do my best to assist you In Sha Allah.
+              </p>
+            </div>
+          </div>
+
+          {/* Option Buttons */}
+          <div className="w-full max-w-lg space-y-4 mb-8">
+            {/* Authentic dua */}
+            <button
+              onClick={() => handleOptionSelect('authentic-dua')}
+              className="w-full bg-[#0F3D34] text-white py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <span className="text-lg">🤲</span>
+              <span className="flex-1 text-left font-medium">Authentic dua</span>
+            </button>
+
+            {/* Custom dua for my situation */}
+            <button
+              onClick={() => handleOptionSelect('custom-dua')}
+              className="w-full bg-[#1E1E5C] text-white py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <span className="text-lg">✨</span>
+              <span className="flex-1 text-left font-medium">Custom dua for my situation</span>
+            </button>
+
+            {/* Spiritual reminder */}
+            <button
+              onClick={() => handleOptionSelect('spiritual-reminder')}
+              className="w-full bg-[#F5F0E6] text-[#0B1E3A] py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 shadow-inner font-bold"
+            >
+              <span className="text-lg">🕋</span>
+              <span className="flex-1 text-left font-medium">Spiritual reminder</span>
+            </button>
+          </div>
+
+          {/* Input Section */}
+          <div className="w-full max-w-lg">
+            <div className="relative">
+              <input
+                type="text"
+                value={customMessage}
+                onChange={(e) => setCustomMessage(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleCustomMessageSubmit()}
+                placeholder="Write down what you need like I need help to ..."
+                className="w-full bg-[rgba(10,20,40,0.7)] text-white placeholder-[#BFBFBF] rounded-[20px] py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-white/20 text-[14px] md:text-[15px]"
+              />
               <button
-                key={interest.id}
-                onClick={() => handleInterestToggle(interest.id)}
-                className={`w-full py-4 px-6 rounded-xl flex items-center space-x-4 transition-all duration-300 ${
-                  selectedInterests.includes(interest.id)
-                    ? 'hover:bg-gray-100'
-                    : 'hover:bg-slate-700'
-                }`}
-                style={{
-                  backgroundColor: selectedInterests.includes(interest.id) ? '#F7F7E8' : '#1A3A3F'
-                }}
+                onClick={handleCustomMessageSubmit}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-green-400 transition-colors duration-300"
               >
-                <span
-                  className={`text-xl ${
-                    selectedInterests.includes(interest.id) ? 'text-gray-900' : 'text-white'
-                  }`}
-                >
-                  {interest.icon}
-                </span>
-                <span
-                  className={`text-left flex-1 font-medium ${
-                    selectedInterests.includes(interest.id) ? 'text-gray-900' : 'text-white'
-                  }`}
-                >
-                  {interest.text}
-                </span>
-                {selectedInterests.includes(interest.id) && (
-                  <span className="text-gray-900 font-bold">✓</span>
-                )}
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.429a1 1 0 001.17-1.409l-7-14z"/>
+                </svg>
               </button>
-            ))}
+            </div>
           </div>
-
-          {/* Selection Counter - Show when selections are made */}
-          {selectedInterests.length > 0 && (
-            <p className="text-white text-sm mb-6 font-medium">
-              {selectedInterests.length}/3 selected
-            </p>
-          )}
-
-          {/* Continue Button */}
-          <button
-            onClick={handlePersonalizationContinue}
-            disabled={selectedInterests.length === 0}
-            className={`px-12 py-4 rounded-xl font-medium text-lg transition-all duration-300 ${
-              selectedInterests.length > 0
-                ? 'bg-cream text-gray-900 hover:bg-gray-100 hover:shadow-lg'
-                : 'bg-cream text-gray-900 opacity-50 cursor-not-allowed'
-            }`}
-          >
-            Continue
-          </button>
-        </>
+        </div>
       ) : showWelcomeAdnanScreen ? (
         /* Screen 3: Welcome Adnan Screen - Modern Design */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
