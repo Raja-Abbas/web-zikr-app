@@ -1525,48 +1525,54 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Main Chat Bubble */}
+          {/* Main Chat Bubble with Tail */}
           <div className="w-full max-w-lg mb-8">
-            <div className="bg-[#134E4A] rounded-[20px] p-6 text-white shadow-lg animate-fadeIn">
-              <p className="text-[15px] md:text-[16px] leading-relaxed font-normal">
-                <span className="font-medium">Salam aleykoum dear</span><br/><br/>
-                I am Zikr – your spiritual companion, here to support your spiritual journey with duas and reminders.<br/><br/>
-                Please tell me how I can be helpful to you today. Select a section below or tell me directly what you may need and I will do my best to assist you In Sha Allah.
-              </p>
+            <div className="relative">
+              {/* Chat Bubble */}
+              <div className="bg-[#1A5A4F] rounded-[24px] p-6 text-white shadow-xl animate-fadeIn relative">
+                <p className="text-[15px] md:text-[16px] leading-relaxed font-normal">
+                  <span className="font-medium">Salam aleykoum dear</span><br/><br/>
+                  I am Zikr – your spiritual companion, here to support your spiritual journey with duas and reminders.<br/><br/>
+                  Please tell me how I can be helpful to you today. Select a section below or tell me directly what you may need and I will do my best to assist you In Sha Allah.
+                </p>
+
+                {/* Chat Bubble Tail */}
+                <div className="absolute bottom-[-8px] left-8 w-4 h-4 bg-[#1A5A4F] transform rotate-45"></div>
+              </div>
             </div>
           </div>
 
           {/* Option Buttons */}
           <div className="w-full max-w-lg space-y-4 mb-8">
-            {/* Authentic dua */}
+            {/* Authentic dua - Dark green with gold styling and glow */}
             <button
               onClick={() => handleOptionSelect('authentic-dua')}
-              className="w-full bg-[#0F3D34] text-white py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              className="w-full bg-[#0F3D34] text-[#FFD700] py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:shadow-[0_0_20px_rgba(255,215,0,0.5)]"
             >
-              <span className="text-lg">🤲</span>
+              <span className="text-lg text-[#FFD700]">🤲</span>
               <span className="flex-1 text-left font-medium">Authentic dua</span>
             </button>
 
-            {/* Custom dua for my situation */}
+            {/* Custom dua for my situation - Darker purple/blue with light blue styling */}
             <button
               onClick={() => handleOptionSelect('custom-dua')}
-              className="w-full bg-[#1E1E5C] text-white py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              className="w-full bg-[#1A1A4A] text-[#87CEEB] py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
-              <span className="text-lg">✨</span>
+              <span className="text-lg text-[#87CEEB]">✨</span>
               <span className="flex-1 text-left font-medium">Custom dua for my situation</span>
             </button>
 
-            {/* Spiritual reminder */}
+            {/* Spiritual reminder - Off-white raised with brown styling */}
             <button
               onClick={() => handleOptionSelect('spiritual-reminder')}
-              className="w-full bg-[#F5F0E6] text-[#0B1E3A] py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 shadow-inner font-bold"
+              className="w-full bg-[#F5F0E6] text-[#8B4513] py-4 px-6 rounded-full flex items-center space-x-4 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium border border-[#E5DDD3]"
             >
-              <span className="text-lg">🕋</span>
+              <span className="text-lg text-[#8B4513]">🕋</span>
               <span className="flex-1 text-left font-medium">Spiritual reminder</span>
             </button>
           </div>
 
-          {/* Input Section */}
+          {/* Input Section - Dark Rectangular Design */}
           <div className="w-full max-w-lg">
             <div className="relative">
               <input
@@ -1575,11 +1581,11 @@ export default function Home() {
                 onChange={(e) => setCustomMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleCustomMessageSubmit()}
                 placeholder="Write down what you need like I need help to ..."
-                className="w-full bg-[rgba(10,20,40,0.7)] text-white placeholder-[#BFBFBF] rounded-[20px] py-4 px-6 pr-14 border-none focus:outline-none focus:ring-2 focus:ring-white/20 text-[14px] md:text-[15px]"
+                className="w-full bg-[#1A1A2E] text-white placeholder-[#9CA3AF] rounded-[12px] py-4 px-6 pr-14 border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent text-[14px] md:text-[15px] shadow-inner"
               />
               <button
                 onClick={handleCustomMessageSubmit}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-green-400 transition-colors duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#9CA3AF] hover:text-white transition-colors duration-300 p-1"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.429a1 1 0 001.17-1.409l-7-14z"/>
