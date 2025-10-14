@@ -1603,7 +1603,7 @@ export default function Home() {
                 }}
                 className={`w-full rounded-full py-4 px-6 flex items-center space-x-4 text-left transition-all duration-300 transform hover:scale-105 ${
                   selectedInterests.includes(option.id)
-                    ? 'bg-[#1A675E] border-2 border-white text-white'
+                    ? 'bg-[#F5F0E6] border-2 border-[#F5F0E6] text-[#0B1E3A] shadow-lg'
                     : 'bg-[#134E4A] text-white hover:bg-[#1A675E]'
                 }`}
                 style={{
@@ -1613,7 +1613,9 @@ export default function Home() {
                 <span className="text-lg">{option.icon}</span>
                 <span className="flex-1 font-medium text-sm md:text-base">{option.text}</span>
                 {selectedInterests.includes(option.id) && (
-                  <span className="text-white font-bold">✓</span>
+                  <span className={`font-bold text-lg ${
+                    selectedInterests.includes(option.id) ? 'text-[#0B1E3A]' : 'text-white'
+                  }`}>✓</span>
                 )}
               </button>
             ))}
