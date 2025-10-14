@@ -45,7 +45,7 @@ export default function Home() {
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
-  const [showToProtectKidsDua, setShowToProtectKidsDua] = useState(false);
+
   const [showAuthenticDuaCategories, setShowAuthenticDuaCategories] = useState(false);
   const [selectedDuaCategory, setSelectedDuaCategory] = useState('');
   const [showDiscussMenu, setShowDiscussMenu] = useState(false);
@@ -632,10 +632,7 @@ export default function Home() {
     }
   };
 
-  const handleBackFromToProtectKids = () => {
-    setShowToProtectKidsDua(false);
-    setShowAuthenticDuaCategories(true);
-  };
+
 
   const handleBackFromAuthenticDuaCategories = () => {
     setShowAuthenticDuaCategories(false);
@@ -645,14 +642,7 @@ export default function Home() {
   const handleToProtectKidsCategorySelect = (category: string) => {
     console.log('Selected dua category:', category);
     setSelectedDuaCategory(category);
-
-    if (category === 'To protect kids') {
-      setShowAuthenticDuaCategories(false);
-      setShowToProtectKidsDua(true);
-    } else {
-      // For other categories, you can add different dua screens later
-      console.log('Other category selected:', category);
-    }
+    // Dua content will display on the same page below the buttons
   };
 
   const handleToProtectKidsDuaAction = (action: string) => {
@@ -674,7 +664,7 @@ export default function Home() {
         console.log('Opening collection...');
         break;
       case 'Main menu':
-        handleBackFromToProtectKids();
+        handleBackFromAuthenticDuaCategories();
         break;
       case 'Discuss':
         console.log('Opening discussion...');
@@ -1616,128 +1606,122 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Instruction Text */}
-            <div className="text-center">
-              <p className="text-white text-sm opacity-75">
-                Select a category above to view the corresponding dua
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : showToProtectKidsDua ? (
-        /* Screen: To Protect Kids Dua Display */
-        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn">
-          {/* Header */}
-          <div className="bg-[#134E4A] px-4 py-3 flex items-center justify-between">
-            {/* Left side - Back arrow and leaf icon */}
-            <div className="flex items-center space-x-3">
-              <span className="text-green-400 text-lg">🍃</span>
-              <button
-                onClick={handleBackFromToProtectKids}
-                className="text-white hover:text-green-400 transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-            </div>
+            {/* Dua Content Display - Shows when category is selected */}
+            {selectedDuaCategory && (
+              <div className="mt-6">
+                {selectedDuaCategory === 'To protect kids' && (
+                  <div>
+                    {/* Category Title */}
+                    <div className="mb-6 text-center">
+                      <h2 className="text-white text-lg font-medium">To Protect Kids</h2>
+                      <p className="text-[#87CEEB] text-sm mt-1">Dua for protection of children</p>
+                    </div>
 
-            {/* Right side - Authentic dua label */}
-            <div className="flex items-center space-x-2">
-              <span className="text-white font-medium">Authentic dua</span>
-              <span className="text-green-400 text-sm">🤲</span>
-            </div>
-          </div>
+                    {/* Dua Text Display */}
+                    <div className="bg-[#1A1A2E] rounded-lg p-6 mb-6">
+                      {/* Arabic Text */}
+                      <div className="text-right mb-4">
+                        <p className="text-white text-lg leading-relaxed font-arabic">
+                          أَعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ، مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
+                        </p>
+                      </div>
 
-          {/* Content */}
-          <div className="flex-1 px-4 py-6">
-            {/* Category Title */}
-            <div className="mb-6 text-center">
-              <h2 className="text-white text-lg font-medium">To Protect Kids</h2>
-              <p className="text-[#87CEEB] text-sm mt-1">Dua for protection of children</p>
-            </div>
+                      {/* Transliteration */}
+                      <div className="mb-4">
+                        <p className="text-[#87CEEB] text-sm italic leading-relaxed">
+                          U&apos;īdhukumā bi-kalimāti l-lāhi t-tāmmati min kulli shayṭānin wa hāmmatin, wa min kulli ʿaynin lāmmatin.
+                        </p>
+                      </div>
 
-            {/* Dua Text Display */}
-            <div className="bg-[#1A1A2E] rounded-lg p-6 mb-6">
-              {/* Arabic Text */}
-              <div className="text-right mb-4">
-                <p className="text-white text-lg leading-relaxed font-arabic">
-                  أَعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ، مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
+                      {/* English Translation */}
+                      <div className="mb-4">
+                        <p className="text-white text-sm leading-relaxed">
+                          I seek protection for you from the perfect words of Allah against every devil, from every harmful animal (or thing) and from every evil eye.
+                        </p>
+                      </div>
+
+                      {/* Reference */}
+                      <div>
+                        <p className="text-[#9CA3AF] text-xs">
+                          [1] al-Bukhāri N°6312, voir Fath al-Bari 11/113, et Muslim (N°2711, 4/2083).
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Audio Controls */}
+                    <div className="flex justify-center items-center space-x-6 mb-8">
+                      <button className="text-white hover:text-green-400 transition-colors">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
+                        </svg>
+                      </button>
+
+                      <button className="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 transition-colors">
+                        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"/>
+                        </svg>
+                      </button>
+
+                      <button className="text-white hover:text-green-400 transition-colors">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Placeholder for other categories */}
+                {selectedDuaCategory !== 'To protect kids' && selectedDuaCategory !== '' && (
+                  <div className="text-center py-8">
+                    <p className="text-white text-sm opacity-75">
+                      Dua content for &quot;{selectedDuaCategory}&quot; will be available soon.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Instruction Text - Only show when no category is selected */}
+            {!selectedDuaCategory && (
+              <div className="text-center">
+                <p className="text-white text-sm opacity-75">
+                  Select a category above to view the corresponding dua
                 </p>
               </div>
-
-              {/* Transliteration */}
-              <div className="mb-4">
-                <p className="text-[#87CEEB] text-sm italic leading-relaxed">
-                  U&apos;īdhukumā bi-kalimāti l-lāhi t-tāmmati min kulli shayṭānin wa hāmmatin, wa min kulli ʿaynin lāmmatin.
-                </p>
-              </div>
-
-              {/* English Translation */}
-              <div className="mb-4">
-                <p className="text-white text-sm leading-relaxed">
-                  I seek protection for you from the perfect words of Allah against every devil, from every harmful animal (or thing) and from every evil eye.
-                </p>
-              </div>
-
-              {/* Reference */}
-              <div>
-                <p className="text-[#9CA3AF] text-xs">
-                  [1] al-Bukhāri N°6312, voir Fath al-Bari 11/113, et Muslim (N°2711, 4/2083).
-                </p>
-              </div>
-            </div>
-
-            {/* Audio Controls */}
-            <div className="flex justify-center items-center space-x-6 mb-8">
-              <button className="text-white hover:text-green-400 transition-colors">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
-                </svg>
-              </button>
-
-              <button className="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 transition-colors">
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"/>
-                </svg>
-              </button>
-
-              <button className="text-white hover:text-green-400 transition-colors">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
-                </svg>
-              </button>
-            </div>
+            )}
           </div>
 
-          {/* Bottom Navigation/Action Bar */}
-          <div className="bg-[#134E4A] px-4 py-3">
-            <div className="flex flex-wrap justify-center gap-2">
-              {[
-                'Save it', 'Share it', 'Pounder it', 'Another one',
-                'The whole collection', 'Main menu'
-              ].map((action) => (
+          {/* Bottom Navigation/Action Bar - Only show when dua is displayed */}
+          {selectedDuaCategory === 'To protect kids' && (
+            <div className="bg-[#134E4A] px-4 py-3">
+              <div className="flex flex-wrap justify-center gap-2">
+                {[
+                  'Save it', 'Share it', 'Pounder it', 'Another one',
+                  'The whole collection', 'Main menu'
+                ].map((action) => (
+                  <button
+                    key={action}
+                    onClick={() => handleToProtectKidsDuaAction(action)}
+                    className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors"
+                  >
+                    {action}
+                  </button>
+                ))}
+
+                {/* Discuss button with chat icon */}
                 <button
-                  key={action}
-                  onClick={() => handleToProtectKidsDuaAction(action)}
-                  className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors"
+                  onClick={() => handleToProtectKidsDuaAction('Discuss')}
+                  className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors flex items-center space-x-1"
                 >
-                  {action}
+                  <span>Discuss</span>
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"/>
+                  </svg>
                 </button>
-              ))}
-
-              {/* Discuss button with chat icon */}
-              <button
-                onClick={() => handleToProtectKidsDuaAction('Discuss')}
-                className="bg-[#0F3D34] text-white px-3 py-2 rounded-full text-xs font-medium hover:bg-[#1A5A4F] transition-colors flex items-center space-x-1"
-              >
-                <span>Discuss</span>
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"/>
-                </svg>
-              </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
