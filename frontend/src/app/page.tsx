@@ -598,8 +598,7 @@ export default function Home() {
     // Handle navigation based on selected option
     switch (option) {
       case 'authentic-dua':
-        setShowPersonalizationScreen(false);
-        setShowAuthenticDuaCategories(true);
+        navigateToScreen('authentic-duas-grid');
         break;
       case 'custom-dua':
         navigateToScreen('custom-dua-generation');
