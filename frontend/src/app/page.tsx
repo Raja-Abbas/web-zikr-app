@@ -58,6 +58,7 @@ export default function Home() {
   const [showInteriorDesignSettings, setShowInteriorDesignSettings] = useState(false);
   const [showLeavesMenu, setShowLeavesMenu] = useState(false);
   const [showLocalDuaContent, setShowLocalDuaContent] = useState(false);
+  const [showMatinSoirDetails, setShowMatinSoirDetails] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [customMessage, setCustomMessage] = useState('');
@@ -130,6 +131,7 @@ export default function Home() {
     setShowChatbotDiscussionHub(false);
     setShowDuaContentViewer(false);
     setShowInteriorDesignSettings(false);
+    setShowMatinSoirDetails(false);
     if (screenName !== 'wall-of-duas') {
       setShowWallOfDuas(false);
     }
@@ -208,6 +210,9 @@ export default function Home() {
         break;
       case 'interior-design-settings':
         setShowInteriorDesignSettings(true);
+        break;
+      case 'matin-soir-details':
+        setShowMatinSoirDetails(true);
         break;
       case 'email-form':
         setShowEmailForm(true);
@@ -504,8 +509,15 @@ export default function Home() {
   const handleDuaCategoryGridSelect = (category: string) => {
     console.log('Selected dua category from grid:', category);
     setSelectedGridCategory(category);
-    setShowAuthenticDuasGrid(false);
-    setShowDuaContentViewer(true);
+
+    // If it's "Matin & Soir", go to the detailed list screen
+    if (category === 'Matin & Soir') {
+      setShowAuthenticDuasGrid(false);
+      setShowMatinSoirDetails(true);
+    } else {
+      setShowAuthenticDuasGrid(false);
+      setShowDuaContentViewer(true);
+    }
   };
 
   const handleWallOfDuasFromGrid = () => {
@@ -776,6 +788,25 @@ export default function Home() {
     // Add more reminders as needed
   };
 
+  // Matin & Soir Duas List
+  const matinSoirDuas = [
+    { id: 1, title: "Lorsque l'on se réveille", count: 4 },
+    { id: 27, title: "Invocation du matin", count: 2 },
+    { id: 28, title: "Invocation du soir", count: 3 },
+    { id: 29, title: "Avant de dormir", count: 5 },
+    { id: 30, title: "Lorsque l'on se couche", count: 2 },
+    { id: 31, title: "Invocation contre l'insomnie", count: 1 },
+    { id: 32, title: "Lorsque l'on fait un rêve", count: 3 },
+    { id: 33, title: "Invocation de protection nocturne", count: 2 },
+    { id: 34, title: "Dhikr avant le sommeil", count: 4 },
+    { id: 35, title: "Invocation au réveil nocturne", count: 1 },
+    { id: 36, title: "Tasbih du matin", count: 3 },
+    { id: 37, title: "Tasbih du soir", count: 3 },
+    { id: 38, title: "Istighfar matinal", count: 2 },
+    { id: 39, title: "Protection divine quotidienne", count: 1 },
+    { id: 40, title: "Bénédiction de la journée", count: 2 }
+  ];
+
   // Authentic Duas Categories for Grid (French as in screenshot)
   const authenticDuaCategories = [
     { id: 'tout', icon: '🤲', name: 'Tout', chapters: '132 chapitres' },
@@ -832,6 +863,7 @@ export default function Home() {
       showChatbotDiscussionHub,
       showDuaContentViewer,
       showInteriorDesignSettings,
+      showMatinSoirDetails,
       showEmailForm
     ].filter(Boolean);
 
@@ -3064,6 +3096,113 @@ export default function Home() {
             className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Home
+          </button>
+        </div>
+      ) : showMatinSoirDetails ? (
+        /* Screen: Matin & Soir Details - From morning & night */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A]">
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-6">
+            {/* Left: Green leaf icon */}
+            <button
+              onClick={() => setShowDiscussMenu(true)}
+              className="hover:scale-110 transition-transform"
+            >
+              <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </button>
+
+            {/* Center: Title */}
+            <h1 className="text-white text-lg font-medium" style={{ fontFamily: 'Inter, Poppins, sans-serif' }}>
+              From morning & night
+            </h1>
+
+            {/* Right: Search icon */}
+            <button className="hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Scrollable Dua List */}
+          <div className="flex-1 px-6 pb-32 overflow-y-auto">
+            <div className="space-y-1">
+              {matinSoirDuas.map((dua, index) => (
+                <div
+                  key={dua.id}
+                  className="flex items-center justify-between py-4 px-2 hover:bg-white hover:bg-opacity-5 rounded-lg transition-colors cursor-pointer"
+                >
+                  {/* Left: Number */}
+                  <span className="text-gray-400 text-sm font-medium w-8">
+                    {dua.id}.
+                  </span>
+
+                  {/* Center: Dua title */}
+                  <div className="flex-1 mx-4">
+                    <span className="text-gray-100 text-base">
+                      {dua.title}
+                    </span>
+                  </div>
+
+                  {/* Right: Count and arrow */}
+                  <div className="flex items-center space-x-3">
+                    <span className="text-gray-400 text-sm">
+                      ({dua.count})
+                    </span>
+                    {index === 0 && ( // Show arrow only on first item as active
+                      <span className="text-teal-400 text-lg">
+                        ➜
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Card - "Discover the wall of douas" */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B1E3A] via-[#0B1E3A] to-transparent p-6">
+            <div className="bg-[#0A1A2E] bg-opacity-80 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-gray-700 border-opacity-30">
+              <div className="flex items-center justify-between">
+                {/* Left: Text content */}
+                <div className="flex-1 pr-4">
+                  <h3 className="text-white font-bold text-lg mb-2">
+                    Discover the wall of douas
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Find out douas that people made and support them by saying &apos;Amine&apos;.
+                  </p>
+                </div>
+
+                {/* Right: Discuss button */}
+                <button
+                  onClick={() => {
+                    setShowMatinSoirDetails(false);
+                    handleDiscussClick();
+                  }}
+                  className="bg-[#1E3A8A] hover:bg-[#1E40AF] text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-colors shadow-lg"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                  </svg>
+                  <span className="font-medium">Discuss</span>
+                  <span className="text-lg">➜</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Back button for debugging */}
+          <button
+            onClick={() => {
+              setShowMatinSoirDetails(false);
+              setShowAuthenticDuasGrid(true);
+            }}
+            className="absolute top-20 left-6 bg-gray-600 text-white px-4 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+          >
+            ← Back to Grid
           </button>
         </div>
       ) : showChatbotDiscussionHub ? (
