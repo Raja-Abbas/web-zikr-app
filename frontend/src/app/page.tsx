@@ -2244,10 +2244,7 @@ export default function Home() {
         <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
           {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
-            onClick={() => {
-              console.log('Leaves icon clicked - opening sidebar menu');
-              setShowDiscussMenu(true);
-            }}
+            onClick={() => setShowDiscussMenu(true)}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
           >
             <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
@@ -3605,7 +3602,7 @@ export default function Home() {
       {/* Screen 16: Discuss Section / Side Menu Overlay - Mobile Responsive */}
       {showDiscussMenu && (
         <>
-          {console.log('Sidebar menu is rendering, showDiscussMenu:', showDiscussMenu)}
+
         <div className="fixed inset-0 z-50 flex">
           {/* Background overlay with dimmed effect */}
           <div
