@@ -383,9 +383,12 @@ export default function Home() {
 
 
   const handleDuaCategorySelect = (category: string) => {
+    console.log('🔥 handleDuaCategorySelect called with:', category);
     setSelectedDuaCategory(category);
     selectDuaCategory(category); // Use the hook function to show dua content
-    console.log('Selected dua category:', category);
+    console.log('🔥 After selectDuaCategory - showDuaContent:', showDuaContent);
+    console.log('🔥 selectedDuaCategory set to:', category);
+    console.log('🔥 duaContent has key?', category in duaContent);
   };
 
   const handlePlayPause = () => {
@@ -2503,6 +2506,16 @@ export default function Home() {
                   {category}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Debug Info */}
+          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-4">
+            <div className="bg-red-100 p-4 rounded text-black text-xs">
+              <p>🔥 DEBUG: showDuaContent = {showDuaContent ? 'true' : 'false'}</p>
+              <p>🔥 DEBUG: selectedDuaCategory = &quot;{selectedDuaCategory}&quot;</p>
+              <p>🔥 DEBUG: duaContent has key = {selectedDuaCategory in duaContent ? 'true' : 'false'}</p>
+              <p>🔥 DEBUG: Available keys = {Object.keys(duaContent).join(', ')}</p>
             </div>
           </div>
 
