@@ -1538,25 +1538,7 @@ export default function Home() {
 
 
 
-          {/* Floating Leaves Menu Button - Mobile Responsive */}
-          <button
-            onClick={handleLeavesMenuToggle}
-            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
-          >
-            <div className="relative">
-              {/* Animated leaves */}
-              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
-                <span className="text-2xl">🍃</span>
-              </div>
-              {/* Additional floating leaves animation */}
-              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
-                <span className="text-lg">🍃</span>
-              </div>
-              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
-                <span className="text-sm">🍃</span>
-              </div>
-            </div>
-          </button>
+
 
           {/* Debug Reset Button */}
           <button
@@ -1675,25 +1657,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Leaves Menu Button - Mobile Responsive */}
-          <button
-            onClick={handleLeavesMenuToggle}
-            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
-          >
-            <div className="relative">
-              {/* Animated leaves */}
-              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
-                <span className="text-2xl">🍃</span>
-              </div>
-              {/* Additional floating leaves animation */}
-              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
-                <span className="text-lg">🍃</span>
-              </div>
-              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
-                <span className="text-sm">🍃</span>
-              </div>
-            </div>
-          </button>
+
         </div>
       ) : activeTab === 'Reminder' && showHomeScreen ? (
         /* Reminder Tab Screen */
