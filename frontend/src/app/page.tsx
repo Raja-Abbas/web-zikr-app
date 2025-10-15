@@ -2245,47 +2245,55 @@ export default function Home() {
           </button>
         </div>
       ) : showSuccessScreen ? (
-        /* Success/Confirmation Screen */
+        /* Success/Confirmation Screen - New Sleek Design */
         <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
-          {/* Background Gradient - Dark teal/green fading to dark blue/purple */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0F2027] via-[#203A43] to-[#2C5364]"></div>
+          {/* Background Gradient - Dark teal to navy */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D4F4F] via-[#1A365D] to-[#1E3A8A]"></div>
 
           {/* Content Container */}
           <div className="relative z-10 flex flex-col items-center justify-center max-w-md mx-auto text-center">
 
-            {/* Large Central Success Icon */}
-            <div className="mb-8">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-green-500 rounded-full flex items-center justify-center shadow-2xl">
-                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+            {/* Logo Section with Arabic Calligraphy */}
+            <div className="mb-12 sm:mb-16">
+              {/* Green Leaf Icon - Decorative Accent */}
+              <div className="flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
+
+                {/* Arabic Calligraphy */}
+                <div className="text-4xl sm:text-5xl text-white font-arabic">
+                  ذِكْر
+                </div>
+              </div>
+
+              {/* English Logo */}
+              <h1 className="text-xl sm:text-2xl text-white font-semibold tracking-wider" style={{ fontFamily: 'Inter, Poppins, sans-serif' }}>
+                My.Zikr
+              </h1>
+            </div>
+
+            {/* Rounded Beige Dialog Box with 3D Shadows */}
+            <div className="mb-8 sm:mb-10">
+              <div className="bg-[#F5F0E6] rounded-2xl px-6 sm:px-8 py-6 sm:py-8 shadow-2xl" style={{
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              }}>
+                <p className="text-[#1E3A8A] text-base sm:text-lg font-semibold text-center leading-relaxed" style={{ fontFamily: 'Inter, Poppins, sans-serif' }}>
+                  Thank you for your confirmation and for being here. Let&apos;s start discussing.
+                </p>
               </div>
             </div>
 
-            {/* Primary Success Message */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-4">
-              Journey Started!
-            </h1>
-
-            {/* Secondary Explanatory Message */}
-            <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
-              Welcome to your spiritual journey with My.Zikr. You can now access personalized duas, reminders, and spiritual guidance.
-            </p>
-
-            {/* Primary CTA Button */}
+            {/* Continue Button - Beige with Dark Navy Text */}
             <button
               onClick={() => navigateToScreen('welcome')}
-              className="w-full bg-green-500 text-white font-bold py-4 px-8 rounded-[999px] text-lg transition-all duration-300 transform hover:scale-105 hover:bg-green-600 shadow-lg mb-4"
+              className="bg-[#F5F0E6] text-[#1E3A8A] font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-2xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              style={{
+                fontFamily: 'Inter, Poppins, sans-serif',
+                boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)'
+              }}
             >
-              Continue to My Duas
-            </button>
-
-            {/* Optional Secondary Action */}
-            <button
-              onClick={() => navigateToScreen('welcome')}
-              className="text-gray-400 text-sm hover:text-white transition-colors"
-            >
-              Skip for now
+              Continue
             </button>
           </div>
         </div>
