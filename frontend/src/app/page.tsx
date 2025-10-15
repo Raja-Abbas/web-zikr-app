@@ -1992,58 +1992,113 @@ export default function Home() {
           </button>
         </div>
       ) : showWelcomeScreen ? (
-        /* Screen 4: Confirmation and Welcome Screen */
-        <>
-          {/* Back Arrow */}
+        /* NEW Welcome Screen - Redesigned UI */
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
+          {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
-            onClick={() => {
-              setShowWelcomeScreen(false);
-              setCurrentScreen('auth');
-            }}
-            className="absolute top-8 left-8 text-white text-2xl hover:text-green-400 transition-colors z-10"
+            onClick={() => setShowDiscussMenu(true)}
+            className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
           >
-            ←
-          </button>
-
-          {/* Green Leaf Icon in upper-right corner */}
-          <div className="absolute top-8 right-8">
-            <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
-          </div>
+          </button>
 
-          {/* Logo and Header Section */}
-          <div className="text-center mb-12">
-            {/* Arabic Calligraphy Logo */}
-            <div className="mb-4">
-              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2">
+          {/* Header & Title Area */}
+          <div className="text-center mb-8 sm:mb-12">
+            {/* Arabic Title - Stylized Green Font */}
+            <div className="mb-3 sm:mb-4">
+              <div className="text-5xl sm:text-6xl md:text-7xl text-green-400 font-arabic mb-2">
                 ذِكْر
               </div>
             </div>
 
-            {/* App Name */}
-            <h1 className="text-2xl md:text-3xl text-cream font-light mb-6">
+            {/* English Title - Centered Below Arabic */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-light tracking-wider">
               My.Zikr
             </h1>
           </div>
 
-          {/* Message Card */}
-          <div className="w-full max-w-md mx-auto mb-8">
-            <div className="bg-cream rounded-2xl p-8 shadow-lg">
-              <p className="text-gray-900 text-center text-lg leading-relaxed">
-                Thank you for your confirmation and for being here. Let&apos;s start discussing.
-              </p>
+          {/* Welcome Message Box - Dark Green Background */}
+          <div className="w-full max-w-lg mb-8 sm:mb-10">
+            <div className="flex justify-center">
+              <div className="bg-[#1E504A] rounded-2xl rounded-tl-sm p-5 sm:p-6 max-w-md shadow-lg">
+                <p className="text-white text-base sm:text-lg font-medium mb-3">
+                  Salam aleykoum dear
+                </p>
+                <p className="text-white text-sm sm:text-base leading-relaxed">
+                  I am Zikr – your spiritual companion, here to support your spiritual journey with duas and reminders. Please tell me how I can be helpful to you today. Select a section below or tell me directly what you may need and I will do my best to assist you In Sha Allah.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Continue Button - Mobile Responsive */}
-          <button
-            onClick={handleContinue}
-            className="bg-cream text-gray-900 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-md transition-all duration-300 text-sm sm:text-base"
-          >
-            Continue
-          </button>
-        </>
+          {/* Navigation Button Section - New Layout */}
+          <div className="w-full max-w-lg mb-8 sm:mb-10">
+            {/* Line 1 - Horizontal Pair */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-3 sm:mb-4">
+              {/* Authentic dua - Meditation/Prayer Icon */}
+              <button
+                onClick={() => {
+                  setShowWelcomeScreen(false);
+                  setShowAuthenticDuasGrid(true);
+                }}
+                className="flex-1 bg-[#2D5A4F] text-white border-2 border-[#4A7C59] px-4 sm:px-6 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#3A6B5C] shadow-lg"
+              >
+                <span className="text-base sm:text-lg">🧘</span>
+                <span className="text-sm sm:text-base font-medium">Authentic dua</span>
+              </button>
+
+              {/* Custom dua - Genie Lamp/Star Icon */}
+              <button
+                onClick={() => {
+                  setShowWelcomeScreen(false);
+                  setShowCustomDuaGeneration(true);
+                }}
+                className="flex-1 bg-[#4A3B7A] text-white border-2 border-[#6B5B95] px-4 sm:px-6 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#5A4B8A] shadow-lg"
+              >
+                <span className="text-base sm:text-lg">🪔</span>
+                <span className="text-sm sm:text-base font-medium">Custom dua for my situation</span>
+              </button>
+            </div>
+
+            {/* Line 2 - Centered Single Button */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  setShowWelcomeScreen(false);
+                  setShowSpiritualReminder(true);
+                }}
+                className="w-full sm:w-auto bg-[#8B7355] text-white border-2 border-[#A0845C] px-6 sm:px-8 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#9B8365] shadow-lg font-medium"
+              >
+                <span className="text-base sm:text-lg">🪶</span>
+                <span className="text-sm sm:text-base font-medium">Spiritual reminder</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Input Bar - New Main Feature */}
+          <div className="w-full max-w-lg">
+            <div className="relative">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleChatSubmit()}
+                placeholder="Write down what you need like I need help to ..."
+                className="w-full bg-[#1A1A2E] text-white placeholder-[#9CA3AF] rounded-[20px] py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent text-sm sm:text-base shadow-inner"
+              />
+              <button
+                onClick={handleChatSubmit}
+                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 p-1"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.429a1 1 0 001.17-1.409l-7-14z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       ) : showAuthenticDuaSelection ? (
         /* Screen 14: Authentic Dua Selection */
         <>
