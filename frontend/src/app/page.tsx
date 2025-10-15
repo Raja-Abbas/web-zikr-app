@@ -2079,7 +2079,7 @@ export default function Home() {
                   setShowWelcomeScreen(false);
                   setShowSpiritualReminder(true);
                 }}
-                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
+                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
               >
                 <span className="text-lg sm:text-xl">🪶</span>
                 <span className="text-xs sm:text-sm font-medium mt-1">Spiritual reminder</span>
@@ -3539,14 +3539,14 @@ export default function Home() {
           />
 
           {/* Green leaf icon in upper-left corner - Mobile Responsive */}
-          <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-60">
+          <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-50">
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
           </div>
 
           {/* Menu Container - Mobile Responsive */}
-          <div className="relative w-full sm:w-80 md:w-96 h-full">
+          <div className="relative w-full sm:w-80 md:w-96 h-full z-50">
             <div className="bg-cream rounded-none sm:rounded-r-2xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
               {/* Menu Items - Mobile Responsive */}
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
