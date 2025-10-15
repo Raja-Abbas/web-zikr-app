@@ -57,6 +57,7 @@ export default function Home() {
   const [showDuaContentViewer, setShowDuaContentViewer] = useState(false);
   const [showInteriorDesignSettings, setShowInteriorDesignSettings] = useState(false);
   const [showLeavesMenu, setShowLeavesMenu] = useState(false);
+  const [showLocalDuaContent, setShowLocalDuaContent] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [customMessage, setCustomMessage] = useState('');
@@ -385,8 +386,16 @@ export default function Home() {
   const handleDuaCategorySelect = (category: string) => {
     console.log('🔥 handleDuaCategorySelect called with:', category);
     setSelectedDuaCategory(category);
-    selectDuaCategory(category); // Use the hook function to show dua content
-    console.log('🔥 After selectDuaCategory - showDuaContent:', showDuaContent);
+
+    // Check if the category exists in our duaContent object and show content
+    if (category in duaContent) {
+      setShowLocalDuaContent(true);
+      console.log('🔥 setShowLocalDuaContent(true) called');
+    } else {
+      setShowLocalDuaContent(false);
+      console.log('🔥 Category not found in duaContent');
+    }
+
     console.log('🔥 selectedDuaCategory set to:', category);
     console.log('🔥 duaContent has key?', category in duaContent);
   };
@@ -2512,7 +2521,8 @@ export default function Home() {
           {/* Debug Info */}
           <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-4">
             <div className="bg-red-100 p-4 rounded text-black text-xs">
-              <p>🔥 DEBUG: showDuaContent = {showDuaContent ? 'true' : 'false'}</p>
+              <p>🔥 DEBUG: showDuaContent (hook) = {showDuaContent ? 'true' : 'false'}</p>
+              <p>🔥 DEBUG: showLocalDuaContent = {showLocalDuaContent ? 'true' : 'false'}</p>
               <p>🔥 DEBUG: selectedDuaCategory = &quot;{selectedDuaCategory}&quot;</p>
               <p>🔥 DEBUG: duaContent has key = {selectedDuaCategory in duaContent ? 'true' : 'false'}</p>
               <p>🔥 DEBUG: Available keys = {Object.keys(duaContent).join(', ')}</p>
@@ -2520,7 +2530,7 @@ export default function Home() {
           </div>
 
           {/* Dua Display Card (Content Area) - Mobile Responsive */}
-          {showDuaContent && duaContent[selectedDuaCategory as keyof typeof duaContent] && (
+          {showLocalDuaContent && duaContent[selectedDuaCategory as keyof typeof duaContent] && (
             <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
               <div className="bg-cream rounded-2xl p-4 sm:p-8 shadow-lg">
                 {/* Title/Context - Mobile Responsive */}
