@@ -2089,9 +2089,9 @@ export default function Home() {
           </button>
         </>
       ) : showChatbot ? (
-        /* Chatbot Initial Greeting Screen */
-        <>
-          {/* Green Leaf Icon in upper-left corner - Clickable for Side Menu - Mobile Responsive */}
+        /* Chatbot Initial Greeting Screen - Image 2 Layout */
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
+          {/* Green Leaf Icon in upper-left corner - Clickable for Side Menu */}
           <button
             onClick={() => setShowDiscussMenu(true)}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
@@ -2101,27 +2101,26 @@ export default function Home() {
             </svg>
           </button>
 
-          {/* Logo and Header Section - Mobile Responsive */}
-          <div className="text-center mb-6 sm:mb-8">
-            {/* Arabic Calligraphy Logo - Mobile Responsive */}
+          {/* Header Section - Centered at Top */}
+          <div className="text-center mb-8 sm:mb-12">
+            {/* Arabic Calligraphy Logo */}
             <div className="mb-3 sm:mb-4">
-              <div className="text-4xl sm:text-6xl md:text-7xl text-white font-arabic mb-2">
+              <div className="text-5xl sm:text-6xl md:text-7xl text-white font-arabic mb-2">
                 ذِكْر
               </div>
             </div>
 
-            {/* App Name - Mobile Responsive */}
-            <h1 className="text-lg sm:text-2xl md:text-3xl text-white font-light mb-6 sm:mb-8">
+            {/* App Name */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-light tracking-wider">
               My.Zikr
             </h1>
           </div>
 
-          {/* Chat Message (Bot's Greeting) - Mobile Responsive */}
-          <div className="w-full max-w-xs sm:max-w-2xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
-            {/* Chat Bubble - Mobile Responsive */}
-            <div className="flex justify-start mb-4 sm:mb-6">
-              <div className="bg-[#1A5A4F] bg-opacity-80 rounded-2xl rounded-tl-sm p-4 sm:p-6 max-w-xs sm:max-w-lg">
-                <p className="text-white text-base sm:text-lg font-medium mb-2 sm:mb-3">
+          {/* Chat Message Bubble - Positioned Higher, Centered */}
+          <div className="w-full max-w-lg mb-8 sm:mb-10">
+            <div className="flex justify-center">
+              <div className="bg-[#1A5A4F] bg-opacity-90 rounded-2xl rounded-tl-sm p-5 sm:p-6 max-w-md">
+                <p className="text-white text-base sm:text-lg font-medium mb-3">
                   Salam aleykoum dear
                 </p>
                 <p className="text-white text-sm sm:text-base leading-relaxed">
@@ -2129,28 +2128,36 @@ export default function Home() {
                 </p>
               </div>
             </div>
+          </div>
 
-            {/* Action Pills (Suggested Topics) - Mobile Responsive */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
+          {/* Action Buttons - Image 2 Layout */}
+          <div className="w-full max-w-lg mb-8 sm:mb-10">
+            {/* First Row - Two Buttons Side by Side */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-3 sm:mb-4">
+              {/* Authentic dua - Selected State with Glowing Yellow/Orange Outline */}
               <button
                 onClick={() => handleSuggestedAction('Authentic dua')}
-                className="w-full sm:w-auto bg-[#0F3D34] text-[#FFD700] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#1A5A4F] transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:shadow-[0_0_20px_rgba(255,215,0,0.5)]"
+                className="flex-1 bg-[#1A1A2E] text-[#FFD700] border-2 border-[#FFD700] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:shadow-[0_0_20px_rgba(255,215,0,0.6)]"
               >
                 <span className="text-base sm:text-lg">🤲</span>
                 <span className="text-sm sm:text-base font-medium">Authentic dua</span>
               </button>
 
+              {/* Custom dua - Unselected State with Purple/Blue Outline */}
               <button
                 onClick={() => handleSuggestedAction('Custom dua for my situation')}
-                className="w-full sm:w-auto bg-[#1A1A4A] text-[#87CEEB] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#2A2A5A] transition-all duration-300 transform hover:scale-105"
+                className="flex-1 bg-[#1A1A2E] text-[#87CEEB] border-2 border-[#87CEEB] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105"
               >
                 <span className="text-base sm:text-lg">✨</span>
                 <span className="text-sm sm:text-base font-medium">Custom dua for my situation</span>
               </button>
+            </div>
 
+            {/* Second Row - Spiritual Reminder Button Below */}
+            <div className="flex justify-center">
               <button
                 onClick={() => handleSuggestedAction('Spiritual reminder')}
-                className="w-full sm:w-auto bg-[#F5F0E6] text-[#8B4513] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#E5DDD3] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium border border-[#E5DDD3]"
+                className="w-full sm:w-auto bg-[#F5F0E6] text-[#8B4513] border-2 border-[#E5DDD3] px-6 sm:px-8 py-3 sm:py-4 rounded-full flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium"
               >
                 <span className="text-base sm:text-lg">🕋</span>
                 <span className="text-sm sm:text-base font-medium">Spiritual reminder</span>
@@ -2158,8 +2165,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Text Input Area (User Prompt) - Mobile Responsive */}
-          <div className="w-full max-w-xs sm:max-w-2xl mx-auto px-4 sm:px-0">
+          {/* Input Field - Dark, Full-Width with Paper Airplane */}
+          <div className="w-full max-w-lg mb-6 sm:mb-8">
             <div className="relative">
               <input
                 type="text"
@@ -2167,11 +2174,11 @@ export default function Home() {
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleChatSubmit()}
                 placeholder="Write down what you need like I need help to ..."
-                className="w-full bg-[#1A1A2E] text-white placeholder-[#9CA3AF] rounded-[12px] sm:rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent text-[13px] sm:text-sm md:text-base shadow-inner"
+                className="w-full bg-[#1A1A2E] text-white placeholder-[#9CA3AF] rounded-[12px] sm:rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent text-sm sm:text-base shadow-inner"
               />
               <button
                 onClick={handleChatSubmit}
-                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-[#9CA3AF] hover:text-white transition-colors duration-300 p-1"
+                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 p-1"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.429a1 1 0 001.17-1.409l-7-14z"/>
@@ -2180,14 +2187,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Debug Continue Button */}
-          <button
-            onClick={handleChatbotContinue}
-            className="mt-8 bg-teal-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
-          >
-            Continue to Personalization →
-          </button>
-        </>
+          {/* Continue to Personalization Button - Bottom Center */}
+          <div className="w-full max-w-lg">
+            <button
+              onClick={handleChatbotContinue}
+              className="w-full bg-[#0F3D34] text-white px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium hover:bg-[#1A5A4F] transition-colors duration-300 shadow-lg"
+            >
+              Continue to Personalization →
+            </button>
+          </div>
+        </div>
       ) : showAuthenticDuaSelection ? (
         /* Screen 14: Authentic Dua Selection */
         <>
