@@ -818,7 +818,7 @@ export default function Home() {
       showPersonalizationScreen,
       showAuthenticDuaSelection,
       showDuaContent,
-      showDiscussMenu,
+      // showDiscussMenu, // REMOVED: Sidebar menu should not count as active screen
       showCustomDuaGeneration,
       showSpiritualReminder,
       showAuthenticDuasGrid,
