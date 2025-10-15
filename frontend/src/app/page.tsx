@@ -2091,75 +2091,75 @@ export default function Home() {
       ) : showChatbot ? (
         /* Chatbot Initial Greeting Screen */
         <>
-          {/* Green Leaf Icon in upper-left corner - Clickable for Side Menu */}
+          {/* Green Leaf Icon in upper-left corner - Clickable for Side Menu - Mobile Responsive */}
           <button
             onClick={() => setShowDiscussMenu(true)}
-            className="absolute top-8 left-8 hover:scale-110 transition-transform"
+            className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
           >
-            <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
           </button>
 
-          {/* Logo and Header Section */}
-          <div className="text-center mb-8">
-            {/* Arabic Calligraphy Logo */}
-            <div className="mb-4">
-              <div className="text-6xl md:text-7xl text-white font-arabic mb-2">
+          {/* Logo and Header Section - Mobile Responsive */}
+          <div className="text-center mb-6 sm:mb-8">
+            {/* Arabic Calligraphy Logo - Mobile Responsive */}
+            <div className="mb-3 sm:mb-4">
+              <div className="text-4xl sm:text-6xl md:text-7xl text-white font-arabic mb-2">
                 ذِكْر
               </div>
             </div>
 
-            {/* App Name */}
-            <h1 className="text-2xl md:text-3xl text-white font-light mb-8">
+            {/* App Name - Mobile Responsive */}
+            <h1 className="text-lg sm:text-2xl md:text-3xl text-white font-light mb-6 sm:mb-8">
               My.Zikr
             </h1>
           </div>
 
-          {/* Chat Message (Bot's Greeting) */}
-          <div className="w-full max-w-2xl mx-auto mb-8">
-            {/* Chat Bubble */}
-            <div className="flex justify-start mb-6">
-              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-lg">
-                <p className="text-white text-lg font-medium mb-3">
+          {/* Chat Message (Bot's Greeting) - Mobile Responsive */}
+          <div className="w-full max-w-xs sm:max-w-2xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
+            {/* Chat Bubble - Mobile Responsive */}
+            <div className="flex justify-start mb-4 sm:mb-6">
+              <div className="bg-[#1A5A4F] bg-opacity-80 rounded-2xl rounded-tl-sm p-4 sm:p-6 max-w-xs sm:max-w-lg">
+                <p className="text-white text-base sm:text-lg font-medium mb-2 sm:mb-3">
                   Salam aleykoum dear
                 </p>
-                <p className="text-white text-base leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   I am Zikr → your spiritual companion, here to support your spiritual journey with duas and reminders. Please tell me how i can be helpful to you today. Select a section below or tell me directly what you may need and i will do my best to assist you In Sha Allah.
                 </p>
               </div>
             </div>
 
-            {/* Action Pills (Suggested Topics) */}
-            <div className="flex flex-wrap gap-3 justify-center mb-8">
+            {/* Action Pills (Suggested Topics) - Mobile Responsive */}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
               <button
                 onClick={() => handleSuggestedAction('Authentic dua')}
-                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+                className="w-full sm:w-auto bg-[#0F3D34] text-[#FFD700] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#1A5A4F] transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:shadow-[0_0_20px_rgba(255,215,0,0.5)]"
               >
-                <span className="text-lg">🤲</span>
-                <span className="text-sm font-medium">Authentic dua</span>
+                <span className="text-base sm:text-lg">🤲</span>
+                <span className="text-sm sm:text-base font-medium">Authentic dua</span>
               </button>
 
               <button
                 onClick={() => handleSuggestedAction('Custom dua for my situation')}
-                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+                className="w-full sm:w-auto bg-[#1A1A4A] text-[#87CEEB] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#2A2A5A] transition-all duration-300 transform hover:scale-105"
               >
-                <span className="text-lg">✍️</span>
-                <span className="text-sm font-medium">Custom dua for my situation</span>
+                <span className="text-base sm:text-lg">✨</span>
+                <span className="text-sm sm:text-base font-medium">Custom dua for my situation</span>
               </button>
 
               <button
                 onClick={() => handleSuggestedAction('Spiritual reminder')}
-                className="bg-slate-800 text-white px-4 py-3 rounded-full flex items-center space-x-2 hover:bg-slate-700 transition-colors"
+                className="w-full sm:w-auto bg-[#F5F0E6] text-[#8B4513] px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 hover:bg-[#E5DDD3] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium border border-[#E5DDD3]"
               >
-                <span className="text-lg">📿</span>
-                <span className="text-sm font-medium">Spiritual reminder</span>
+                <span className="text-base sm:text-lg">🕋</span>
+                <span className="text-sm sm:text-base font-medium">Spiritual reminder</span>
               </button>
             </div>
           </div>
 
-          {/* Text Input Area (User Prompt) */}
-          <div className="w-full max-w-2xl mx-auto">
+          {/* Text Input Area (User Prompt) - Mobile Responsive */}
+          <div className="w-full max-w-xs sm:max-w-2xl mx-auto px-4 sm:px-0">
             <div className="relative">
               <input
                 type="text"
@@ -2167,14 +2167,14 @@ export default function Home() {
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleChatSubmit()}
                 placeholder="Write down what you need like I need help to ..."
-                className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base"
+                className="w-full bg-[#1A1A2E] text-white placeholder-[#9CA3AF] rounded-[12px] sm:rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent text-[13px] sm:text-sm md:text-base shadow-inner"
               />
               <button
                 onClick={handleChatSubmit}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-teal-300 transition-colors"
+                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-[#9CA3AF] hover:text-white transition-colors duration-300 p-1"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.429a1 1 0 001.17-1.409l-7-14z"/>
                 </svg>
               </button>
             </div>
