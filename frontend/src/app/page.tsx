@@ -2354,7 +2354,7 @@ export default function Home() {
               <button
                 onClick={() => {
                   setShowWelcomeScreen(false);
-                  setShowAuthenticDuasGrid(true);
+                  setShowAuthenticDuaSelection(true);
                 }}
                 className="flex-1 bg-[#1B4332] text-white border-2 border-[#2D5A4F] px-4 sm:px-6 py-3 sm:py-4 h-16 sm:h-20 rounded-[999px] flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-[#2D5A4F] shadow-lg"
               >
