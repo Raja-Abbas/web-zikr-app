@@ -43,7 +43,6 @@ export default function Home() {
   const [selectedDouaCategory, setSelectedDouaCategory] = useState('Authentic douas');
   const [customDouaText, setCustomDouaText] = useState('');
   const [showWallOfDuas, setShowWallOfDuas] = useState(false);
-  const [showChatbot, setShowChatbot] = useState(false);
   const [showAuthenticDuaSelection, setShowAuthenticDuaSelection] = useState(false);
 
   const [showAuthenticDuaCategories, setShowAuthenticDuaCategories] = useState(false);
@@ -119,7 +118,6 @@ export default function Home() {
     setShowWelcomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowHomeScreen(false);
-    setShowChatbot(false);
     setShowAuthenticDuaSelection(false);
     setShowDiscussMenu(false);
     setShowCustomDuaGeneration(false);
@@ -176,9 +174,6 @@ export default function Home() {
         setActiveTab('Douas');
         setShowWallOfDuas(true);
         console.log('Wall of Duas states set - showHomeScreen: true, activeTab: Douas, showWallOfDuas: true');
-        break;
-      case 'chatbot':
-        setShowChatbot(true);
         break;
       case 'authentic-dua-selection':
         setShowAuthenticDuaSelection(true);
@@ -367,11 +362,7 @@ export default function Home() {
     }
   };
 
-  const handleChatbotContinue = () => {
-    // Navigate from chatbot to personalization screen
-    setShowChatbot(false);
-    setShowPersonalizationScreen(true);
-  };
+
 
   const handleChatSubmit = () => {
     if (chatInput.trim()) {
@@ -381,29 +372,9 @@ export default function Home() {
     }
   };
 
-  const handleSuggestedAction = (action: string) => {
-    console.log('Selected action:', action);
-    // Handle the suggested action
-    if (action === 'Authentic dua') {
-      // Navigate to Authentic Duas Category Grid screen
-      setShowChatbot(false);
-      setShowAuthenticDuasGrid(true);
-    } else if (action === 'Custom dua for my situation') {
-      // Navigate to Custom Dua Generation screen
-      setShowChatbot(false);
-      setShowCustomDuaGeneration(true);
-    } else if (action === 'Spiritual reminder') {
-      // Navigate to Spiritual Reminder screen
-      setShowChatbot(false);
-      setShowSpiritualReminder(true);
-    }
-  };
 
-  const handleBackFromAuthenticDua = () => {
-    // Navigate back to chatbot screen
-    setShowAuthenticDuaSelection(false);
-    setShowChatbot(true);
-  };
+
+
 
   const handleDuaCategorySelect = (category: string) => {
     setSelectedDuaCategory(category);
@@ -472,13 +443,7 @@ export default function Home() {
     setShowDiscussMenu(false);
   };
 
-  const handleBackFromCustomDua = () => {
-    // Navigate back to chatbot screen
-    setShowCustomDuaGeneration(false);
-    setShowGeneratedDua(false);
-    setCustomDuaRequest('');
-    setShowChatbot(true);
-  };
+
 
   const handleCustomDuaSubmit = () => {
     if (customDuaRequest.trim()) {
@@ -494,18 +459,15 @@ export default function Home() {
       setShowGeneratedDua(false);
       setCustomDuaRequest('');
     } else if (action === 'Main menu') {
-      handleBackFromCustomDua();
+      setShowCustomDuaGeneration(false);
+      setShowGeneratedDua(false);
+      setCustomDuaRequest('');
+      setShowHomeScreen(true);
     }
     // Handle other actions like save, share, etc.
   };
 
-  const handleBackFromSpiritualReminder = () => {
-    // Navigate back to chatbot screen
-    setShowSpiritualReminder(false);
-    setShowReminderContent(false);
-    setSelectedReminderCategory('Wudu steps');
-    setShowChatbot(true);
-  };
+
 
   const handleReminderCategorySelect = (category: string) => {
     setSelectedReminderCategory(category);
@@ -523,11 +485,7 @@ export default function Home() {
     // Handle other actions
   };
 
-  const handleBackFromAuthenticDuasGrid = () => {
-    // Navigate back to chatbot screen
-    setShowAuthenticDuasGrid(false);
-    setShowChatbot(true);
-  };
+
 
   const handleDuaCategoryGridSelect = (category: string) => {
     console.log('Selected dua category from grid:', category);
@@ -679,7 +637,6 @@ export default function Home() {
     setShowWelcomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowAuthenticDuaCategories(false);
-    setShowChatbot(false);
     setShowAuthenticDuaSelection(false);
     setShowDiscussMenu(false);
     setShowCustomDuaGeneration(false);
@@ -853,7 +810,6 @@ export default function Home() {
       showHomeScreen,
       showWelcomeScreen,
       showPersonalizationScreen,
-      showChatbot,
       showAuthenticDuaSelection,
       showDuaContent,
       showDiscussMenu,
@@ -2088,13 +2044,6 @@ export default function Home() {
             Continue
           </button>
         </>
-      ) : showChatbot ? (
-        /* Chatbot Screen - REMOVED - Waiting for replacement content */
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
-          <div className="text-center text-white">
-            <p className="text-lg">Chatbot screen removed - awaiting replacement content</p>
-          </div>
-        </div>
       ) : showAuthenticDuaSelection ? (
         /* Screen 14: Authentic Dua Selection */
         <>
@@ -2103,7 +2052,10 @@ export default function Home() {
             {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
             <div className="flex items-center space-x-2 sm:space-x-4">
               <button
-                onClick={handleBackFromAuthenticDua}
+                onClick={() => {
+                  setShowAuthenticDuaSelection(false);
+                  setShowHomeScreen(true);
+                }}
                 className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors"
               >
                 ←
@@ -2284,10 +2236,13 @@ export default function Home() {
 
           {/* Debug Back Button */}
           <button
-            onClick={handleBackFromAuthenticDua}
+            onClick={() => {
+              setShowAuthenticDuaSelection(false);
+              setShowHomeScreen(true);
+            }}
             className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
-            ← Back to Chatbot
+            ← Back to Home
           </button>
         </>
       ) : showCustomDuaGeneration ? (
@@ -2298,7 +2253,12 @@ export default function Home() {
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
-                onClick={handleBackFromCustomDua}
+                onClick={() => {
+                  setShowCustomDuaGeneration(false);
+                  setShowGeneratedDua(false);
+                  setCustomDuaRequest('');
+                  setShowHomeScreen(true);
+                }}
                 className="text-white text-2xl hover:text-gray-300 transition-colors"
               >
                 ←
@@ -2447,10 +2407,15 @@ export default function Home() {
 
           {/* Debug Back Button */}
           <button
-            onClick={handleBackFromCustomDua}
+            onClick={() => {
+              setShowCustomDuaGeneration(false);
+              setShowGeneratedDua(false);
+              setCustomDuaRequest('');
+              setShowHomeScreen(true);
+            }}
             className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
-            ← Back to Chatbot
+            ← Back to Home
           </button>
         </>
       ) : showSpiritualReminder ? (
@@ -2461,7 +2426,12 @@ export default function Home() {
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
-                onClick={handleBackFromSpiritualReminder}
+                onClick={() => {
+                  setShowSpiritualReminder(false);
+                  setShowReminderContent(false);
+                  setSelectedReminderCategory('Wudu steps');
+                  setShowHomeScreen(true);
+                }}
                 className="text-white text-2xl hover:text-gray-300 transition-colors"
               >
                 ←
@@ -2586,10 +2556,15 @@ export default function Home() {
 
           {/* Debug Back Button */}
           <button
-            onClick={handleBackFromSpiritualReminder}
+            onClick={() => {
+              setShowSpiritualReminder(false);
+              setShowReminderContent(false);
+              setSelectedReminderCategory('Wudu steps');
+              setShowHomeScreen(true);
+            }}
             className="mt-8 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
-            ← Back to Chatbot
+            ← Back to Home
           </button>
         </>
       ) : showAuthenticDuasGrid ? (
@@ -2600,7 +2575,10 @@ export default function Home() {
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
-                onClick={handleBackFromAuthenticDuasGrid}
+                onClick={() => {
+                  setShowAuthenticDuasGrid(false);
+                  setShowHomeScreen(true);
+                }}
                 className="text-white text-2xl hover:text-gray-300 transition-colors"
               >
                 ←
@@ -2690,10 +2668,13 @@ export default function Home() {
 
           {/* Debug Back Button */}
           <button
-            onClick={handleBackFromAuthenticDuasGrid}
+            onClick={() => {
+              setShowAuthenticDuasGrid(false);
+              setShowHomeScreen(true);
+            }}
             className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
-            ← Back to Chatbot
+            ← Back to Home
           </button>
         </div>
       ) : showChatbotDiscussionHub ? (
