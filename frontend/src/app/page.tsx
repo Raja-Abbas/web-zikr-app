@@ -2079,7 +2079,7 @@ export default function Home() {
                   setShowWelcomeScreen(false);
                   setShowSpiritualReminder(true);
                 }}
-                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
+                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
               >
                 <span className="text-lg sm:text-xl">🪶</span>
                 <span className="text-xs sm:text-sm font-medium mt-1">Spiritual reminder</span>
