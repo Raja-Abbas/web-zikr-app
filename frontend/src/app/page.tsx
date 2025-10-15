@@ -384,7 +384,7 @@ export default function Home() {
 
   const handleDuaCategorySelect = (category: string) => {
     setSelectedDuaCategory(category);
-    // Note: showDuaContent is now managed by the useDuas hook
+    selectDuaCategory(category); // Use the hook function to show dua content
     console.log('Selected dua category:', category);
   };
 
