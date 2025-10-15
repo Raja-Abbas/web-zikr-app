@@ -3045,7 +3045,7 @@ export default function Home() {
                   className="flex flex-col items-center space-y-3 p-4 hover:bg-white hover:bg-opacity-10 rounded-xl transition-colors"
                 >
                   {/* Circular Icon */}
-                  <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-black bg-opacity-60 rounded-full flex items-center justify-center">
                     <span className="text-2xl text-white">{category.icon}</span>
                   </div>
 
