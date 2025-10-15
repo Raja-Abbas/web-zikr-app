@@ -2284,10 +2284,45 @@ export default function Home() {
           </button>
         </div>
       ) : showSuccessScreen ? (
-        /* Success/Confirmation Screen - New Sleek Design */
-        <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
-          {/* Background Gradient - Dark teal to navy */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0D4F4F] via-[#1A365D] to-[#1E3A8A]"></div>
+        /* Success/Confirmation Screen - Animated White Boxes */
+        <>
+          <style jsx>{`
+            @keyframes float-slow {
+              0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+              25% { transform: translateY(-20px) translateX(10px) rotate(2deg); }
+              50% { transform: translateY(-10px) translateX(-15px) rotate(-1deg); }
+              75% { transform: translateY(-25px) translateX(5px) rotate(1deg); }
+            }
+            @keyframes float-medium {
+              0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+              33% { transform: translateY(-15px) translateX(-10px) rotate(-2deg); }
+              66% { transform: translateY(-25px) translateX(15px) rotate(2deg); }
+            }
+            @keyframes float-fast {
+              0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+              20% { transform: translateY(-10px) translateX(8px) rotate(1deg); }
+              40% { transform: translateY(-20px) translateX(-12px) rotate(-1deg); }
+              60% { transform: translateY(-15px) translateX(10px) rotate(2deg); }
+              80% { transform: translateY(-25px) translateX(-8px) rotate(-1deg); }
+            }
+            .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+            .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+            .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+          `}</style>
+
+          <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8 bg-white overflow-hidden">
+            {/* Animated Moving White Boxes Background */}
+            <div className="absolute inset-0">
+              {/* Floating white boxes with different animations */}
+              <div className="absolute w-20 h-20 bg-gray-100 rounded-lg opacity-30 animate-float-slow" style={{ top: '10%', left: '10%', animationDelay: '0s' }}></div>
+              <div className="absolute w-16 h-16 bg-gray-200 rounded-lg opacity-40 animate-float-medium" style={{ top: '20%', right: '15%', animationDelay: '1s' }}></div>
+              <div className="absolute w-24 h-24 bg-gray-100 rounded-lg opacity-25 animate-float-slow" style={{ bottom: '20%', left: '20%', animationDelay: '2s' }}></div>
+              <div className="absolute w-18 h-18 bg-gray-200 rounded-lg opacity-35 animate-float-fast" style={{ top: '60%', right: '10%', animationDelay: '0.5s' }}></div>
+              <div className="absolute w-14 h-14 bg-gray-100 rounded-lg opacity-30 animate-float-medium" style={{ top: '40%', left: '5%', animationDelay: '1.5s' }}></div>
+              <div className="absolute w-22 h-22 bg-gray-200 rounded-lg opacity-20 animate-float-slow" style={{ bottom: '10%', right: '25%', animationDelay: '3s' }}></div>
+              <div className="absolute w-12 h-12 bg-gray-100 rounded-lg opacity-40 animate-float-fast" style={{ top: '80%', left: '40%', animationDelay: '2.5s' }}></div>
+              <div className="absolute w-28 h-28 bg-gray-200 rounded-lg opacity-15 animate-float-slow" style={{ top: '5%', left: '60%', animationDelay: '4s' }}></div>
+            </div>
 
           {/* Content Container */}
           <div className="relative z-10 flex flex-col items-center justify-center max-w-md mx-auto text-center">
@@ -2336,6 +2371,7 @@ export default function Home() {
             </button>
           </div>
         </div>
+        </>
       ) : showWelcomeScreen ? (
         /* NEW Welcome Screen - Redesigned UI */
         <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
