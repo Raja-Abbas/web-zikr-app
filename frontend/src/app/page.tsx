@@ -2300,8 +2300,6 @@ export default function Home() {
           `}</style>
 
           <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
-            {/* Background Gradient - Dark teal to navy (restored) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0D4F4F] via-[#1A365D] to-[#1E3A8A]"></div>
 
           {/* Content Container */}
           <div className="relative z-10 flex flex-col items-center justify-center max-w-md mx-auto text-center">
