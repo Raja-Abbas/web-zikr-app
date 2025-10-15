@@ -2037,28 +2037,28 @@ export default function Home() {
           <div className="w-full max-w-lg mb-8 sm:mb-10">
             {/* Line 1 - Horizontal Pair */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-3 sm:mb-4">
-              {/* Authentic dua - Meditation/Prayer Icon */}
+              {/* Authentic dua - Round Dark Green */}
               <button
                 onClick={() => {
                   setShowWelcomeScreen(false);
                   setShowAuthenticDuasGrid(true);
                 }}
-                className="flex-1 bg-[#2D5A4F] text-white border-2 border-[#4A7C59] px-4 sm:px-6 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#3A6B5C] shadow-lg"
+                className="flex-1 bg-[#1B4332] text-white border-2 border-[#2D5A4F] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-[#2D5A4F] shadow-lg"
               >
-                <span className="text-base sm:text-lg">🧘</span>
-                <span className="text-sm sm:text-base font-medium">Authentic dua</span>
+                <span className="text-lg sm:text-xl">🧘</span>
+                <span className="text-xs sm:text-sm font-medium mt-1">Authentic dua</span>
               </button>
 
-              {/* Custom dua - Genie Lamp/Star Icon */}
+              {/* Custom dua - Round Dark Blue */}
               <button
                 onClick={() => {
                   setShowWelcomeScreen(false);
                   setShowCustomDuaGeneration(true);
                 }}
-                className="flex-1 bg-[#4A3B7A] text-white border-2 border-[#6B5B95] px-4 sm:px-6 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#5A4B8A] shadow-lg"
+                className="flex-1 bg-[#1E3A8A] text-white border-2 border-[#3B82F6] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-[#3B82F6] shadow-lg"
               >
-                <span className="text-base sm:text-lg">🪔</span>
-                <span className="text-sm sm:text-base font-medium">Custom dua for my situation</span>
+                <span className="text-lg sm:text-xl">🪔</span>
+                <span className="text-xs sm:text-sm font-medium mt-1">Custom dua</span>
               </button>
             </div>
 
@@ -2069,10 +2069,10 @@ export default function Home() {
                   setShowWelcomeScreen(false);
                   setShowSpiritualReminder(true);
                 }}
-                className="w-full sm:w-auto bg-[#8B7355] text-white border-2 border-[#A0845C] px-6 sm:px-8 py-3 sm:py-4 rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:bg-[#9B8365] shadow-lg font-medium"
+                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
               >
-                <span className="text-base sm:text-lg">🪶</span>
-                <span className="text-sm sm:text-base font-medium">Spiritual reminder</span>
+                <span className="text-lg sm:text-xl">🪶</span>
+                <span className="text-xs sm:text-sm font-medium mt-1">Spiritual reminder</span>
               </button>
             </div>
           </div>
