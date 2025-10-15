@@ -2244,7 +2244,11 @@ export default function Home() {
         <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
           {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
-            onClick={() => setShowDiscussMenu(true)}
+            onClick={() => {
+              console.log('🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true');
+              setShowDiscussMenu(true);
+              console.log('🍃 showDiscussMenu state should now be true');
+            }}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
           >
             <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
@@ -2345,6 +2349,19 @@ export default function Home() {
                 </svg>
               </button>
             </div>
+          </div>
+
+          {/* Continue Button - Navigate to Personalization */}
+          <div className="w-full max-w-lg mt-6 sm:mt-8">
+            <button
+              onClick={handleContinue}
+              className="w-full bg-[#1B4332] text-white border-2 border-[#2D5A4F] px-6 py-4 rounded-[999px] flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#2D5A4F] shadow-lg"
+            >
+              <span className="text-base sm:text-lg font-medium">Continue to Personalization</span>
+              <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>
+              </svg>
+            </button>
           </div>
         </div>
       ) : showAuthenticDuaSelection ? (
@@ -3602,7 +3619,7 @@ export default function Home() {
       {/* Screen 16: Discuss Section / Side Menu Overlay - Mobile Responsive */}
       {showDiscussMenu && (
         <>
-
+          {console.log('🚀 SIDEBAR MENU IS RENDERING! showDiscussMenu:', showDiscussMenu)}
         <div className="fixed inset-0 z-50 flex">
           {/* Background overlay with dimmed effect */}
           <div
