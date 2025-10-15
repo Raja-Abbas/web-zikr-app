@@ -1796,7 +1796,7 @@ export default function Home() {
         </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
-        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+        <div className="relative min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
           {/* Back Arrow */}
           <button
             onClick={() => {
@@ -1903,7 +1903,7 @@ export default function Home() {
         </div>
       ) : showWelcomeAdnanScreen ? (
         /* Screen 3: Welcome Adnan Screen - Modern Design */
-        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+        <div className="relative min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
           {/* Leaves Icon - Sidebar Menu */}
           <button
             onClick={() => setShowDiscussMenu(true)}
@@ -2015,7 +2015,7 @@ export default function Home() {
         </div>
       ) : showWelcomeScreen ? (
         /* NEW Welcome Screen - Redesigned UI */
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
+        <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
           {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
             onClick={() => setShowDiscussMenu(true)}
