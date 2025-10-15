@@ -35,6 +35,7 @@ export default function Home() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showWelcomeAdnanScreen, setShowWelcomeAdnanScreen] = useState(false);
+  const [showSuccessScreen, setShowSuccessScreen] = useState(false);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
   const [showHomeScreen, setShowHomeScreen] = useState(false);
@@ -116,6 +117,7 @@ export default function Home() {
     // Reset all screen states (except showWallOfDuas for wall-of-duas navigation)
     setShowEmailForm(false);
     setShowWelcomeAdnanScreen(false);
+    setShowSuccessScreen(false);
     setShowWelcomeScreen(false);
     setShowPersonalizationScreen(false);
     setShowHomeScreen(false);
@@ -146,6 +148,9 @@ export default function Home() {
         break;
       case 'welcome-adnan':
         setShowWelcomeAdnanScreen(true);
+        break;
+      case 'success':
+        setShowSuccessScreen(true);
         break;
       case 'welcome':
         setShowWelcomeScreen(true);
@@ -290,8 +295,8 @@ export default function Home() {
   };
 
   const handleWelcomeAdnanContinue = () => {
-    // Navigate from welcome adnan screen to welcome screen
-    navigateToScreen('welcome');
+    // Navigate from welcome adnan screen to success screen
+    navigateToScreen('success');
   };
 
   const handleContinue = () => {
@@ -2238,6 +2243,51 @@ export default function Home() {
           >
             Continue
           </button>
+        </div>
+      ) : showSuccessScreen ? (
+        /* Success/Confirmation Screen */
+        <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
+          {/* Background Gradient - Dark teal/green fading to dark blue/purple */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F2027] via-[#203A43] to-[#2C5364]"></div>
+
+          {/* Content Container */}
+          <div className="relative z-10 flex flex-col items-center justify-center max-w-md mx-auto text-center">
+
+            {/* Large Central Success Icon */}
+            <div className="mb-8">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-green-500 rounded-full flex items-center justify-center shadow-2xl">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+
+            {/* Primary Success Message */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-4">
+              Journey Started!
+            </h1>
+
+            {/* Secondary Explanatory Message */}
+            <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
+              Welcome to your spiritual journey with My.Zikr. You can now access personalized duas, reminders, and spiritual guidance.
+            </p>
+
+            {/* Primary CTA Button */}
+            <button
+              onClick={() => navigateToScreen('welcome')}
+              className="w-full bg-green-500 text-white font-bold py-4 px-8 rounded-[999px] text-lg transition-all duration-300 transform hover:scale-105 hover:bg-green-600 shadow-lg mb-4"
+            >
+              Continue to My Duas
+            </button>
+
+            {/* Optional Secondary Action */}
+            <button
+              onClick={() => navigateToScreen('welcome')}
+              className="text-gray-400 text-sm hover:text-white transition-colors"
+            >
+              Skip for now
+            </button>
+          </div>
         </div>
       ) : showWelcomeScreen ? (
         /* NEW Welcome Screen - Redesigned UI */
