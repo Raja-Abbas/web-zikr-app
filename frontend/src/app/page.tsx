@@ -1070,6 +1070,16 @@ export default function Home() {
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Top Bar/Header */}
           <div className="flex items-center justify-between px-6 py-6">
+            {/* Leaves Icon - Sidebar Menu */}
+            <button
+              onClick={() => setShowDiscussMenu(true)}
+              className="hover:scale-110 transition-transform"
+            >
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+              </svg>
+            </button>
+
             {/* Logo/App Name */}
             <div className="flex-1 text-center">
               <div className="text-4xl text-white font-arabic mb-1">ذِكْر</div>
@@ -1798,6 +1808,8 @@ export default function Home() {
             ←
           </button>
 
+
+
           {/* Logo Section - Mobile Responsive */}
           <div className="text-center mb-6 sm:mb-8">
             {/* Floating Leaf Icon - Mobile Responsive */}
@@ -1892,13 +1904,23 @@ export default function Home() {
       ) : showWelcomeAdnanScreen ? (
         /* Screen 3: Welcome Adnan Screen - Modern Design */
         <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+          {/* Leaves Icon - Sidebar Menu */}
+          <button
+            onClick={() => setShowDiscussMenu(true)}
+            className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
+          >
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+          </button>
+
           {/* Back Arrow */}
           <button
             onClick={() => {
               setShowWelcomeAdnanScreen(false);
               setShowWelcomeScreen(true);
             }}
-            className="absolute top-8 left-8 text-white text-2xl hover:text-green-400 transition-colors"
+            className="absolute top-8 left-16 sm:left-20 text-white text-2xl hover:text-green-400 transition-colors"
           >
             ←
           </button>
@@ -1998,16 +2020,6 @@ export default function Home() {
           <button
             onClick={() => setShowDiscussMenu(true)}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
-          >
-            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-            </svg>
-          </button>
-
-          {/* Leaves Icon in top-right corner - Sidebar Menu */}
-          <button
-            onClick={() => setShowDiscussMenu(true)}
-            className="absolute top-6 sm:top-8 right-6 sm:right-8 hover:scale-110 transition-transform"
           >
             <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
