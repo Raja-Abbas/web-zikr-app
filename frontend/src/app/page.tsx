@@ -1862,25 +1862,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Leaves Menu Button - Mobile Responsive */}
-          <button
-            onClick={handleLeavesMenuToggle}
-            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 hover:scale-110"
-          >
-            <div className="relative">
-              {/* Animated leaves */}
-              <div className={`transition-transform duration-500 ${showLeavesMenu ? 'rotate-180' : 'rotate-0'}`}>
-                <span className="text-2xl">🍃</span>
-              </div>
-              {/* Additional floating leaves animation */}
-              <div className={`absolute -top-1 -left-1 transition-all duration-700 ${showLeavesMenu ? 'opacity-100 scale-125' : 'opacity-0 scale-75'}`}>
-                <span className="text-lg">🍃</span>
-              </div>
-              <div className={`absolute -bottom-1 -right-1 transition-all duration-500 delay-100 ${showLeavesMenu ? 'opacity-100 scale-110' : 'opacity-0 scale-50'}`}>
-                <span className="text-sm">🍃</span>
-              </div>
-            </div>
-          </button>
+
         </div>
       ) : showAuthenticDuaCategories ? (
         /* Screen: Authentic Dua Categories Selection */
@@ -2306,13 +2288,8 @@ export default function Home() {
 
             {/* Logo Section with Arabic Calligraphy */}
             <div className="mb-12 sm:mb-16">
-              {/* Green Leaf Icon - Decorative Accent */}
+              {/* Arabic Calligraphy */}
               <div className="flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-                </svg>
-
-                {/* Arabic Calligraphy */}
                 <div className="text-4xl sm:text-5xl text-white font-arabic">
                   ذِكْر
                 </div>
