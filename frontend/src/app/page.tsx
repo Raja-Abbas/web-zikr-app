@@ -2004,6 +2004,16 @@ export default function Home() {
             </svg>
           </button>
 
+          {/* Leaves Icon in top-right corner - Sidebar Menu */}
+          <button
+            onClick={() => setShowDiscussMenu(true)}
+            className="absolute top-6 sm:top-8 right-6 sm:right-8 hover:scale-110 transition-transform"
+          >
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+          </button>
+
           {/* Header & Title Area */}
           <div className="text-center mb-8 sm:mb-12">
             {/* Arabic Title - Stylized Green Font */}
@@ -2069,7 +2079,7 @@ export default function Home() {
                   setShowWelcomeScreen(false);
                   setShowSpiritualReminder(true);
                 }}
-                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
+                className="bg-white text-gray-800 border-2 border-gray-300 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-110 hover:bg-gray-100 shadow-lg"
               >
                 <span className="text-lg sm:text-xl">🪶</span>
                 <span className="text-xs sm:text-sm font-medium mt-1">Spiritual reminder</span>
