@@ -34,7 +34,7 @@ export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [showWelcomeAdnanScreen, setShowWelcomeAdnanScreen] = useState(false);
-  const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
   const [showPersonalizationScreen, setShowPersonalizationScreen] = useState(false);
   const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [userName, setUserName] = useState('');
