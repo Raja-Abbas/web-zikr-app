@@ -384,20 +384,16 @@ export default function Home() {
 
 
   const handleDuaCategorySelect = (category: string) => {
-    console.log('🔥 handleDuaCategorySelect called with:', category);
     setSelectedDuaCategory(category);
 
     // Check if the category exists in our duaContent object and show content
     if (category in duaContent) {
       setShowLocalDuaContent(true);
-      console.log('🔥 setShowLocalDuaContent(true) called');
     } else {
       setShowLocalDuaContent(false);
-      console.log('🔥 Category not found in duaContent');
     }
 
-    console.log('🔥 selectedDuaCategory set to:', category);
-    console.log('🔥 duaContent has key?', category in duaContent);
+    console.log('Selected dua category:', category);
   };
 
   const handlePlayPause = () => {
@@ -426,7 +422,7 @@ export default function Home() {
         handleDiscussClick();
         break;
       case 'Duas':
-        navigateToScreen('douas');
+        navigateToScreen('authentic-duas-grid');
         break;
       case 'Reminders':
         navigateToScreen('reminder');
@@ -2515,17 +2511,6 @@ export default function Home() {
                   {category}
                 </button>
               ))}
-            </div>
-          </div>
-
-          {/* Debug Info */}
-          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-4">
-            <div className="bg-red-100 p-4 rounded text-black text-xs">
-              <p>🔥 DEBUG: showDuaContent (hook) = {showDuaContent ? 'true' : 'false'}</p>
-              <p>🔥 DEBUG: showLocalDuaContent = {showLocalDuaContent ? 'true' : 'false'}</p>
-              <p>🔥 DEBUG: selectedDuaCategory = &quot;{selectedDuaCategory}&quot;</p>
-              <p>🔥 DEBUG: duaContent has key = {selectedDuaCategory in duaContent ? 'true' : 'false'}</p>
-              <p>🔥 DEBUG: Available keys = {Object.keys(duaContent).join(', ')}</p>
             </div>
           </div>
 
