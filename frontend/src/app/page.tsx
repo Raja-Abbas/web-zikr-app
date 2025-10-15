@@ -949,7 +949,7 @@ export default function Home() {
                 // Simulate successful login
                 setIsAuthenticated(true);
                 setShowEmailForm(false);
-                setShowWelcomeScreen(true);
+                setShowWelcomeAdnanScreen(true);
               }}
               className="w-full py-3 px-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
             >
@@ -1019,7 +1019,7 @@ export default function Home() {
                 // Simulate successful registration
                 setIsAuthenticated(true);
                 setShowEmailForm(false);
-                setShowWelcomeScreen(true);
+                setShowWelcomeAdnanScreen(true);
               }}
               className="w-full py-3 px-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
             >
@@ -1056,7 +1056,7 @@ export default function Home() {
               console.log('Google authentication');
               // Simulate successful Google auth
               setIsAuthenticated(true);
-              setShowWelcomeScreen(true);
+              setShowWelcomeAdnanScreen(true);
             }}
             className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:!text-gray-900 hover:!font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
           >
@@ -1075,7 +1075,7 @@ export default function Home() {
               console.log('Apple authentication');
               // Simulate successful Apple auth
               setIsAuthenticated(true);
-              setShowWelcomeScreen(true);
+              setShowWelcomeAdnanScreen(true);
             }}
             className="w-full py-4 px-6 bg-transparent border border-cream text-cream rounded-lg hover:bg-cream hover:!text-gray-900 hover:!font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
           >
