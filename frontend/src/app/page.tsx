@@ -2302,12 +2302,16 @@ export default function Home() {
         <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
           {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               console.log('🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true');
+              console.log('🍃 Current showDiscussMenu state:', showDiscussMenu);
+              console.log('🍃 Current isAuthenticated state:', isAuthenticated);
               setShowDiscussMenu(true);
               console.log('🍃 showDiscussMenu state should now be true');
             }}
-            className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform"
+            className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
           >
             <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
