@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDuas } from '../hooks/useDuas';
 import { useWallOfDuas } from '../hooks/useWallOfDuas';
 
@@ -88,6 +88,10 @@ export default function Home() {
     sounds: true,
     cloudSave: true
   });
+
+  // Refs for auto-scroll functionality
+  const duaContentRef = useRef<HTMLDivElement>(null);
+  const gridDuaContentRef = useRef<HTMLDivElement>(null);
 
   // Navigation state manager
   const [currentScreen, setCurrentScreen] = useState('auth');
@@ -400,6 +404,14 @@ export default function Home() {
     // Check if the category exists in our duaContent object and show content
     if (category in duaContent) {
       setShowLocalDuaContent(true);
+
+      // Auto-scroll to dua content after selection
+      setTimeout(() => {
+        gridDuaContentRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
     } else {
       setShowLocalDuaContent(false);
     }
@@ -670,6 +682,14 @@ export default function Home() {
     console.log('Selected dua category:', category);
     setSelectedDuaCategory(category);
     // Dua content will display on the same page below the buttons
+
+    // Auto-scroll to dua content after selection
+    setTimeout(() => {
+      duaContentRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
   };
 
   // Universal discussion handler - can be called from any screen
@@ -1884,7 +1904,7 @@ export default function Home() {
 
             {/* Dua Content Display - Shows when category is selected */}
             {selectedDuaCategory && (
-              <div className="mt-6">
+              <div ref={duaContentRef} className="mt-6">
                 {selectedDuaCategory === 'To protect kids' && (
                   <div>
                     {/* Category Title - Mobile Responsive */}
@@ -2491,7 +2511,7 @@ export default function Home() {
 
           {/* Dua Display Card (Content Area) - Mobile Responsive */}
           {showLocalDuaContent && duaContent[selectedDuaCategory as keyof typeof duaContent] && (
-            <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
+            <div ref={gridDuaContentRef} className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
               <div className="bg-cream rounded-2xl p-4 sm:p-8 shadow-lg">
                 {/* Title/Context - Mobile Responsive */}
                 <div className="text-center mb-4 sm:mb-6">
