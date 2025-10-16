@@ -2037,7 +2037,7 @@ export default function Home() {
           </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
-        <div className="relative h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn overflow-hidden">
+        <div className="relative h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col overflow-hidden">
           {/* Back Arrow */}
           <button
             onClick={() => {
@@ -2049,7 +2049,8 @@ export default function Home() {
             ←
           </button>
 
-
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-6 py-8">
 
           {/* Logo Section - Mobile Responsive */}
           <div className="text-center mb-6 sm:mb-8">
@@ -2140,6 +2141,7 @@ export default function Home() {
                 </svg>
               </button>
             </div>
+          </div>
           </div>
         </div>
       ) : showWelcomeAdnanScreen ? (
@@ -2456,7 +2458,7 @@ export default function Home() {
         </div>
       ) : showAuthenticDuaSelection ? (
         /* Screen 14: Authentic Dua Selection */
-        <>
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar - Mobile Responsive */}
           <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
@@ -2486,6 +2488,10 @@ export default function Home() {
               <span className="text-white text-xs sm:text-sm font-medium">Authentic dua</span>
             </div>
           </div>
+
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="pb-24">
 
           {/* Chat Message (Bot's Response) - Mobile Responsive */}
           <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6">
@@ -2643,6 +2649,8 @@ export default function Home() {
               </div>
             </div>
           )}
+            </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -2654,10 +2662,10 @@ export default function Home() {
           >
             ← Back to Home
           </button>
-        </>
+        </div>
       ) : showCustomDuaGeneration ? (
         /* Screen 17: Custom Dua Generation */
-        <>
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
@@ -2689,6 +2697,10 @@ export default function Home() {
               <span className="text-white text-sm font-medium">Custom dua for my situation</span>
             </div>
           </div>
+
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="pb-24">
 
           {/* Conversation Flow */}
           <div className="w-full max-w-4xl mx-auto px-6 mb-8 space-y-6">
@@ -2814,6 +2826,8 @@ export default function Home() {
               </div>
             </div>
           )}
+            </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -2827,10 +2841,10 @@ export default function Home() {
           >
             ← Back to Home
           </button>
-        </>
+        </div>
       ) : showSpiritualReminder ? (
         /* Screen 18: Spiritual Reminder - Wudu Steps */
-        <>
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
@@ -2862,6 +2876,10 @@ export default function Home() {
               <span className="text-white text-sm font-medium">Spiritual reminder</span>
             </div>
           </div>
+
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="pb-24">
 
           {/* Chat Message (Bot's Response) */}
           <div className="w-full max-w-4xl mx-auto mb-8 px-6">
@@ -2963,6 +2981,8 @@ export default function Home() {
               </div>
             </div>
           )}
+            </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -2976,7 +2996,7 @@ export default function Home() {
           >
             ← Back to Home
           </button>
-        </>
+        </div>
       ) : showAuthenticDuasGrid ? (
         /* Screen 19: Authentic Duas Category Grid */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
