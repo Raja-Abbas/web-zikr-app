@@ -3940,12 +3940,7 @@ export default function Home() {
             onClick={handleCloseDiscussMenu}
           />
 
-          {/* Green leaf icon in upper-left corner - Mobile Responsive */}
-          <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-50">
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-            </svg>
-          </div>
+
 
           {/* Menu Container - Compact floating design */}
           <div className="absolute top-16 left-4 z-50">
@@ -3992,14 +3987,15 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Continue Button positioned under sidebar */}
+          <div className="absolute top-80 left-4 z-50">
+            <button className="bg-gray-600 text-gray-300 px-6 py-2 rounded-lg text-sm opacity-30 cursor-not-allowed">
+              Continue
+            </button>
+          </div>
+
           {/* Ghosted background content (visible but dimmed) */}
           <div className="flex-1 relative">
-            {/* Ghosted "Continue" Button */}
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-              <button className="bg-gray-600 text-gray-300 px-6 py-2 rounded-lg text-sm opacity-30 cursor-not-allowed">
-                Continue
-              </button>
-            </div>
 
             {/* Footer elements from underlying screen */}
             <div className="absolute bottom-4 right-4 flex items-center space-x-2 opacity-50">
