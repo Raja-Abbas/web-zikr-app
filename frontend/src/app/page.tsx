@@ -4167,7 +4167,7 @@ export default function Home() {
                   className={`w-full bg-gradient-to-r ${item.color} text-white py-3 px-4 rounded-xl flex items-center space-x-3 hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="text-white">{item.icon}</div>
+                  <div className="text-white flex items-center justify-center">{item.icon}</div>
                   <span className="text-base font-medium">{item.text}</span>
                   <div className="flex-1" />
                   <span className="text-lg opacity-70">→</span>
