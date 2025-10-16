@@ -59,6 +59,8 @@ export default function Home() {
   const [showLeavesMenu, setShowLeavesMenu] = useState(false);
   const [showLocalDuaContent, setShowLocalDuaContent] = useState(false);
   const [showMatinSoirDetails, setShowMatinSoirDetails] = useState(false);
+  const [showWriteDuaScreen, setShowWriteDuaScreen] = useState(false);
+  const [writeDuaText, setWriteDuaText] = useState('');
   const [chatInput, setChatInput] = useState('');
   const [discussionInput, setDiscussionInput] = useState('');
   const [customMessage, setCustomMessage] = useState('');
@@ -132,6 +134,7 @@ export default function Home() {
     setShowDuaContentViewer(false);
     setShowInteriorDesignSettings(false);
     setShowMatinSoirDetails(false);
+    setShowWriteDuaScreen(false);
     if (screenName !== 'wall-of-duas') {
       setShowWallOfDuas(false);
     }
@@ -213,6 +216,9 @@ export default function Home() {
         break;
       case 'matin-soir-details':
         setShowMatinSoirDetails(true);
+        break;
+      case 'write-dua':
+        setShowWriteDuaScreen(true);
         break;
       case 'email-form':
         setShowEmailForm(true);
@@ -484,6 +490,18 @@ export default function Home() {
       setShowHomeScreen(true);
     }
     // Handle other actions like save, share, etc.
+  };
+
+  const handlePublishDua = () => {
+    if (writeDuaText.trim()) {
+      console.log('Publishing dua:', writeDuaText);
+      // TODO: Send dua to backend for review
+      // For now, just show success message and navigate back
+      alert('Your dua has been submitted for review. Thank you for sharing!');
+      setWriteDuaText('');
+      setShowWriteDuaScreen(false);
+      setShowHomeScreen(true);
+    }
   };
 
 
@@ -1290,7 +1308,10 @@ export default function Home() {
           <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c2a40] via-[#0c2a40] to-transparent pt-6 pb-6 z-20">
             <div className="px-6 space-y-3">
               {/* Write a doua */}
-              <button className="w-full bg-gradient-to-r from-[#3bb4c1] to-[#4fc3d0] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+              <button
+                onClick={() => navigateToScreen('write-dua')}
+                className="w-full bg-gradient-to-r from-[#3bb4c1] to-[#4fc3d0] text-white py-4 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
                 ✍️ Write a doua
               </button>
 
@@ -3140,6 +3161,122 @@ export default function Home() {
           >
             ← Back to Grid
           </button>
+        </div>
+      ) : showWriteDuaScreen ? (
+        /* Write a Dua Screen */
+        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4F4F] to-[#1E3A8A]">
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-6">
+            {/* Left: Back arrow */}
+            <button
+              onClick={() => {
+                setShowWriteDuaScreen(false);
+                setShowHomeScreen(true);
+              }}
+              className="text-white text-2xl hover:text-green-400 transition-colors"
+            >
+              ←
+            </button>
+
+            {/* Center: Title */}
+            <h1 className="text-xl text-white font-semibold">Write a dua</h1>
+
+            {/* Right: Empty space for balance */}
+            <div className="w-8"></div>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 px-6 py-4">
+            {/* Description */}
+            <div className="mb-8">
+              <p className="text-white text-base leading-relaxed text-center">
+                Write a doua and share it with the community and allow people to say Amine. Your doua will randomly be displayed after review.
+              </p>
+            </div>
+
+            {/* Dua Input Box */}
+            <div className="mb-8">
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <textarea
+                  value={writeDuaText}
+                  onChange={(e) => setWriteDuaText(e.target.value)}
+                  placeholder="Yā Allah, I pray for every muslim in the world, for their well-beign, their sustenance, their Akhira and their whole family."
+                  className="w-full h-32 bg-transparent text-gray-800 placeholder-gray-500 border-none focus:outline-none resize-none text-base leading-relaxed"
+                />
+              </div>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="mb-8">
+              <p className="text-white text-sm leading-relaxed text-center opacity-90">
+                &ldquo;By publishing a dua, you agree not to include personal data, illicit or prohibited content, or material/financial requests. Shared duas are for spiritual support only and may be displayed anonymously to the community.&rdquo;
+              </p>
+            </div>
+
+            {/* Publish Button */}
+            <div className="flex justify-center">
+              <button
+                onClick={handlePublishDua}
+                className="bg-[#F5F0E6] text-[#1E3A8A] font-semibold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{
+                  fontFamily: 'Inter, Poppins, sans-serif',
+                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                Publish
+              </button>
+            </div>
+          </div>
+
+          {/* Bottom Navigation Bar */}
+          <div className="bg-[#1E3A8A] bg-opacity-80 px-6 py-4">
+            <div className="flex justify-around items-center">
+              <button
+                onClick={() => {
+                  setShowWriteDuaScreen(false);
+                  setShowHomeScreen(true);
+                  setActiveTab('Home');
+                }}
+                className="flex flex-col items-center space-y-1"
+              >
+                <span className="text-white text-xl">🏠</span>
+                <span className="text-white text-xs">Home</span>
+              </button>
+              <button
+                onClick={() => {
+                  setShowWriteDuaScreen(false);
+                  setShowHomeScreen(true);
+                  setActiveTab('Douas');
+                }}
+                className="flex flex-col items-center space-y-1"
+              >
+                <span className="text-white text-xl">🤲</span>
+                <span className="text-white text-xs">Duas</span>
+              </button>
+              <button
+                onClick={() => {
+                  setShowWriteDuaScreen(false);
+                  setShowHomeScreen(true);
+                  setActiveTab('Reminder');
+                }}
+                className="flex flex-col items-center space-y-1"
+              >
+                <span className="text-white text-xl">⏰</span>
+                <span className="text-white text-xs">Reminder</span>
+              </button>
+              <button
+                onClick={() => {
+                  setShowWriteDuaScreen(false);
+                  setShowHomeScreen(true);
+                  setActiveTab('Profile');
+                }}
+                className="flex flex-col items-center space-y-1"
+              >
+                <span className="text-white text-xl">👤</span>
+                <span className="text-white text-xs">Profile</span>
+              </button>
+            </div>
+          </div>
         </div>
       ) : showChatbotDiscussionHub ? (
         /* Screen 20: Chatbot Discussion Hub */
