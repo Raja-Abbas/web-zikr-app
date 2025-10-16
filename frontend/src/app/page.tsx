@@ -798,13 +798,26 @@ export default function Home() {
 
   // Menu items data
   const menuItems = [
-    { id: 'discuss', icon: '💬', text: 'Discuss' },
+    {
+      id: 'discuss',
+      icon: (
+        <div className="flex items-center justify-center">
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+            {/* First speech bubble - dark green */}
+            <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-.55 0-1.08-.11-1.56-.31L8 17v-2.5c-1.25-.73-2-2.1-2-3.5z" fill="#0A7A33"/>
+            {/* Second speech bubble - cream/beige */}
+            <path d="M16 8c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3c-.41 0-.8-.08-1.17-.23L16 12v-1.5c-.94-.55-1.5-1.58-1.5-2.5z" fill="#F5F5DC"/>
+          </svg>
+        </div>
+      ),
+      text: 'Discuss'
+    },
     { id: 'duas', icon: '🤲', text: 'Duas' },
-    { id: 'reminders', icon: '⏰', text: 'Reminders' },
+    { id: 'reminders', icon: '🧠', text: 'Reminders' },
     { id: 'notes', icon: '📝', text: 'My notes' },
-    { id: 'wall', icon: '🕌', text: 'The wall of duas' },
+    { id: 'wall', icon: '🚶‍♂️', text: 'The wall of duas' },
     { id: 'profile', icon: '👤', text: 'My profile' },
-    { id: 'interior', icon: '🏠', text: 'Interior design' },
+    { id: 'interior', icon: '⚙️', text: 'Interior design' },
   ];
 
   // Reminder content data
@@ -3936,24 +3949,24 @@ export default function Home() {
 
           {/* Menu Container - Mobile Responsive */}
           <div className="relative w-64 sm:w-72 h-full z-50">
-            <div className="bg-cream rounded-none sm:rounded-r-2xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
+            <div className="bg-[#F5F5DC] rounded-none sm:rounded-r-xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
               {/* Menu Items - Mobile Responsive */}
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
                 {menuItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleMenuItemSelect(item.text)}
-                    className={`w-full flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl transition-colors text-left ${
+                    className={`w-full flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg transition-colors text-left ${
                       selectedMenuItem === item.text
-                        ? 'bg-teal-900 text-white'
+                        ? 'bg-[#0A7A33] text-white'
                         : 'text-gray-900 hover:bg-gray-100'
                     }`}
                   >
-                    <span className={`text-lg sm:text-xl ${
-                      selectedMenuItem === item.text ? 'text-white' : 'text-gray-700'
+                    <div className={`text-lg sm:text-xl ${
+                      selectedMenuItem === item.text ? 'text-white' : 'text-gray-800'
                     }`}>
-                      {item.icon}
-                    </span>
+                      {typeof item.icon === 'string' ? <span>{item.icon}</span> : item.icon}
+                    </div>
                     <span className={`font-medium text-sm sm:text-base ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-900'
                     }`}>
