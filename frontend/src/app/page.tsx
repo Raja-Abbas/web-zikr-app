@@ -4038,15 +4038,128 @@ export default function Home() {
             {/* Menu Items - Side Menu Style */}
             <div className="space-y-2">
               {[
-                { id: 'discuss', icon: '💬', text: 'Discuss', color: 'from-blue-500 to-blue-600' },
-                { id: 'duas', icon: '🤲', text: 'Duas', color: 'from-purple-500 to-purple-600' },
-                { id: 'reminders', icon: '⏰', text: 'Reminders', color: 'from-orange-500 to-orange-600' },
-                { id: 'notes', icon: '📝', text: 'My notes', color: 'from-green-500 to-green-600' },
-                { id: 'wall', icon: '🕌', text: 'The wall of duas', color: 'from-emerald-500 to-emerald-600' },
-                { id: 'profile', icon: '👤', text: 'My profile', color: 'from-pink-500 to-pink-600' },
-                { id: 'interior', icon: '🏠', text: 'Interior design', color: 'from-indigo-500 to-indigo-600' },
-                { id: 'premium', icon: '⭐', text: 'My.Zikr+', color: 'from-yellow-500 to-yellow-600' },
-                { id: 'back', icon: '←', text: 'Back', color: 'from-red-500 to-red-600' }
+                {
+                  id: 'discuss',
+                  text: 'Discuss',
+                  color: 'from-blue-500 to-blue-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                      </svg>
+                      <svg className="w-3 h-3 absolute -top-1 -right-1 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'duas',
+                  text: 'Duas',
+                  color: 'from-purple-500 to-purple-600',
+                  icon: (
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                  )
+                },
+                {
+                  id: 'reminders',
+                  text: 'Reminders',
+                  color: 'from-orange-500 to-orange-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3 0 1.66-1.34 3-3 3s-3-1.34-3-3c0-1.66 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                      </svg>
+                      <svg className="w-3 h-3 absolute top-0 right-0 text-orange-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'notes',
+                  text: 'My notes',
+                  color: 'from-green-500 to-green-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        <path d="M8,12V14H16V12H8M8,16V18H13V16H8Z" opacity="0.7"/>
+                      </svg>
+                      <svg className="w-2 h-2 absolute -bottom-1 -right-1 text-green-300 rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04Z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'wall',
+                  text: 'The wall of duas',
+                  color: 'from-emerald-500 to-emerald-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M2 4v16h20V4H2zm18 14H4V6h16v12z"/>
+                      </svg>
+                      <svg className="w-3 h-3 absolute -right-1 top-1/2 transform -translate-y-1/2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'profile',
+                  text: 'My profile',
+                  color: 'from-pink-500 to-pink-600',
+                  icon: (
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      <path d="M12 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                  )
+                },
+                {
+                  id: 'interior',
+                  text: 'Interior design',
+                  color: 'from-indigo-500 to-indigo-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                      <svg className="w-3 h-3 absolute -top-1 -right-1 text-indigo-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'premium',
+                  text: 'My.Zikr+',
+                  color: 'from-yellow-500 to-yellow-600',
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                      <svg className="w-3 h-3 absolute -bottom-1 -right-1 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M12,17A2,2 0 0,1 10,15A2,2 0 0,1 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M15.8,8H8.2V6A3.8,3.8 0 0,1 12,2.2A3.8,3.8 0 0,1 15.8,6V8Z"/>
+                      </svg>
+                    </div>
+                  )
+                },
+                {
+                  id: 'back',
+                  text: 'Back',
+                  color: 'from-red-500 to-red-600',
+                  icon: (
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                  )
+                }
               ].map((item, index) => (
                 <button
                   key={item.id}
@@ -4054,7 +4167,7 @@ export default function Home() {
                   className={`w-full bg-gradient-to-r ${item.color} text-white py-3 px-4 rounded-xl flex items-center space-x-3 hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <span className="text-xl">{item.icon}</span>
+                  <div className="text-white">{item.icon}</div>
                   <span className="text-base font-medium">{item.text}</span>
                   <div className="flex-1" />
                   <span className="text-lg opacity-70">→</span>
