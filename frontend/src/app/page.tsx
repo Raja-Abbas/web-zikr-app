@@ -4044,11 +4044,13 @@ export default function Home() {
                   color: 'from-blue-500 to-blue-600',
                   icon: (
                     <div className="relative">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                        {/* First message bubble - white with black border for visibility */}
-                        <path d="M3 3h10c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-3 3-3-3H3c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" fill="white" stroke="#000000" strokeWidth="1.5"/>
-                        {/* Second message bubble - dark green */}
-                        <path d="M9 9h10c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-3 3-3-3H9c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2z" fill="#065f46" stroke="#065f46" strokeWidth="1"/>
+                      <svg className="w-5 h-5" viewBox="0 0 150 150">
+                        {/* Outer Circle */}
+                        <circle cx="75" cy="75" r="70" fill="none" stroke="#0A7A33" strokeWidth="4"/>
+                        {/* Dark Green Message Bubble */}
+                        <path d="M50 60a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#0A7A33"/>
+                        {/* White Message Bubble */}
+                        <path d="M100 45a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#FFFFFF" stroke="#0A7A33" strokeWidth="2"/>
                       </svg>
                     </div>
                   )
