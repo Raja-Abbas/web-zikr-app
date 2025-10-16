@@ -3947,27 +3947,27 @@ export default function Home() {
             </svg>
           </div>
 
-          {/* Menu Container - Narrower width */}
-          <div className="relative w-56 sm:w-60 h-full z-50">
-            <div className="bg-[#F5F5DC] rounded-none sm:rounded-r-xl shadow-2xl h-full p-4 sm:p-5 overflow-y-auto">
-              {/* Menu Items - Mobile Responsive */}
-              <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
+          {/* Menu Container - Compact floating design */}
+          <div className="absolute top-16 left-4 z-50">
+            <div className="bg-[#F5F5DC] rounded-xl shadow-2xl p-3 w-56">
+              {/* Menu Items - Compact spacing */}
+              <div className="space-y-1">
                 {menuItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleMenuItemSelect(item.text)}
-                    className={`w-full flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg transition-colors text-left ${
+                    className={`w-full flex items-center space-x-3 p-2 rounded-lg transition-colors text-left ${
                       selectedMenuItem === item.text
                         ? 'bg-[#0A7A33] text-white'
                         : 'text-gray-900 hover:bg-gray-100'
                     }`}
                   >
-                    <div className={`text-xl sm:text-2xl ${
+                    <div className={`text-lg ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-800'
                     }`}>
                       {typeof item.icon === 'string' ? <span>{item.icon}</span> : item.icon}
                     </div>
-                    <span className={`font-bold text-sm sm:text-base ${
+                    <span className={`font-medium text-sm ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-900'
                     }`}>
                       {item.text}
@@ -3977,16 +3977,16 @@ export default function Home() {
               </div>
 
               {/* Premium Feature Callout */}
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-gray-200 pt-2 mt-2">
                 <button
                   onClick={() => handleMenuItemSelect('My.Zikr+')}
-                  className="w-full flex items-center space-x-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors text-left"
+                  className="w-full flex items-center space-x-3 p-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors text-left"
                 >
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xl text-gray-400">💎</span>
-                    <span className="text-xl text-gray-400">🔒</span>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-lg text-gray-400">💎</span>
+                    <span className="text-lg text-gray-400">🔒</span>
                   </div>
-                  <span className="font-medium text-gray-900">My.Zikr+</span>
+                  <span className="font-medium text-sm text-gray-900">My.Zikr+</span>
                 </button>
               </div>
             </div>
