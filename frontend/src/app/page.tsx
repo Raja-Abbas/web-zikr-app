@@ -906,7 +906,7 @@ export default function Home() {
         </p>
         <button
           onClick={resetToAuth}
-          className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+          className="bg-emerald-800 text-white px-6 py-3 rounded-lg hover:bg-emerald-900 transition-colors"
         >
           Return to Home
         </button>
@@ -1013,7 +1013,7 @@ export default function Home() {
                 setShowEmailForm(false);
                 setShowWelcomeAdnanScreen(true);
               }}
-              className="w-full py-3 px-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
+              className="w-full py-3 px-4 bg-teal-800 text-white rounded-lg hover:bg-teal-900 transition-colors font-medium"
             >
               Sign In
             </button>
@@ -1083,7 +1083,7 @@ export default function Home() {
                 setShowEmailForm(false);
                 setShowWelcomeAdnanScreen(true);
               }}
-              className="w-full py-3 px-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
+              className="w-full py-3 px-4 bg-teal-800 text-white rounded-lg hover:bg-teal-900 transition-colors font-medium"
             >
               Create Account
             </button>
@@ -1932,7 +1932,7 @@ export default function Home() {
                         </svg>
                       </button>
 
-                      <button className="bg-green-600 hover:bg-green-700 text-white rounded-full p-3 sm:p-4 transition-colors">
+                      <button className="bg-green-800 hover:bg-green-900 text-white rounded-full p-3 sm:p-4 transition-colors">
                         <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"/>
                         </svg>
@@ -2445,12 +2445,12 @@ export default function Home() {
           <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6">
             <div className="flex items-start space-x-2 sm:space-x-3 mb-4 sm:mb-6">
               {/* Zikr bot logo/icon - Mobile Responsive */}
-              <div className="bg-teal-700 rounded-full p-1.5 sm:p-2 flex-shrink-0">
+              <div className="bg-teal-900 rounded-full p-1.5 sm:p-2 flex-shrink-0">
                 <span className="text-white text-xs font-bold">Z</span>
               </div>
 
               {/* Chat Bubble - Mobile Responsive */}
-              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-4 sm:p-6 max-w-xs sm:max-w-2xl">
+              <div className="bg-teal-900 bg-opacity-80 rounded-2xl rounded-tl-sm p-4 sm:p-6 max-w-xs sm:max-w-2xl">
                 <p className="text-white text-sm sm:text-base leading-relaxed">
                   That&apos;s great! I can help you with duas from Hisnul Muslim and from the Holy Qur&apos;an. Please choose below with dua you would like to read.
                 </p>
@@ -2536,7 +2536,7 @@ export default function Home() {
 
                   <button
                     onClick={handlePlayPause}
-                    className="bg-teal-600 text-white p-3 sm:p-4 rounded-full hover:bg-teal-700 transition-colors"
+                    className="bg-teal-800 text-white p-3 sm:p-4 rounded-full hover:bg-teal-900 transition-colors"
                   >
                     {isPlaying ? (
                       <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -3044,58 +3044,58 @@ export default function Home() {
       ) : showMatinSoirDetails ? (
         /* Screen: Matin & Soir Details - From morning & night */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A]">
-          {/* Header */}
-          <div className="flex items-center justify-between px-6 py-6">
+          {/* Header - Mobile Responsive */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6">
             {/* Left: Green leaf icon */}
             <button
               onClick={() => setShowDiscussMenu(true)}
               className="hover:scale-110 transition-transform"
             >
-              <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
               </svg>
             </button>
 
-            {/* Center: Title */}
-            <h1 className="text-white text-lg font-medium" style={{ fontFamily: 'Inter, Poppins, sans-serif' }}>
+            {/* Center: Title - Mobile Responsive */}
+            <h1 className="text-white text-base sm:text-lg font-medium text-center" style={{ fontFamily: 'Inter, Poppins, sans-serif' }}>
               From morning & night
             </h1>
 
             {/* Right: Search icon */}
             <button className="hover:scale-110 transition-transform">
-              <svg className="w-6 h-6 text-white hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
           </div>
 
-          {/* Scrollable Dua List */}
-          <div className="flex-1 px-6 pb-32 overflow-y-auto">
+          {/* Scrollable Dua List - Mobile Responsive */}
+          <div className="flex-1 px-4 sm:px-6 pb-32 overflow-y-auto">
             <div className="space-y-1">
               {matinSoirDuas.map((dua, index) => (
                 <div
                   key={dua.id}
-                  className="flex items-center justify-between py-4 px-2 hover:bg-white hover:bg-opacity-5 rounded-lg transition-colors cursor-pointer"
+                  className="flex items-center justify-between py-3 sm:py-4 px-2 sm:px-3 hover:bg-white hover:bg-opacity-5 rounded-lg transition-colors cursor-pointer"
                 >
-                  {/* Left: Number */}
-                  <span className="text-gray-400 text-sm font-medium w-8">
+                  {/* Left: Number - Mobile Responsive */}
+                  <span className="text-gray-400 text-xs sm:text-sm font-medium w-6 sm:w-8 flex-shrink-0">
                     {dua.id}.
                   </span>
 
-                  {/* Center: Dua title */}
-                  <div className="flex-1 mx-4">
-                    <span className="text-gray-100 text-base">
+                  {/* Center: Dua title - Mobile Responsive */}
+                  <div className="flex-1 mx-2 sm:mx-4">
+                    <span className="text-gray-100 text-sm sm:text-base leading-tight">
                       {dua.title}
                     </span>
                   </div>
 
-                  {/* Right: Count and arrow */}
-                  <div className="flex items-center space-x-3">
-                    <span className="text-gray-400 text-sm">
+                  {/* Right: Count and arrow - Mobile Responsive */}
+                  <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+                    <span className="text-gray-400 text-xs sm:text-sm">
                       ({dua.count})
                     </span>
                     {index === 0 && ( // Show arrow only on first item as active
-                      <span className="text-teal-400 text-lg">
+                      <span className="text-teal-400 text-base sm:text-lg">
                         ➜
                       </span>
                     )}
@@ -3105,45 +3105,45 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Footer Card - "Discover the wall of douas" */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B1E3A] via-[#0B1E3A] to-transparent p-6">
-            <div className="bg-[#0A1A2E] bg-opacity-80 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-gray-700 border-opacity-30">
-              <div className="flex items-center justify-between">
-                {/* Left: Text content */}
-                <div className="flex-1 pr-4">
-                  <h3 className="text-white font-bold text-lg mb-2">
+          {/* Footer Card - "Discover the wall of douas" - Mobile Responsive */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B1E3A] via-[#0B1E3A] to-transparent p-4 sm:p-6">
+            <div className="bg-[#0A1A2E] bg-opacity-80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-2xl border border-gray-700 border-opacity-30">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
+                {/* Left: Text content - Mobile Responsive */}
+                <div className="flex-1 pr-0 sm:pr-4">
+                  <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">
                     Discover the wall of douas
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
                     Find out douas that people made and support them by saying &apos;Amine&apos;.
                   </p>
                 </div>
 
-                {/* Right: Discuss button */}
+                {/* Right: Discuss button - Mobile Responsive */}
                 <button
                   onClick={() => {
                     setShowMatinSoirDetails(false);
                     handleDiscussClick();
                   }}
-                  className="bg-[#1E3A8A] hover:bg-[#1E40AF] text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-colors shadow-lg"
+                  className="bg-[#1E3A8A] hover:bg-[#1E40AF] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center space-x-1 sm:space-x-2 transition-colors shadow-lg text-sm sm:text-base w-full sm:w-auto justify-center"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
                   </svg>
                   <span className="font-medium">Discuss</span>
-                  <span className="text-lg">➜</span>
+                  <span className="text-sm sm:text-lg">➜</span>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Back button for debugging */}
+          {/* Back button for debugging - Mobile Responsive */}
           <button
             onClick={() => {
               setShowMatinSoirDetails(false);
               setShowAuthenticDuasGrid(true);
             }}
-            className="absolute top-20 left-6 bg-gray-600 text-white px-4 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
+            className="absolute top-16 sm:top-20 left-4 sm:left-6 bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Grid
           </button>
@@ -3607,7 +3607,7 @@ export default function Home() {
                         onClick={() => handleSettingChange('language', 'English')}
                         className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
                           userSettings.language === 'English'
-                            ? 'bg-green-800 text-white'
+                            ? 'bg-green-900 text-white'
                             : 'bg-white border border-gray-300 text-gray-900 hover:bg-gray-50'
                         }`}
                       >
@@ -3617,7 +3617,7 @@ export default function Home() {
                         onClick={() => handleSettingChange('language', 'French')}
                         className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
                           userSettings.language === 'French'
-                            ? 'bg-green-800 text-white'
+                            ? 'bg-green-900 text-white'
                             : 'bg-white border border-gray-300 text-gray-900 hover:bg-gray-50'
                         }`}
                       >
@@ -3638,7 +3638,7 @@ export default function Home() {
                 <div className="mb-6">
                   <h4 className="text-gray-900 text-base font-medium mb-3">For duas:</h4>
                   <div className="flex flex-wrap gap-3 mb-4">
-                    <button className="bg-green-800 text-white px-4 py-2 rounded-full text-sm">
+                    <button className="bg-green-900 text-white px-4 py-2 rounded-full text-sm">
                       Morning Duas
                     </button>
                     <button className="bg-white border border-gray-300 text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-50">
@@ -3670,7 +3670,7 @@ export default function Home() {
                         onClick={() => handleSettingToggle(item.key)}
                         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                           userSettings[item.key as keyof typeof userSettings]
-                            ? 'bg-green-600'
+                            ? 'bg-green-800'
                             : 'bg-gray-300'
                         }`}
                       >
@@ -3719,7 +3719,7 @@ export default function Home() {
                     <button
                       onClick={() => handleSettingToggle('duaOfTheDay')}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        userSettings.duaOfTheDay ? 'bg-green-600' : 'bg-gray-300'
+                        userSettings.duaOfTheDay ? 'bg-green-800' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -3734,7 +3734,7 @@ export default function Home() {
                     <button
                       onClick={() => handleSettingToggle('kindNotifications')}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        userSettings.kindNotifications ? 'bg-green-600' : 'bg-gray-300'
+                        userSettings.kindNotifications ? 'bg-green-800' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -3772,7 +3772,7 @@ export default function Home() {
                     <button
                       onClick={() => handleSettingToggle('sounds')}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        userSettings.sounds ? 'bg-green-600' : 'bg-gray-300'
+                        userSettings.sounds ? 'bg-green-800' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -3796,7 +3796,7 @@ export default function Home() {
                     <button
                       onClick={() => handleSettingToggle('cloudSave')}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        userSettings.cloudSave ? 'bg-green-600' : 'bg-gray-300'
+                        userSettings.cloudSave ? 'bg-green-800' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -3828,13 +3828,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Debug Back Button */}
-          <button
-            onClick={handleBackFromInteriorDesignSettings}
-            className="fixed top-20 left-4 bg-gray-600 text-white px-4 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity z-50"
-          >
-            ← Back to Menu
-          </button>
+          {/* Debug Back Button - Sticky positioned to avoid hiding content */}
+          <div className="sticky top-4 left-4 z-50 pointer-events-none">
+            <button
+              onClick={handleBackFromInteriorDesignSettings}
+              className="bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm opacity-75 hover:opacity-100 transition-opacity pointer-events-auto"
+            >
+              ← Back to Menu
+            </button>
+          </div>
         </div>
       ) : (
         <>
@@ -3912,7 +3914,7 @@ export default function Home() {
                     onClick={() => handleMenuItemSelect(item.text)}
                     className={`w-full flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl transition-colors text-left ${
                       selectedMenuItem === item.text
-                        ? 'bg-teal-800 text-white'
+                        ? 'bg-teal-900 text-white'
                         : 'text-gray-900 hover:bg-gray-100'
                     }`}
                   >
@@ -3962,7 +3964,7 @@ export default function Home() {
             </div>
 
             {/* Thin blue line at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 opacity-30" />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-800 opacity-30" />
           </div>
         </div>
         </>
