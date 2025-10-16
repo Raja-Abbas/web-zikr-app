@@ -4045,10 +4045,10 @@ export default function Home() {
                   icon: (
                     <div className="relative">
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                        {/* First message bubble - white */}
-                        <path d="M8 4h8c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-2 2-2-2H8c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="white" stroke="white" strokeWidth="1"/>
+                        {/* First message bubble - white with black border for visibility */}
+                        <path d="M3 3h10c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-3 3-3-3H3c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" fill="white" stroke="#000000" strokeWidth="1.5"/>
                         {/* Second message bubble - dark green */}
-                        <path d="M6 8h8c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-2 2-2-2H6c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2z" fill="#065f46" stroke="#065f46" strokeWidth="1"/>
+                        <path d="M9 9h10c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-3 3-3-3H9c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2z" fill="#065f46" stroke="#065f46" strokeWidth="1"/>
                       </svg>
                     </div>
                   )
