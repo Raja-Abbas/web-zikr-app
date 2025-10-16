@@ -802,7 +802,7 @@ export default function Home() {
       id: 'discuss',
       icon: (
         <div className="flex items-center justify-center">
-          <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+          <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
             {/* First speech bubble - dark green */}
             <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-.55 0-1.08-.11-1.56-.31L8 17v-2.5c-1.25-.73-2-2.1-2-3.5z" fill="#0A7A33"/>
             {/* Second speech bubble - cream/beige */}
