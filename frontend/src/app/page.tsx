@@ -2035,7 +2035,6 @@ export default function Home() {
           )}
             </div>
           </div>
-        </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
         <div className="relative h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn overflow-hidden">
@@ -3577,7 +3576,6 @@ export default function Home() {
                 <span className="text-sm">→</span>
               </button>
             </div>
-          </div>
             </div>
           </div>
 
