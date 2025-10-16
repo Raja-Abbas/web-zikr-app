@@ -4043,14 +4043,16 @@ export default function Home() {
                   text: 'Discuss',
                   color: 'from-blue-500 to-blue-600',
                   icon: (
-                    <svg className="w-5 h-5" viewBox="0 0 150 150">
-                      {/* Outer Circle */}
-                      <circle cx="75" cy="75" r="70" fill="none" stroke="#0A7A33" strokeWidth="4"/>
-                      {/* Dark Green Message Bubble */}
-                      <path d="M50 60a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#0A7A33"/>
-                      {/* White Message Bubble */}
-                      <path d="M100 45a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#FFFFFF" stroke="#0A7A33" strokeWidth="2"/>
-                    </svg>
+                    <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5" viewBox="0 0 150 150">
+                        {/* Outer Circle */}
+                        <circle cx="75" cy="75" r="70" fill="none" stroke="#0A7A33" strokeWidth="8"/>
+                        {/* Dark Green Message Bubble */}
+                        <path d="M50 60a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#0A7A33"/>
+                        {/* White Message Bubble */}
+                        <path d="M100 45a20 18 0 1 1 0 36c-3 0-6 0-9 1l-10 6 3-9c-3-3-5-7-5-11a18 18 0 0 1 21-23z" fill="#FFFFFF" stroke="#0A7A33" strokeWidth="4"/>
+                      </svg>
+                    </div>
                   )
                 },
                 {
