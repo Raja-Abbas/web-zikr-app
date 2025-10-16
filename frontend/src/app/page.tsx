@@ -1198,7 +1198,7 @@ export default function Home() {
               }
             }
           `}</style>
-          <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40]">
+          <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40] overflow-hidden">
           {/* Fixed Header */}
           <div className="px-6 py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
             {/* Header with Back Arrow, Leaf Icon and Action Buttons */}
@@ -1374,7 +1374,7 @@ export default function Home() {
         </>
       ) : showHomeScreen ? (
         /* Screen 7: Home Screen */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Top Bar/Header */}
           <div className="flex items-center justify-between px-6 py-6 pt-12 sm:pt-6">
             {/* Leaves Icon - Sidebar Menu */}
@@ -1599,7 +1599,7 @@ export default function Home() {
         </div>
       ) : activeTab === 'Douas' && showHomeScreen && !showWallOfDuas ? (
         /* Screen 8: Douas Tab */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header with Back Arrow */}
           <div className="flex items-center justify-between px-6 py-4 mb-4">
             <button
@@ -1710,7 +1710,7 @@ export default function Home() {
         </div>
       ) : activeTab === 'Reminder' && showHomeScreen ? (
         /* Reminder Tab Screen */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header with Back Arrow */}
           <div className="flex items-center justify-between px-6 py-4 mb-4">
             <button
@@ -1786,7 +1786,7 @@ export default function Home() {
         </div>
       ) : activeTab === 'Profile' && showHomeScreen ? (
         /* Profile Tab Screen */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header with Back Arrow */}
           <div className="flex items-center justify-between px-6 py-4 mb-4">
             <button
@@ -1853,7 +1853,7 @@ export default function Home() {
         </div>
       ) : showAuthenticDuaCategories ? (
         /* Screen: Authentic Dua Categories Selection */
-        <div className="min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn">
+        <div className="h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col animate-fadeIn overflow-hidden">
           {/* Header - Mobile Responsive */}
           <div className="bg-[#134E4A] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
             {/* Left side - Back arrow and leaf icon - Mobile Responsive */}
@@ -1881,8 +1881,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Content - Mobile Responsive */}
-          <div className="flex-1 px-3 sm:px-4 py-4 sm:py-6">
+          {/* Content - Mobile Responsive - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-3 sm:px-4 py-4 sm:py-6 pb-24">
             {/* Initial Chat Bubble - Mobile Responsive */}
             <div className="mb-4 sm:mb-6">
               <div className="bg-[#1A5A4F] rounded-[20px] p-3 sm:p-4 text-white max-w-xs sm:max-w-md">
@@ -2032,10 +2033,12 @@ export default function Home() {
               </div>
             </div>
           )}
+            </div>
+          </div>
         </div>
       ) : showPersonalizationScreen ? (
         /* Screen 5: Salam aleykum dear - Spiritual Companion Chat */
-        <div className="relative min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+        <div className="relative h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn overflow-hidden">
           {/* Back Arrow */}
           <button
             onClick={() => {
@@ -2977,7 +2980,7 @@ export default function Home() {
         </>
       ) : showAuthenticDuasGrid ? (
         /* Screen 19: Authentic Duas Category Grid */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full px-6 py-4 mb-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
@@ -3022,8 +3025,9 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Category Grid (Main Content) */}
-          <div className="flex-1 px-6 mb-8">
+          {/* Category Grid (Main Content) - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 pb-24">
             <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
               {authenticDuaCategories.map((category) => (
                 <button
@@ -3073,6 +3077,7 @@ export default function Home() {
               </button>
             </div>
           </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -3087,7 +3092,7 @@ export default function Home() {
         </div>
       ) : showMatinSoirDetails ? (
         /* Screen: Matin & Soir Details - From morning & night */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A]">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A] overflow-hidden">
           {/* Header - Mobile Responsive */}
           <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6">
             {/* Left: Green leaf icon */}
@@ -3194,7 +3199,7 @@ export default function Home() {
         </div>
       ) : showWriteDuaScreen ? (
         /* Write a Dua Screen */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4F4F] to-[#1E3A8A]">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-b from-[#0D4F4F] to-[#1E3A8A] overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-6">
             {/* Left: Back arrow */}
@@ -3215,8 +3220,9 @@ export default function Home() {
             <div className="w-8"></div>
           </div>
 
-          {/* Main Content */}
-          <div className="flex-1 px-6 py-4">
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-4 pb-24">
             {/* Description */}
             <div className="mb-8">
               <p className="text-white text-base leading-relaxed text-center">
@@ -3306,11 +3312,12 @@ export default function Home() {
                 <span className="text-white text-xs">Profile</span>
               </button>
             </div>
+            </div>
           </div>
         </div>
       ) : showChatbotDiscussionHub ? (
         /* Screen 20: Chatbot Discussion Hub */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full px-6 py-4 mb-8 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
@@ -3340,6 +3347,10 @@ export default function Home() {
             {/* Right: Empty space for balance */}
             <div className="w-6"></div>
           </div>
+
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="pb-24">
 
           {/* Chat Message (Bot's Response) */}
           <div className="w-full max-w-4xl mx-auto mb-8 px-6">
@@ -3429,6 +3440,8 @@ export default function Home() {
               </button>
             </div>
           </div>
+            </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -3440,7 +3453,7 @@ export default function Home() {
         </div>
       ) : showDuaContentViewer ? (
         /* Screen 21: Dua Content Viewer */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full px-6 py-4 mb-8 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
@@ -3492,8 +3505,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dua Content Display */}
-          <div className="flex-1 px-6 mb-8">
+          {/* Dua Content Display - Scrollable */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 pb-24">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid] && (
                 <>
@@ -3564,6 +3578,8 @@ export default function Home() {
               </button>
             </div>
           </div>
+            </div>
+          </div>
 
           {/* Debug Back Button */}
           <button
@@ -3575,7 +3591,7 @@ export default function Home() {
         </div>
       ) : showInteriorDesignSettings ? (
         /* Screen 22 & 23: My Interior Design - Settings */
-        <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Header/Top Bar */}
           <div className="flex items-center justify-between w-full px-6 py-4 mb-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
