@@ -1561,13 +1561,7 @@ export default function Home() {
 
 
 
-          {/* Debug Reset Button */}
-          <button
-            onClick={handleResetToAuth}
-            className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-xs opacity-50 hover:opacity-100"
-          >
-            Reset to Auth
-          </button>
+
         </div>
       ) : activeTab === 'Douas' && showHomeScreen && !showWallOfDuas ? (
         /* Screen 8: Douas Tab */
