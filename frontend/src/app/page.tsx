@@ -802,7 +802,7 @@ export default function Home() {
       id: 'discuss',
       icon: (
         <div className="flex items-center justify-center">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+          <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
             {/* First speech bubble - dark green */}
             <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-.55 0-1.08-.11-1.56-.31L8 17v-2.5c-1.25-.73-2-2.1-2-3.5z" fill="#0A7A33"/>
             {/* Second speech bubble - cream/beige */}
@@ -3934,9 +3934,9 @@ export default function Home() {
         <>
           {console.log('🚀 SIDEBAR MENU IS RENDERING! showDiscussMenu:', showDiscussMenu)}
         <div className="fixed inset-0 z-50 flex">
-          {/* Background overlay with dimmed effect */}
+          {/* Background overlay - transparent to show original app background */}
           <div
-            className="absolute inset-0 bg-black bg-opacity-30"
+            className="absolute inset-0 bg-transparent"
             onClick={handleCloseDiscussMenu}
           />
 
@@ -3947,9 +3947,9 @@ export default function Home() {
             </svg>
           </div>
 
-          {/* Menu Container - Mobile Responsive */}
-          <div className="relative w-64 sm:w-72 h-full z-50">
-            <div className="bg-[#F5F5DC] rounded-none sm:rounded-r-xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
+          {/* Menu Container - Narrower width */}
+          <div className="relative w-56 sm:w-60 h-full z-50">
+            <div className="bg-[#F5F5DC] rounded-none sm:rounded-r-xl shadow-2xl h-full p-4 sm:p-5 overflow-y-auto">
               {/* Menu Items - Mobile Responsive */}
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
                 {menuItems.map((item) => (
@@ -3962,12 +3962,12 @@ export default function Home() {
                         : 'text-gray-900 hover:bg-gray-100'
                     }`}
                   >
-                    <div className={`text-lg sm:text-xl ${
+                    <div className={`text-xl sm:text-2xl ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-800'
                     }`}>
                       {typeof item.icon === 'string' ? <span>{item.icon}</span> : item.icon}
                     </div>
-                    <span className={`font-medium text-sm sm:text-base ${
+                    <span className={`font-bold text-sm sm:text-base ${
                       selectedMenuItem === item.text ? 'text-white' : 'text-gray-900'
                     }`}>
                       {item.text}
