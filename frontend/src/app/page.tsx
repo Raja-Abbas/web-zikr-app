@@ -1376,7 +1376,7 @@ export default function Home() {
         /* Screen 7: Home Screen */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Top Bar/Header */}
-          <div className="flex items-center justify-between px-6 py-6">
+          <div className="flex items-center justify-between px-6 py-6 pt-12 sm:pt-6">
             {/* Leaves Icon - Sidebar Menu */}
             <button
               onClick={() => setShowDiscussMenu(true)}
@@ -2345,7 +2345,7 @@ export default function Home() {
           </button>
 
           {/* Header & Title Area */}
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 mt-16 sm:mt-20">
             {/* Arabic Title - Stylized Green Font */}
             <div className="mb-3 sm:mb-4">
               <div className="text-5xl sm:text-6xl md:text-7xl text-green-400 font-arabic mb-2">
@@ -2456,7 +2456,7 @@ export default function Home() {
         /* Screen 14: Authentic Dua Selection */
         <>
           {/* Header/Top Bar - Mobile Responsive */}
-          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6">
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
             <div className="flex items-center space-x-2 sm:space-x-4">
               <button
@@ -2657,7 +2657,7 @@ export default function Home() {
         /* Screen 17: Custom Dua Generation */
         <>
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
@@ -2830,7 +2830,7 @@ export default function Home() {
         /* Screen 18: Spiritual Reminder - Wudu Steps */
         <>
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6">
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
@@ -2979,7 +2979,7 @@ export default function Home() {
         /* Screen 19: Authentic Duas Category Grid */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full px-6 py-4 mb-6">
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
@@ -3312,7 +3312,7 @@ export default function Home() {
         /* Screen 20: Chatbot Discussion Hub */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full px-6 py-4 mb-8">
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-8 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
@@ -3442,7 +3442,7 @@ export default function Home() {
         /* Screen 21: Dua Content Viewer */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full px-6 py-4 mb-8">
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-8 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
@@ -3577,7 +3577,7 @@ export default function Home() {
         /* Screen 22 & 23: My Interior Design - Settings */
         <div className="flex-1 flex flex-col min-h-screen w-full max-w-none">
           {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full px-6 py-4 mb-6">
+          <div className="flex items-center justify-between w-full px-6 py-4 mb-6 pt-8 sm:pt-4">
             {/* Left: Back arrow and green leaf icon */}
             <div className="flex items-center space-x-4">
               <button
