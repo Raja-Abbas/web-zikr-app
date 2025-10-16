@@ -4042,7 +4042,16 @@ export default function Home() {
                   id: 'discuss',
                   text: 'Discuss',
                   color: 'from-blue-500 to-blue-600',
-                  icon: '💬🍃'
+                  icon: (
+                    <div className="relative">
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                        {/* First message bubble - white */}
+                        <path d="M8 4h8c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-2 2-2-2H8c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="white" stroke="white" strokeWidth="1"/>
+                        {/* Second message bubble - dark green */}
+                        <path d="M6 8h8c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-2l-2 2-2-2H6c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2z" fill="#065f46" stroke="#065f46" strokeWidth="1"/>
+                      </svg>
+                    </div>
+                  )
                 },
                 {
                   id: 'duas',
@@ -4099,7 +4108,7 @@ export default function Home() {
                   className={`w-full bg-gradient-to-r ${item.color} text-white py-3 px-4 rounded-xl flex items-center space-x-3 hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <span className="text-xl">{item.icon}</span>
+                  <div className="text-white flex items-center justify-center">{typeof item.icon === 'string' ? <span className="text-xl">{item.icon}</span> : item.icon}</div>
                   <span className="text-base font-medium">{item.text}</span>
                   <div className="flex-1" />
                   <span className="text-lg opacity-70">→</span>
