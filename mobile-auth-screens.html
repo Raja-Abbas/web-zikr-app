@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My.Zikr Authentication Screens - Fixed Mobile Viewport</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+            border-radius: 24px;
+            border: 8px solid #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-frame.android {
+            width: 360px;
+            height: 800px;
+        }
+        
+        .status-bar {
+            height: 44px;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .screen-content {
+            height: calc(100% - 44px - 34px);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .home-indicator {
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .home-indicator::after {
+            content: '';
+            width: 134px;
+            height: 5px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+        
+        .logo-section {
+            margin-bottom: 32px;
+        }
+        
+        .arabic-logo {
+            font-size: 48px;
+            color: #F5F5DC;
+            margin-bottom: 8px;
+            font-family: 'Amiri', serif;
+        }
+        
+        .app-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .welcome-text {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 24px;
+        }
+        
+        .auth-section {
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .login-link {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+        }
+        
+        .login-link button {
+            background: none;
+            border: none;
+            color: #F5F5DC;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .auth-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            cursor: pointer;
+            transition: transform 0.2s;
+            min-height: 56px;
+        }
+        
+        .auth-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .auth-button img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #0A7A33;
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .create-account-btn {
+            width: 100%;
+            padding: 16px;
+            background: #0A7A33;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+            min-height: 56px;
+        }
+        
+        .back-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 24px;
+            max-height: 300px;
+            overflow: hidden;
+        }
+        
+        .interest-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        
+        .interest-button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: #0A7A33;
+        }
+        
+        .interest-button.selected {
+            background: rgba(10, 122, 51, 0.3);
+            border-color: #0A7A33;
+        }
+        
+        .interest-emoji {
+            font-size: 20px;
+            min-width: 24px;
+        }
+        
+        .continue-btn {
+            width: 100%;
+            padding: 16px;
+            background: #0A7A33;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 56px;
+        }
+        
+        .continue-btn:disabled {
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5);
+            cursor: not-allowed;
+        }
+        
+        .screen-label {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Screen 1: Initial Registration -->
+    <div class="mobile-frame">
+        <div class="screen-label">Screen 1: Registration (390x844)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <p class="welcome-text">Salam Alaykoum and welcome!</p>
+            </div>
+            
+            <div class="auth-section">
+                <h2 class="section-title">Register</h2>
+                <div class="login-link">
+                    Already Registered? <button>Log in here</button>
+                </div>
+                
+                <div class="auth-buttons">
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+                    
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#000" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Continue with Apple
+                    </button>
+                    
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#666" stroke-width="2"/>
+                            <polyline points="22,6 12,13 2,6" stroke="#666" stroke-width="2"/>
+                        </svg>
+                        Continue with Email
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <!-- Screen 2: Email Form -->
+    <div class="mobile-frame">
+        <div class="screen-label">Screen 2: Email Form (390x844)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <p class="welcome-text">Salam Alaykoum and welcome!</p>
+            </div>
+            
+            <div class="auth-section">
+                <h2 class="section-title">Register</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">NAME</label>
+                    <input type="text" class="form-input" placeholder="Your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">EMAIL</label>
+                    <input type="email" class="form-input" placeholder="hello@reallygreatsite.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">PASSWORD</label>
+                    <input type="password" class="form-input" placeholder="Create a password">
+                </div>
+                
+                <button class="create-account-btn">Create Account</button>
+                <button class="auth-button back-button">Back to options</button>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <!-- Screen 3: Welcome Adnan -->
+    <div class="mobile-frame">
+        <div class="screen-label">Screen 3: Welcome Adnan (390x844)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <h2 class="section-title">Welcome Adnan!</h2>
+                <p class="welcome-text">Please tell us what you are here for so we can customize your navigation. You can select up to 3.</p>
+            </div>
+            
+            <div class="auth-section">
+                <div class="interests-grid">
+                    <button class="interest-button">
+                        <span class="interest-emoji">📖</span>
+                        <span>To learn how to make douas</span>
+                    </button>
+                    <button class="interest-button selected">
+                        <span class="interest-emoji">🤲</span>
+                        <span>To join the douas community</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🧭</span>
+                        <span>By curiosity</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🕋</span>
+                        <span>To find islamic reminders</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🌙</span>
+                        <span>For something else</span>
+                    </button>
+                </div>
+                
+                <button class="continue-btn">Continue</button>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+    <!-- Android Versions (360x800) -->
+    <div class="mobile-frame android">
+        <div class="screen-label">Android: Registration (360x800)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <p class="welcome-text">Salam Alaykoum and welcome!</p>
+            </div>
+
+            <div class="auth-section">
+                <h2 class="section-title">Register</h2>
+                <div class="login-link">
+                    Already Registered? <button>Log in here</button>
+                </div>
+
+                <div class="auth-buttons">
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#000" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Continue with Apple
+                    </button>
+
+                    <button class="auth-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#666" stroke-width="2"/>
+                            <polyline points="22,6 12,13 2,6" stroke="#666" stroke-width="2"/>
+                        </svg>
+                        Continue with Email
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <div class="mobile-frame android">
+        <div class="screen-label">Android: Email Form (360x800)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <p class="welcome-text">Salam Alaykoum and welcome!</p>
+            </div>
+
+            <div class="auth-section">
+                <h2 class="section-title">Register</h2>
+
+                <div class="form-group">
+                    <label class="form-label">NAME</label>
+                    <input type="text" class="form-input" placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">EMAIL</label>
+                    <input type="email" class="form-input" placeholder="hello@reallygreatsite.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">PASSWORD</label>
+                    <input type="password" class="form-input" placeholder="Create a password">
+                </div>
+
+                <button class="create-account-btn">Create Account</button>
+                <button class="auth-button back-button">Back to options</button>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <div class="mobile-frame android">
+        <div class="screen-label">Android: Welcome Adnan (360x800)</div>
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>●●●●● 100%</span>
+        </div>
+        <div class="screen-content">
+            <div class="logo-section">
+                <div class="arabic-logo">ذِكْر</div>
+                <h1 class="app-title">My.Zikr</h1>
+                <h2 class="section-title">Welcome Adnan!</h2>
+                <p class="welcome-text">Please tell us what you are here for so we can customize your navigation. You can select up to 3.</p>
+            </div>
+
+            <div class="auth-section">
+                <div class="interests-grid">
+                    <button class="interest-button">
+                        <span class="interest-emoji">📖</span>
+                        <span>To learn how to make douas</span>
+                    </button>
+                    <button class="interest-button selected">
+                        <span class="interest-emoji">🤲</span>
+                        <span>To join the douas community</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🧭</span>
+                        <span>By curiosity</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🕋</span>
+                        <span>To find islamic reminders</span>
+                    </button>
+                    <button class="interest-button">
+                        <span class="interest-emoji">🌙</span>
+                        <span>For something else</span>
+                    </button>
+                </div>
+
+                <button class="continue-btn">Continue</button>
+            </div>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <script>
+        // Prevent scrolling and ensure fixed viewport
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
+        // Add interaction for interest selection
+        document.querySelectorAll('.interest-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('selected');
+
+                // Update continue button state
+                const selectedCount = this.closest('.auth-section').querySelectorAll('.interest-button.selected').length;
+                const continueBtn = this.closest('.auth-section').querySelector('.continue-btn');
+                continueBtn.disabled = selectedCount === 0;
+            });
+        });
+
+        // Simulate form interactions
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#0A7A33';
+                this.style.background = 'rgba(255,255,255,0.15)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.borderColor = 'rgba(255,255,255,0.2)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>
