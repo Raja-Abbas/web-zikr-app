@@ -4040,7 +4040,7 @@ export default function Home() {
               {[
                 {
                   id: 'discuss',
-                  text: 'Discuss',
+                  text: 'Discuss ✅',
                   color: 'from-blue-500 to-blue-600',
                   icon: (
                     <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
