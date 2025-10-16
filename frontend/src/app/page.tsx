@@ -3105,8 +3105,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Footer Card - "Discover the wall of douas" - Mobile Responsive */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B1E3A] via-[#0B1E3A] to-transparent p-4 sm:p-6">
+          {/* Footer Card - "Discover the wall of douas" - Fixed at Bottom */}
+          <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B1E3A] via-[#0B1E3A] to-transparent p-4 sm:p-6 z-40">
             <div className="bg-[#0A1A2E] bg-opacity-80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-2xl border border-gray-700 border-opacity-30">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
                 {/* Left: Text content - Mobile Responsive */}
