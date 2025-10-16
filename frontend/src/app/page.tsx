@@ -92,6 +92,7 @@ export default function Home() {
   // Refs for auto-scroll functionality
   const duaContentRef = useRef<HTMLDivElement>(null);
   const gridDuaContentRef = useRef<HTMLDivElement>(null);
+  const welcomeAdnanContinueRef = useRef<HTMLDivElement>(null);
 
   // Navigation state manager
   const [currentScreen, setCurrentScreen] = useState('auth');
@@ -2200,6 +2201,14 @@ export default function Home() {
                   } else if (selectedInterests.length < 3) {
                     // Add selection if under 3 limit
                     setSelectedInterests([...selectedInterests, option.id]);
+
+                    // Auto-scroll to Continue button after selection
+                    setTimeout(() => {
+                      welcomeAdnanContinueRef.current?.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                      });
+                    }, 100);
                   }
                   // If 3 are already selected, clicking does nothing (user must deselect first)
                 }}
@@ -2226,6 +2235,7 @@ export default function Home() {
           </div>
 
           {/* Continue Button - Mobile Responsive */}
+          <div ref={welcomeAdnanContinueRef}>
           <button
             onClick={handleWelcomeAdnanContinue}
             disabled={selectedInterests.length === 0}
@@ -2237,6 +2247,7 @@ export default function Home() {
           >
             Continue
           </button>
+          </div>
         </div>
       ) : showSuccessScreen ? (
         /* Success/Confirmation Screen - Animated Text Boxes */
