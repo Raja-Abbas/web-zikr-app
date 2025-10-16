@@ -3916,7 +3916,7 @@ export default function Home() {
           </div>
 
           {/* Menu Container - Mobile Responsive */}
-          <div className="relative w-full sm:w-80 md:w-96 h-full z-50">
+          <div className="relative w-64 sm:w-72 h-full z-50">
             <div className="bg-cream rounded-none sm:rounded-r-2xl shadow-2xl h-full p-4 sm:p-6 overflow-y-auto">
               {/* Menu Items - Mobile Responsive */}
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 mt-12 sm:mt-8">
