@@ -1817,15 +1817,7 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Sign Out Button */}
-              <div className="mt-8">
-                <button
-                  onClick={handleResetToAuth}
-                  className="w-full bg-red-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-red-700 transition-colors"
-                >
-                  Sign Out
-                </button>
-              </div>
+
             </div>
           </div>
 
