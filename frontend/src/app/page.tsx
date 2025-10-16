@@ -3988,7 +3988,7 @@ export default function Home() {
           </div>
 
           {/* Continue Button positioned under sidebar */}
-          <div className="absolute top-80 left-4 z-50">
+          <div className="absolute top-96 left-4 z-50">
             <button className="bg-gray-600 text-gray-300 px-6 py-2 rounded-lg text-sm opacity-30 cursor-not-allowed">
               Continue
             </button>
