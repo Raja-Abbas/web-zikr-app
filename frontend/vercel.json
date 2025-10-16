@@ -1,0 +1,11 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "react-version": true,
+      "main": false
+    }
+  },
+  "github": {
+    "autoAlias": true
+  }
+}
