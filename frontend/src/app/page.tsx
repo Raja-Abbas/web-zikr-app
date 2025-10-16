@@ -942,12 +942,12 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
+    <div className="h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-hidden">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated ? (
         /* Authentication Screen - Show when user is not authenticated */
-        <>
+        <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
           {/* Logo and Header Section */}
           <div className="text-center mb-12">
             {/* Arabic Calligraphy Logo */}
@@ -1169,7 +1169,7 @@ export default function Home() {
           </button>
         </div>
       )}
-        </>
+        </div>
       ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
         /* Wall of Duas Screen - Sleek Dark Theme */
         <>
