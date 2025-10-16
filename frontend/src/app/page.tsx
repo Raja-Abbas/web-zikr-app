@@ -2329,7 +2329,7 @@ export default function Home() {
         </>
       ) : showWelcomeScreen ? (
         /* NEW Welcome Screen - Redesigned UI */
-        <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8">
+        <div className="relative flex flex-col h-screen overflow-hidden">
           {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
           <button
             onClick={(e) => {
@@ -2347,6 +2347,9 @@ export default function Home() {
               <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
             </svg>
           </button>
+
+          {/* Main Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 sm:px-6 py-8">
 
           {/* Header & Title Area */}
           <div className="text-center mb-8 sm:mb-12 mt-16 sm:mt-20">
@@ -2454,6 +2457,7 @@ export default function Home() {
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>
               </svg>
             </button>
+          </div>
           </div>
         </div>
       ) : showAuthenticDuaSelection ? (
