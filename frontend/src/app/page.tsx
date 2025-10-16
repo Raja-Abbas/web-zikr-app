@@ -2129,7 +2129,7 @@ export default function Home() {
         </div>
       ) : showWelcomeAdnanScreen ? (
         /* Screen 3: Welcome Adnan Screen - Modern Design */
-        <div className="relative min-h-screen bg-gradient-to-b from-[#0D3B2E] to-[#0B1E3A] flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
+        <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-8 animate-fadeIn">
           {/* Leaves Icon - Sidebar Menu */}
           <button
             onClick={() => setShowDiscussMenu(true)}
