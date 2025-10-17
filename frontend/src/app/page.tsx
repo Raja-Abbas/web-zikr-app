@@ -683,8 +683,19 @@ export default function Home() {
     console.log('Selected dua category:', category);
     setSelectedDuaCategory(category);
     // Navigate to dedicated dua content viewer screen
-    setActiveTab('Home');
+    // Reset all other screens first
     setShowHomeScreen(false);
+    setShowWelcomeScreen(false);
+    setShowPersonalizationScreen(false);
+    setShowAuthenticDuaSelection(false);
+    setShowCustomDuaGeneration(false);
+    setShowSpiritualReminder(false);
+    setShowAuthenticDuasGrid(false);
+    setShowChatbotDiscussionHub(false);
+    setShowInteriorDesignSettings(false);
+    setShowMatinSoirDetails(false);
+    setShowEmailForm(false);
+    // Then show the dua content viewer
     setShowDuaContentViewer(true);
   };
 
