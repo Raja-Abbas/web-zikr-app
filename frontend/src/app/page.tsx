@@ -1238,46 +1238,46 @@ export default function Home() {
             }
           `}</style>
           <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40] overflow-hidden">
-          {/* Fixed Header */}
-          <div className="px-6 py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
-            {/* Header with Back Arrow, Leaf Icon and Action Buttons */}
-            <div className="mb-4">
+          {/* Fixed Header - Mobile Responsive */}
+          <div className="px-4 sm:px-6 py-4 sm:py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
+            {/* Header with Back Arrow, Leaf Icon and Action Buttons - Mobile Responsive */}
+            <div className="mb-3 sm:mb-4">
               <div className="flex items-center justify-between">
-                {/* Left: Back Arrow + Leaf Icon + Title */}
-                <div className="flex items-center space-x-3">
+                {/* Left: Back Arrow + Leaf Icon + Title - Mobile Responsive */}
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <button
                     onClick={() => {
                       setShowWallOfDuas(false);
                       setActiveTab('Douas');
                     }}
-                    className="text-white text-2xl hover:text-green-400 transition-colors"
+                    className="text-white text-xl sm:text-2xl hover:text-green-400 transition-colors"
                   >
                     ←
                   </button>
                   <button
                     onClick={() => setShowDiscussMenu(true)}
-                    className="text-2xl hover:text-green-300 transition-colors"
+                    className="text-xl sm:text-2xl hover:text-green-300 transition-colors"
                   >
                     🍃
                   </button>
                   <div>
-                    <h1 className="text-xl text-white font-medium">The wall of douas</h1>
+                    <h1 className="text-lg sm:text-xl text-white font-medium">The wall of douas</h1>
                   </div>
                 </div>
 
-                {/* Right: Location and Theme Buttons */}
-                <div className="flex items-center space-x-2">
+                {/* Right: Location and Theme Buttons - Mobile Responsive */}
+                <div className="flex items-center space-x-1 sm:space-x-2">
                   <button
                     onClick={toggleLocationSettings}
-                    className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    className="w-8 h-8 sm:w-10 sm:h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
                   >
-                    <span className="text-white text-lg">📍</span>
+                    <span className="text-white text-sm sm:text-lg">📍</span>
                   </button>
                   <button
                     onClick={toggleThemeSettings}
-                    className="w-10 h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
+                    className="w-8 h-8 sm:w-10 sm:h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
                   >
-                    <span className="text-white text-lg">⚙️</span>
+                    <span className="text-white text-sm sm:text-lg">⚙️</span>
                   </button>
                 </div>
               </div>
@@ -1304,11 +1304,11 @@ export default function Home() {
             )}
           </div>
 
-          {/* Scrollable Content Area */}
-          <div className="flex-1 overflow-y-auto px-6 pb-40" style={{ scrollBehavior: 'smooth' }}>
-            {/* Community Stats */}
-            <div className="mb-6 text-center">
-              <p className="text-white text-opacity-50 text-sm">
+          {/* Scrollable Content Area - Mobile Responsive */}
+          <div className="flex-1 overflow-y-auto px-4 sm:px-6 pb-40" style={{ scrollBehavior: 'smooth' }}>
+            {/* Community Stats - Mobile Responsive */}
+            <div className="mb-4 sm:mb-6 text-center">
+              <p className="text-white text-opacity-50 text-xs sm:text-sm">
                 {displayDuas.length} community duas • Live updates
               </p>
             </div>
@@ -1414,42 +1414,42 @@ export default function Home() {
       ) : showHomeScreen ? (
         /* Screen 7: Home Screen */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
-          {/* Top Bar/Header */}
-          <div className="flex items-center justify-between px-6 py-6 pt-12 sm:pt-6">
-            {/* Leaves Icon - Sidebar Menu */}
+          {/* Top Bar/Header - Mobile Responsive */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6 pt-8 sm:pt-6">
+            {/* Leaves Icon - Sidebar Menu - Mobile Responsive */}
             <button
               onClick={() => setShowDiscussMenu(true)}
               className="hover:scale-110 transition-transform"
             >
-              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
               </svg>
             </button>
 
-            {/* Logo/App Name */}
+            {/* Logo/App Name - Mobile Responsive */}
             <div className="flex-1 text-center">
-              <div className="text-4xl text-white font-arabic mb-1">ذِكْر</div>
-              <div className="text-lg text-white font-light">My.Zikr</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl text-white font-arabic mb-1">ذِكْر</div>
+              <div className="text-sm sm:text-base md:text-lg text-white font-light">My.Zikr</div>
             </div>
 
-            {/* Notifications/Reminder */}
-            <div className="flex items-center space-x-2">
-              <span className="text-white text-xl">🔔</span>
-              <span className="text-white text-sm">Morning duas</span>
+            {/* Notifications/Reminder - Mobile Responsive */}
+            <div className="flex items-center space-x-1 sm:space-x-2">
+              <span className="text-white text-lg sm:text-xl">🔔</span>
+              <span className="text-white text-xs sm:text-sm">Morning duas</span>
             </div>
           </div>
 
-          {/* Main Content - Scrollable */}
+          {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 pb-24">
-            {/* Greeting */}
-            <h1 className="text-3xl text-white font-bold mb-8 text-center">
+            <div className="px-4 sm:px-6 pb-24">
+            {/* Greeting - Mobile Responsive */}
+            <h1 className="text-2xl sm:text-3xl text-white font-bold mb-6 sm:mb-8 text-center">
               Salam Aleykoum {userName || 'Adnan'}!
             </h1>
 
-            {/* Dua of the day Section */}
-            <div className="mb-8">
-              <h2 className="text-white text-xl font-semibold mb-4">Dua of the day</h2>
+            {/* Dua of the day Section - Mobile Responsive */}
+            <div className="mb-6 sm:mb-8">
+              <h2 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Dua of the day</h2>
 
               {/* Dua Card */}
               <div className="bg-cream rounded-2xl p-6 mb-6">
@@ -1643,24 +1643,24 @@ export default function Home() {
       ) : activeTab === 'Douas' && showHomeScreen && !showWallOfDuas ? (
         /* Screen 8: Douas Tab */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
-          {/* Header with Back Arrow */}
-          <div className="flex items-center justify-between px-6 py-4 mb-4">
+          {/* Header with Back Arrow - Mobile Responsive */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 mb-3 sm:mb-4">
             <button
               onClick={() => setActiveTab('Home')}
-              className="text-white text-2xl hover:text-green-400 transition-colors"
+              className="text-white text-xl sm:text-2xl hover:text-green-400 transition-colors"
             >
               ←
             </button>
-            <h1 className="text-2xl text-white font-bold">Douas</h1>
-            <div className="w-8"></div> {/* Spacer for centering */}
+            <h1 className="text-xl sm:text-2xl text-white font-bold">Douas</h1>
+            <div className="w-6 sm:w-8"></div> {/* Spacer for centering */}
           </div>
 
-          {/* Main Content - Scrollable */}
+          {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-2 pb-24">
-              {/* Subtitle */}
-              <div className="mb-8 text-center">
-                <p className="text-white text-base leading-relaxed">
+            <div className="px-4 sm:px-6 py-2 pb-24">
+              {/* Subtitle - Mobile Responsive */}
+              <div className="mb-6 sm:mb-8 text-center">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   Douas to connect to Allah and to find comfort with heartfelt words
                 </p>
               </div>
@@ -1754,24 +1754,24 @@ export default function Home() {
       ) : activeTab === 'Reminder' && showHomeScreen ? (
         /* Reminder Tab Screen */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
-          {/* Header with Back Arrow */}
-          <div className="flex items-center justify-between px-6 py-4 mb-4">
+          {/* Header with Back Arrow - Mobile Responsive */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 mb-3 sm:mb-4">
             <button
               onClick={() => setActiveTab('Home')}
-              className="text-white text-2xl hover:text-green-400 transition-colors"
+              className="text-white text-xl sm:text-2xl hover:text-green-400 transition-colors"
             >
               ←
             </button>
-            <h1 className="text-2xl text-white font-bold">Spiritual Reminders</h1>
-            <div className="w-8"></div> {/* Spacer for centering */}
+            <h1 className="text-lg sm:text-xl md:text-2xl text-white font-bold">Spiritual Reminders</h1>
+            <div className="w-6 sm:w-8"></div> {/* Spacer for centering */}
           </div>
 
-          {/* Main Content - Scrollable */}
+          {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-2 pb-24">
-              {/* Subtitle */}
-              <div className="mb-8 text-center">
-                <p className="text-white text-base leading-relaxed">
+            <div className="px-4 sm:px-6 py-2 pb-24">
+              {/* Subtitle - Mobile Responsive */}
+              <div className="mb-6 sm:mb-8 text-center">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   Daily reminders to strengthen your connection with Allah
                 </p>
               </div>
@@ -1830,28 +1830,28 @@ export default function Home() {
       ) : activeTab === 'Profile' && showHomeScreen ? (
         /* Profile Tab Screen */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
-          {/* Header with Back Arrow */}
-          <div className="flex items-center justify-between px-6 py-4 mb-4">
+          {/* Header with Back Arrow - Mobile Responsive */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 mb-3 sm:mb-4">
             <button
               onClick={() => setActiveTab('Home')}
-              className="text-white text-2xl hover:text-green-400 transition-colors"
+              className="text-white text-xl sm:text-2xl hover:text-green-400 transition-colors"
             >
               ←
             </button>
-            <h1 className="text-2xl text-white font-bold">My Profile</h1>
-            <div className="w-8"></div> {/* Spacer for centering */}
+            <h1 className="text-xl sm:text-2xl text-white font-bold">My Profile</h1>
+            <div className="w-6 sm:w-8"></div> {/* Spacer for centering */}
           </div>
 
-          {/* Main Content - Scrollable */}
+          {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-2 pb-24">
-              {/* Profile Header */}
-              <div className="mb-8 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-4xl text-white">👤</span>
+            <div className="px-4 sm:px-6 py-2 pb-24">
+              {/* Profile Header - Mobile Responsive */}
+              <div className="mb-6 sm:mb-8 text-center">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center">
+                  <span className="text-2xl sm:text-3xl md:text-4xl text-white">👤</span>
                 </div>
-                <h2 className="text-3xl text-white font-bold mb-2">{userName || 'Adnan'}</h2>
-                <p className="text-gray-300 text-base">
+                <h2 className="text-2xl sm:text-3xl text-white font-bold mb-2">{userName || 'Adnan'}</h2>
+                <p className="text-gray-300 text-sm sm:text-base">
                   Your spiritual journey with My.Zikr
                 </p>
               </div>
@@ -3258,7 +3258,7 @@ export default function Home() {
               setShowMatinSoirDetails(false);
               setShowAuthenticDuasGrid(true);
             }}
-            className="absolute top-4 sm:top-6 left-12 sm:left-20 bg-gray-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs opacity-75 hover:opacity-100 transition-opacity"
+            className="absolute top-3 sm:top-4 md:top-6 left-10 sm:left-12 md:left-20 bg-gray-600 text-white px-1 sm:px-2 md:px-4 py-1 sm:py-1 md:py-2 rounded text-xs opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Grid
           </button>
@@ -3521,16 +3521,16 @@ export default function Home() {
         /* Screen 21: Dua Content Viewer - Profile Duas */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A] overflow-hidden">
           {/* Header/Top Bar - Like in image */}
-          <div className="flex items-center justify-between w-full px-4 py-4">
-            {/* Left: Back arrow and green leaf icon */}
-            <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-between w-full px-3 sm:px-4 py-3 sm:py-4">
+            {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <button
                 onClick={() => {
                   setShowDuaContentViewer(false);
                   setShowHomeScreen(true);
                   setActiveTab('Profile');
                 }}
-                className="text-white text-xl hover:text-gray-300 transition-colors"
+                className="text-white text-lg sm:text-xl hover:text-gray-300 transition-colors"
               >
                 ←
               </button>
@@ -3538,98 +3538,98 @@ export default function Home() {
                 onClick={() => setShowDiscussMenu(true)}
                 className="hover:scale-110 transition-transform"
               >
-                <svg className="w-5 h-5 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
               </button>
             </div>
 
-            {/* Title */}
-            <h1 className="text-white text-lg font-medium">
+            {/* Title - Mobile Responsive */}
+            <h1 className="text-white text-sm sm:text-base md:text-lg font-medium text-center flex-1 px-2">
               {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent]?.title || selectedDuaCategory}
             </h1>
 
-            {/* Right Icons - Like in image */}
-            <div className="flex items-center space-x-3">
-              <button className="text-white text-lg hover:text-gray-300 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {/* Right Icons - Like in image - Mobile Responsive */}
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
+              <button className="text-white text-sm sm:text-base md:text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
-              <button className="text-white text-lg hover:text-gray-300 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button className="text-white text-sm sm:text-base md:text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </button>
-              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+              <button className="text-white text-xs sm:text-sm md:text-base hover:text-gray-300 transition-colors">
                 <span className="font-bold">Aa</span>
               </button>
-              <button className="text-white text-lg hover:text-gray-300 transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <button className="text-white text-sm sm:text-base md:text-lg hover:text-gray-300 transition-colors">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
               </button>
-              <button className="text-white text-lg hover:text-gray-300 transition-colors">
+              <button className="text-white text-sm sm:text-base md:text-lg hover:text-gray-300 transition-colors">
                 <span>⋯</span>
               </button>
             </div>
           </div>
 
-          {/* Dua Content Display - Scrollable - Like in image */}
+          {/* Dua Content Display - Scrollable - Like in image - Mobile Responsive */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-4 pb-32">
-              <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="px-3 sm:px-4 pb-32">
+              <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
                 {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent] && (
                   <>
-                    {/* Arabic Text - Large and centered */}
-                    <div className="mb-8">
-                      <p className="text-white text-2xl md:text-3xl font-arabic leading-relaxed text-center">
+                    {/* Arabic Text - Large and centered - Mobile Responsive */}
+                    <div className="mb-6 sm:mb-8">
+                      <p className="text-white text-xl sm:text-2xl md:text-3xl font-arabic leading-relaxed text-center">
                         {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].arabic}
                       </p>
                     </div>
 
-                    {/* Transliteration - Italic */}
-                    <div className="mb-8">
-                      <p className="text-white text-base md:text-lg italic leading-relaxed text-center">
+                    {/* Transliteration - Italic - Mobile Responsive */}
+                    <div className="mb-6 sm:mb-8">
+                      <p className="text-white text-sm sm:text-base md:text-lg italic leading-relaxed text-center">
                         {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].transliteration}
                       </p>
                     </div>
 
-                    {/* English Translation */}
-                    <div className="mb-8">
-                      <p className="text-white text-sm md:text-base leading-relaxed text-center">
+                    {/* English Translation - Mobile Responsive */}
+                    <div className="mb-6 sm:mb-8">
+                      <p className="text-white text-xs sm:text-sm md:text-base leading-relaxed text-center">
                         {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].translation}
                       </p>
                     </div>
 
-                    {/* Source Reference */}
-                    <div className="mb-12">
-                      <p className="text-gray-400 text-xs text-center">
+                    {/* Source Reference - Mobile Responsive */}
+                    <div className="mb-8 sm:mb-12">
+                      <p className="text-gray-400 text-xs sm:text-xs text-center">
                         {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].source}
                       </p>
                     </div>
                   </>
                 )}
 
-                {/* Audio Controls - Like in image */}
-                <div className="flex items-center justify-center space-x-8 mb-16">
-                  {/* Previous Button */}
-                  <button className="text-white text-3xl hover:text-gray-300 transition-colors">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                {/* Audio Controls - Like in image - Mobile Responsive */}
+                <div className="flex items-center justify-center space-x-4 sm:space-x-6 md:space-x-8 mb-12 sm:mb-16">
+                  {/* Previous Button - Mobile Responsive */}
+                  <button className="text-white text-xl sm:text-2xl md:text-3xl hover:text-gray-300 transition-colors">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
                     </svg>
                   </button>
 
-                  {/* Play/Pause Button - Large circular */}
-                  <button className="relative w-20 h-20 bg-white rounded-full flex items-center justify-center text-black text-3xl hover:bg-gray-100 transition-colors shadow-lg">
-                    <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  {/* Play/Pause Button - Large circular - Mobile Responsive */}
+                  <button className="relative w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center text-black text-2xl sm:text-3xl hover:bg-gray-100 transition-colors shadow-lg">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </button>
 
-                  {/* Next Button */}
-                  <button className="text-white text-3xl hover:text-gray-300 transition-colors">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  {/* Next Button - Mobile Responsive */}
+                  <button className="text-white text-xl sm:text-2xl md:text-3xl hover:text-gray-300 transition-colors">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
                     </svg>
                   </button>
@@ -3652,20 +3652,20 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Discuss Button - Like in image */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          {/* Bottom Discuss Button - Like in image - Mobile Responsive */}
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2">
             <button
               onClick={() => {
                 setShowDuaContentViewer(false);
                 handleDiscussClick();
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full flex items-center space-x-3 transition-colors shadow-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full flex items-center space-x-2 sm:space-x-3 transition-colors shadow-lg text-sm sm:text-base"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
               </svg>
               <span className="font-medium">Discuss</span>
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
               </svg>
             </button>
