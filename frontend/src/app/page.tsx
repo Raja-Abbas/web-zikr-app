@@ -998,8 +998,10 @@ export default function Home() {
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated && !showHomeScreen && !showWelcomeScreen && !showPersonalizationScreen && !showAuthenticDuaSelection && !showCustomDuaGeneration && !showSpiritualReminder && !showAuthenticDuasGrid && !showChatbotDiscussionHub && !showDuaContentViewer && !showInteriorDesignSettings && !showMatinSoirDetails && !showWelcomeAdnanScreen && !showSuccessScreen ? (
-        /* Authentication Screen - Show when user is not authenticated */
-        <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
+        /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+          {/* Main Content - Scrollable - Mobile Responsive */}
+          <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
           {/* Logo and Header Section */}
           <div className="text-center mb-12">
             {/* Arabic Calligraphy Logo */}
@@ -1221,6 +1223,7 @@ export default function Home() {
           </button>
         </div>
       )}
+          </div>
         </div>
       ) : showWallOfDuas && activeTab === 'Douas' && showHomeScreen ? (
         /* Wall of Duas Screen - Sleek Dark Theme */
