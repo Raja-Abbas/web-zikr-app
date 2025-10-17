@@ -997,7 +997,7 @@ export default function Home() {
     <div className="h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-hidden">
       {!validateNavigationState() ? (
         <FallbackScreen />
-      ) : !isAuthenticated ? (
+      ) : !isAuthenticated && !showHomeScreen && !showWelcomeScreen && !showPersonalizationScreen && !showAuthenticDuaSelection && !showCustomDuaGeneration && !showSpiritualReminder && !showAuthenticDuasGrid && !showChatbotDiscussionHub && !showDuaContentViewer && !showInteriorDesignSettings && !showMatinSoirDetails && !showWelcomeAdnanScreen && !showSuccessScreen ? (
         /* Authentication Screen - Show when user is not authenticated */
         <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 sm:px-6 py-4 sm:py-8">
           {/* Logo and Header Section */}
