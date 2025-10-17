@@ -682,21 +682,8 @@ export default function Home() {
   const handleToProtectKidsCategorySelect = (category: string) => {
     console.log('Selected dua category:', category);
     setSelectedDuaCategory(category);
-    // Navigate to dedicated dua content viewer screen
-    // Reset all other screens first
-    setShowHomeScreen(false);
-    setShowWelcomeScreen(false);
-    setShowPersonalizationScreen(false);
-    setShowAuthenticDuaSelection(false);
-    setShowCustomDuaGeneration(false);
-    setShowSpiritualReminder(false);
-    setShowAuthenticDuasGrid(false);
-    setShowChatbotDiscussionHub(false);
-    setShowInteriorDesignSettings(false);
-    setShowMatinSoirDetails(false);
-    setShowEmailForm(false);
-    // Then show the dua content viewer
-    setShowDuaContentViewer(true);
+    // Navigate to dedicated dua content viewer screen using centralized navigation
+    navigateToScreen('dua-content-viewer', { category });
   };
 
   // Universal discussion handler - can be called from any screen
