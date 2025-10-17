@@ -1518,7 +1518,8 @@ export default function Home() {
                           <button
                             key={category.id}
                             onClick={() => {
-                              selectDuaCategory(category.id);
+                              setSelectedDuaCategory(category.name);
+                              navigateToScreen('dua-content-viewer', { category: category.name });
                               setShowFeelingSelector(false);
                             }}
                             className="bg-slate-600 hover:bg-slate-500 rounded-lg p-3 text-left transition-colors"
@@ -1542,7 +1543,10 @@ export default function Home() {
                   {getRecommendedDuas().map((category) => (
                     <button
                       key={category.id}
-                      onClick={() => selectDuaCategory(category.id)}
+                      onClick={() => {
+                        setSelectedDuaCategory(category.name);
+                        navigateToScreen('dua-content-viewer', { category: category.name });
+                      }}
                       className="w-full bg-slate-800 rounded-xl p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
                     >
                       <div className="flex items-center space-x-3">
