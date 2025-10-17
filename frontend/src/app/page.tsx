@@ -3209,13 +3209,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Back button for debugging - Mobile Responsive */}
+          {/* Back button for debugging - Mobile Responsive - Positioned near leaf icon */}
           <button
             onClick={() => {
               setShowMatinSoirDetails(false);
               setShowAuthenticDuasGrid(true);
             }}
-            className="absolute top-16 sm:top-20 left-4 sm:left-6 bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm opacity-75 hover:opacity-100 transition-opacity"
+            className="absolute top-4 sm:top-6 left-16 sm:left-20 bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm opacity-75 hover:opacity-100 transition-opacity"
           >
             ← Back to Grid
           </button>
