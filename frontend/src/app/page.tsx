@@ -3258,9 +3258,9 @@ export default function Home() {
               setShowMatinSoirDetails(false);
               setShowAuthenticDuasGrid(true);
             }}
-            className="absolute top-4 sm:top-6 left-16 sm:left-20 bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm opacity-75 hover:opacity-100 transition-opacity"
+            className="absolute top-4 sm:top-6 left-12 sm:left-20 bg-gray-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs opacity-75 hover:opacity-100 transition-opacity"
           >
-            ← Back to Grid
+            ← Grid
           </button>
         </div>
       ) : showWriteDuaScreen ? (
