@@ -682,15 +682,10 @@ export default function Home() {
   const handleToProtectKidsCategorySelect = (category: string) => {
     console.log('Selected dua category:', category);
     setSelectedDuaCategory(category);
-    // Dua content will display on the same page below the buttons
-
-    // Auto-scroll to dua content after selection
-    setTimeout(() => {
-      duaContentRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }, 100);
+    // Navigate to dedicated dua content viewer screen
+    setActiveTab('Home');
+    setShowHomeScreen(false);
+    setShowDuaContentViewer(true);
   };
 
   // Universal discussion handler - can be called from any screen
@@ -897,6 +892,52 @@ export default function Home() {
       transliteration: 'Bismi llāhi walajna wa bismi llāhi kharajna wa \'alā llāhi rabbinā tawakkalnā',
       translation: 'In the name of Allah we enter and in the name of Allah we leave, and upon Allah, our Lord, we place our trust.',
       source: 'Abu Dawud 5096'
+    }
+  };
+
+  // Profile Dua Categories Content
+  const profileDuaContent = {
+    'Anxiety': {
+      title: 'Dua for Anxiety',
+      arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ',
+      transliteration: 'Allāhumma innī a\'ūdhu bika mina l-hammi wa l-ḥazani wa l-\'ajzi wa l-kasali wa l-bukhli wa l-jubni wa ḍala\'i d-dayni wa ghalabati r-rijāl',
+      translation: 'O Allah, I seek refuge in You from worry and grief, from incapacity and laziness, from cowardice and miserliness, from being heavily in debt and from being overpowered by other men.',
+      source: 'Sahih al-Bukhari 6369'
+    },
+    'Sadness': {
+      title: 'Dua for Sadness',
+      arabic: 'اللَّهُمَّ إِنِّي عَبْدُكَ ابْنُ عَبْدِكَ ابْنُ أَمَتِكَ نَاصِيَتِي بِيَدِكَ مَاضٍ فِيَّ حُكْمُكَ عَدْلٌ فِيَّ قَضَاؤُكَ',
+      transliteration: 'Allāhumma innī \'abduka bnu \'abdika bnu amatika nāṣiyatī biyadika māḍin fiyya ḥukmuka \'adlun fiyya qaḍā\'uka',
+      translation: 'O Allah, I am Your servant, son of Your servant, son of Your maidservant. My forelock is in Your hand, Your command over me is forever executed and Your decree over me is just.',
+      source: 'Musnad Ahmad 3712'
+    },
+    'To protect kids': {
+      title: 'To protect kids',
+      arabic: 'أُعِيذُكُمَا بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ',
+      transliteration: 'U\'īdhukumā bi-kalimāti l-lāhi t-tāmmāti min kulli shaytānin wa hāmmatin wa min kulli \'aynin lāmmatin',
+      translation: 'I seek protection for you from the perfect words of Allah against every devil, from every harmful animal (or thing) and from every evil eye.',
+      source: '[1] al-Bukhari N°6312, voir Fath al-Bari 11/113, et Muslim (N°2711, 4/2083).'
+    },
+    'When entering home': {
+      title: 'When entering home',
+      arabic: 'بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا',
+      transliteration: 'Bismi llāhi walajna wa bismi llāhi kharajna wa \'alā llāhi rabbinā tawakkalnā',
+      translation: 'In the name of Allah we enter and in the name of Allah we leave, and upon Allah, our Lord, we place our trust.',
+      source: 'Abu Dawud 5096'
+    },
+    'For forgiveness': {
+      title: 'For forgiveness',
+      arabic: 'رَبِّ اغْفِرْ لِي ذَنْبِي وَخَطَئِي وَجَهْلِي وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي',
+      transliteration: 'Rabbi ghfir lī dhanbī wa khaṭa\'ī wa jahlī wa mā asrartu wa mā a\'lantu wa mā anta a\'lamu bihi minnī',
+      translation: 'My Lord, forgive me my sin, my ignorance, my transgression and what I have concealed and what I have done openly and what You know better than I.',
+      source: 'Sahih al-Bukhari 6398'
+    },
+    'For guidance': {
+      title: 'For guidance',
+      arabic: 'اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ وَعَافِنِي فِيمَنْ عَافَيْتَ وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ',
+      transliteration: 'Allāhumma hdinī fīman hadayta wa \'āfinī fīman \'āfayta wa tawallanī fīman tawallayta',
+      translation: 'O Allah, guide me among those You have guided, grant me security among those You have granted security and take me into Your care among those You have taken into Your care.',
+      source: 'Abu Dawud 1425'
     }
   };
 
@@ -3475,15 +3516,19 @@ export default function Home() {
           </button>
         </div>
       ) : showDuaContentViewer ? (
-        /* Screen 21: Dua Content Viewer */
-        <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
-          {/* Header/Top Bar */}
-          <div className="flex items-center justify-between w-full px-6 py-4 mb-8 pt-8 sm:pt-4">
+        /* Screen 21: Dua Content Viewer - Profile Duas */
+        <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A] overflow-hidden">
+          {/* Header/Top Bar - Like in image */}
+          <div className="flex items-center justify-between w-full px-4 py-4">
             {/* Left: Back arrow and green leaf icon */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               <button
-                onClick={handleBackFromDuaContentViewer}
-                className="text-white text-2xl hover:text-gray-300 transition-colors"
+                onClick={() => {
+                  setShowDuaContentViewer(false);
+                  setShowHomeScreen(true);
+                  setActiveTab('Profile');
+                }}
+                className="text-white text-xl hover:text-gray-300 transition-colors"
               >
                 ←
               </button>
@@ -3491,18 +3536,18 @@ export default function Home() {
                 onClick={() => setShowDiscussMenu(true)}
                 className="hover:scale-110 transition-transform"
               >
-                <svg className="w-6 h-6 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-green-400 hover:text-green-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
               </button>
             </div>
 
             {/* Title */}
-            <h1 className="text-white text-xl font-semibold">
-              {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid]?.title || selectedGridCategory}
+            <h1 className="text-white text-lg font-medium">
+              {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent]?.title || selectedDuaCategory}
             </h1>
 
-            {/* Right Icons */}
+            {/* Right Icons - Like in image */}
             <div className="flex items-center space-x-3">
               <button className="text-white text-lg hover:text-gray-300 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3528,88 +3573,101 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dua Content Display - Scrollable */}
+          {/* Dua Content Display - Scrollable - Like in image */}
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 pb-24">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid] && (
-                <>
-                  {/* Arabic Text */}
-                  <div className="mb-8">
-                    <p className="text-white text-3xl md:text-4xl font-arabic leading-relaxed">
-                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].arabic}
-                    </p>
-                  </div>
+            <div className="px-4 pb-32">
+              <div className="max-w-4xl mx-auto text-center space-y-6">
+                {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent] && (
+                  <>
+                    {/* Arabic Text - Large and centered */}
+                    <div className="mb-8">
+                      <p className="text-white text-2xl md:text-3xl font-arabic leading-relaxed text-center">
+                        {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].arabic}
+                      </p>
+                    </div>
 
-                  {/* Transliteration */}
-                  <div className="mb-8">
-                    <p className="text-white text-lg md:text-xl italic leading-relaxed">
-                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].transliteration}
-                    </p>
-                  </div>
+                    {/* Transliteration - Italic */}
+                    <div className="mb-8">
+                      <p className="text-white text-base md:text-lg italic leading-relaxed text-center">
+                        {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].transliteration}
+                      </p>
+                    </div>
 
-                  {/* English Translation */}
-                  <div className="mb-8">
-                    <p className="text-white text-base md:text-lg leading-relaxed">
-                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].translation}
-                    </p>
-                  </div>
+                    {/* English Translation */}
+                    <div className="mb-8">
+                      <p className="text-white text-sm md:text-base leading-relaxed text-center">
+                        {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].translation}
+                      </p>
+                    </div>
 
-                  {/* Source Reference */}
-                  <div className="mb-12">
-                    <p className="text-gray-400 text-sm">
-                      {duaContentGrid[selectedGridCategory as keyof typeof duaContentGrid].source}
-                    </p>
-                  </div>
-                </>
-              )}
+                    {/* Source Reference */}
+                    <div className="mb-12">
+                      <p className="text-gray-400 text-xs text-center">
+                        {profileDuaContent[selectedDuaCategory as keyof typeof profileDuaContent].source}
+                      </p>
+                    </div>
+                  </>
+                )}
 
-              {/* Audio Controls */}
-              <div className="flex items-center justify-center space-x-6 mb-12">
-                <button className="relative text-white text-2xl hover:text-gray-300 transition-colors">
-                  <span className="absolute -top-1 -right-1 text-xs">🔒</span>
-                  <span>⏮</span>
-                </button>
+                {/* Audio Controls - Like in image */}
+                <div className="flex items-center justify-center space-x-8 mb-16">
+                  {/* Previous Button */}
+                  <button className="text-white text-3xl hover:text-gray-300 transition-colors">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                    </svg>
+                  </button>
 
-                <button
-                  onClick={handleAudioPlay}
-                  className="relative w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white text-2xl hover:bg-opacity-30 transition-colors"
-                >
-                  {isPlaying ? '⏸' : '▶'}
-                  <div className="absolute inset-0 rounded-full border-4 border-teal-500" style={{
-                    background: `conic-gradient(#14b8a6 ${audioProgress * 3.6}deg, transparent 0deg)`
-                  }}></div>
-                </button>
+                  {/* Play/Pause Button - Large circular */}
+                  <button className="relative w-20 h-20 bg-white rounded-full flex items-center justify-center text-black text-3xl hover:bg-gray-100 transition-colors shadow-lg">
+                    <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
 
-                <button className="text-white text-2xl hover:text-gray-300 transition-colors">
-                  <span>⏭</span>
-                </button>
+                  {/* Next Button */}
+                  <button className="text-white text-3xl hover:text-gray-300 transition-colors">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Progress Indicator - Small teal circle */}
+                <div className="flex justify-center mb-8">
+                  <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
+                </div>
+
+                {/* Shuffle/Repeat Icon */}
+                <div className="flex justify-center mb-12">
+                  <button className="text-white text-lg hover:text-gray-300 transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Action Button (Bottom) */}
-          <div className="px-6 pb-8">
-            <div className="flex justify-center">
-              <button
-                onClick={handleDiscussClick}
-                className="bg-slate-800 text-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-slate-700 transition-colors"
-              >
-                <span className="text-sm">≈</span>
-                <span className="text-sm font-medium">Discuss</span>
-                <span className="text-sm">→</span>
-              </button>
-            </div>
-            </div>
+          {/* Bottom Discuss Button - Like in image */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <button
+              onClick={() => {
+                setShowDuaContentViewer(false);
+                handleDiscussClick();
+              }}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full flex items-center space-x-3 transition-colors shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+              </svg>
+              <span className="font-medium">Discuss</span>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              </svg>
+            </button>
           </div>
-
-          {/* Debug Back Button */}
-          <button
-            onClick={handleBackFromDuaContentViewer}
-            className="mx-6 mb-4 bg-gray-600 text-white px-6 py-2 rounded-lg text-sm opacity-75 hover:opacity-100 transition-opacity"
-          >
-            ← Back to Grid
-          </button>
         </div>
       ) : showInteriorDesignSettings ? (
         /* Screen 22 & 23: My Interior Design - Settings */
