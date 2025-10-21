@@ -1119,7 +1119,7 @@ export default function Home() {
 
   return (
     <div
-      className={`bg-gradient-to-br justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col`}
+      className={`bg-gradient-to-br min-h-screen justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col`}
     >
       {!validateNavigationState() ? (
         <FallbackScreen />
@@ -1140,7 +1140,7 @@ export default function Home() {
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
         <div className="flex flex-col w-full max-w-none">
           {/* Main Content - Scrollable - Mobile Responsive */}
-          <div className="flex flex-col h-screen items-center justify-center px-[65px] sm:px-[65px] overflow-auto">
+          <div className="flex flex-col items-center justify-center px-[65px] sm:px-[65px]">
             {/* Logo and Header Section */}
             <div className="text-center mb-[37px]">
               {/* Arabic Calligraphy Logo */}
