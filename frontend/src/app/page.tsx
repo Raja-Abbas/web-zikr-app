@@ -1118,7 +1118,7 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen max-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
+    <div className="h-screen bg-gradient-to-br justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
@@ -1136,9 +1136,9 @@ export default function Home() {
         !showWelcomeAdnanScreen &&
         !showSuccessScreen ? (
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
-        <div className="flex-1 flex flex-col h-auto w-full max-w-none">
+        <div className="flex flex-col w-full max-w-none">
           {/* Main Content - Scrollable - Mobile Responsive */}
-          <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6">
+          <div className="flex flex-col items-center justify-center px-4 sm:px-6">
             {/* Logo and Header Section */}
             <div className="text-center mb-12">
               {/* Arabic Calligraphy Logo */}
