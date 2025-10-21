@@ -5001,7 +5001,7 @@ export default function Home() {
 
             {/* Menu Container - Compact floating design */}
             <div className="absolute top-16 left-4 z-50">
-              <div className="bg-white rounded-xl shadow-2xl p-0 w-44">
+              <div className="bg-white rounded-xl shadow-2xl p-0 w-44 overflow-hidden">
                 {/* Menu Items */}
                 <div className="space-y-1">
                   {menuItems.map((item) => (
