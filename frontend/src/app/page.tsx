@@ -1118,7 +1118,7 @@ export default function Home() {
   );
 
   return (
-    <div className="h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
+    <div className="h-auto bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
@@ -1136,7 +1136,7 @@ export default function Home() {
         !showWelcomeAdnanScreen &&
         !showSuccessScreen ? (
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
-        <div className="flex-1 flex flex-col h-screen w-full max-w-none">
+        <div className="flex-1 flex flex-col h-auto w-full max-w-none">
           {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-8">
             {/* Logo and Header Section */}
