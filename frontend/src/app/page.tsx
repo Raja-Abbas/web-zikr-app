@@ -3993,6 +3993,7 @@ export default function Home() {
                 />
               </button>
 
+
             {/* Center: Title */}
             <h1 className="text-xl text-white font-semibold">Write a dua</h1>
 
