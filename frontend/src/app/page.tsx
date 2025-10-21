@@ -1322,7 +1322,7 @@ export default function Home() {
                 {/* Email Authentication Button */}
                 <button
                   onClick={handleEmailAuth}
-                  className="w-[260px] cursor-pointer mx-auto py-3 px-6 bg-transparent border border-cream text-cream rounded-[20px] hover:underline font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
+                  className="w-full cursor-pointer mx-auto py-3 px-6 bg-transparent border border-cream text-cream rounded-[20px] hover:underline font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
                 >
                   {/* <svg className="w-5 h-5 fill-cream group-hover:!fill-gray-900 transition-colors duration-300" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -1338,7 +1338,7 @@ export default function Home() {
                     setIsAuthenticated(true);
                     setShowWelcomeAdnanScreen(true);
                   }}
-                  className="w-[260px] cursor-pointer mx-auto py-3 px-6 bg-transparent border border-cream text-cream rounded-[20px] hover:underline font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
+                  className="w-full cursor-pointer mx-auto py-3 px-6 bg-transparent border border-cream text-cream rounded-[20px] hover:underline font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-base md:text-lg group"
                 >
                   <Image
                     src={Google}
