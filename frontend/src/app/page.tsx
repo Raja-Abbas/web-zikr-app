@@ -1138,7 +1138,7 @@ export default function Home() {
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
         <div className="flex-1 flex flex-col h-auto w-full max-w-none">
           {/* Main Content - Scrollable - Mobile Responsive */}
-          <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pt-8 sm:pt-8">
+          <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6">
             {/* Logo and Header Section */}
             <div className="text-center mb-12">
               {/* Arabic Calligraphy Logo */}
