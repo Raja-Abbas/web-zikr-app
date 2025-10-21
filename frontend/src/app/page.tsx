@@ -1118,7 +1118,7 @@ export default function Home() {
   );
 
   return (
-    <div className="h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
+    <div className="min-h-screen max-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
