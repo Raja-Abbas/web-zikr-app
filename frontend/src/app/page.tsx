@@ -1119,7 +1119,7 @@ export default function Home() {
 
   return (
     <div
-      className={`bg-gradient-to-br min-h-screen overflow-hidden justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col`}
+      className={`bg-gradient-to-br h-[100vh] justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col`}
     >
       {!validateNavigationState() ? (
         <FallbackScreen />
