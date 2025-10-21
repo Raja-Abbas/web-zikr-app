@@ -1118,7 +1118,9 @@ export default function Home() {
   );
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col ${!isLogin && !showEmailForm ? "overflow-hidden" : ""}`}>
+    <div
+      className={`h-screen bg-gradient-to-br justify-start pt-[41px] from-emerald-900 via-slate-900 to-slate-950 flex flex-col`}
+    >
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
@@ -1138,7 +1140,7 @@ export default function Home() {
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
         <div className="flex flex-col w-full max-w-none">
           {/* Main Content - Scrollable - Mobile Responsive */}
-          <div className="flex flex-col items-center justify-center xs:px-[65px] sm:px-[65px] overflow-auto">
+          <div className="flex flex-col items-center justify-center px-[65px] sm:px-[65px] overflow-auto">
             {/* Logo and Header Section */}
             <div className="text-center mb-[37px]">
               {/* Arabic Calligraphy Logo */}
@@ -1344,7 +1346,9 @@ export default function Home() {
                     width="20"
                     height="20"
                   />
-                  <span className="pt-[2px]">{isLogin ? "Login with google" : "Sign up with google"}</span>
+                  <span className="pt-[2px]">
+                    {isLogin ? "Login with google" : "Sign up with google"}
+                  </span>
                 </button>
 
                 {/* Apple Authentication Button */}
@@ -1360,7 +1364,9 @@ export default function Home() {
                   <svg className="w-5 h-5 fill-cream" viewBox="0 0 24 24">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                   </svg>
-                  <span className="pt-[2px]">{isLogin ? "Login with apple" : "Sign up with apple"}</span>
+                  <span className="pt-[2px]">
+                    {isLogin ? "Login with apple" : "Sign up with apple"}
+                  </span>
                 </button>
               </div>
             )}
@@ -1443,24 +1449,26 @@ export default function Home() {
                 </p>
               </div>
 
-                  {/* Right: Location and Theme Buttons - Mobile Responsive */}
-                  <div className="flex items-center justify-end space-x-1 sm:space-x-2">
-                    <button
-                      onClick={toggleLocationSettings}
-                      className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-sm sm:text-lg">Location</span>
-                    </button>
-                    <button
-                      onClick={toggleThemeSettings}
-                      className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-sm sm:text-lg">Theme</span>
-                    </button>
-                    <button className="ml-10">
-                      <Image src={Settings} alt="Settings" className="w-6 h-6" />
-                    </button>
-                  </div>
+              {/* Right: Location and Theme Buttons - Mobile Responsive */}
+              <div className="flex items-center justify-end space-x-1 sm:space-x-2">
+                <button
+                  onClick={toggleLocationSettings}
+                  className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
+                >
+                  <span className="text-white text-sm sm:text-lg">
+                    Location
+                  </span>
+                </button>
+                <button
+                  onClick={toggleThemeSettings}
+                  className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
+                >
+                  <span className="text-white text-sm sm:text-lg">Theme</span>
+                </button>
+                <button className="ml-10">
+                  <Image src={Settings} alt="Settings" className="w-6 h-6" />
+                </button>
+              </div>
               {/* Settings Dropdowns */}
               {showLocationSettings && (
                 <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
@@ -1608,44 +1616,42 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between px-4 sm:px-6 py-4 sm:py-6 pt-8 sm:pt-6">
             {/* Leaves Icon - Sidebar Menu - Mobile Responsive */}
             <div className="flex items-center space-x-2 sm:space-x-4">
-                    <button
-                      onClick={() => {
-                        setShowAuthenticDuaSelection(false);
-                        setShowHomeScreen(true);
-                      }}
-                      className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-6 left-16"
-                    >
-                      <Image
-                        src={Arrow}
-                        alt="ArrowImage"
-                        className="h-6 w-6 rotate-180"
-                      />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log(
-                          "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
-                        );
-                        console.log(
-                          "🍃 Current showDiscussMenu state:",
-                          showDiscussMenu
-                        );
-                        console.log(
-                          "🍃 Current isAuthenticated state:",
-                          isAuthenticated
-                        );
-                        setShowDiscussMenu(true);
-                        console.log(
-                          "🍃 showDiscussMenu state should now be true"
-                        );
-                      }}
-                      className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
-                    >
-                      <Image src={Leave} alt="Leave" className="w-10 h-10" />
-                    </button>
-                  </div>
+              <button
+                onClick={() => {
+                  setShowAuthenticDuaSelection(false);
+                  setShowHomeScreen(true);
+                }}
+                className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-6 left-16"
+              >
+                <Image
+                  src={Arrow}
+                  alt="ArrowImage"
+                  className="h-6 w-6 rotate-180"
+                />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log(
+                    "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
+                  );
+                  console.log(
+                    "🍃 Current showDiscussMenu state:",
+                    showDiscussMenu
+                  );
+                  console.log(
+                    "🍃 Current isAuthenticated state:",
+                    isAuthenticated
+                  );
+                  setShowDiscussMenu(true);
+                  console.log("🍃 showDiscussMenu state should now be true");
+                }}
+                className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
+              >
+                <Image src={Leave} alt="Leave" className="w-10 h-10" />
+              </button>
+            </div>
 
             {/* Logo/App Name - Mobile Responsive */}
             <div className="mb-4">
@@ -1738,7 +1744,11 @@ export default function Home() {
                         </span>
                       </div>
                       <span className="text-white">
-                        {showFeelingSelector ? <Image src={Arrow} alt="Arrow" className="w-4 h-4" /> : <Image src={Arrow} alt="Arrow" className="w-4 h-4" />}
+                        {showFeelingSelector ? (
+                          <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
+                        ) : (
+                          <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
+                        )}
                       </span>
                     </button>
 
@@ -4077,18 +4087,18 @@ export default function Home() {
                 </button>
               </div>
               <button
-                  onClick={() => {
-                    setShowMatinSoirDetails(false);
-                    handleDiscussClick();
-                  }}
-                  className="bg-[#35458a] fixed right-5 w-fit ml-auto justify-end border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
-                >
-                  <Image src={Discuss} alt="Dua" className="w-5 h-5" />
-                  <span className="text-white text-sm sm:text-sm font-medium">
-                    Discuss
-                  </span>
-                  <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
-                </button>
+                onClick={() => {
+                  setShowMatinSoirDetails(false);
+                  handleDiscussClick();
+                }}
+                className="bg-[#35458a] fixed right-5 w-fit ml-auto justify-end border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
+              >
+                <Image src={Discuss} alt="Dua" className="w-5 h-5" />
+                <span className="text-white text-sm sm:text-sm font-medium">
+                  Discuss
+                </span>
+                <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Bottom Navigation Bar */}
