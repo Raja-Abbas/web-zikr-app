@@ -1398,55 +1398,81 @@ export default function Home() {
             <div className="px-4 sm:px-6 py-4 sm:py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
               {/* Header with Back Arrow, Leaf Icon and Action Buttons - Mobile Responsive */}
               <div className="mb-3 sm:mb-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-center justify-center">
                   {/* Left: Back Arrow + Leaf Icon + Title - Mobile Responsive */}
-                  <div className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="flex items-center space-x-2 sm:space-x-4">
                     <button
                       onClick={() => {
-                        setShowWallOfDuas(false);
-                        setActiveTab("Douas");
+                        setShowAuthenticDuaSelection(false);
+                        setShowHomeScreen(true);
                       }}
-                      className="text-white text-xl sm:text-2xl hover:text-green-400 transition-colors"
+                      className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-6 left-16"
                     >
-                      ←
+                      <Image
+                        src={Arrow}
+                        alt="ArrowImage"
+                        className="h-6 w-6 rotate-180"
+                      />
                     </button>
                     <button
-                      onClick={() => setShowDiscussMenu(true)}
-                      className="text-xl sm:text-2xl hover:text-green-300 transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(
+                          "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
+                        );
+                        console.log(
+                          "🍃 Current showDiscussMenu state:",
+                          showDiscussMenu
+                        );
+                        console.log(
+                          "🍃 Current isAuthenticated state:",
+                          isAuthenticated
+                        );
+                        setShowDiscussMenu(true);
+                        console.log(
+                          "🍃 showDiscussMenu state should now be true"
+                        );
+                      }}
+                      className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
                     >
-                      🍃
+                      <Image src={Leave} alt="Leave" className="w-10 h-10" />
                     </button>
-                    <div>
-                      <h1 className="text-lg sm:text-xl text-white font-medium">
-                        The wall of douas
-                      </h1>
-                    </div>
                   </div>
 
-                  {/* Right: Location and Theme Buttons - Mobile Responsive */}
-                  <div className="flex items-center space-x-1 sm:space-x-2">
-                    <button
-                      onClick={toggleLocationSettings}
-                      className="w-8 h-8 sm:w-10 sm:h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-sm sm:text-lg">📍</span>
-                    </button>
-                    <button
-                      onClick={toggleThemeSettings}
-                      className="w-8 h-8 sm:w-10 sm:h-10 border border-white border-opacity-20 rounded-lg flex items-center justify-center hover:bg-white hover:bg-opacity-10 transition-colors"
-                    >
-                      <span className="text-white text-sm sm:text-lg">⚙️</span>
-                    </button>
+                  {/* Title */}
+                  <div className="flex items-center space-x-2">
+                    <span className="text-white text-lg font-semibold">
+                      The wall of douas
+                    </span>
                   </div>
                 </div>
 
                 {/* Subtitle */}
-                <p className="text-white text-opacity-60 text-sm mt-2 leading-relaxed">
+                <p className="text-white text-opacity-60 text-sm mt-2 leading-relaxed mt-10">
                   Douas of My.zikr community close to your location. Support
                   them by saying Amine.
                 </p>
               </div>
 
+                  {/* Right: Location and Theme Buttons - Mobile Responsive */}
+                  <div className="flex items-center justify-end space-x-1 sm:space-x-2">
+                    <button
+                      onClick={toggleLocationSettings}
+                      className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-sm sm:text-lg">Location</span>
+                    </button>
+                    <button
+                      onClick={toggleThemeSettings}
+                      className="p-2 rounded-lg flex opacity-50 hover:opacity-100 items-center justify-center hover:bg-opacity-10 transition-colors"
+                    >
+                      <span className="text-white text-sm sm:text-lg">Theme</span>
+                    </button>
+                    <button className="ml-10">
+                      <Image src={Settings} alt="Settings" className="w-6 h-6" />
+                    </button>
+                  </div>
               {/* Settings Dropdowns */}
               {showLocationSettings && (
                 <div className="mb-4 bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
@@ -1567,9 +1593,7 @@ export default function Home() {
                 </button>
 
                 {/* Ask for doua */}
-                <button
-                 onClick={() => navigateToScreen("ask-dua")}
-                 className="w-fit bg-[#173b2a] border border-[#0f1944] text-white p-2 px-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                <button className="w-fit bg-[#173b2a] border border-[#0f1944] text-white p-2 px-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
                   Ask for doua
                 </button>
 
@@ -3970,22 +3994,23 @@ export default function Home() {
           <div className="flex items-center justify-center px-6 py-6">
             {/* Left: Back arrow */}
             <button
-                onClick={() => {
+              onClick={() => {
                 setShowWriteDuaScreen(false);
                 setShowHomeScreen(true);
-                }}
-                className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-10 left-16"
-              >
-                <Image
-                  src={Arrow}
-                  alt="ArrowImage"
-                  className="h-6 w-6 rotate-180"
-                />
-              </button>
-
+              }}
+              className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-10 left-16"
+            >
+              <Image
+                src={Arrow}
+                alt="ArrowImage"
+                className="h-6 w-6 rotate-180"
+              />
+            </button>
 
             {/* Center: Title */}
-            <h1 className="text-xl text-white font-semibold mt-2">Write a dua</h1>
+            <h1 className="text-xl text-white font-semibold mt-2">
+              Write a dua
+            </h1>
 
             {/* Right: Empty space for balance */}
             <div className="w-8"></div>
