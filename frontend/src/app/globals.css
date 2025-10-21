@@ -28,6 +28,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 .font-arabic {
   font-family: 'Amiri', 'Scheherazade New', serif;
   font-weight: 700;
