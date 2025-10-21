@@ -1138,7 +1138,7 @@ export default function Home() {
         !showWelcomeAdnanScreen &&
         !showSuccessScreen ? (
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
-        <div className="flex flex-col w-full max-w-none justify-start pt-[41px] items-center min-h-screen max-h-fit overflow-auto">
+        <div className="flex flex-col w-full max-w-none justify-center items-center min-h-screen max-h-fit overflow-auto">
           {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex flex-col items-center justify-center px-[65px] sm:px-[65px]">
             {/* Logo and Header Section */}
