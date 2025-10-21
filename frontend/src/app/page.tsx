@@ -1617,28 +1617,52 @@ export default function Home() {
         /* Screen 7: Home Screen */
         <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
           {/* Top Bar/Header - Mobile Responsive */}
-          <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6 pt-8 sm:pt-6">
+          <div className="flex flex-col items-center justify-between px-4 sm:px-6 py-4 sm:py-6 pt-8 sm:pt-6">
             {/* Leaves Icon - Sidebar Menu - Mobile Responsive */}
-            <button
-              onClick={() => setShowDiscussMenu(true)}
-              className="hover:scale-110 transition-transform"
-            >
-              <svg
-                className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-green-400 hover:text-green-300"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
-              </svg>
-            </button>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+                    <button
+                      onClick={() => {
+                        setShowAuthenticDuaSelection(false);
+                        setShowHomeScreen(true);
+                      }}
+                      className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-6 left-16"
+                    >
+                      <Image
+                        src={Arrow}
+                        alt="ArrowImage"
+                        className="h-6 w-6 rotate-180"
+                      />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(
+                          "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
+                        );
+                        console.log(
+                          "🍃 Current showDiscussMenu state:",
+                          showDiscussMenu
+                        );
+                        console.log(
+                          "🍃 Current isAuthenticated state:",
+                          isAuthenticated
+                        );
+                        setShowDiscussMenu(true);
+                        console.log(
+                          "🍃 showDiscussMenu state should now be true"
+                        );
+                      }}
+                      className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
+                    >
+                      <Image src={Leave} alt="Leave" className="w-10 h-10" />
+                    </button>
+                  </div>
 
             {/* Logo/App Name - Mobile Responsive */}
-            <div className="flex-1 text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl text-white font-arabic mb-1">
-                ذِكْر
-              </div>
-              <div className="text-sm sm:text-base md:text-lg text-white font-light">
-                My.Zikr
+            <div className="mb-4">
+              <div className="text-6xl md:text-7xl text-cream font-arabic mb-2 flex justify-center">
+                <Image src={Logo} alt="Logo-Image" width="100" height="100" />
               </div>
             </div>
 
@@ -1726,7 +1750,7 @@ export default function Home() {
                         </span>
                       </div>
                       <span className="text-white">
-                        {showFeelingSelector ? "↓" : "→"}
+                        {showFeelingSelector ? <Image src={Arrow} alt="Arrow" className="w-4 h-4" /> : <Image src={Arrow} alt="Arrow" className="w-4 h-4" />}
                       </span>
                     </button>
 
@@ -1796,7 +1820,7 @@ export default function Home() {
                             {category.name}
                           </span>
                         </div>
-                        <span className="text-white">→</span>
+                        <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
                       </button>
                     ))}
 
@@ -1810,7 +1834,7 @@ export default function Home() {
                           The wall of Duas
                         </span>
                       </div>
-                      <span className="text-white">→</span>
+                      <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
