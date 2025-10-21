@@ -1118,7 +1118,7 @@ export default function Home() {
   );
 
   return (
-    <div className="h-screen overflow-hidden bg-gradient-to-br justify-start from-emerald-900 via-slate-900 to-slate-950 flex flex-col">
+    <div className="h-screen max-h-screen bg-gradient-to-br justify-center from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-auto">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
@@ -1140,7 +1140,7 @@ export default function Home() {
           {/* Main Content - Scrollable - Mobile Responsive */}
           <div className="flex flex-col items-center justify-center px-[65px] sm:px-[65px]">
             {/* Logo and Header Section */}
-            <div className="text-center mb-[37px] mt-[41px]">
+            <div className="text-center mb-[37px]">
               {/* Arabic Calligraphy Logo */}
               <div className="mb-4">
                 <div className="text-6xl md:text-7xl text-cream font-arabic mb-2 flex justify-center">
