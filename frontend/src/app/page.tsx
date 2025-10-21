@@ -1118,7 +1118,7 @@ export default function Home() {
   );
 
   return (
-    <div className="h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col">
       {!validateNavigationState() ? (
         <FallbackScreen />
       ) : !isAuthenticated &&
@@ -1567,7 +1567,9 @@ export default function Home() {
                 </button>
 
                 {/* Ask for doua */}
-                <button className="w-fit bg-[#173b2a] border border-[#0f1944] text-white p-2 px-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                <button
+                 onClick={() => navigateToScreen("ask-dua")}
+                 className="w-fit bg-[#173b2a] border border-[#0f1944] text-white p-2 px-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
                   Ask for doua
                 </button>
 
@@ -3975,13 +3977,13 @@ export default function Home() {
         </div>
       ) : showWriteDuaScreen ? (
         /* Write a Dua Screen */
-        <div className="flex-1 h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col overflow-hidden">
+        <div className="flex-1 h-screen bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 flex flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-6">
+          <div className="flex items-center justify-center px-6 py-6">
             {/* Left: Back arrow */}
             <button
                 onClick={() => {
-                  setShowWriteDuaScreen(false);
+                setShowWriteDuaScreen(false);
                 setShowHomeScreen(true);
                 }}
                 className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-10 left-16"
@@ -3995,7 +3997,7 @@ export default function Home() {
 
 
             {/* Center: Title */}
-            <h1 className="text-xl text-white font-semibold">Write a dua</h1>
+            <h1 className="text-xl text-white font-semibold mt-2">Write a dua</h1>
 
             {/* Right: Empty space for balance */}
             <div className="w-8"></div>
@@ -4006,7 +4008,7 @@ export default function Home() {
             <div className="px-6 py-4 pb-24">
               {/* Description */}
               <div className="mb-8">
-                <p className="text-white text-base leading-relaxed text-center">
+                <p className="text-white text-base leading-relaxed text-left">
                   Write a doua and share it with the community and allow people
                   to say Amine. Your doua will randomly be displayed after
                   review.
@@ -4020,7 +4022,7 @@ export default function Home() {
                     value={writeDuaText}
                     onChange={(e) => setWriteDuaText(e.target.value)}
                     placeholder="Yā Allah, I pray for every muslim in the world, for their well-beign, their sustenance, their Akhira and their whole family."
-                    className="w-full h-32 bg-transparent text-gray-800 placeholder-gray-500 border-none focus:outline-none resize-none text-base leading-relaxed"
+                    className="w-full h-32 text-center bg-transparent text-black placeholder-black border-none focus:outline-none resize-none text-base leading-relaxed"
                   />
                 </div>
               </div>
@@ -4039,7 +4041,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <button
                   onClick={handlePublishDua}
-                  className="bg-[#F5F0E6] text-[#1E3A8A] font-semibold py-4 px-12 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="bg-[#F5F0E6] text-[#000] font-semibold py-4 px-12 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                   style={{
                     fontFamily: "Inter, Poppins, sans-serif",
                     boxShadow:
@@ -4052,7 +4054,7 @@ export default function Home() {
             </div>
 
             {/* Bottom Navigation Bar */}
-            <div className="bg-[#1E3A8A] bg-opacity-80 px-6 py-4">
+            {/* <div className="bg-[#1E3A8A] bg-opacity-80 px-6 py-4">
               <div className="flex justify-around items-center">
                 <button
                   onClick={() => {
@@ -4099,7 +4101,7 @@ export default function Home() {
                   <span className="text-white text-xs">Profile</span>
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       ) : showChatbotDiscussionHub ? (
