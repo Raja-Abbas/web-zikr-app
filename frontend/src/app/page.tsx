@@ -1138,14 +1138,14 @@ export default function Home() {
         !showWelcomeAdnanScreen &&
         !showSuccessScreen ? (
         /* Authentication Screen - Show when user is not authenticated - Mobile Responsive */
-        <div className="flex flex-col w-full max-w-none justify-center items-center h-screen overflow-auto">
+        <div className="flex flex-col w-full max-w-none justify-center items-center min-h-screen overflow-auto">
           {/* Main Content - Scrollable - Mobile Responsive */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center px-[65px] sm:px-[65px]">
             {/* Logo and Header Section */}
             <div className="text-center mb-[37px]">
               {/* Arabic Calligraphy Logo */}
               <div className="mb-4">
-                <div className="text-6xl md:text-7xl text-cream font-arabic mb-2 flex justify-center">
+                <div className="text-cream font-arabic mb-2 flex justify-center">
                   <Image src={Logo} alt="Logo-Image" width="116" height="116" />
                 </div>
               </div>
