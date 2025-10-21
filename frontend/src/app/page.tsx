@@ -1442,7 +1442,7 @@ export default function Home() {
 
                   {/* Title */}
                   <div className="flex items-center space-x-2">
-                    <span className="text-white text-lg font-semibold">
+                    <span className="text-white text-xl font-semibold">
                       The wall of douas
                     </span>
                   </div>
@@ -4030,12 +4030,12 @@ export default function Home() {
 
               {/* Dua Input Box */}
               <div className="mb-8">
-                <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <div className="bg-white rounded-3xl p-6 shadow-lg">
                   <textarea
                     value={writeDuaText}
                     onChange={(e) => setWriteDuaText(e.target.value)}
                     placeholder="Yā Allah, I pray for every muslim in the world, for their well-beign, their sustenance, their Akhira and their whole family."
-                    className="w-full h-32 text-center bg-transparent text-black placeholder-black border-none focus:outline-none resize-none text-base leading-relaxed"
+                    className="w-full h-20 text-center bg-transparent text-black placeholder-black border-none focus:outline-none resize-none text-base leading-relaxed"
                   />
                 </div>
               </div>
@@ -4064,6 +4064,19 @@ export default function Home() {
                   Publish
                 </button>
               </div>
+              <button
+                  onClick={() => {
+                    setShowMatinSoirDetails(false);
+                    handleDiscussClick();
+                  }}
+                  className="bg-[#35458a] fixed right-5 w-fit ml-auto justify-end border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
+                >
+                  <Image src={Discuss} alt="Dua" className="w-5 h-5" />
+                  <span className="text-white text-sm sm:text-sm font-medium">
+                    Discuss
+                  </span>
+                  <Image src={Arrow} alt="Arrow" className="w-4 h-4" />
+                </button>
             </div>
 
             {/* Bottom Navigation Bar */}
