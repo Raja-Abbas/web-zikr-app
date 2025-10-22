@@ -26,7 +26,7 @@ export default function AuthenticDuasGridScreen({
   handleDiscussClick,
 }: AuthenticDuasGridScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar */}
       <div className="flex items-center justify-between w-full px-6 py-4 mb-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon */}

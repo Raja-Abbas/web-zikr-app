@@ -47,7 +47,7 @@ export default function AuthenticDuaSelectionScreen({
   handleDuaAction,
 }: AuthenticDuaSelectionScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar - Mobile Responsive */}
       <div className="flex items-center justify-center w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon - Mobile Responsive */}

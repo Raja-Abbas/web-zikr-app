@@ -38,7 +38,7 @@ export default function SpiritualReminderScreen({
   handleReminderAction,
 }: SpiritualReminderScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar */}
       <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon */}
@@ -67,6 +67,7 @@ export default function SpiritualReminderScreen({
             </svg>
           </button>
         </div>
+        
 
         {/* Right: Current Mode Indicator */}
         <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
@@ -101,7 +102,7 @@ export default function SpiritualReminderScreen({
 
           {/* Reminder Option Pills (Selection Choices) */}
           <div className="w-full max-w-4xl mx-auto px-6 mb-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center">
+            <div className="flex flex-wrap gap-3 justify-items-center">
               {[
                 "Wudu steps",
                 "Ghusl steps",

@@ -15,7 +15,7 @@ export default function ProfileScreen({
   setShowHomeScreen,
 }: ProfileScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header with Back Arrow - Mobile Responsive */}
       <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 mb-3 sm:mb-4">
         <button

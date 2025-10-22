@@ -25,7 +25,7 @@ export default function CustomDuaGenerationScreen({
   handleCustomDuaAction,
 }: CustomDuaGenerationScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar */}
       <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon */}
@@ -40,26 +40,34 @@ export default function CustomDuaGenerationScreen({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-     height="200" width="200"         className="h-6 w-6 rotate-180"
+              height="200"
+              width="200"
+              className="h-6 w-6 rotate-180"
             />
           </button>
           <button
             onClick={() => setShowDiscussMenu(true)}
             className="hover:scale-110 transition-transform absolute top-5 left-5"
           >
-            <Image src="/leave.png" alt="Leave"
-width="200"
-height="200" className="w-10 h-10" />
+            <Image
+              src="/leave.png"
+              alt="Leave"
+              width="200"
+              height="200"
+              className="w-10 h-10"
+            />
           </button>
         </div>
 
         {/* Right: Current Mode Indicator */}
         <div className="cursor-pointer bg-[#0f1944] text-white border-2 border-[#173b2a] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#3B82F6] shadow-lg">
-          <Image 
-
-          width={200}
-          height={200}
-          src="/Pray.svg" alt="Pray" className="w-4 h-4" />
+          <Image
+            width={200}
+            height={200}
+            src="/Pray.svg"
+            alt="Pray"
+            className="w-4 h-4"
+          />
           <span className="text-[13px] sm:text-[13px] font-medium mt-1">
             Custom dua for my situation
           </span>
@@ -85,8 +93,8 @@ height="200" className="w-10 h-10" />
               <div className="bg-[#0a3a30] text-center border border-[#216b34] rounded-full rounded-bl-sm p-6 max-w-2xl">
                 <p className="text-white text-base leading-relaxed">
                   Please write down what is going on so that i can help you
-                  explain it to Allah. Always have trust in Him and never
-                  forget He is the best of planners.
+                  explain it to Allah. Always have trust in Him and never forget
+                  He is the best of planners.
                 </p>
               </div>
             </div>
@@ -108,33 +116,33 @@ height="200" className="w-10 h-10" />
                 <div className="bg-teal-700 rounded-full flex-shrink-0">
                   <Image
                     src="/zikrBot.png"
-                  width="200"
-                  height="200"
+                    width="200"
+                    height="200"
                     alt="ZikrBot"
                     className="w-8 h-8 rounded-full"
                   />
                 </div>
                 <div className="bg-[#0a3a30] border border-[#216b34] rounded-3xl text-center rounded-bl-sm p-6 max-w-2xl">
                   <p className="text-white text-base leading-relaxed">
-                    Please find below your custom dua. I hope it reflects
-                    what your heart feels: <br />
+                    Please find below your custom dua. I hope it reflects what
+                    your heart feels: <br />
                     <br />
-                    Ya Allah, In this moment of uncertainty and longing, I
-                    turn to You, the Provider, Ar-Razzāq. I seek Your
-                    guidance and support as I search for a job that will not
-                    only fulfill my needs but also allow me to contribute
-                    positively to the world around me. Grant me the strength
-                    to persevere through this challenging time, and fill my
-                    heart with hope and patience.
+                    Ya Allah, In this moment of uncertainty and longing, I turn
+                    to You, the Provider, Ar-Razzāq. I seek Your guidance and
+                    support as I search for a job that will not only fulfill my
+                    needs but also allow me to contribute positively to the
+                    world around me. Grant me the strength to persevere through
+                    this challenging time, and fill my heart with hope and
+                    patience.
                     <br />
-                    Please bless me with clarity in my path and surround me
-                    with supportive people who can guide me. May I find a
-                    job that brings me joy and fulfillment, and may it be a
-                    means of sustenance for myself and my loved ones.
+                    Please bless me with clarity in my path and surround me with
+                    supportive people who can guide me. May I find a job that
+                    brings me joy and fulfillment, and may it be a means of
+                    sustenance for myself and my loved ones.
                     <br />
                     <br />
-                    Ya Allah, You know what lies within hearts — please
-                    accept this supplication. Ameen.
+                    Ya Allah, You know what lies within hearts — please accept
+                    this supplication. Ameen.
                   </p>
                 </div>
               </div>
@@ -196,8 +204,8 @@ height="200" className="w-10 h-10" />
                 <div className="bg-teal-700 rounded-full flex-shrink-0">
                   <Image
                     src="/zikrBot.png"
-                  width="200"
-                  height="200"
+                    width="200"
+                    height="200"
                     alt="ZikrBot"
                     className="w-8 h-8 rounded-full"
                   />

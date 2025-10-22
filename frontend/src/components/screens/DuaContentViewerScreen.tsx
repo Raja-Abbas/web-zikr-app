@@ -27,7 +27,7 @@ const DuaContentViewerScreen: React.FC<DuaContentViewerScreenProps> = ({
   handleDiscussClick,
 }) => {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A] overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-b from-[#0D4A42] to-[#0B1E3A] overflow-hidden">
       {/* Header/Top Bar - Like in image */}
       <div className="flex items-center justify-between w-full px-3 sm:px-4 py-3 sm:py-4">
         {/* Left: Back arrow and green leaf icon - Mobile Responsive */}

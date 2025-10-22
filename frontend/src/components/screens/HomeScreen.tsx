@@ -48,7 +48,7 @@ export default function HomeScreen({
   handleWallOfDuasClick,
 }: HomeScreenProps) {
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Top Bar/Header - Mobile Responsive */}
       <div className="flex flex-col items-center justify-between px-4 sm:px-6 py-4 sm:py-6 pt-8 sm:pt-6">
         {/* Leaves Icon - Sidebar Menu - Mobile Responsive */}

@@ -65,7 +65,7 @@ export default function WallOfDuasScreen({
           }
         }
       `}</style>
-      <div className="flex-1 flex flex-col h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40] overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-screen w-full max-w-none bg-gradient-to-br from-[#071d2d] to-[#0c2a40] overflow-hidden">
         {/* Fixed Header - Mobile Responsive */}
         <div className="px-4 sm:px-6 py-4 sm:py-6 bg-gradient-to-b from-[#071d2d] to-transparent relative z-10">
           {/* Header with Back Arrow, Leaf Icon and Action Buttons - Mobile Responsive */}

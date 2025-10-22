@@ -91,14 +91,14 @@ export default function SuccessScreen({
           {/* Rounded Beige Dialog Box with 3D Shadows - Animated */}
           <div className="mb-8 sm:mb-10 animate-gentle-float">
             <div
-              className="bg-[#F5F0E6] rounded-2xl px-6 sm:px-8 py-6 sm:py-8 shadow-2xl"
+              className="bg-[#F5F0E6] rounded-2xl px-6 sm:px-8 py-6 sm:py-8 shadow-2xl text-black"
               style={{
                 boxShadow:
                   "0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
               }}
             >
               <p
-                className="text-base sm:text-lg font-semibold text-center leading-relaxed"
+                className="text-base text-black sm:text-lg font-semibold text-center leading-relaxed"
                 style={{ fontFamily: "Inter, Poppins, sans-serif" }}
               >
                 Thank you for your confirmation and for being here.
@@ -110,7 +110,7 @@ export default function SuccessScreen({
           {/* Continue Button - Beige with Dark Navy Text - Animated */}
           <button
             onClick={() => navigateToScreen("welcome")}
-            className="bg-[#F5F0E6] cursor-pointer font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-full hover:underline text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg animate-gentle-bounce"
+            className="bg-[#F5F0E6] cursor-pointer text-black font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-full hover:underline text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg animate-gentle-bounce"
             style={{
               fontFamily: "Inter, Poppins, sans-serif",
               boxShadow:
