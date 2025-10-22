@@ -61,8 +61,6 @@ export default function WelcomeAdnanScreen({
         <div className="mb-4">
           <div className="text-6xl md:text-7xl text-cream font-arabic mb-2 flex justify-center">
             <Image 
-              width={200}
-              height={200}
               src={Logo} alt="Logo-Image" width="100" height="100" />
           </div>
         </div>

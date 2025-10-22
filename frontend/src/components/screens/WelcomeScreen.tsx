@@ -62,8 +62,6 @@ export default function WelcomeScreen({
           <div className="mb-3 sm:mb-4">
             <div className="text-5xl sm:text-6xl md:text-7xl text-green-400 font-arabic mb-2">
               <Image 
-              width={200}
-              height={200}
               src={Logo} alt="Logo-Image" width="100" height="100" />
             </div>
           </div>
