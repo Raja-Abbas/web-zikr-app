@@ -9,6 +9,7 @@ interface DiscussMenuOverlayProps {
   selectedMenuItem: string;
   setSelectedMenuItem: (item: string) => void;
   handleMenuItemSelect: (item: string) => void;
+  menuItems: Array<{ id: string; icon: string; text: string }>;
 }
 
 export default function DiscussMenuOverlay({
@@ -18,6 +19,7 @@ export default function DiscussMenuOverlay({
   selectedMenuItem,
   setSelectedMenuItem,
   handleMenuItemSelect,
+  menuItems,
 }: DiscussMenuOverlayProps) {
   if (!showDiscussMenu) return null;
 

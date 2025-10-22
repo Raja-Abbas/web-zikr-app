@@ -61,10 +61,6 @@ export default function SuccessScreen({
               "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
             );
             console.log(
-              "🍃 Current showDiscussMenu state:",
-              showDiscussMenu
-            );
-            console.log(
               "🍃 Current isAuthenticated state:",
               isAuthenticated
             );

@@ -136,9 +136,9 @@ export default function Home() {
   });
 
   // Refs for auto-scroll functionality
-  const duaContentRef = useRef<HTMLDivElement>(null);
-  const gridDuaContentRef = useRef<HTMLDivElement>(null);
-  const welcomeAdnanContinueRef = useRef<HTMLDivElement>(null);
+  const duaContentRef = useRef<HTMLDivElement>(null!);
+  const gridDuaContentRef = useRef<HTMLDivElement>(null!);
+  const welcomeAdnanContinueRef = useRef<HTMLDivElement>(null!);
 
   // Navigation state manager
   const [currentScreen, setCurrentScreen] = useState("auth");
@@ -1430,6 +1430,7 @@ export default function Home() {
           selectedMenuItem={selectedMenuItem}
           setSelectedMenuItem={setSelectedMenuItem}
           handleMenuItemSelect={handleMenuItemSelect}
+          menuItems={menuItems}
         />
       )}
 

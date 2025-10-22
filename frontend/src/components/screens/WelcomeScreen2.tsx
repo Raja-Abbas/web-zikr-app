@@ -44,7 +44,6 @@ export default function WelcomeScreen({
           console.log(
             "🍃 LEAF ICON CLICKED! Setting showDiscussMenu to true"
           );
-          console.log("🍃 Current showDiscussMenu state:", showDiscussMenu);
           console.log("🍃 Current isAuthenticated state:", isAuthenticated);
           setShowDiscussMenu(true);
           console.log("🍃 showDiscussMenu state should now be true");
