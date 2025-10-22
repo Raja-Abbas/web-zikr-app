@@ -63,7 +63,7 @@ export default function HomeScreen({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
@@ -86,7 +86,9 @@ export default function HomeScreen({
             }}
             className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
@@ -182,9 +184,15 @@ export default function HomeScreen({
                   </div>
                   <span className="text-white">
                     {showFeelingSelector ? (
-                      <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+                      <Image 
+                      width={200}
+                      height={200}
+                      src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
                     ) : (
-                      <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+                      <Image 
+                      width={200}
+                      height={200}
+                      src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
                     )}
                   </span>
                 </button>
@@ -255,7 +263,10 @@ export default function HomeScreen({
                         {category.name}
                       </span>
                     </div>
-                    <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+                    <Image 
+              width={200}
+              height={200}
+                    src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
                   </button>
                 ))}
 
@@ -269,7 +280,10 @@ export default function HomeScreen({
                       The wall of Duas
                     </span>
                   </div>
-                  <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+                  <Image 
+              width={200}
+              height={200}
+                  src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
                 </button>
               </div>
             </div>

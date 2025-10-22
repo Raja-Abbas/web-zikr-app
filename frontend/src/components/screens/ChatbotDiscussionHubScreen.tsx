@@ -42,7 +42,7 @@ const ChatbotDiscussionHubScreen: React.FC<ChatbotDiscussionHubScreenProps> = ({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
@@ -65,13 +65,18 @@ const ChatbotDiscussionHubScreen: React.FC<ChatbotDiscussionHubScreenProps> = ({
             }}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
         {/* Center Title Pill */}
         <div className="bg-[#35458a] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2">
-          <Image src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
+          <Image 
+              width={200}
+              height={200}
+          src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
           <span className="text-white text-xl sm:text-xl font-medium">
             Discuss
           </span>
@@ -90,6 +95,8 @@ const ChatbotDiscussionHubScreen: React.FC<ChatbotDiscussionHubScreenProps> = ({
               <div className="bg-teal-700 rounded-full flex-shrink-0">
                 <Image
                   src="/zikrBot.png"
+                  width="200"
+                  height="200"
                   alt="ZikrBot"
                   className="w-8 h-8 rounded-full"
                 />
@@ -150,7 +157,7 @@ const ChatbotDiscussionHubScreen: React.FC<ChatbotDiscussionHubScreenProps> = ({
 
           {/* Text Input Area (User Prompt) */}
           <div className="w-full max-w-4xl mx-auto px-6 pb-8 mt-auto">
-            <div className="relative flex gap-[20px] items-end">
+            <div className="relative flex gap-[20px] items-center">
               <div className="relative w-full">
                 {/* Custom multi-colored placeholder */}
                 {!chatInput && (
@@ -171,11 +178,11 @@ const ChatbotDiscussionHubScreen: React.FC<ChatbotDiscussionHubScreenProps> = ({
                   onKeyPress={(e) =>
                     e.key === "Enter" && handleChatSubmit()
                   }
-                  className="w-full bg-[#0f1944] min-h-[150px] text-white rounded-[20px]
-           py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
+                  className="w-full bg-[#0f1944] text-white rounded-full
+           py-4 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
            focus:outline-none focus:ring-2 focus:ring-[#4F46E5]
-           focus:border-transparent text-sm sm:text-base shadow-inner
-           resize-none text-center align-top"
+           focus:border-transparent text-xl sm:text-xl shadow-inner
+           resize-none text-center h-[62px]"
                 />
               </div>
               <button

@@ -46,7 +46,7 @@ export default function AuthenticDuaSelectionScreen({
   if (!showAuthenticDuaSelection) return null;
 
   return (
-    <div className="flex-1 flex flex-col h-screen w-full max-w-none overflow-hidden">
+    <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar - Mobile Responsive */}
       <div className="flex items-center justify-center w-full max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon - Mobile Responsive */}
@@ -61,20 +61,22 @@ export default function AuthenticDuaSelectionScreen({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
             onClick={() => setShowDiscussMenu(true)}
             className="hover:scale-110 transition-transform absolute top-5 left-5"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
         {/* Right: Current Mode Indicator - Mobile Responsive */}
         <div className="bg-[#112b1f] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2">
-          <Image src="/Dua.png" alt="Dua" className="w-5 h-5" />
+          <Image src="/Dua.png" alt="Dua" className="w-5 h-5" width="200" height="200" />
           <span className="text-white text-xl sm:text-xl font-medium">
             Authentic dua
           </span>
@@ -91,6 +93,8 @@ export default function AuthenticDuaSelectionScreen({
               <div className="bg-teal-900 rounded-full flex-shrink-0 mt-5">
                 <Image
                   src="/zikrBot.png"
+                  width="200"
+                  height="200"
                   alt="BotImage"
                   className="w-8 h-8 rounded-full"
                 />
@@ -286,6 +290,8 @@ export default function AuthenticDuaSelectionScreen({
                         <Image
                           src="/Discuss.svg"
                           alt="Discuss"
+              width={200}
+              height={200}
                           className="w-5 h-5"
                         />
                         <span>Discuss</span>

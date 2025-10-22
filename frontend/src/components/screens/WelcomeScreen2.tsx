@@ -37,7 +37,7 @@ export default function WelcomeScreen({
   return (
     <div className="relative flex flex-col h-screen overflow-hidden">
       {/* Green Leaf Icon in top-left corner - Menu/Back Button */}
-      <button
+      {/* <button
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -51,7 +51,7 @@ export default function WelcomeScreen({
         className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
       >
         <Image src={Leave} alt="Leave" className="w-10 h-10" />
-      </button>
+      </button> */}
 
       {/* Main Content - Scrollable */}
       <div className="flex-1 overflow-y-auto flex flex-col items-center justify-start px-4 sm:px-6 py-8">
@@ -95,7 +95,10 @@ export default function WelcomeScreen({
               }}
               className="gap-2 cursor-pointer bg-[#173b2a] text-white border-2 border-[#0a3a30] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#2D5A4F] shadow-lg"
             >
-              <Image src={Dua} alt="Dua" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src={Dua} alt="Dua" className="w-4 h-4" />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Authentic dua
               </span>
@@ -109,7 +112,10 @@ export default function WelcomeScreen({
               }}
               className="flex-1 cursor-pointer bg-[#0f1944] text-white border-2 border-[#173b2a] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#3B82F6] shadow-lg"
             >
-              <Image src={Pray} alt="Pray" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src={Pray} alt="Pray" className="w-4 h-4" />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Custom dua for my situation
               </span>
@@ -129,6 +135,8 @@ export default function WelcomeScreen({
                 src={SpritualReminder}
                 alt="SpritualReminder"
                 className="w-4 h-4"
+              width={200}
+              height={200}
               />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Spiritual reminder
@@ -139,7 +147,7 @@ export default function WelcomeScreen({
 
         {/* Input Bar - New Main Feature */}
         <div className="w-full max-w-lg">
-          <div className="relative flex gap-[20px] items-end">
+          <div className="relative flex gap-[20px] items-center">
             <div className="relative w-full">
               {/* Custom multi-colored placeholder */}
               {!chatInput && (
@@ -156,11 +164,11 @@ export default function WelcomeScreen({
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleChatSubmit()}
-                className="w-full bg-[#0f1944] min-h-[150px] text-white rounded-[20px]
-               py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
-               focus:outline-none focus:ring-2 focus:ring-[#4F46E5]
-               focus:border-transparent text-sm sm:text-base shadow-inner
-               resize-none text-center align-top"
+                className="w-full bg-[#0f1944] text-white rounded-full
+           py-4 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
+           focus:outline-none focus:ring-2 focus:ring-[#4F46E5]
+           focus:border-transparent text-xl sm:text-xl shadow-inner
+           resize-none text-center h-[62px]"
               />
             </div>
             <button

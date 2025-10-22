@@ -61,6 +61,8 @@ export default function AuthenticDuaSelectionScreen({
           >
             <Image
               src={Arrow}
+              width={200}
+              height={200}
               alt="ArrowImage"
               className="h-6 w-6 rotate-180"
             />
@@ -69,13 +71,19 @@ export default function AuthenticDuaSelectionScreen({
             onClick={() => setShowDiscussMenu(true)}
             className="hover:scale-110 transition-transform absolute top-5 left-5"
           >
-            <Image src={Leave} alt="Leave" className="w-10 h-10" />
+            <Image
+            width={200}
+            height={200} 
+            src={Leave} alt="Leave" className="w-10 h-10" />
           </button>
         </div>
 
         {/* Right: Current Mode Indicator - Mobile Responsive */}
         <div className="bg-[#112b1f] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2">
-          <Image src={Dua} alt="Dua" className="w-5 h-5" />
+          <Image 
+          width={200}
+          height={200}
+          src={Dua} alt="Dua" className="w-5 h-5" />
           <span className="text-white text-xl sm:text-xl font-medium">
             Authentic dua
           </span>
@@ -91,6 +99,8 @@ export default function AuthenticDuaSelectionScreen({
               {/* Zikr bot logo/icon - Mobile Responsive */}
               <div className="bg-teal-900 rounded-full flex-shrink-0 mt-5">
                 <Image
+              width={200}
+              height={200}
                   src={ZikrBot}
                   alt="BotImage"
                   className="w-8 h-8 rounded-full"
@@ -287,6 +297,8 @@ export default function AuthenticDuaSelectionScreen({
                         <Image
                           src={Discuss}
                           alt="Discuss"
+              width={200}
+              height={200}
                           className="w-5 h-5"
                         />
                         <span>Discuss</span>

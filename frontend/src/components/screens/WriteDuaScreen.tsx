@@ -33,6 +33,8 @@ const WriteDuaScreen: React.FC<WriteDuaScreenProps> = ({
           <Image
             src="/arrow.svg"
             alt="ArrowImage"
+              width={200}
+              height={200}
             className="h-6 w-6 rotate-180"
           />
         </button>

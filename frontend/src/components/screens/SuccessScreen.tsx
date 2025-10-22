@@ -53,7 +53,7 @@ export default function SuccessScreen({
       `}</style>
 
       <div className="relative flex flex-col items-center justify-start min-h-screen px-4 sm:px-6 py-8">
-        <button
+        {/* <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -70,7 +70,7 @@ export default function SuccessScreen({
           className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
         >
           <Image src={Leave} alt="Leave" className="w-10 h-10" />
-        </button>
+        </button> */}
         {/* Content Container */}
         <div className="relative z-10 flex flex-col items-center justify-start max-w-md mx-auto text-center">
           {/* Logo Section with Arabic Calligraphy */}

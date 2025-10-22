@@ -41,7 +41,7 @@ export default function AuthenticDuasGridScreen({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
@@ -64,7 +64,9 @@ export default function AuthenticDuasGridScreen({
             }}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
@@ -97,7 +99,10 @@ export default function AuthenticDuasGridScreen({
           Douas to connect to Allah and to find comfort with heartfelt words
         </p>
         <button className="text-white text-lg hover:text-gray-300 transition-colors ml-4">
-          <Image src="/AuthenticDuas/settings.png" alt="Settings" className="w-5 h-5" />
+          <Image 
+          width={200}
+          height={200}
+          src="/AuthenticDuas/settings.png" alt="Settings" className="w-5 h-5" />
         </button>
       </div>
 
@@ -155,11 +160,17 @@ export default function AuthenticDuasGridScreen({
               }}
               className="bg-[#35458a] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
             >
-              <Image src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
+              <Image 
+              width={200}
+              height={200}
+              src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
               <span className="text-white text-sm sm:text-sm font-medium">
                 Discuss
               </span>
-              <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
             </button>
           </div>
         </div>

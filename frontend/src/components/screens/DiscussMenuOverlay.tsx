@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Popup from "../../../public/Popup/8.png";
+import Popup1 from "../../../public/Popup/8.png";
 
 interface DiscussMenuOverlayProps {
   showDiscussMenu: boolean;
@@ -87,13 +89,19 @@ export default function DiscussMenuOverlay({
                 className="w-full flex items-center space-x-3 p-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors text-left"
               >
                 <div className="flex items-center space-x-1">
-                  <Image src="/Popup/8.png" alt="Diamond" className="w-6 h-6" />
+                  <Image 
+              width={200}
+              height={200}
+                  src={Popup} alt="Diamond" className="w-6 h-6" />
                 </div>
                 <span className="font-bold text-sm text-[#a29f9f]">
                   My.Zikr+
                 </span>
                 <div className="flex items-center space-x-1">
-                  <Image src="/Popup/9.png" alt="Lock" className="w-3 h-4" />
+                  <Image 
+              width={200}
+              height={200}
+                  src={Popup1} alt="Lock" className="w-3 h-4" />
                 </div>
               </button>
             </div>
@@ -101,11 +109,11 @@ export default function DiscussMenuOverlay({
         </div>
 
         {/* Continue Button positioned under sidebar */}
-        <div className="absolute top-[32rem] left-4 z-50">
+        {/* <div className="absolute top-[32rem] left-4 z-50">
           <button className="bg-gray-600 text-gray-300 px-6 py-2 rounded-lg text-sm opacity-30 cursor-not-allowed">
             Continue
           </button>
-        </div>
+        </div> */}
 
         {/* Ghosted background content (visible but dimmed) */}
         <div className="flex-1 relative">

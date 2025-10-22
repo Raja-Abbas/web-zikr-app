@@ -84,6 +84,8 @@ export default function WallOfDuasScreen({
                     src={Arrow}
                     alt="ArrowImage"
                     className="h-6 w-6 rotate-180"
+              width={200}
+              height={200}
                   />
                 </button>
                 <button
@@ -108,7 +110,9 @@ export default function WallOfDuasScreen({
                   }}
                   className="absolute top-4 sm:top-6 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
                 >
-                  <Image src={Leave} alt="Leave" className="w-10 h-10" />
+                  <Image src={Leave} alt="Leave" className="w-10 h-10"
+              width={200}
+              height={200} />
                 </button>
               </div>
 
@@ -144,7 +148,10 @@ export default function WallOfDuasScreen({
               <span className="text-white text-sm sm:text-lg">Theme</span>
             </button>
             <button className="ml-10">
-              <Image src={Settings} alt="Settings" className="w-6 h-6" />
+              <Image 
+              width={200}
+              height={200}
+              src={Settings} alt="Settings" className="w-6 h-6" />
             </button>
           </div>
           {/* Settings Dropdowns */}
@@ -276,9 +283,15 @@ export default function WallOfDuasScreen({
               onClick={() => handleDuaAction("Discuss")}
               className="bg-[#35458a] border border-[#173b2a] text-white p-2 px-4 rounded-full hover:bg-slate-600 transition-colors flex items-center space-x-1 sm:space-x-2"
             >
-              <Image src={Discuss} alt="Discuss" className="w-5 h-5" />
+              <Image 
+              width={200}
+              height={200}
+              src={Discuss} alt="Discuss" className="w-5 h-5" />
               <span>Discuss</span>
-              <Image src={Arrow} alt="Arrow" className="w-3 h-3" />
+              <Image 
+              width={200}
+              height={200}
+              src={Arrow} alt="Arrow" className="w-3 h-3" />
             </button>
           </div>
 

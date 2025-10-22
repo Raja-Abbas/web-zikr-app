@@ -47,7 +47,9 @@ export default function MatinSoirDetailsScreen({
           }}
           className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
         >
-          <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+          <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
         </button>
         {/* Center: Title - Mobile Responsive */}
         <h1
@@ -134,11 +136,17 @@ export default function MatinSoirDetailsScreen({
               }}
               className="bg-[#35458a] w-fit ml-auto justify-end border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
             >
-              <Image src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
+              <Image 
+              width={200}
+              height={200}
+              src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
               <span className="text-white text-sm sm:text-sm font-medium">
                 Discuss
               </span>
-              <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
             </button>
           </div>
         </div>

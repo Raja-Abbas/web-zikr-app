@@ -56,7 +56,7 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
@@ -79,7 +79,9 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
             }}
             className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
@@ -237,14 +239,20 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
                 </span>
                 <span className="text-gray-800 text-lg flex items-center gap-2">
                   {userSettings.gender}{" "}
-                  <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                  <Image 
+              width={200}
+              height={200}
+                  src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-gray-900 text-md">Langue</span>
                 <span className="text-gray-600 text-lg flex items-center gap-2">
                   {userSettings.language}{" "}
-                  <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                  <Image 
+              width={200}
+              height={200}
+                  src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
                 </span>
               </div>
             </div>
@@ -262,7 +270,10 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
                 </span>
                 <span className="text-gray-600 text-lg flex items-center gap-2">
                   {userSettings.reminderTime}{" "}
-                  <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                  <Image 
+              width={200}
+              height={200}
+                  src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -330,7 +341,10 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
                     }
                     className="w-20 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                  <Image 
+              width={200}
+              height={200}
+                  src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -365,11 +379,17 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
                 <span className="text-gray-900 text-lg">
                   Save your notes on the cloud
                 </span>
-                <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                <Image 
+              width={200}
+              height={200}
+                src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
               </div>
               <button className="w-full py-3 bg-cream p-6 rounded-2xl rounded-lg text-xl font-medium hover:bg-opacity-50 transition-colors flex justify-between items-center">
                 Delete my data{" "}
-                <Image src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
+                <Image 
+              width={200}
+              height={200}
+                src="/arrowBlack.svg" alt="Arrow" className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -385,11 +405,17 @@ const InteriorDesignSettingsScreen: React.FC<InteriorDesignSettingsScreenProps> 
             }}
             className="bg-[#35458a] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2"
           >
-            <Image src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
+            <Image 
+              width={200}
+              height={200}
+            src="/Discuss.svg" alt="Dua" className="w-5 h-5" />
             <span className="text-white text-sm sm:text-sm font-medium">
               Discuss
             </span>
-            <Image src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
+            <Image 
+              width={200}
+              height={200}
+            src="/arrow.svg" alt="Arrow" className="w-4 h-4" />
           </button>
         </div>
       </div>

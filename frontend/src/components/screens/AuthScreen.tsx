@@ -45,7 +45,8 @@ export default function AuthScreen({
           {/* Arabic Calligraphy Logo */}
           <div className="mb-4">
             <div className="text-cream font-arabic mb-2 flex justify-center">
-              <Image src="/logo-removebg-preview.png" alt="Logo-Image" width="116" height="116" />
+              <Image 
+              src="/logo-removebg-preview.png" alt="Logo-Image" width="116" height="116" />
             </div>
           </div>
           {/* App Name */}

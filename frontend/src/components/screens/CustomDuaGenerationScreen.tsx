@@ -40,20 +40,26 @@ export default function CustomDuaGenerationScreen({
             <Image
               src="/arrow.svg"
               alt="ArrowImage"
-              className="h-6 w-6 rotate-180"
+     height="200" width="200"         className="h-6 w-6 rotate-180"
             />
           </button>
           <button
             onClick={() => setShowDiscussMenu(true)}
             className="hover:scale-110 transition-transform absolute top-5 left-5"
           >
-            <Image src="/leave.png" alt="Leave" className="w-10 h-10" />
+            <Image src="/leave.png" alt="Leave"
+width="200"
+height="200" className="w-10 h-10" />
           </button>
         </div>
 
         {/* Right: Current Mode Indicator */}
         <div className="cursor-pointer bg-[#0f1944] text-white border-2 border-[#173b2a] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#3B82F6] shadow-lg">
-          <Image src="/Pray.svg" alt="Pray" className="w-4 h-4" />
+          <Image 
+
+          width={200}
+          height={200}
+          src="/Pray.svg" alt="Pray" className="w-4 h-4" />
           <span className="text-[13px] sm:text-[13px] font-medium mt-1">
             Custom dua for my situation
           </span>
@@ -70,6 +76,8 @@ export default function CustomDuaGenerationScreen({
               <div className="bg-teal-700 rounded-full flex-shrink-0">
                 <Image
                   src="/zikrBot.png"
+                  width="200"
+                  height="200"
                   alt="ZikrBot"
                   className="w-8 h-8 rounded-full"
                 />
@@ -100,6 +108,8 @@ export default function CustomDuaGenerationScreen({
                 <div className="bg-teal-700 rounded-full flex-shrink-0">
                   <Image
                     src="/zikrBot.png"
+                  width="200"
+                  height="200"
                     alt="ZikrBot"
                     className="w-8 h-8 rounded-full"
                   />
@@ -186,6 +196,8 @@ export default function CustomDuaGenerationScreen({
                 <div className="bg-teal-700 rounded-full flex-shrink-0">
                   <Image
                     src="/zikrBot.png"
+                  width="200"
+                  height="200"
                     alt="ZikrBot"
                     className="w-8 h-8 rounded-full"
                   />

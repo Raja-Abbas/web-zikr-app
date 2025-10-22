@@ -48,7 +48,10 @@ export default function WelcomeScreen({
         }}
         className="absolute top-6 sm:top-8 left-6 sm:left-8 hover:scale-110 transition-transform z-50"
       >
-        <Image src={Leave} alt="Leave" className="w-10 h-10" />
+        <Image 
+              width={200}
+              height={200}
+              src={Leave} alt="Leave" className="w-10 h-10" />
       </button>
 
       {/* Main Content - Scrollable */}
@@ -58,7 +61,10 @@ export default function WelcomeScreen({
           {/* Arabic Title - Stylized Green Font */}
           <div className="mb-3 sm:mb-4">
             <div className="text-5xl sm:text-6xl md:text-7xl text-green-400 font-arabic mb-2">
-              <Image src={Logo} alt="Logo-Image" width="100" height="100" />
+              <Image 
+              width={200}
+              height={200}
+              src={Logo} alt="Logo-Image" width="100" height="100" />
             </div>
           </div>
 
@@ -98,7 +104,10 @@ export default function WelcomeScreen({
               }}
               className="gap-2 cursor-pointer bg-[#173b2a] text-white border-2 border-[#0a3a30] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#2D5A4F] shadow-lg"
             >
-              <Image src={Dua} alt="Dua" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src={Dua} alt="Dua" className="w-4 h-4" />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Authentic dua
               </span>
@@ -112,7 +121,10 @@ export default function WelcomeScreen({
               }}
               className="flex-1 cursor-pointer bg-[#0f1944] text-white border-2 border-[#173b2a] px-4 sm:px-6 py-1 sm:py-1 rounded-[999px] flex flex-row items-center justify-center transition-all duration-300 transform hover:scale-105 hover:bg-[#3B82F6] shadow-lg"
             >
-              <Image src={Pray} alt="Pray" className="w-4 h-4" />
+              <Image 
+              width={200}
+              height={200}
+              src={Pray} alt="Pray" className="w-4 h-4" />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Custom dua for my situation
               </span>
@@ -132,6 +144,9 @@ export default function WelcomeScreen({
                 src={SpritualReminder}
                 alt="SpritualReminder"
                 className="w-4 h-4"
+                
+              width={200}
+              height={200}
               />
               <span className="text-xs sm:text-sm font-medium mt-1">
                 Spiritual reminder
@@ -142,7 +157,7 @@ export default function WelcomeScreen({
 
         {/* Input Bar - New Main Feature */}
         <div className="w-full max-w-lg">
-          <div className="relative flex gap-[20px] items-end">
+          <div className="relative flex gap-[20px] items-center">
             <div className="relative w-full">
               {/* Custom multi-colored placeholder */}
               {!chatInput && (
@@ -159,16 +174,16 @@ export default function WelcomeScreen({
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleChatSubmit()}
-                className="w-full bg-[#0f1944] min-h-[150px] text-white rounded-[20px]
-               py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
-               focus:outline-none focus:ring-2 focus:ring-[#4F46E5]
-               focus:border-transparent text-sm sm:text-base shadow-inner
-               resize-none text-center align-top"
+                className="w-full bg-[#0f1944] text-white rounded-full
+           py-4 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border border-[#173b2a]
+           focus:outline-none focus:ring-2 focus:ring-[#4F46E5]
+           focus:border-transparent text-xl sm:text-xl shadow-inner
+           resize-none text-center h-[62px]"
               />
             </div>
             <button
               onClick={handleChatSubmit}
-              className="relative right-3 cursor-pointer sm:right-4 top-1/2 transform rotate-[90deg] text-white hover:text-gray-300 transition-colors duration-300 p-1"
+              className="w-full bg-slate-900 text-white placeholder-purple-300 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pr-12 sm:pr-14 border-none focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base"
             >
               <svg
                 className="w-10 h-10 sm:w-6 sm:h-6"
