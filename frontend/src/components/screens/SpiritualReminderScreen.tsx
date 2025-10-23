@@ -88,14 +88,20 @@ export default function SpiritualReminderScreen({
         <div className="pb-24">
           {/* Chat Message (Bot's Response) */}
           <div className="w-full max-w-4xl mx-auto mb-8 px-6">
-            <div className="flex items-start space-x-3 mb-6">
+            <div className="flex items-end space-x-3 mb-6">
               {/* Zikr bot logo/icon */}
-              <div className="bg-teal-700 rounded-full p-2 flex-shrink-0">
-                <span className="text-white text-xs font-bold">Z</span>
+              <div className="bg-teal-700 rounded-full flex-shrink-0">
+                <Image
+                  src="/zikrBot.png"
+                  width="200"
+                  height="200"
+                  alt="ZikrBot"
+                  className="w-8 h-8 rounded-full"
+                />
               </div>
 
               {/* Chat Bubble */}
-              <div className="bg-teal-800 bg-opacity-80 rounded-2xl rounded-tl-sm p-6 max-w-2xl">
+              <div className="bg-[#0a3a30] border border-[#216b34] rounded-full rounded-bl-sm p-6 max-w-2xl">
                 <p className="text-white text-base leading-relaxed">
                   That&apos;s great! Please find below the Reminders I can
                   help you with. May Allah ease your journey and help you
@@ -141,22 +147,21 @@ export default function SpiritualReminderScreen({
               selectedReminderCategory as keyof typeof reminderContent
             ] && (
               <div className="w-full max-w-4xl mx-auto px-6 mb-8">
-                <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                <div className="p-8 shadow-lg text-white">
                   {/* Title/Context */}
-                  <div className="flex items-center space-x-2 mb-6">
-                    <h3 className="text-slate-800 text-xl font-semibold">
+                  <div className="flex items-center justify-end bg-[#0f1944] max-w-fit ml-auto border border-[#173b2a] space-x-2 p-4 py-2 rounded-full mb-6">
+                    <h3 className="text-xl font-semibold">
                       {
                         reminderContent[
                           selectedReminderCategory as keyof typeof reminderContent
                         ].title
                       }
                     </h3>
-                    <span className="text-slate-800">→</span>
                   </div>
 
                   {/* Instructional Text */}
-                  <div className="mb-6">
-                    <p className="text-gray-800 text-base leading-relaxed">
+                  <div className="mb-0">
+                    <p className="text-base italic text-center leading-relaxed">
                       {
                         reminderContent[
                           selectedReminderCategory as keyof typeof reminderContent
@@ -166,10 +171,10 @@ export default function SpiritualReminderScreen({
                   </div>
 
                   {/* Download Link */}
-                  <div className="mb-8">
+                  <div className="mb-8 text-center">
                     <a
                       href="#"
-                      className="text-blue-800 text-base font-medium hover:text-blue-600 transition-colors underline"
+                      className="text-base font-medium hover:text-blue-600 transition-colors underline"
                       onClick={(e) => {
                         e.preventDefault();
                         console.log(
@@ -196,14 +201,19 @@ export default function SpiritualReminderScreen({
                     >
                       Another reminder
                     </button>
-
                     <button
-                      onClick={() => handleReminderAction("Discuss")}
-                      className="bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-slate-700 transition-colors flex items-center space-x-2"
-                    >
-                      <span>≈</span>
-                      <span>Discuss</span>
-                    </button>
+                        onClick={() => handleReminderAction("Discuss")}
+                        className="bg-[#0a3a30] absolute right-5 mt-1 font-bold border border-[#173b2a] text-white px-4 sm:px-4 py-2 sm:py-2 rounded-full text-sm sm:text-sm hover:bg-slate-600 transition-colors flex items-center space-x-1 sm:space-x-2"
+                      >
+                        <Image
+                          src="/discuss.svg"
+                          alt="Discuss"
+              width={200}
+              height={200}
+                          className="w-5 h-5"
+                        />
+                        <span>Discuss</span>
+                      </button>
                   </div>
                 </div>
               </div>
