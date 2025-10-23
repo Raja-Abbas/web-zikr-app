@@ -40,9 +40,9 @@ export default function SpiritualReminderScreen({
   return (
     <div className="flex-1 flex flex-col min-h-screen w-full max-w-none overflow-hidden">
       {/* Header/Top Bar */}
-      <div className="flex items-center justify-between w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
+      <div className="flex items-center justify-center w-full max-w-4xl mx-auto mb-8 px-6 pt-8 sm:pt-4">
         {/* Left: Back arrow and green leaf icon */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <button
             onClick={() => {
               setShowSpiritualReminder(false);
@@ -50,30 +50,35 @@ export default function SpiritualReminderScreen({
               setSelectedReminderCategory("Wudu steps");
               setShowHomeScreen(true);
             }}
-            className="text-white text-2xl hover:text-gray-300 transition-colors"
+            className="text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors absolute top-10 left-16"
           >
-            ←
+            <Image
+              src="/arrow.svg"
+              alt="ArrowImage"
+              height="200"
+              width="200"
+              className="h-6 w-6 rotate-180"
+            />
           </button>
           <button
             onClick={() => setShowDiscussMenu(true)}
-            className="hover:scale-110 transition-transform"
+            className="hover:scale-110 transition-transform absolute top-5 left-5"
           >
-            <svg
-              className="w-6 h-6 text-green-400 hover:text-green-300"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
-            </svg>
+            <Image
+              src="/leave.png"
+              alt="Leave"
+              width="200"
+              height="200"
+              className="w-10 h-10"
+            />
           </button>
         </div>
-        
 
         {/* Right: Current Mode Indicator */}
-        <div className="bg-slate-800 border border-white rounded-lg px-4 py-2 flex items-center space-x-2">
-          <span className="text-white text-sm">≈</span>
-          <span className="text-white text-sm font-medium">
-            Spiritual reminder
+        <div className="bg-[#f4f0e6] border border-[#173b2a] rounded-full px-4 sm:px-4 py-2 sm:py-2 flex gap-2 items-center justify-center space-x-1 sm:space-x-2">
+          <Image src="/spritual-reminder.png" alt="Dua" className="w-8 h-8" width="200" height="200" />
+          <span className="text-black text-xl sm:text-xl font-medium">
+          Spiritual reminder
           </span>
         </div>
       </div>
